@@ -1,0 +1,39 @@
+{% extends 'layout/layout.html' %} {% block content %}
+<div id="profileFrm">
+  <h2 id="#bannerText">마이 페이지</h2>
+  <ul class="container">
+    <div>
+      <p class="title">프로필 사진</p>
+      <span><img src="http://54.180.163.189:80/{{image}}" alt="" /></span>
+    </div>
+    <li>
+      <p class="title">아이디</p>
+      <span>{{userid}}</span>
+    </li>
+    <li>
+      <p class="title">닉네임</p>
+      <span>{{username}}</span>
+    </li>
+    <li>
+      <p class="title">생년월일</p>
+      <span>{{birth}}</span>
+    </li>
+    <li>
+      <p class="title">성별</p>
+      <span>{{gender}}</span>
+    </li>
+    <li>
+      <p class="title">이메일 주소</p>
+      <span>{{email}}</span>
+    </li>
+    <li>
+      <p class="title">전화번호</p>
+      <span>{{phoneNumber}}</span>
+    </li>
+  </ul>
+  <div id="btnBox">
+    <button class="button"><a href="/modify">회원정보 수정</a></button>
+    <button class="button"><a href="/">메인페이지로 이동</a></button>
+  </div>
+</div>
+{% endblock%}
