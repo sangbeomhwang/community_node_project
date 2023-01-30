@@ -1,117 +1,168 @@
 {% extends 'layout/layout.html' %} {% block content %}
 
-<form method="post" action="/single" id="photoFrm">
-  <p class="title">사진 등록</p>
-  <input type="file" name="filename" />
-  <button type="submit">전송</button>
-</form>
-
-<form method="post" action="/signup" id="signupFrm">
-  <h2 id="bannerText">회원가입</h2>
-  <ul class="container">
-    <div id="imageBox">
-      <img id="previewImg" src="" alt="" />
-      <input type="hidden" name="image" id="userImg" />
+<div id="wrap">
+  <div id="header_wrap">
+    <div id="header">
+      <h1 id="logo">
+        <a href="/"
+          ><img
+            src="https://i.ibb.co/YjBT0Zp/Kakao-Talk-20230130-161013510-1.png"
+        /></a>
+        <span>Node.phl 페이지에 오신 것을 환영합니다~</span>
+      </h1>
     </div>
-    <li id="useridBox">
-      <p class="title">아이디</p>
-      <span
-        ><input
-          type="text"
-          name="userid"
-          id="userid"
-          placeholder="아이디를 입력해주세요"
-      /></span>
-      <p class="alertMessage" style="opacity: 0; color: red">
-        영문과 숫자를 사용하여 6~16자 사이로 입력해주세요
-      </p>
-    </li>
-    <li id="usernameBox">
-      <p class="title">닉네임</p>
-      <span
-        ><input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="닉네임을 입력해주세요"
-      /></span>
-      <p class="alertMessage" style="opacity: 0; color: red">
-        특수문자를 제외하여 두 글자 이상으로 입력해주세요
-      </p>
-    </li>
-    <li id="userpwBox">
-      <p class="title">비밀번호</p>
-      <span
-        ><input
-          type="password"
-          name="userpw"
-          id="userpw"
-          placeholder="비밀번호를 입력해주세요"
-          maxlength="16"
-      /></span>
-      <p class="alertMessage" style="opacity: 0; color: red">
-        영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요
-      </p>
-    </li>
-    <li>
-      <p class="title">비밀번호 확인</p>
-      <span
-        ><input
-          type="password"
-          id="pwcheck"
-          placeholder="비밀번호를 다시 한 번 입력해주세요"
-          maxlength="16"
-      /></span>
-      <p class="checkMessage" style="opacity: 0; color: red">
-        비밀번호가 일치하지 않습니다
-      </p>
-    </li>
-    <li class="li_gender">
-      <p class="title">성별</p>
-      <select id="gender" class="inbox" name="gender">
-        <option value="default" checked>선택</option>
-        <option value="male">남성</option>
-        <option value="female">여성</option>
-      </select>
-      <p class="alertMessage" style="opacity: 0; color: red">
-        필수 선택사항입니다
-      </p>
-    </li>
-    <li>
-      <p class="title">생년월일</p>
-      <input
-        type="date"
-        name="birth"
-        id="birth"
-        min="1900-01-01"
-        max="2010-01-01"
-        required
-      />
-      <p class="alertMessage" style="opacity: 0; color: red">
-        필수 선택사항입니다
-      </p>
-    </li>
-    <li id="phoneNumberBox">
-      <p class="title">전화번호</p>
-      <span
-        ><input type="tel" name="phoneNumber" id="phoneNumber" maxlength="11"
-      /></span>
-      <p class="alertMessage" style="opacity: 0; color: red">
-        "-"를 제외한 11자리의 숫자로 입력해주세요
-      </p>
-    </li>
-    <li id="emailBox">
-      <p class="title">이메일 주소</p>
-      <span
-        ><input type="email" name="email" id="email" required maxlength="30"
-      /></span>
-      <p class="alertMessage" style="opacity: 0; color: red">
-        이메일 형식에 맞게 입력해주세요
-      </p>
-    </li>
-  </ul>
-  <button type="submit" class="button">등록하기</button>
-</form>
+  </div>
+
+  <div id="profile_img">
+    <form method="post" action="/single" id="photoFrm">
+      <p class="title">사진 등록</p>
+      <input type="file" name="filename" />
+      <button type="submit">전송</button>
+    </form>
+  </div>
+
+  <form method="post" action="/signup" id="signupFrm">
+    <div id="contents_wrap">
+      <div id="contents" class="container">
+        <div id="login">
+          <div id="kakao">
+            <a href="#">
+              <img
+                src="https://i.ibb.co/wyJdfzT/kakao-login-large-wide-1-1.png"
+                alt="kakao_login"
+              />
+            </a>
+          </div>
+
+          <div id="id_row">
+            <h3 id="id">
+              <label for="id">아이디</label>
+            </h3>
+            <span class="form">
+              <input type="text" id="id" />
+            </span>
+          </div>
+
+          <div id="pwd_row">
+            <h3 id="pwd">
+              <label for="pwd">비밀번호</label>
+            </h3>
+            <span class="form">
+              <input type="password" id="pwd" />
+            </span>
+          </div>
+
+          <div id="pwd2_row">
+            <h3 id="pwd2">
+              <label for="pwd2">비밀번호 재확인</label>
+            </h3>
+            <span class="form">
+              <input type="password" id="pwd2" />
+            </span>
+          </div>
+        </div>
+
+        <div id="info">
+          <div id="name_row">
+            <h3 id="name">
+              <label for="name">이름</label>
+            </h3>
+            <span class="form">
+              <input type="text" id="name" />
+            </span>
+          </div>
+
+          <div id="nick_row">
+            <h3 id="nick">
+              <label for="nick">닉네임</label>
+            </h3>
+            <span class="form">
+              <input type="text" id="nick" />
+            </span>
+          </div>
+
+          <div id="birth_row">
+            <h3 id="birth">
+              <label for="birth">생년월일</label>
+            </h3>
+            <span class="form">
+              <input
+                type="date"
+                name="birth"
+                id="birth"
+                min="1900-01-01"
+                max="2020-01-30"
+                required
+              />
+            </span>
+          </div>
+
+          <div id="gender_row">
+            <h3 id="gender">
+              <label for="gender">성별</label>
+            </h3>
+            <span class="form">
+              <select name="gender" id="gender" aria-level="성별">
+                <option value="default" checked>선택</option>
+                <option value="male">남성</option>
+                <option value="female">여성</option>
+              </select>
+            </span>
+          </div>
+
+          <div id="email_row">
+            <h3 id="email">
+              <label for="email">이메일</label>
+            </h3>
+            <span class="form">
+              <input type="text" id="email" />
+            </span>
+          </div>
+
+          <div id="phone_row">
+            <h3 id="phone_num">
+              <label for="phone_num">전화번호</label>
+            </h3>
+            <span class="form">
+              <input type="text" id="phone_num" />
+            </span>
+          </div>
+
+          <div id="address_row">
+            <h3 id="address">
+              <label for="address">주소</label>
+            </h3>
+            <span class="form">
+              <input type="text" id="address" />
+            </span>
+          </div>
+
+          <div id="address_detail_row">
+            <h3 id="address_detail">
+              <label for="address_detail">상세 주소</label>
+            </h3>
+            <span class="form">
+              <input type="text" id="address_detail" />
+            </span>
+          </div>
+
+          <div id="introduce_row">
+            <h3 id="introduce">
+              <label for="introduce">간단 소개</label>
+            </h3>
+            <span class="form">
+              <input type="text" id="introduce" />
+            </span>
+          </div>
+        </div>
+        <button type="submit" class="button">
+          <a href="#">등록하기</a>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
 
 <script type="module" src="/js/module/join.js"></script>
+
 {% endblock%}
