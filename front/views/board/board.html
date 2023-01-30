@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul, li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #content_wrap {
+            width: 100%
+        }
+
+        #content {
+            margin: 0 auto;
+            width: 900px
+        }
+
+        #content_header {
+            margin: 40px 0;
+        }
+
+        #subject {
+            padding: 16px 32px;
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+
+        #subject > div {
+            font-size: 20px;
+            color: #112827;
+        }
+
+        #subject > span {
+            font-size: 14px;
+            color: #112827;
+        }
+
+        #submenu {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        #writebtn {
+            width: 98px;
+            height: 40px;
+            background-color: #0090f9;
+            padding: 8px 16px 8px 12px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #writebtn > a {
+            color: #fff;
+            font-weight: bold;
+
+        }
+
+        #category > ul {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #category > ul > li {
+            margin: 0 50px;
+            color: #4b5563;
+            font-weight: bold;
+        }
+
+
+        #sort {
+            border: 1px solid black;
+            width: 90px;
+            height: 40px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+        }
+
+        #search {
+            margin-top: 30px;
+            height: 50px;
+            padding: 16px 0;
+            border-bottom: 1px solid black;
+            border-top: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+        }
+
+        #content_body > ul > li {
+            display: block;
+            height: 112px;
+            border-bottom: 1px solid black;
+            padding: 16px 0;
+            box-sizing: border-box; 
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="content_wrap">
+        <div id="content">
+            <div id="content_header">
+                <div id="subject">
+                    <div>Board</div>
+                    <span>생각을 표출해주세요</span>
+                </div>
+                <div id="submenu">
+                    <div id="writebtn">
+                        <a href="#">작성하기</a>
+                    </div>
+                    <div id="category">
+                    <ul>
+                        <li>subCategory1</li>
+                        <li>subCategory2</li>
+                        <li>subCategory3</li>
+                    </ul>
+                    </div>
+                    <div id="sort">
+                        <div>최신순</div>
+                    </div> 
+                </div>
+                <div id="search">
+                    <div>Board 내에서 검색</div>
+                </div>
+            </div>
+
+            <div id="content_body">
+                <ul>
+                    <li>
+                        <div>게시글1</div>
+                    </li>
+                    <li>
+                        <div>게시글1</div>
+                    </li>
+                    <li>
+                        <div>게시글1</div>
+                    </li>
+                    <li>
+                        <div>...</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
