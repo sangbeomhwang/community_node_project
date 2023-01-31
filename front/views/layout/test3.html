@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../../public/css/welcome.css" />
+  </head>
+
+  <body>
+    <div>
+      <div id="logo">
+        <a href="/">
+          <img
+            src="https://i.ibb.co/YjBT0Zp/Kakao-Talk-20230130-161013510-1.png"
+            id="logo_img"
+          />
+        </a>
+      </div>
+      <div id="welcome">
+        <h2>{{token}}님, 환영합니다</h2>
+      </div>
+      <form method="post" action="/user/welcome">
+        <div id="nav">
+          <button>
+            <a href="/">홈페이지로 이동하기</a>
+          </button>
+          <button><a href="/board/list">게시판으로 이동하기</a></button>
+          <button><a href="/user/profile">회원정보 수정하기</a></button>
+        </div>
+      </form>
+    </div>
+    <div id="footer_wrap">
+      <div id="footer">
+        <ul>
+          <li>
+            <a class="team_phl" href="#">TEAM : Node.phl</a>
+          </li>
+          <li>
+            <a class="team_phl" href="#">Jong Hwan Park</a>
+          </li>
+          <li>
+            <a class="team_phl" href="#">Min Soo Lee</a>
+          </li>
+          <li>
+            <a class="team_phl" href="#">Sang Beom Hwang</a>
+          </li>
+          <li>
+            <a class="personal" href="#">행복하자 우리</a>
+          </li>
+        </ul>
+        <div id="footer_info">
+          <h1 id="footer_logo">
+            <img
+              src="https://i.ibb.co/YjBT0Zp/Kakao-Talk-20230130-161013510-1.png"
+              alt="footer_logo"
+            />
+          </h1>
+          <div id="team_info">
+            <p></p>
+            <p>
+              1번 뇌섹남 : 박종환 / 2번 뇌섹남 : 이민수 / 3번 뇌섹남 : 황상범
+            </p>
+            <p>Node.phl</p>
+            <p class="copyright">
+              Copyright © 2023. Node.phl Project Group. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

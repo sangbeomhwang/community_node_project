@@ -18,7 +18,7 @@
               ><img
                 src="https://i.ibb.co/YjBT0Zp/Kakao-Talk-20230130-161013510-1.png"
             /></a>
-            <span>Node.phl 페이지에 오신 것을 환영합니다~</span>
+            <span>Profile 수정</span>
           </h1>
         </div>
       </div>
@@ -54,11 +54,11 @@
                 <span class="form">
                   <input
                     type="text"
-                    id="userid"
                     name="userid"
-                    placeholder="아이디를 입력해주세요"
-                    onfocus="this.placeholder=''"
-                    onblur="this.placeholder='아이디를 입력해주세요'"
+                    id="userid"
+                    value="{{user_id}}"
+                    style="text-align: center"
+                    readonly
                   />
                 </span>
                 <p class="alertMessage" style="opacity: 0; color: red">
@@ -117,9 +117,8 @@
                     type="text"
                     id="username"
                     name="username"
-                    placeholder="이름을 입력해주세요"
-                    onfocus="this.placeholder=''"
-                    onblur="this.placeholder='이름을 입력해주세요'"
+                    value="{{user_name}}"
+                    style="text-align: center"
                   />
                 </span>
                 <p class="alertMessage" style="opacity: 0; color: red">
@@ -136,9 +135,8 @@
                     type="text"
                     id="usernick"
                     name="usernick"
-                    placeholder="닉네임을 입력해주세요"
-                    onfocus="this.placeholder=''"
-                    onblur="this.placeholder='닉네임을 입력해주세요'"
+                    value="{{user_nick}}"
+                    style="text-align: center"
                   />
                 </span>
                 <p class="alertMessage" style="opacity: 0; color: red">
@@ -190,10 +188,8 @@
                     type="text"
                     id="useremail"
                     name="useremail"
-                    placeholder="이메일을 입력해주세요"
-                    onfocus="this.placeholder=''"
-                    onblur="this.placeholder='이메일을 입력해주세요'"
-                    maxlength="30"
+                    value="{{user_email}}"
+                    style="text-align: center"
                     required
                   />
                 </span>
@@ -211,9 +207,8 @@
                     type="text"
                     id="userphone"
                     name="userphone"
-                    placeholder="휴대폰 번호를 입력해주세요"
-                    onfocus="this.placeholder=''"
-                    onblur="this.placeholder='휴대폰 번호를 입력해주세요'"
+                    value="{{user_phone}}"
+                    style="text-align: center"
                     maxlength="11"
                   />
                 </span>
@@ -227,7 +222,12 @@
                   <label for="useraddress">주소</label>
                 </h3>
                 <span class="form">
-                  <input type="text" id="useraddress" name="useraddress" />
+                  <input
+                    type="text"
+                    id="useraddress"
+                    value="{{useraddress}}"
+                    style="text-align: center"
+                  />
                 </span>
               </div>
 
@@ -240,9 +240,8 @@
                     type="text"
                     id="useraddress_detail"
                     name="useraddress_detail"
-                    placeholder="상세 주소를 입력해주세요"
-                    onfocus="this.placeholder=''"
-                    onblur="this.placeholder='상세 주소를 입력해주세요'"
+                    value="{{user_address_detail}}"
+                    style="text-align: center"
                   />
                 </span>
               </div>
@@ -255,12 +254,13 @@
                     id="userintroduce"
                     cols="56"
                     rows="10"
+                    value="{{user_introduce}}"
                   ></textarea>
                 </span>
               </div>
             </div>
             <button type="submit" class="button">
-              <a href="#">등록하기</a>
+              <a href="#">수정완료</a>
             </button>
           </div>
         </div>
