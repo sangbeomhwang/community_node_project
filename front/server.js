@@ -28,7 +28,6 @@ app.use((req, res, next) => {
     const decodedPl = JSON.parse(
       Buffer.from(payload, "base64").toString("utf-8")
     );
-    // console.log(`decodedPl :`,decodedPl);
 
     req.user = decodedPl;
   } catch (e) {
