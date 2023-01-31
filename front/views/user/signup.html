@@ -13,14 +13,6 @@
     </div>
   </div>
 
-  <div id="profile_img">
-    <form method="post" action="/single" id="photoFrm">
-      <p class="title">사진 등록</p>
-      <input type="file" name="filename" />
-      <button type="submit">전송</button>
-    </form>
-  </div>
-
   <form method="post" action="/signup" id="signupFrm">
     <div id="contents_wrap">
       <div id="contents" class="container">
@@ -32,6 +24,17 @@
                 alt="kakao_login"
               />
             </a>
+          </div>
+
+          <div id="profile_img_row">
+            <label for="profile_img">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png"
+                alt="profile_image"
+              />
+            </label>
+            <input type="file" id="profile_img" />
+            <h3 id="profile_img">프로필 이미지를 선택해주세요</h3>
           </div>
 
           <div id="id_row">
@@ -147,11 +150,9 @@
           </div>
 
           <div id="introduce_row">
-            <h3 id="introduce">
-              <label for="introduce">간단 소개</label>
-            </h3>
+            <h3 id="introduce">간단 소개</h3>
             <span class="form">
-              <input type="text" id="introduce" />
+              <textarea name="introduce" id="" cols="56" rows="10"></textarea>
             </span>
           </div>
         </div>
