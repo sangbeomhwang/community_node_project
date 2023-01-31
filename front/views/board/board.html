@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
         ul, li {
             list-style: none;
         }
@@ -15,32 +21,38 @@
         }
 
         #content_wrap {
-            width: 100%
+            height: 1300px;
+            width: 100%;
+            
         }
 
         #content {
             margin: 0 auto;
-            width: 900px
+            width: 840px
         }
 
         #content_header {
-            margin: 40px 0;
+            margin-top: 40px;
         }
 
         #subject {
             padding: 16px 32px;
             box-sizing: border-box;
-            border: 1px solid black;
+            /* border: 1px solid black; */
+            border-radius: 0.375rem;
+            background: url(https://i.ibb.co/5KTnj1x/2023-01-31-142506.png);
         }
 
         #subject > div {
             font-size: 20px;
-            color: #112827;
+            color: white;
+            font-weight: bold;
         }
 
         #subject > span {
             font-size: 14px;
-            color: #112827;
+            color: white;
+            font-weight: bold;
         }
 
         #submenu {
@@ -50,9 +62,10 @@
         }
 
         #writebtn {
-            width: 98px;
-            height: 40px;
-            background-color: #0090f9;
+            width: 93px;
+            height: 35px;
+            background-color: #ee593f;
+            margin-top: 10px;
             padding: 8px 16px 8px 12px;
             box-sizing: border-box;
             display: flex;
@@ -73,15 +86,17 @@
 
         #category > ul > li {
             margin: 0 50px;
-            color: #4b5563;
+            color: black;
             font-weight: bold;
         }
 
 
         #sort {
-            border: 1px solid black;
-            width: 90px;
-            height: 40px;
+            border: 1px solid hsla(220,9%,46%,.3);
+            border-radius: 0.375rem;
+            margin-top: 10px;
+            width: 85px;
+            height: 35px;
             justify-content: center;
             display: flex;
             align-items: center;
@@ -91,20 +106,171 @@
             margin-top: 30px;
             height: 50px;
             padding: 16px 0;
-            border-bottom: 1px solid black;
-            border-top: 1px solid black;
+            border-bottom: 1px solid hsla(220,9%,46%,.3);
+            border-top: 1px solid hsla(220,9%,46%,.3);
             display: flex;
             align-items: center;
-            justify-items: center;
+            justify-content: center;
+        }
+
+        #search > div {
+            box-sizing: border-box;
+            border: 1px solid hsla(220,9%,46%,.3);
+            border-radius: 0.900rem;
+            width: 240px;
+            height: 32px;
+            text-align: center;
+        }
+
+        #content_body > ul {
+            padding: 0;
         }
 
         #content_body > ul > li {
             display: block;
             height: 112px;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid hsla(220,9%,46%,.3);
             padding: 16px 0;
             box-sizing: border-box; 
         }
+
+        #content_body > ul > li > div > a {
+            color: black;
+        }
+
+        #content_body > ul > li > #li_user {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        #content_body > ul > li > #li_user > span {
+            padding-left: 20px;
+            font-size: 12px;
+        }
+
+        #content_body > ul > li > #li_sub {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #content_body > ul > li > #li_Cate {
+            font-size: 12px;
+            width: 100%;
+            height: 20px;
+            display: flex;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        #content_body > ul > li > #li_Cate > span {
+            color: black;
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            position: absolute;
+            right: 0;
+        }
+
+
+        #content_body > ul > li > #li_Cate > a {
+            background: #ee593f;
+            color: white;
+        }
+
+    
+        #footer_wrap {
+            margin-top: 170px;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            /* background: linear-gradient(180deg, #5D5644 42.78%, rgba(93, 86, 68, 0) 100%), #F15740; */
+            /* background: linear-gradient(133.45deg, #5D5644 43.17%, rgba(93, 86, 68, 0) 66.74%), #F15740; */
+        
+            /* background: linear-gradient(217.43deg, #5D5644 40.95%, rgba(93, 86, 68, 0) 71.51%), #F1EA40; */
+            background: #423003;
+        }
+
+        #footer {
+            width: 1000px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        #footer > ul {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            padding: 20px 0;
+            margin-left: 40px;
+            box-sizing: border-box;
+        }
+
+        #footer > ul > li > a {
+            color: #fff;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        #footer > ul > li > .team_phl::after {
+            content: "|";
+            font-size: 11px;
+            font-weight: lighter;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        #footer > ul > li > .personal {
+            font-weight: bold;
+        }
+
+        #footer > ul > li > span {
+            font-weight: lighter;
+            color: #fff;
+            font-size: 11px;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        #footer > #footer_info {
+            width: 100%;
+            display: flex;
+        }
+
+        #footer > #footer_info > h1 {
+            padding-left: 25px;
+            box-sizing: border-box;
+        }
+
+        #footer > #footer_info > h1 > img {
+            display: inline-block;
+            width: 200px;
+            height: 120px;
+            margin-right: 20px;
+        }
+
+        #team_info {
+            box-sizing: border-box;
+        }
+
+        #team_info > p {
+            color: #fff;
+            font-size: 12px;
+            padding-left: 20px;
+            padding-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        #team_info > .copyright {
+            padding: 20px 0 10px 0;
+            box-sizing: border-box;
+        }
+
     </style>
 </head>
 <body>
@@ -113,7 +279,7 @@
         <div id="content">
             <div id="content_header">
                 <div id="subject">
-                    <div>Board</div>
+                    <div>커뮤니티</div>
                     <span>생각을 표출해주세요</span>
                 </div>
                 <div id="submenu">
@@ -139,21 +305,98 @@
             <div id="content_body">
                 <ul>
                     <li>
-                        <div>게시글1</div>
+                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
+                        <div id="li_sub"><a href="#">디자인이 너무 어려워요..</a></div>
+                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
                     </li>
                     <li>
-                        <div>게시글1</div>
+                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
+                        <div id="li_sub"><a href="#">JavaScripts...</a></div>
+                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
                     </li>
                     <li>
-                        <div>게시글1</div>
+                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
+                        <div id="li_sub"><a href="#">프론트앤드&백앤드</a></div>
+                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
                     </li>
                     <li>
-                        <div>...</div>
+                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
+                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
+                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
+                    </li>
+                    <li>
+                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
+                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
+                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
+                    </li>
+                    <li>
+                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
+                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
+                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
+                    </li>
+                    <li>
+                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
+                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
+                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
+                    </li>
+                    <li>
+                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
+                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
+                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
+                    </li>
+                    <li>
+                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
+                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
+                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
+                    </li>
+                    <li>
+                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
+                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
+                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
+
+    <div id="footer_wrap">
+        <div id="footer">
+          <ul>
+            <li>
+              <a class="team_phl" href="#">TEAM : Node.phl</a>
+            </li>
+            <li>
+              <a class="team_phl" href="#">Jong Hwan Park</a>
+            </li>
+            <li>
+              <a class="team_phl" href="#">Min Soo Lee</a>
+            </li>
+            <li>
+              <a class="team_phl" href="#">Sang Beom Hwang</a>
+            </li>
+            <li>
+              <a class="personal" href="#">행복하자 우리</a>
+            </li>
+          </ul>
+          <div id="footer_info">
+            <h1 id="footer_logo">
+              <img
+                src="https://i.ibb.co/pWfzjRh/Group-27-1.png"
+                alt="footer_logo"
+              />
+            </h1>
+            <div id="team_info">
+              <p></p>
+              <p>박종환 : https://github.com/parkjonghwan22</p>
+              <p>이민수 : https://github.com/cloudcoke</p>
+              <p>황상범 : https://github.com/sangbeomhwang</p>
+              <p class="copyright">
+                Copyright © 2023. Node.phl Project Group. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
 </body>
 </html>
