@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const nunjucks = require("nunjucks");
 const cookieParser = require("cookie-parser");
-// const axios = require("axios");
+const axios = require("axios");
 
-// const request = axios.create({
-//   baseURL: `http://127.0.0.1:3000`,
-//   withCredentials: true,
-// });
+const request = axios.create({
+  baseURL: `http://127.0.0.1:3000`,
+  withCredentials: true,
+});
 
 app.set("view engine", "html");
 nunjucks.configure("views", {
@@ -86,6 +86,18 @@ app.post("/profileModify", async (req, res) => {
   console.log("response :", response.data.token);
   res.cookie("token", response.data.token);
   res.redirect("/profile");
+});
+
+const HOST = "https://kauth.kakao.com";
+const REST_API_KEY = "생략";
+const REDIRECT_URI = "http://localhost:3000/oauth/kakao";
+const CLIENT_SECRET = "생략";
+
+app.get("/kakao/login", (req, res) => {
+  // kauth.kakao.com
+  // /oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code
+  const redirectURI = `${HOST}/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  res.redirect(redirectURI);
 });
 
 app.listen(3005, () => {

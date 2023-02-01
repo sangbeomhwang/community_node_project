@@ -47,11 +47,6 @@ li {
   min-height: 2900px;
 }
 
-#contents > #login > #kakao > a > img {
-  width: 460px;
-  margin: 40px 0;
-}
-
 #contents > #login > #profile_img_row {
   display: flex;
   flex-direction: column;
