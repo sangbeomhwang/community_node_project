@@ -10,7 +10,7 @@ li {
 
 #wrap {
   width: 100%;
-  min-height: 1400px;
+  min-height: 1300px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(https://i.postimg.cc/L54Ddkcg/Kakao-Talk-Photo-2023-02-01-12-12-11.jpg);
   display: flex;
@@ -66,84 +66,68 @@ li {
 }
 
 #contents > #login > #terms_row > .terms > textarea {
-  font-size: 12px;
-  text-align: left;
-  border-radius: 12px;
-  border: none;
-  margin: 8px 0 0 0;
-  padding: 20px;
-  box-sizing: border-box;
-  background: #fefefe;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
-}
-
-#contents > #login > #terms_row > .terms > input {
-  width: 15px;
-  height: 15px;
-  text-align: left;
-  margin-top: 15px;
-}
-
-#contents > #login > #terms_row > .terms > #agree {
-  display: inline-block;
-}
-
-#contents > #login > div {
-  margin-top: 19px;
-}
-
-#contents > #login > div > h3 {
-  margin-bottom: 10px;
-}
-
-#contents > #login > div > .form > input {
   width: 900px;
-  height: 65px;
-  font-size: 12px;
+  height: 350px;
+  font-size: 13px;
   text-align: left;
   border-radius: 12px;
-  border: none;
+  border: 1px solid #c6c6c6;
   margin: 8px 0 0 0;
-  padding: 20px;
+  padding: 40px;
   box-sizing: border-box;
-  background: #fefefe;
+  background: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
 }
 
-#contents > #info > div {
-  margin: 30px 0 0 0;
+#contents > #login > #terms_row > .terms > p {
+  position: absolute;
+  left: 695px;
+  top: 830px;
+  width: 529px;
+  height: 30px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  color: #000000;
 }
 
-#contents > #info > div > h3 {
-  margin-bottom: 10px;
+#contents > #login > #terms_row > .terms > #agree_btn {
+  position: absolute;
+  left: 873px;
+  top: 918px;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: #d2d2d2;
 }
 
-#contents > #info > div > .form > input {
-  width: 900px;
-  height: 65px;
-  font-size: 12px;
-  text-align: left;
-  border-radius: 12px;
-  border: none;
-  margin: 8px 0 0 0;
-  padding: 20px;
-  box-sizing: border-box;
-  background: #fefefe;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+#contents > #login > #terms_row > .terms #agree {
+  position: absolute;
+  left: 907px;
+  top: 922px;
+  width: 105px;
+  height: 19px;
+  line-height: 19px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+  margin-left: 10px;
 }
 
 #contents > .button {
-  float: left;
-  margin: 80px 0 50px 0;
-  width: 900px;
-  height: 65px;
-  line-height: 51px;
+  position: absolute;
+  width: 500px;
+  height: 50px;
+  line-height: 50px;
+  left: 720px;
+  top: 1114px;
   font-size: 18px;
   font-weight: bold;
   color: #fff;
