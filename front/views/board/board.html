@@ -28,7 +28,7 @@
 
         #content {
             margin: 0 auto;
-            width: 840px
+            width: 1160px
         }
 
         #content_header {
@@ -36,159 +36,193 @@
         }
 
         #subject {
-            padding: 16px 32px;
+            padding: 38px 20px;
             box-sizing: border-box;
-            /* border: 1px solid black; */
-            border-radius: 0.375rem;
-            background: url(https://i.ibb.co/5KTnj1x/2023-01-31-142506.png);
+            border-radius: 12px 12px 0px 0px;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://i.postimg.cc/ydZG472R/Kakao-Talk-20230201-120303835.jpg);
+            height: 130px;
         }
 
         #subject > div {
-            font-size: 20px;
+            font-size: 45px;
             color: white;
-            font-weight: bold;
-        }
+            font-weight: 700;
+        }      
 
-        #subject > span {
-            font-size: 14px;
-            color: white;
-            font-weight: bold;
-        }
-
-        #submenu {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-
-        #writebtn {
-            width: 93px;
-            height: 35px;
-            background-color: #ee593f;
+        #subcategory {
             margin-top: 10px;
-            padding: 8px 16px 8px 12px;
-            box-sizing: border-box;
+            height: 45px;
+            padding: 12px 0;
+        }
+
+        #subcategory > ul {
             display: flex;
-            align-items: center;
             justify-content: center;
+            height: 45px;
+            padding: 12px 0 11px 0;
+            box-sizing: border-box;
+            background: #FEFEFE;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
         }
 
-        #writebtn > a {
-            color: #fff;
-            font-weight: bold;
-
+        #subcategory > ul > li {
+            padding: 0 60px;
+            box-sizing: border-box;
         }
 
-        #category > ul {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        #category > ul > li {
-            margin: 0 50px;
+        #subcategory > ul > li > a {
+            font-size: 18px;
+            font-weight: 700;
             color: black;
-            font-weight: bold;
         }
 
-
-        #sort {
-            border: 1px solid hsla(220,9%,46%,.3);
-            border-radius: 0.375rem;
+        #content_body {
             margin-top: 10px;
-            width: 85px;
-            height: 35px;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-        }
-
-        #search {
-            margin-top: 30px;
-            height: 50px;
-            padding: 16px 0;
-            border-bottom: 1px solid hsla(220,9%,46%,.3);
-            border-top: 1px solid hsla(220,9%,46%,.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #search > div {
-            box-sizing: border-box;
-            border: 1px solid hsla(220,9%,46%,.3);
-            border-radius: 0.900rem;
-            width: 240px;
-            height: 32px;
-            text-align: center;
         }
 
         #content_body > ul {
-            padding: 0;
+            padding-top: 10px;
+            box-sizing: border-box;
         }
 
         #content_body > ul > li {
             display: block;
-            height: 112px;
-            border-bottom: 1px solid hsla(220,9%,46%,.3);
-            padding: 16px 0;
+            height: 120px;
+            background: #FEFEFE;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+            padding: 20px;
             box-sizing: border-box; 
+            margin-bottom: 10px;
+            font-weight: 700;
         }
 
         #content_body > ul > li > div > a {
-            color: black;
-        }
-
-        #content_body > ul > li > #li_user {
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        #content_body > ul > li > #li_user > span {
-            padding-left: 20px;
+            color: #3d3d3d;
             font-size: 12px;
         }
 
-        #content_body > ul > li > #li_sub {
-            font-size: 16px;
-            font-weight: bold;
-            margin-top: 10px;
+        #content_body > ul > li > div > div {
+            display: flex;
+            justify-content: right;
         }
 
-        #content_body > ul > li > #li_Cate {
+        #content_body > ul > li > div > div > span {
+            color: #000000;
             font-size: 12px;
-            width: 100%;
-            height: 20px;
-            display: flex;
-            margin-top: 10px;
-            position: relative;
         }
 
-        #content_body > ul > li > #li_Cate > span {
-            color: black;
+        #content_body > ul > li > .li_user {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        #content_body > ul > li > .li_user > div > span {
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+
+        #content_body > ul > li > .li_sub {
+            margin-bottom: 17px;
+        }
+
+        #content_body > ul > li > .li_sub > a {
             font-size: 14px;
-            font-weight: bold;
-            display: block;
-            position: absolute;
-            right: 0;
+            color: #000000;
         }
-
-
-        #content_body > ul > li > #li_Cate > a {
-            background: #ee593f;
-            color: white;
-        }
-
-    
-        #footer_wrap {
-            margin-top: 170px;
-            width: 100%;
-            height: 300px;
-            display: flex;
-            /* background: linear-gradient(180deg, #5D5644 42.78%, rgba(93, 86, 68, 0) 100%), #F15740; */
-            /* background: linear-gradient(133.45deg, #5D5644 43.17%, rgba(93, 86, 68, 0) 66.74%), #F15740; */
         
-            /* background: linear-gradient(217.43deg, #5D5644 40.95%, rgba(93, 86, 68, 0) 71.51%), #F1EA40; */
-            background: #423003;
+        #content_body > ul > li > .li_Cate {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #content_body > ul > li > .li_Cate > a {
+            font-size: 12px;
+        }
+
+        #content_body > ul > li > .li_Cate > div {
+            font-size: 12px;
+        }
+
+        #content_body > ul > li > .li_Cate > div > div {
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+
+        #content_body > ul > li > .li_Cate > div > div > img {
+            padding-left: 2px;
+            box-sizing: border-box;
+            width: 12px;
+        }
+
+        #content_body > ul > li > .li_Cate > div > div > span {
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+    
+        #content_footer {
+            margin-top: 60px;
+        }
+
+        #content_footer > #content_btn {
+            display: flex;
+            justify-content: center;
+        }
+
+        #content_footer > #content_btn > form > select {
+            width: 120px;
+            height: 40px;
+            text-align: center;
+            background: #FEFEFE;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #content_footer > #content_btn > form > input {
+            width: 350px;
+            height: 40px;
+            background: #FEFEFE;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 0 40px;
+        }
+        
+        #content_footer > #content_btn > button {
+            width: 120px;
+            height: 40px;
+            background: #FEFEFE;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #content_page {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        #content_page > img {
+            width: 10.54px;
+            height: 14px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+            padding-top: 4px;
+        }
+
+        #content_page > ul {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 12px;
+            width: 110px;
+        }
+        
+        #footer_wrap {
+            margin-top: 10px;
+            width: 100%;
+            height: 270px;
+            display: flex;
+            background: rgba(64, 40, 26, 0.9);
         }
 
         #footer {
@@ -212,28 +246,20 @@
         }
 
         #footer > ul > li > a {
-            color: #fff;
-            font-size: 12px;
+            font-weight: 400;
+            font-size: 8px;
+            line-height: 10px;
+            color: #FEFEFE;
             text-decoration: none;
         }
 
         #footer > ul > li > .team_phl::after {
             content: "|";
-            font-size: 11px;
-            font-weight: lighter;
+            font-weight: 400;
+            font-size: 8px;
+            line-height: 10px;
+            color: #FEFEFE;
             padding: 0 20px;
-            box-sizing: border-box;
-        }
-
-        #footer > ul > li > .personal {
-            font-weight: bold;
-        }
-
-        #footer > ul > li > span {
-            font-weight: lighter;
-            color: #fff;
-            font-size: 11px;
-            padding: 0 10px;
             box-sizing: border-box;
         }
 
@@ -256,11 +282,14 @@
 
         #team_info {
             box-sizing: border-box;
+            padding-top: 20px;
         }
 
         #team_info > p {
-            color: #fff;
-            font-size: 12px;
+            font-weight: 400;
+            font-size: 8px;
+            line-height: 10px;
+            color: #FEFEFE;
             padding-left: 20px;
             padding-bottom: 10px;
             box-sizing: border-box;
@@ -280,82 +309,152 @@
             <div id="content_header">
                 <div id="subject">
                     <div>커뮤니티</div>
-                    <span>생각을 표출해주세요</span>
                 </div>
-                <div id="submenu">
-                    <div id="writebtn">
-                        <a href="#">작성하기</a>
-                    </div>
-                    <div id="category">
+                <div id="subcategory">
                     <ul>
-                        <li>subCategory1</li>
-                        <li>subCategory2</li>
-                        <li>subCategory3</li>
+                        <li><a href='#'>전체</a></li>
+                        <li><a href='#'>일상이야기</a></li>
+                        <li><a href='#'>모임</a></li>
                     </ul>
-                    </div>
-                    <div id="sort">
-                        <div>최신순</div>
-                    </div> 
-                </div>
-                <div id="search">
-                    <div>Board 내에서 검색</div>
                 </div>
             </div>
 
             <div id="content_body">
                 <ul>
                     <li>
-                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
-                        <div id="li_sub"><a href="#">디자인이 너무 어려워요..</a></div>
-                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
+                        <div class="li_user"><a href="#">닉네임</a>
+                            <div>
+                                <span>등록시간</span>
+                                <span>몇분전</span>
+                            </div>
+                        </div>
+                        <div class="li_sub"><a href="#">디자인이 너무 어려워요..</a></div>
+                        <div class="li_Cate">
+                            <a href="#">#Gitjub #Repository</a>
+                            <div>
+                                <div>조회수<img src="https://i.postimg.cc/XYD9XSTJ/ph-eye.png"><span>0</span></div>
+                                <div>좋아요<img src="https://i.postimg.cc/JnXFPQbN/Vector.png"><span>0</span></div>
+                                <div>댓글<img src="https://i.postimg.cc/5ynS3Hk5/Vector-1.png"><span>0</span></div>
+                            </div>
+                        </div>
                     </li>
                     <li>
-                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
-                        <div id="li_sub"><a href="#">JavaScripts...</a></div>
-                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
+                        <div class="li_user"><a href="#">닉네임</a>
+                            <div>
+                                <span>등록시간</span>
+                                <span>몇분전</span>
+                            </div>
+                        </div>
+                        <div class="li_sub"><a href="#">디자인이 너무 어려워요..</a></div>
+                        <div class="li_Cate">
+                            <a href="#">#Gitjub #Repository</a>
+                            <div>
+                                <div>조회수<img src="https://i.postimg.cc/XYD9XSTJ/ph-eye.png"><span>0</span></div>
+                                <div>좋아요<img src="https://i.postimg.cc/JnXFPQbN/Vector.png"><span>0</span></div>
+                                <div>댓글<img src="https://i.postimg.cc/5ynS3Hk5/Vector-1.png"><span>0</span></div>
+                            </div>
+                        </div>
                     </li>
                     <li>
-                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
-                        <div id="li_sub"><a href="#">프론트앤드&백앤드</a></div>
-                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
+                        <div class="li_user"><a href="#">닉네임</a>
+                            <div>
+                                <span>등록시간</span>
+                                <span>몇분전</span>
+                            </div>
+                        </div>
+                        <div class="li_sub"><a href="#">디자인이 너무 어려워요..</a></div>
+                        <div class="li_Cate">
+                            <a href="#">#Gitjub #Repository</a>
+                            <div>
+                                <div>조회수<img src="https://i.postimg.cc/XYD9XSTJ/ph-eye.png"><span>0</span></div>
+                                <div>좋아요<img src="https://i.postimg.cc/JnXFPQbN/Vector.png"><span>0</span></div>
+                                <div>댓글<img src="https://i.postimg.cc/5ynS3Hk5/Vector-1.png"><span>0</span></div>
+                            </div>
+                        </div>
                     </li>
                     <li>
-                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
-                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
-                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
+                        <div class="li_user"><a href="#">닉네임</a>
+                            <div>
+                                <span>등록시간</span>
+                                <span>몇분전</span>
+                            </div>
+                        </div>
+                        <div class="li_sub"><a href="#">디자인이 너무 어려워요..</a></div>
+                        <div class="li_Cate">
+                            <a href="#">#Gitjub #Repository</a>
+                            <div>
+                                <div>조회수<img src="https://i.postimg.cc/XYD9XSTJ/ph-eye.png"><span>0</span></div>
+                                <div>좋아요<img src="https://i.postimg.cc/JnXFPQbN/Vector.png"><span>0</span></div>
+                                <div>댓글<img src="https://i.postimg.cc/5ynS3Hk5/Vector-1.png"><span>0</span></div>
+                            </div>
+                        </div>
                     </li>
                     <li>
-                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
-                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
-                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
+                        <div class="li_user"><a href="#">닉네임</a>
+                            <div>
+                                <span>등록시간</span>
+                                <span>몇분전</span>
+                            </div>
+                        </div>
+                        <div class="li_sub"><a href="#">디자인이 너무 어려워요..</a></div>
+                        <div class="li_Cate">
+                            <a href="#">#Gitjub #Repository</a>
+                            <div>
+                                <div>조회수<img src="https://i.postimg.cc/XYD9XSTJ/ph-eye.png"><span>0</span></div>
+                                <div>좋아요<img src="https://i.postimg.cc/JnXFPQbN/Vector.png"><span>0</span></div>
+                                <div>댓글<img src="https://i.postimg.cc/5ynS3Hk5/Vector-1.png"><span>0</span></div>
+                            </div>
+                        </div>
                     </li>
                     <li>
-                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
-                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
-                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
+                        <div class="li_user"><a href="#">닉네임</a>
+                            <div>
+                                <span>등록시간</span>
+                                <span>몇분전</span>
+                            </div>
+                        </div>
+                        <div class="li_sub"><a href="#">디자인이 너무 어려워요..</a></div>
+                        <div class="li_Cate">
+                            <a href="#">#Gitjub #Repository</a>
+                            <div>
+                                <div>조회수<img src="https://i.postimg.cc/XYD9XSTJ/ph-eye.png"><span>0</span></div>
+                                <div>좋아요<img src="https://i.postimg.cc/JnXFPQbN/Vector.png"><span>0</span></div>
+                                <div>댓글<img src="https://i.postimg.cc/5ynS3Hk5/Vector-1.png"><span>0</span></div>
+                            </div>
+                        </div>
                     </li>
-                    <li>
-                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
-                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
-                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
-                    </li>
-                    <li>
-                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
-                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
-                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
-                    </li>
-                    <li>
-                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
-                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
-                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
-                    </li>
-                    <li>
-                        <div id="li_user"><a href="#">닉네임</a><span>등록시간</span></div>
-                        <div id="li_sub"><a href="#">퍼블리셔에 대해서</a></div>
-                        <div id="li_Cate"><a href="#">subCategory1</a><span>조회수 댓글 좋아요</span></div>
-                    </li>
+                    
                 </ul>
             </div>
+
+            <div id="content_footer">
+                <div id="content_btn">
+                    <form>
+                        <select>
+                            <option value="val_1">제목+내용</option>
+                            <option value="val_2">제목</option>
+                            <option value="val_3">내용</option>
+                        </select>
+                        <input>
+                    </form>
+                    <button id="writebtn">글쓰기</write>
+                </div>
+                <div id="content_page">
+                    
+                    <img src="https://i.postimg.cc/qMkrQQLc/Vector-1.png" class="left">
+                    <ul id="page">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                    </ul>
+                    <img src="https://i.postimg.cc/0Qw5RQMp/Vector.png" class="right">
+                </div>
+                
+            </div>
+
+
         </div>
     </div>
 
@@ -381,12 +480,12 @@
           <div id="footer_info">
             <h1 id="footer_logo">
               <img
-                src="https://i.ibb.co/pWfzjRh/Group-27-1.png"
+                src="https://i.postimg.cc/PxvShGMG/Group-33.png"
                 alt="footer_logo"
               />
             </h1>
             <div id="team_info">
-              <p></p>
+              
               <p>박종환 : https://github.com/parkjonghwan22</p>
               <p>이민수 : https://github.com/cloudcoke</p>
               <p>황상범 : https://github.com/sangbeomhwang</p>
