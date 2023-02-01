@@ -46,6 +46,14 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/terms", (req, res) => {
+  res.render("user/terms.html");
+});
+
+app.post("/terms", (req, res) => {
+  res.redirect("/signup");
+});
+
 app.get("/signup", (req, res) => {
   res.render("user/signup.html");
 });
