@@ -162,11 +162,6 @@ li {
 #contents > .button {
   float: left;
   margin: 80px 0 50px 0;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-#contents > .button > a {
   width: 458px;
   height: 51px;
   line-height: 51px;
@@ -175,10 +170,10 @@ li {
   color: #fff;
   text-align: center;
   text-decoration: none;
-  border-radius: 12px;
   border: solid 1px rgba(0, 0, 0, 0.08);
   background-color: #121212;
-  float: left;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
 /* etc */
