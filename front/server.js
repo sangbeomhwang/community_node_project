@@ -72,10 +72,6 @@ app.get("/signin", (req, res) => {
   res.render("user/signin.html");
 });
 
-app.post("/signin", (req, res) => {
-  res.redirect("/");
-});
-
 app.get("/profile", (req, res) => {
   res.render("user/profile.html", { ...req.user });
 });
