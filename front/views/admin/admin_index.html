@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #admin_wrap {
+            margin: 0 auto;
+            width: 1920px;
+            height: 1820px;
+
+        }
+
+        #admin_wrap > #admin_header {
+            display: flex;
+            height: 100px;
+            background-color: #a46843;
+            padding: 19px 0 20px 20px;
+            justify-content: space-between;
+        }
+
+        #admin_header > h1 {
+            font-weight: 700;
+            font-size: 50px;
+            line-height: 61px;
+            color: #FFFFFF;
+        }
+
+        #admin_header > #header_gnb {
+            display: flex;
+            align-items: center;
+            margin-right: 380px;
+        }
+
+        #admin_header > #header_gnb > button {
+            width: 100px;
+            height: 40px;
+            background-color: #d48a48;
+            border-radius: 20px;
+            border: none;
+            color: #fefefe;
+            font-size: 12px;
+            margin-left: 42px;
+            font-weight: 700;
+        }
+
+        #admin_header > #header_gnb > div {
+            margin-left: 53px;
+            color: #fefefe;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        #admin_content {
+            width: 1920px;
+            height: 1450px;
+            display: flex;
+        }
+
+        #admin_content > #admin_menu {
+            min-width: 380px;
+            height: 100%;
+            background-color: #622f09;            
+        }
+
+        #admin_content > #admin_menu > ul > li {
+            margin-bottom: 60px;
+        }
+
+        #admin_content > #admin_menu > ul {
+            padding-top: 110px;
+            padding-left: 116px;
+            box-sizing: border-box;
+        }
+
+
+        #admin_content > #admin_menu > ul > li > img {
+            padding-right: 10px;
+            box-sizing: border-box;
+            width: 30px;
+        }
+
+        #admin_content > #admin_menu > ul > li > a {
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 30px;
+            color: #FEFEFE;
+        }
+
+        #admin_content > #admin_info {
+            margin-top: 80px;
+            margin-left: 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #admin_content > #admin_info > div {
+            width: 710px;
+            height: 600px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            background: #FFFFFF;
+            border: none;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            margin-right: 40px;
+            margin-bottom: 80px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="admin_wrap">
+        <div id="admin_header">
+            <h1>Admin Dashboard</h1>
+            <div id="header_gnb">
+                <div>mode</div>
+                <div>관리자님</div>
+                <button>로그아웃</button>
+            </div>
+        </div>
+
+        <div id="admin_content">
+            <div id="admin_menu">
+                <ul>
+                    <li>
+                        <img src="https://i.postimg.cc/rF6Mc2g2/Vector.png">
+                        <a href="#">Overview</a>
+                    </li>
+                    <li>
+                        <img src="https://i.postimg.cc/0j7grrZR/Vector-1.png">
+                        <a href="#">Users</a>
+                    </li>
+                    <li>
+                        <img src="https://i.postimg.cc/XN56sDWH/Vector-2.png">
+                        <a href="#">Boards</a>
+                    </li>
+                    <li>
+                        <img src="https://i.postimg.cc/2Skp8kZM/Vector-3.png">
+                        <a href="#">Comments</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="admin_info">
+                <div id="info_total">1</div>
+                <div id="info_users">2</div>
+                <div id="info_boards">3</div>
+                <div id="info_comments">4</div>
+            </div>
+        </div>
+
+        <div id="admin_footer"></div>
+    </div>
+</body>
+</html>
