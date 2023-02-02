@@ -52,23 +52,20 @@
         #subcategory {
             margin-top: 10px;
             height: 45px;
-            padding: 12px 0;
+            background: #FEFEFE;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+            padding: 12px 0 11px 0;
+            display: flex;
+            justify-content: center;
         }
 
         #subcategory > ul {
             display: flex;
-            justify-content: center;
-            height: 45px;
-            padding: 12px 0 11px 0;
-            box-sizing: border-box;
-            background: #FEFEFE;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
         }
 
         #subcategory > ul > li {
             padding: 0 60px;
-            box-sizing: border-box;
         }
 
         #subcategory > ul > li > a {
@@ -77,12 +74,30 @@
             color: black;
         }
 
+        #subcategory > div {
+            position: absolute;
+            right: 0;
+            padding-right: 20px;
+            box-sizing: border-box;
+        }
+
+        #subcategory > div > select {
+            font-weight: 400;
+            font-size: 14px;
+            -webkit-appearance:none;
+            border: none;
+        }
+
+        #subcategory > div > select:focus {
+            outline: none;
+        }
+
         #content_body {
             margin-top: 10px;
         }
 
         #content_body > ul {
-            padding-top: 10px;
+            /* padding-top: 10px; */
             box-sizing: border-box;
         }
 
@@ -175,9 +190,13 @@
             width: 120px;
             height: 40px;
             text-align: center;
-            background: #FEFEFE;
-            border: 1px solid rgba(0, 0, 0, 0.3);
+            background-color: #FEFEFE;
+            
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            outline: transparent;
+            -webkit-appearance: none;
+            
         }
 
         #content_footer > #content_btn > form > input {
@@ -201,6 +220,7 @@
             display: flex;
             justify-content: center;
             margin-top: 10px;
+            align-items: center;
         }
 
         #content_page > img {
@@ -213,6 +233,7 @@
         #content_page > ul {
             display: flex;
             justify-content: space-between;
+            
             margin: 0 12px;
             width: 110px;
         }
@@ -316,6 +337,15 @@
                         <li><a href='#'>일상이야기</a></li>
                         <li><a href='#'>모임</a></li>
                     </ul>
+                    <div>
+                        <img src="https://i.postimg.cc/ncnvqsZh/Vector-5.png">
+                        <select>
+                            <option>최신순</option>
+                            <option>조회순</option>
+                            <option>좋아요순</option>
+                            <option>댓글순</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 

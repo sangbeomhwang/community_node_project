@@ -141,7 +141,29 @@
             outline: none;
         }
 
-        #write_form > #write_btn {
+        #write_form > #write_btnbox {
+            display: flex;
+            justify-content: space-between;
+            
+        }
+
+        #write_btnbox > #write_hashbox {
+            margin-top: 20px;
+            max-width: 860px;
+            
+        }
+
+        #write_btnbox > #write_hashbox > span {
+            margin-right: 5px;
+            font-size: 24px;
+        }
+
+        #write_btnbox > #write_hashbox > input {
+            border: none;
+            font-size: 24px;
+        }
+
+        #write_form > #write_btnbox > #write_btn {
             margin-top: 10px;
             float: right;
         }
@@ -273,10 +295,17 @@
                         </div>
                         <textarea id="write_content" placeholder="내용을 입력해주세요"></textarea>
                     </div>
-                    
-                    <div id="write_btn">
-                        <button>취소</button>
-                        <button>글쓰기</button>
+
+                    <div id="write_btnbox">
+                        <div id="write_hashbox">
+                            <span>#</span><input placeholder="tag를 입력해주세요">
+                        </div>
+
+                        <div id="write_btn">
+                            <button>취소</button>
+                            <button>글쓰기</button>
+                        </div>
+
                     </div>
                     
                 </form>
