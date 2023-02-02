@@ -10,9 +10,10 @@ li {
 
 #wrap {
   width: 100%;
-  min-height: 1400px;
+  min-height: 1600px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url(https://i.postimg.cc/L54Ddkcg/Kakao-Talk-Photo-2023-02-01-12-12-11.jpg);
+    url(https://i.postimg.cc/prdZ6L1b/loaf-g11290abfc-1920-1.png);
+  background-size: cover;
   display: flex;
   justify-content: center;
   position: relative;
@@ -22,6 +23,8 @@ li {
   width: 1180px;
   background: #fff;
   margin-top: 195px;
+  margin-bottom: 180px;
+  border-radius: 40px;
 }
 
 #header_wrap {
@@ -36,7 +39,7 @@ li {
   width: 100%;
   height: 250px;
   position: absolute;
-  top: 4.5%;
+  top: 6%;
   right: 0%;
 }
 
@@ -57,41 +60,8 @@ li {
   margin-top: 170px;
 }
 
-#contents > #login {
-  margin-top: 50px;
-}
-
-#contents > #login > #terms_row {
-  margin-bottom: 60px;
-}
-
-#contents > #login > #terms_row > .terms > textarea {
-  font-size: 12px;
-  text-align: left;
-  border-radius: 12px;
-  border: none;
-  margin: 8px 0 0 0;
-  padding: 20px;
-  box-sizing: border-box;
-  background: #fefefe;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
-}
-
-#contents > #login > #terms_row > .terms > input {
-  width: 15px;
-  height: 15px;
-  text-align: left;
-  margin-top: 15px;
-}
-
-#contents > #login > #terms_row > .terms > #agree {
-  display: inline-block;
-}
-
 #contents > #login > div {
-  margin-top: 19px;
+  margin-top: 49px;
 }
 
 #contents > #login > div > h3 {
@@ -108,14 +78,14 @@ li {
   margin: 8px 0 0 0;
   padding: 20px;
   box-sizing: border-box;
-  background: #fefefe;
+  background: #f4f3f3;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
 }
 
 #contents > #info > div {
-  margin: 30px 0 0 0;
+  margin-top: 49px;
 }
 
 #contents > #info > div > h3 {
@@ -132,17 +102,20 @@ li {
   margin: 8px 0 0 0;
   padding: 20px;
   box-sizing: border-box;
-  background: #fefefe;
+  background: #f4f3f3;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
 }
 
-#contents > .button {
-  float: left;
+#contents > #submit_btn {
+  text-align: center;
+}
+
+#contents > #submit_btn > .button {
   margin: 80px 0 50px 0;
-  width: 900px;
-  height: 65px;
+  width: 500px;
+  height: 50px;
   line-height: 51px;
   font-size: 18px;
   font-weight: bold;
@@ -150,6 +123,7 @@ li {
   text-align: center;
   text-decoration: none;
   background-color: #d48a48;
+  border: none;
   border-radius: 12px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
@@ -157,7 +131,7 @@ li {
   cursor: pointer;
 }
 
-#contents > .button:hover {
+#contents > #submit_btn > .button:hover {
   background-color: #f4f3f3;
   color: #d48a48;
 }

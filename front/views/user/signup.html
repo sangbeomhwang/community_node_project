@@ -21,8 +21,8 @@
       <div id="contents_wrap">
         <div id="contents" class="container">
           <div id="login">
-            <div id="id_row">
-              <h3 id="userid">
+            <div id="userid_row">
+              <h3>
                 <label for="userid">아이디</label>
               </h3>
               <span class="form">
@@ -41,15 +41,15 @@
               </p>
             </div>
 
-            <div id="pwd_row">
-              <h3 id="userpwd">
-                <label for="userpwd">비밀번호</label>
+            <div id="userpw_row">
+              <h3>
+                <label for="userpw">비밀번호</label>
               </h3>
               <span class="form">
                 <input
                   type="password"
-                  id="userpwd"
-                  name="userpwd"
+                  id="userpw"
+                  name="userpw"
                   placeholder="영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요"
                   onfocus="this.placeholder=''"
                   onblur="this.placeholder='영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요'"
@@ -62,15 +62,15 @@
               </p>
             </div>
 
-            <div id="pwd2_row">
-              <h3 id="userpwd2">
-                <label for="userpwd2">비밀번호 재확인</label>
+            <div id="pwcheckBox">
+              <h3>
+                <label for="pwcheck">비밀번호 재확인</label>
               </h3>
               <span class="form">
                 <input
                   type="password"
-                  id="userpwd2"
-                  name="userpwd2"
+                  id="pwcheck"
+                  name="pwcheck"
                   placeholder="비밀번호를 다시 한 번 입력해주세요"
                   onfocus="this.placeholder=''"
                   onblur="this.placeholder='비밀번호를 다시 한 번 입력해주세요'"
@@ -85,8 +85,8 @@
           </div>
 
           <div id="info">
-            <div id="nick_row">
-              <h3 id="usernick">
+            <div id="usernick_row">
+              <h3>
                 <label for="usernick">닉네임</label>
               </h3>
               <span class="form">
@@ -106,7 +106,7 @@
             </div>
 
             <div id="email_row">
-              <h3 id="useremail">
+              <h3>
                 <label for="useremail">이메일</label>
               </h3>
               <span class="form">
@@ -126,13 +126,16 @@
               </p>
             </div>
           </div>
-          <button type="submit" class="button">회원가입</button>
+
+          <div id="submit_btn">
+            <button type="submit" class="button">회원가입</button>
+          </div>
         </div>
       </div>
     </form>
   </div>
 </div>
 
-<script type="module" src="/js/module/join.js"></script>
+<!-- <script type="module" src="/js/module/signup.js"></script> -->
 
 {% endblock%}

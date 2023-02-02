@@ -63,13 +63,13 @@ app.post("/signup", async (req, res) => {
     ...req.body,
   });
   // console.log(`response :`, response);
-  const { userid, username, userpw } = response.data;
+  const { userid, username } = response.data;
 
   res.redirect(`/welcome?userid=${userid}&username=${username}`);
 });
 
 app.get("/welcome", (req, res) => {
-  const { userid, username, userpw } = req.query;
+  const { userid, username } = req.query;
   res.render("user/welcome.html", {
     userid,
     username,
