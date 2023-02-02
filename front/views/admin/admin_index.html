@@ -122,6 +122,55 @@
             border-radius: 12px;
             margin-right: 40px;
             margin-bottom: 80px;
+            padding-top: 40px;
+            padding-left: 40px;
+        }
+
+        #info_total > ul > li {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+            margin-bottom: 40px;
+            margin-right: 40px;
+            box-sizing: border-box;
+        }
+
+        #info_total > ul > li > div {
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 34px;
+            margin-bottom: 33px;
+        }
+
+        #info_total > ul > li > span {
+            font-weight: 400;
+            font-size: 28px;
+            line-height: 34px;
+            margin-right: 40px;
+        }
+
+        #info_total > ul > li > span > img {
+            margin-right: 10px;
+            width: 25px;
+        }
+
+        #info_users > div {
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 34px;
+            margin-bottom: 20px;
+        }
+
+        #info_boards > div {
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 34px;
+            margin-bottom: 20px;
+        }
+
+        #info_comments > div {
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 34px;
+            margin-bottom: 20px;
         }
 
     </style>
@@ -160,10 +209,43 @@
             </div>
 
             <div id="admin_info">
-                <div id="info_total">1</div>
-                <div id="info_users">2</div>
-                <div id="info_boards">3</div>
-                <div id="info_comments">4</div>
+                <div id="info_total">
+                    <ul>
+                        <li id="total_users">
+                            <div>Total Users</div>
+                            <span>
+                                <img src="https://i.postimg.cc/qv5KM7Fv/Vector-1.png">Local : 100명
+                            </span>
+                            <span>
+                                <img src="https://i.postimg.cc/j2Ckp2nY/kakao-1.png">Kakao : 100명
+                            </span>
+                        </li>
+                        <li id="total_boards">
+                            <div>Total Boards</div>
+                            <span>
+                                <img src="https://i.postimg.cc/mZY7NBPm/Vector.png">3000
+                            </span>
+                        </li>
+                        <li id="total_comments">
+                            <div>Total Comments</div>
+                            <span>
+                                <img src="https://i.postimg.cc/3Rg0BFxk/Vector-2.png">9548
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div id="info_users">
+                    <div>Users</div>
+                    <img src="https://i.postimg.cc/zGMth8Qx/image-10.png">
+                </div>
+                <div id="info_boards">
+                    <div>Boards</div>
+                    <img src="https://i.postimg.cc/zGMth8Qx/image-10.png">
+                </div>
+                <div id="info_comments">
+                    <div>Comments</div>
+                    <img src="https://i.postimg.cc/zGMth8Qx/image-10.png">
+                </div>
             </div>
         </div>
 
