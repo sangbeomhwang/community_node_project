@@ -11,6 +11,9 @@
         padding: 0;
         box-sizing: border-box;
       }
+      body {
+        background-color: #f7f7f5;
+      }
       a {
         text-decoration: none;
         color: #000;
@@ -24,9 +27,10 @@
       #wrap {
         width: 100%;
       }
+
       #header_wrap {
         width: 100%;
-        border-bottom: 1px solid #d9d9d9;
+        background-color: #a46843;
       }
       #header {
         width: 1160px;
@@ -35,6 +39,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        background-color: #a46843;
       }
       #logo > img {
         width: 180px;
@@ -50,6 +55,7 @@
       #qna {
         position: relative;
         height: 100%;
+        z-index: 1;
       }
 
       #qna > a {
@@ -59,6 +65,7 @@
         font-size: 25px;
         font-weight: bold;
         text-align: center;
+        color: #fefefe;
       }
 
       #qna > img {
@@ -71,6 +78,7 @@
       #community {
         position: relative;
         height: 100%;
+        z-index: 1;
       }
 
       #community > a {
@@ -80,6 +88,7 @@
         font-size: 25px;
         font-weight: bold;
         text-align: center;
+        color: #fefefe;
       }
 
       #community > img {
@@ -92,6 +101,7 @@
       #notice {
         position: relative;
         height: 100%;
+        z-index: 1;
       }
 
       #notice > a {
@@ -101,6 +111,7 @@
         font-size: 25px;
         font-weight: bold;
         text-align: center;
+        color: #fefefe;
       }
 
       #notice > img {
@@ -121,7 +132,9 @@
         width: 100px;
         height: 40px;
         border-radius: 80px;
-        border: 1px solid #d9d9d9;
+        border: 1px solid #fefefe;
+        background: #fefefe;
+        color: #d48a48;
         text-align: center;
         line-height: 40px;
         font-weight: bold;
@@ -133,148 +146,165 @@
         width: 100px;
         height: 40px;
         border-radius: 80px;
-        background: #f15740;
-        border: 1px solid #ee593f;
+        background: #d48a48;
+        border: 1px solid #d48a48;
         color: #fff;
         text-align: center;
         line-height: 40px;
         font-weight: bold;
         font-size: 12px;
       }
-
+      /* content 영역 */
       #content_box {
-        margin: 40px auto 160px auto;
         width: 1160px;
+        margin: 0 auto;
       }
-
-      .round {
-        border-radius: 12px;
-        overflow: hidden;
-      }
-
-      .header_box {
-        padding: 30px 35px;
-      }
-      .header_box > a {
-        font-weight: bold;
-        color: #fff;
-      }
-
-      .information {
-        display: flex;
-        justify-content: space-between;
-      }
-      .nick > a {
-        font-size: 20px;
-      }
-      .sub_information {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .sub_information > div:not(:last-child) {
-        margin-right: 10px;
-      }
-      .title {
-        margin-top: 10px;
-      }
-      .title > a {
-        font-size: 16px;
-      }
-
       #main_img_box {
         width: 100%;
         height: 160px;
+        margin-top: 40px;
         margin-bottom: 40px;
-        background: #d9d9d9;
+        border-radius: 12px;
         overflow: hidden;
       }
-      #qna_community_box {
+      #main_img_1 {
         width: 100%;
-        height: 450px;
-        margin-bottom: 80px;
+        height: 100%;
+        background: url("https://i.postimg.cc/d0zFHRTK/image.png");
+      }
+      .boards_box_wrap {
         display: flex;
         justify-content: space-between;
       }
-      #qna_box {
+
+      .boards_box {
         width: 560px;
-        height: 100%;
+        height: 380px;
+        margin-bottom: 80px;
       }
-      #qna_header {
+      .boards_header {
         width: 100%;
-        height: 90px;
-        background: url("https://i.ibb.co/5KTnj1x/2023-01-31-142506.png");
+        height: 55px;
+        padding-left: 20px;
+        overflow: hidden;
         border-radius: 12px 12px 0 0;
+        color: #fefefe;
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 50px;
       }
-      #qna_header ~ div {
-        height: 90px;
-        padding: 10px 0;
-      }
-      #qna_header ~ div:not(:last-child) {
-        border-bottom: 1px solid #d9d9d9;
-      }
-      #community_box {
-        width: 560px;
-        height: 100%;
+
+      #qna_header {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://i.postimg.cc/qB9F2CLK/Rectangle-56.png");
+        background-size: cover;
       }
       #community_header {
-        width: 100%;
-        height: 90px;
-        background: url("https://i.ibb.co/5KTnj1x/2023-01-31-142506.png");
-        border-radius: 12px 12px 0 0;
-      }
-      #community_header ~ div {
-        height: 90px;
-        padding: 10px 0;
-      }
-      #community_header ~ div:not(:last-child) {
-        border-bottom: 1px solid #d9d9d9;
-      }
-      #notice_point_box {
-        width: 100%;
-        height: 450px;
-        margin-bottom: 80px;
-        display: flex;
-        justify-content: space-between;
-      }
-      #notice_box {
-        width: 560px;
-        height: 100%;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://i.postimg.cc/1XqsJh2r/Rectangle-36.png");
+        background-size: cover;
       }
       #notice_header {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://i.postimg.cc/5tj3qZV0/notice.png");
+        background-size: cover;
+      }
+
+      .board_content > li {
         width: 100%;
-        height: 90px;
-        background: url("https://i.ibb.co/5KTnj1x/2023-01-31-142506.png");
-        border-radius: 12px 12px 0 0;
+        height: 65px;
+        background: #fff;
+        padding: 10px 20px;
+        font-size: 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
       }
-      #notice_header ~ div {
-        height: 90px;
-        padding: 10px 0;
+      .first_line {
+        display: flex;
+        justify-content: flex-start;
+        justify-content: space-between;
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
+        padding-bottom: 5px;
       }
-      #notice_header ~ div:not(:last-child) {
-        border-bottom: 1px solid #d9d9d9;
+      .nickname_time_box {
+        display: flex;
+        justify-content: space-between;
+        width: 200px;
       }
-      #point_box {
-        width: 560px;
-        height: 100%;
-        background: #d9d9d9;
+      .nickname {
+        color: #472828;
+      }
+      .time {
+        color: #626161;
+      }
+
+      .information_box {
+        width: 100px;
+        display: flex;
+      }
+      .hits_box {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+      }
+      .hits {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-image: url("https://i.postimg.cc/sXhxj8fN/ph-eye.png");
+        background-size: cover;
+        margin-right: 5px;
+      }
+      .reply_box {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+      }
+      .reply {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-image: url("https://i.postimg.cc/yNyNG9dD/comment.png");
+        background-size: cover;
+        margin-right: 5px;
+      }
+      .likes_box {
+        display: flex;
+        align-items: center;
+      }
+      .likes {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-image: url("https://i.postimg.cc/PJ9fDQ6R/likes.png");
+        background-size: cover;
+        margin-right: 5px;
+      }
+      .seconde_line {
+        padding-top: 5px;
+        padding-bottom: 10px;
+        font-weight: bold;
+      }
+      #sub_img_box {
+        border-radius: 12px;
         overflow: hidden;
       }
-      #point_header {
+      .sub_img {
         width: 100%;
-        height: 90px;
-        background: url("https://i.ibb.co/5KTnj1x/2023-01-31-142506.png");
-        border-radius: 12px 12px 0 0;
+        height: 380px;
       }
-      #point_header ~ div {
-        height: 90px;
-        padding: 20px 0;
+      #sub_img_1 {
+        background-image: url("https://i.postimg.cc/RhNrfP0x/meat-ga6275c2cc-1920.jpg");
+        background-size: cover;
       }
+
+      /* content 영역 끝 */
       #youtube_box {
         width: 100%;
         height: 290px;
         display: flex;
         justify-content: space-between;
+        margin-bottom: 80px;
+      }
+      .round {
+        border-radius: 12px;
+        overflow: hidden;
       }
       #baek {
         width: 360px;
@@ -301,57 +331,28 @@
       <div id="header_wrap">
         <div id="header">
           <div id="logo">
-            <img
-              src="https://i.ibb.co/J3mB45P/2023-01-30-3-40-39.png"
-              alt="2023-01-30-3-40-39"
-              border="0"
-            />
+            <img src="https://i.postimg.cc/qvz6NCWC/logo.png" alt="2023-01-30-3-40-39" border="0" />
           </div>
           <div id="category_box">
             <ul id="category">
               <li id="qna">
                 <a href="#">Q&A</a>
-                <img
-                  src="https://i.ibb.co/NrpQT9H/cooking.png"
-                  alt="cooking"
-                  border="0"
-                  width="15px"
-                  height="15px"
-                />
+                <img src="https://i.ibb.co/NrpQT9H/cooking.png" alt="cooking" border="0" width="15px" height="15px" />
               </li>
               <li id="community">
                 <a href="#">커뮤니티</a>
-                <img
-                  src="https://i.ibb.co/NrpQT9H/cooking.png"
-                  alt="cooking"
-                  border="0"
-                  width="15px"
-                  height="15px"
-                />
+                <img src="https://i.ibb.co/NrpQT9H/cooking.png" alt="cooking" border="0" width="15px" height="15px" />
               </li>
               <li id="notice">
                 <a href="#">공지사항</a>
-                <img
-                  src="https://i.ibb.co/NrpQT9H/cooking.png"
-                  alt="cooking"
-                  border="0"
-                  width="15px"
-                  height="15px"
-                />
+                <img src="https://i.ibb.co/NrpQT9H/cooking.png" alt="cooking" border="0" width="15px" height="15px" />
               </li>
             </ul>
           </div>
 
           <div id="light_dark_btn">
             <label for="light_dark">
-              <a href="#"
-                ><img
-                  src="https://i.ibb.co/GHrXkY1/light-btn.png"
-                  alt="light-btn"
-                  border="0"
-                  width="40"
-                  height="20"
-              /></a>
+              <a href="#"><img src="https://i.postimg.cc/HxVBkxdY/light-btn.png" alt="light-btn" border="0" width="40" height="20" /></a>
             </label>
           </div>
           <div id="login_signin_box">
@@ -365,197 +366,378 @@
         </div>
       </div>
       <div id="content_box">
-        <div id="main_img_box" class="round">
-          <div id="main_img">
-            <img
-              src="https://i.ibb.co/bR8zQQR/042285c8491d009701ffbfa43c6dcecd.jpg"
-              alt="042285c8491d009701ffbfa43c6dcecd"
-              border="0"
-              width="100%"
-              height="160px"
-            />
+        <div id="main_img_box">
+          <div class="main_img" id="main_img_1"></div>
+        </div>
+        <!-- 첫번째 라인 -->
+        <div id="boards_box_first" class="boards_box_wrap">
+          <!-- q&a -->
+          <div class="boards_box">
+            <div class="boards_header" id="qna_header">Q&A</div>
+            <ul class="board_content">
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+            </ul>
+          </div>
+          <!-- 커뮤니티 -->
+          <div class="boards_box">
+            <div class="boards_header" id="community_header">커뮤니티</div>
+            <ul class="board_content">
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+            </ul>
           </div>
         </div>
-        <div id="qna_community_box">
-          <div id="qna_box" class="round">
-            <div id="qna_header" class="header_box"><a href="#">Q&A</a></div>
-            <div>
-              <div class="information">
-                <div class="nick_box">
-                  <div class="nick"><a href="#">cloudcoke</a></div>
+        <!-- 두번째 라인 -->
+        <div id="boards_box_second" class="boards_box_wrap">
+          <div class="boards_box">
+            <div class="boards_header" id="notice_header">공지사항</div>
+            <ul class="board_content">
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="sub_information">
-                  <div>조회수</div>
-                  <div>댓글</div>
-                  <div>좋아요</div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="title"><a href="#">안녕하세요</a></div>
-            </div>
-            <div>
-              <div class="information">
-                <div class="nick_box">
-                  <div class="nick"><a href="#">cloudcoke</a></div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="sub_information">
-                  <div>조회수</div>
-                  <div>댓글</div>
-                  <div>좋아요</div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="title"><a href="#">안녕하세요</a></div>
-            </div>
-            <div>
-              <div class="information">
-                <div class="nick_box">
-                  <div class="nick"><a href="#">cloudcoke</a></div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+              <li>
+                <div class="first_line">
+                  <div class="nickname_time_box">
+                    <div class="nickname">MMMMMMM</div>
+                    <div class="time">9분 전</div>
+                  </div>
+                  <div class="information_box">
+                    <div class="hits_box">
+                      <span class="hits"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="reply_box">
+                      <span class="reply"></span>
+                      <span>0</span>
+                    </div>
+                    <div class="likes_box">
+                      <span class="likes"></span>
+                      <span>0</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="sub_information">
-                  <div>조회수</div>
-                  <div>댓글</div>
-                  <div>좋아요</div>
-                </div>
-              </div>
-              <div class="title"><a href="#">안녕하세요</a></div>
-            </div>
-            <div>
-              <div class="information">
-                <div class="nick_box">
-                  <div class="nick"><a href="#">cloudcoke</a></div>
-                </div>
-                <div class="sub_information">
-                  <div>조회수</div>
-                  <div>댓글</div>
-                  <div>좋아요</div>
-                </div>
-              </div>
-              <div class="title"><a href="#">안녕하세요</a></div>
-            </div>
+                <div class="seconde_line"><a href="#">깃허브 레포지토리 private</a></div>
+              </li>
+            </ul>
           </div>
-          <div id="community_box" class="round">
-            <div id="community_header" class="header_box">
-              <a href="#">커뮤니티</a>
-            </div>
-            <div>
-              <div class="information">
-                <div class="nick_box">
-                  <div class="nick"><a href="#">cloudcoke</a></div>
-                </div>
-                <div class="sub_information">
-                  <div>조회수</div>
-                  <div>댓글</div>
-                  <div>좋아요</div>
-                </div>
-              </div>
-              <div class="title"><a href="#">안녕하세요</a></div>
-            </div>
-            <div>
-              <div class="information">
-                <div class="nick_box">
-                  <div class="nick"><a href="#">cloudcoke</a></div>
-                </div>
-                <div class="sub_information">
-                  <div>조회수</div>
-                  <div>댓글</div>
-                  <div>좋아요</div>
-                </div>
-              </div>
-              <div class="title"><a href="#">안녕하세요</a></div>
-            </div>
-            <div>
-              <div class="information">
-                <div class="nick_box">
-                  <div class="nick"><a href="#">cloudcoke</a></div>
-                </div>
-                <div class="sub_information">
-                  <div>조회수</div>
-                  <div>댓글</div>
-                  <div>좋아요</div>
-                </div>
-              </div>
-              <div class="title"><a href="#">안녕하세요</a></div>
-            </div>
-            <div>
-              <div class="information">
-                <div class="nick_box">
-                  <div class="nick"><a href="#">cloudcoke</a></div>
-                </div>
-                <div class="sub_information">
-                  <div>조회수</div>
-                  <div>댓글</div>
-                  <div>좋아요</div>
-                </div>
-              </div>
-              <div class="title"><a href="#">안녕하세요</a></div>
-            </div>
-          </div>
-        </div>
-        <div id="notice_point_box">
-          <div id="notice_box" class="round">
-            <div id="notice_header" class="header_box">
-              <a href="#">공지사항</a>
-            </div>
-            <div>
-              <div class="information">
-                <div class="nick_box">
-                  <div class="nick"><a href="#">cloudcoke</a></div>
-                </div>
-                <div class="sub_information">
-                  <div>조회수</div>
-                  <div>댓글</div>
-                  <div>좋아요</div>
-                </div>
-              </div>
-              <div class="title"><a href="#">안녕하세요</a></div>
-            </div>
-            <div>
-              <div class="information">
-                <div class="nick_box">
-                  <div class="nick"><a href="#">cloudcoke</a></div>
-                </div>
-                <div class="sub_information">
-                  <div>조회수</div>
-                  <div>댓글</div>
-                  <div>좋아요</div>
-                </div>
-              </div>
-              <div class="title"><a href="#">안녕하세요</a></div>
-            </div>
-            <div>
-              <div class="information">
-                <div class="nick_box">
-                  <div class="nick"><a href="#">cloudcoke</a></div>
-                </div>
-                <div class="sub_information">
-                  <div>조회수</div>
-                  <div>댓글</div>
-                  <div>좋아요</div>
-                </div>
-              </div>
-              <div class="title"><a href="#">안녕하세요</a></div>
-            </div>
-            <div>
-              <div class="information">
-                <div class="nick_box">
-                  <div class="nick"><a href="#">cloudcoke</a></div>
-                </div>
-                <div class="sub_information">
-                  <div>조회수</div>
-                  <div>댓글</div>
-                  <div>좋아요</div>
-                </div>
-              </div>
-              <div class="title"><a href="#">안녕하세요</a></div>
-            </div>
-          </div>
-          <div id="point_box" class="round">
-            <img
-              src="https://i.ibb.co/0n623Z9/Any-Conv-com-ea3dfbc7f88aa11e1235a996ebae4ebf-1.png"
-              alt="Any-Conv-com-ea3dfbc7f88aa11e1235a996ebae4ebf-1"
-              border="0"
-              width="100%"
-              height="100%"
-            />
+          <div class="boards_box" id="sub_img_box">
+            <div class="sub_img" id="sub_img_1"></div>
           </div>
         </div>
         <div id="youtube_box">
