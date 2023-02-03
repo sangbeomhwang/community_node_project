@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {
-  boardController: controller,
-} = require("../src/boards/board.controller");
+const { boardController: controller } = require("../src/board.controller");
 
 router.get("/", (req, res, next) => controller.getBoard(req, res, next));
 
