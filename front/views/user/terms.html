@@ -4,27 +4,26 @@
 
 {% endblock %} {% block content %}
 
-<div id="wrap">
-  <div id="signup_wrap">
-    <div id="header_wrap">
-      <div id="header">
-        <h1 id="logo">
-          <a href="/"
-            ><img src="https://i.postimg.cc/hjKZgQ6x/team-logo.png"
-          /></a>
-          <span>Node.phl 페이지에 오신 것을 환영합니다.</span>
-        </h1>
-      </div>
+<div id="signup_wrap">
+  <div id="header_wrap">
+    <div id="header">
+      <h1 id="logo">
+        <a href="/"
+          ><img src="https://i.postimg.cc/hjKZgQ6x/team-logo.png"
+        /></a>
+        <span>Node.phl 페이지에 오신 것을 환영합니다.</span>
+      </h1>
     </div>
+  </div>
 
-    <form method="post" action="/users/terms" id="signupFrm">
-      <div id="contents_wrap">
-        <div id="contents" class="container">
-          <div id="login">
-            <div id="terms_row">
-              <h3 id="terms">약관</h3>
-              <span class="terms">
-                <textarea name="terms" id="terms" cols="115" rows="7">
+  <form method="post" action="/users/terms" id="signupFrm">
+    <div id="contents_wrap">
+      <div id="contents" class="container">
+        <div id="login">
+          <div id="terms_row">
+            <h3 id="terms">약관</h3>
+            <span class="terms">
+              <textarea name="terms" id="terms" cols="115" rows="7">
 제 1 장 환영합니다!
 
 제 1 조 (목적)
@@ -230,26 +229,25 @@
                   
 공고일자 : 2022년 12월 22일
 시행일자 : 2023년 1월 9일</textarea
-                >
-                <div>
-                  <p>
-                    귀하께서 본 사이트의 개인정보보호방침 또는 이용약관의 내용에
-                    대해 「동의」 버튼을 클릭하면 개인정보 수집에 대해 동의한
-                    것으로 봅니다.
-                  </p>
-                </div>
-                <div id="agree_area">
-                  <input type="checkbox" id="agree_btn" required />
-                  <span id="agree">동의하기(필수)</span>
-                </div>
-              </span>
-            </div>
+              >
+              <div>
+                <p>
+                  귀하께서 본 사이트의 개인정보보호방침 또는 이용약관의 내용에
+                  대해 「동의」 버튼을 클릭하면 개인정보 수집에 대해 동의한
+                  것으로 봅니다.
+                </p>
+              </div>
+              <div id="agree_area">
+                <input type="checkbox" id="agree_btn" required />
+                <span id="agree">동의하기(필수)</span>
+              </div>
+            </span>
           </div>
-          <button type="check" class="button">회원가입</button>
         </div>
+        <button type="check" class="button">회원가입</button>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
 
 <!-- <script type="text/javascript">

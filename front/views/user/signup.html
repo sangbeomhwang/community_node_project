@@ -4,136 +4,134 @@
 
 {% endblock %} {% block content %}
 
-<div id="wrap">
-  <div id="signup_wrap">
-    <div id="header_wrap">
-      <div id="header">
-        <h1 id="logo">
-          <a href="/"
-            ><img src="https://i.postimg.cc/hjKZgQ6x/team-logo.png"
-          /></a>
-          <span>Node.phl 페이지에 오신 것을 환영합니다.</span>
-        </h1>
-      </div>
+<div id="signup_wrap">
+  <div id="header_wrap">
+    <div id="header">
+      <h1 id="logo">
+        <a href="/"
+          ><img src="https://i.postimg.cc/hjKZgQ6x/team-logo.png"
+        /></a>
+        <span>Node.phl 페이지에 오신 것을 환영합니다.</span>
+      </h1>
     </div>
+  </div>
 
-    <form method="post" action="/users/signup" id="signupFrm">
-      <div id="contents_wrap">
-        <div id="contents" class="container">
-          <div id="login">
-            <div id="userid_row">
-              <h3>
-                <label for="userid">아이디</label>
-              </h3>
-              <span class="form">
-                <input
-                  type="text"
-                  id="userid"
-                  name="userid"
-                  placeholder="영문과 숫자를 사용하여 6~16자 사이로 입력해주세요"
-                  onfocus="this.placeholder=''"
-                  onblur="this.placeholder='영문과 숫자를 사용하여 6~16자 사이로 입력해주세요'"
-                  required
-                />
-              </span>
-              <p class="alertMessage" style="opacity: 0; color: red">
-                영문과 숫자를 사용하여 6~16자 사이로 입력해주세요
-              </p>
-            </div>
-
-            <div id="userpw_row">
-              <h3>
-                <label for="userpw">비밀번호</label>
-              </h3>
-              <span class="form">
-                <input
-                  type="password"
-                  id="userpw"
-                  name="userpw"
-                  placeholder="영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요"
-                  onfocus="this.placeholder=''"
-                  onblur="this.placeholder='영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요'"
-                  maxlength="16"
-                  required
-                />
-              </span>
-              <p class="alertMessage" style="opacity: 0; color: red">
-                영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요
-              </p>
-            </div>
-
-            <div id="pwcheckBox">
-              <h3>
-                <label for="pwcheck">비밀번호 재확인</label>
-              </h3>
-              <span class="form">
-                <input
-                  type="password"
-                  id="pwcheck"
-                  name="pwcheck"
-                  placeholder="비밀번호를 다시 한 번 입력해주세요"
-                  onfocus="this.placeholder=''"
-                  onblur="this.placeholder='비밀번호를 다시 한 번 입력해주세요'"
-                  maxlength="16"
-                  required
-                />
-              </span>
-              <p class="checkMessage" style="opacity: 0; color: red">
-                비밀번호가 일치하지 않습니다
-              </p>
-            </div>
+  <form method="post" action="/users/signup" id="signupFrm">
+    <div id="contents_wrap">
+      <div id="contents" class="container">
+        <div id="login">
+          <div id="userid_row">
+            <h3>
+              <label for="userid">아이디</label>
+            </h3>
+            <span class="form">
+              <input
+                type="text"
+                id="userid"
+                name="userid"
+                placeholder="영문과 숫자를 사용하여 6~16자 사이로 입력해주세요"
+                onfocus="this.placeholder=''"
+                onblur="this.placeholder='영문과 숫자를 사용하여 6~16자 사이로 입력해주세요'"
+                required
+              />
+            </span>
+            <p class="alertMessage" style="opacity: 0; color: red">
+              영문과 숫자를 사용하여 6~16자 사이로 입력해주세요
+            </p>
           </div>
 
-          <div id="info">
-            <div id="usernick_row">
-              <h3>
-                <label for="usernick">닉네임</label>
-              </h3>
-              <span class="form">
-                <input
-                  type="text"
-                  id="usernick"
-                  name="usernick"
-                  placeholder="특수문자를 제외하여 두 글자 이상으로 입력해주세요"
-                  onfocus="this.placeholder=''"
-                  onblur="this.placeholder='특수문자를 제외하여 두 글자 이상으로 입력해주세요'"
-                  required
-                />
-              </span>
-              <p class="alertMessage" style="opacity: 0; color: red">
-                특수문자를 제외하여 두 글자 이상으로 입력해주세요
-              </p>
-            </div>
-
-            <div id="email_row">
-              <h3>
-                <label for="useremail">이메일</label>
-              </h3>
-              <span class="form">
-                <input
-                  type="text"
-                  id="useremail"
-                  name="useremail"
-                  placeholder="이메일 형식에 맞게 입력해주세요"
-                  onfocus="this.placeholder=''"
-                  onblur="this.placeholder='이메일 형식에 맞게 입력해주세요'"
-                  maxlength="30"
-                  required
-                />
-              </span>
-              <p class="alertMessage" style="opacity: 0; color: red">
-                이메일 형식에 맞게 입력해주세요
-              </p>
-            </div>
+          <div id="userpw_row">
+            <h3>
+              <label for="userpw">비밀번호</label>
+            </h3>
+            <span class="form">
+              <input
+                type="password"
+                id="userpw"
+                name="userpw"
+                placeholder="영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요"
+                onfocus="this.placeholder=''"
+                onblur="this.placeholder='영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요'"
+                maxlength="16"
+                required
+              />
+            </span>
+            <p class="alertMessage" style="opacity: 0; color: red">
+              영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요
+            </p>
           </div>
 
-          <div id="submit_btn">
-            <button type="submit" class="button">회원가입</button>
+          <div id="pwcheckBox">
+            <h3>
+              <label for="pwcheck">비밀번호 재확인</label>
+            </h3>
+            <span class="form">
+              <input
+                type="password"
+                id="pwcheck"
+                name="pwcheck"
+                placeholder="비밀번호를 다시 한 번 입력해주세요"
+                onfocus="this.placeholder=''"
+                onblur="this.placeholder='비밀번호를 다시 한 번 입력해주세요'"
+                maxlength="16"
+                required
+              />
+            </span>
+            <p class="checkMessage" style="opacity: 0; color: red">
+              비밀번호가 일치하지 않습니다
+            </p>
           </div>
         </div>
+
+        <div id="info">
+          <div id="usernick_row">
+            <h3>
+              <label for="usernick">닉네임</label>
+            </h3>
+            <span class="form">
+              <input
+                type="text"
+                id="usernick"
+                name="usernick"
+                placeholder="특수문자를 제외하여 두 글자 이상으로 입력해주세요"
+                onfocus="this.placeholder=''"
+                onblur="this.placeholder='특수문자를 제외하여 두 글자 이상으로 입력해주세요'"
+                required
+              />
+            </span>
+            <p class="alertMessage" style="opacity: 0; color: red">
+              특수문자를 제외하여 두 글자 이상으로 입력해주세요
+            </p>
+          </div>
+
+          <div id="email_row">
+            <h3>
+              <label for="useremail">이메일</label>
+            </h3>
+            <span class="form">
+              <input
+                type="text"
+                id="useremail"
+                name="useremail"
+                placeholder="이메일 형식에 맞게 입력해주세요"
+                onfocus="this.placeholder=''"
+                onblur="this.placeholder='이메일 형식에 맞게 입력해주세요'"
+                maxlength="30"
+                required
+              />
+            </span>
+            <p class="alertMessage" style="opacity: 0; color: red">
+              이메일 형식에 맞게 입력해주세요
+            </p>
+          </div>
+        </div>
+
+        <div id="submit_btn">
+          <button type="submit" class="button">회원가입</button>
+        </div>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
 
 <!-- <script type="module" src="/js/module/signup.js"></script> -->

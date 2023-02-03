@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/root.css" />
     {% block css %} {% endblock %}
   </head>
 
   <body>
-    {% block content %} {% endblock %}
+    <div id="wrap">{% block content %} {% endblock %}</div>
   </body>
 
   {% block kakaoAddress %} {% endblock %}
