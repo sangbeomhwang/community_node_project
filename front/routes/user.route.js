@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { userController: controller } = require("../src/users/user.controller");
+const { userController: controller } = require("../src/user.controller");
 
 router.get("/terms", (req, res, next) => controller.getTerms(req, res, next));
 
