@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+           padding: 0;
+           margin: 0;
+           box-sizing: border-box;
+        }
+
+        ul, li {
+           list-style: none;
+        }
+
+        a {
+           text-decoration: none;
+        }
+
+        body {
+            background-color: #f7f7f5;
+        }
+
+        #admin_wrap {
+           margin: 0 auto;
+           width: 1920px;
+           height: 1820px;
+
+        }
+
+        #admin_wrap > #admin_header {
+           display: flex;
+           height: 100px;
+           background-color: #a46843;
+           padding: 19px 0 20px 20px;
+           justify-content: space-between;
+        }
+
+        #admin_header > h1 {
+           font-weight: 700;
+           font-size: 50px;
+           line-height: 61px;
+           color: #FFFFFF;
+        }
+
+       #admin_header > #header_gnb {
+           display: flex;
+           align-items: center;
+           margin-right: 380px;
+        }
+
+        #admin_header > #header_gnb > button {
+           width: 100px;
+           height: 40px;
+           background-color: #d48a48;
+           border-radius: 20px;
+           border: none;
+           color: #fefefe;
+           font-size: 12px;
+           margin-left: 42px;
+           font-weight: 700;
+        }
+
+        #admin_header > #header_gnb > div {
+           margin-left: 53px;
+           color: #fefefe;
+           font-weight: 700;
+           font-size: 12px;
+        }
+
+        #admin_content {
+           width: 1920px;
+           height: 1430px;
+           display: flex;
+        }
+
+        #admin_content > #admin_menu {
+           min-width: 380px;
+           height: 100%;
+           background-color: #622f09;            
+        }
+
+        #admin_content > #admin_menu > ul > li {
+           margin-bottom: 60px;
+            height: 50px;
+            padding-left: 116px;
+            line-height: 50px;
+            font-size: 25px;
+        }
+
+        #admin_content > #admin_menu > ul > li:nth-child(4) {
+           margin-bottom: 60px;
+           background: #FEFEFE;
+           background-color: rgba(254,254,254,0.5);
+            height: 50px;
+            
+            line-height: 50px;
+            font-size: 25px;
+        }
+
+
+        #admin_content > #admin_menu > ul {
+           margin-top: 110px;
+           box-sizing: border-box;
+        }
+
+
+        #admin_content > #admin_menu > ul > li > img {
+           padding-right: 10px;
+           box-sizing: border-box;
+           width: 35px;
+        }
+
+        #admin_content > #admin_menu > ul > li > a {
+           font-weight: 400;
+           font-size: 25px;
+           line-height: 30px;
+           color: #FEFEFE;
+           
+        }
+
+        #admin_allusers {
+           padding-top: 60px;
+           padding-left: 40px;
+           box-sizing: border-box;
+           width: 100%;
+           height: 100%;
+        }
+
+        #admin_allusers > #allusers_header {
+            width: 1460px;
+            height: 190px;
+            background: #FFFFFF;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 12px 12px 0px 0px;
+            padding-top: 40px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        #allusers_header > #allusers {
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 34px;
+            margin-bottom: 72px;
+        }
+
+        #allusers > #selectbox {
+            float: right;
+        }
+
+        #allusers > #selectbox > .admin_category {
+            margin-right: 10px;
+            width: 240px;
+            height: 30px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+            border-radius: 6px;
+            border: none;
+            padding-left: 20px;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        #allusers > #selectbox > #category_sort {
+            font-size: 28px;
+            border: none;
+            -webkit-appearance:none; /* 크롬 화살표 없애기 */
+            /* -moz-appearance:none; 파이어폭스 화살표 없애기 */
+            /* appearance:none 화살표 없애기 */
+            }
+        
+        #allusers > #selectbox > #category_sort:focus {
+            outline: none;
+        }
+
+        #allusers_header > ul {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #allusers_header > ul > li {
+            font-weight: 400;
+            font-size: 28px;
+            line-height: 34px;
+            color: #AAAAAA;
+        }
+
+        #allusers_header > ul > li:nth-child(4) {
+            width: 200px;
+        }
+
+        #allusers_body {
+            margin-right: 40px;
+        }
+
+        #allusers_body > ul {
+            margin-top: 40px;
+        }
+
+        #allusers_body > ul > li {
+            background-color: #ffffff;
+            padding: 25px 40px;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 0px;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 34px;
+            color: #000000;
+            height: 115px;
+            margin-bottom: 10px;
+        }
+
+        #allusers_body > ul > li > ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #allusers_body > ul > li > ul > li:nth-child(3) {
+            width: 200px;
+        }
+
+        #allusers_body > ul > li > ul > li > img {
+            left: 0;
+            
+        }
+
+        .users_info {
+            width: 145px;
+            text-align: center;
+        }
+
+        #admin_page {
+            padding: 25px 40px;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 0px;
+            font-weight: 400;
+            font-size: 28px;
+            line-height: 34px;
+            color: #000000;
+            height: 115px;
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            background-color: #ffffff;
+        }
+
+        #admin_page > span {
+            padding-left: 50px;
+        }
+
+        #admin_page > img {
+            padding-left: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="admin_wrap">
+        <div id="admin_header">
+            <h1>Admin Dashboard</h1>
+            <div id="header_gnb">
+                <div>mode</div>
+                <div>관리자님</div>
+                <button>로그아웃</button>
+            </div>
+        </div>
+
+        <div id="admin_content">
+            <div id="admin_menu">
+                <ul>
+                    <li>
+                        <img src="https://i.postimg.cc/rF6Mc2g2/Vector.png">
+                        <a href="#">Overview</a>
+                    </li>
+                    <li>
+                        <img src="https://i.postimg.cc/0j7grrZR/Vector-1.png">
+                        <a href="#">Users</a>
+                    </li>
+                    <li>
+                        <img src="https://i.postimg.cc/XN56sDWH/Vector-2.png">
+                        <a href="#">Boards</a>
+                    </li>
+                    <li>
+                        <img src="https://i.postimg.cc/2Skp8kZM/Vector-3.png">
+                        <a href="#">Comments</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="admin_allusers">
+                <div id="allusers_header">
+                    <div id="allusers">All Comments
+                        <div id="selectbox">
+                            <select class="admin_category">
+                                <option>전체</option>
+                                <option>Q&A</option>
+                                <option>커뮤니티</option>
+                            </select>
+                            <select class="admin_category">
+                                <option>전체</option>
+                                <option>일상이야기</option>
+                                <option>모임</option>
+                            </select>
+                            <img src="https://i.postimg.cc/mhxdqsxb/Vector.png">
+                            <select id="category_sort">
+                                <option>Sort</option>
+                                <option>최신순</option>
+                                <option>조회순</option>
+                            </select>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="users_info">Profile</li>
+                        <li class="users_info">User Id</li>
+                        <li class="users_info">Comments</li>
+                        <li class="users_info">Register Date</li>
+                        <li class="users_info">Remove</li>
+                    </ul>
+                </div>
+                <div id="allusers_body">
+                    <ul>
+                        <li>
+                            <ul>
+                                <li class="users_info"><img src="https://i.postimg.cc/YC2g7C6h/Ellipse-3.png"></li>
+                                <li class="users_info">burgerKing</li>
+                                <li class="users_info">Just joking, Sorry Bro</li>
+                                <li class="users_info">2023-02-01</li>
+                                <li class="users_info"><img src="https://i.postimg.cc/fTCt8QGZ/Vector-1.png"></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="users_info"><img src="https://i.postimg.cc/YC2g7C6h/Ellipse-3.png"></li>
+                                    <li class="users_info">gch02933</li>
+                                    <li class="users_info">jonghwan</li>
+                                    <li class="users_info">Jerry</li>
+                                    <li class="users_info"><img src="https://i.postimg.cc/fTCt8QGZ/Vector-1.png"></li>
+                                </li>
+                            </ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <div id="admin_page">
+                        <span>Total Comments: 80</span>
+                        <span>Page: 10</span>
+                        <img src="https://i.postimg.cc/7YkWrdKf/Vector-2.png">
+                        <img src="https://i.postimg.cc/5tTs7RH9/Vector-3.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
