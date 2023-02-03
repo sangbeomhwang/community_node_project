@@ -5,336 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-      }
-
-      ul,
-      li {
-        list-style: none;
-      }
-
-      a {
-        text-decoration: none;
-      }
-
-      #content_wrap {
-        height: 1300px;
-        width: 100%;
-      }
-
-      #content {
-        margin: 0 auto;
-        width: 1160px;
-      }
-
-      #content_header {
-        margin-top: 40px;
-      }
-
-      #subject {
-        padding: 38px 20px;
-        box-sizing: border-box;
-        border-radius: 12px 12px 0px 0px;
-        background: linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.4),
-            rgba(0, 0, 0, 0.4)
-          ),
-          url(https://i.postimg.cc/ydZG472R/Kakao-Talk-20230201-120303835.jpg);
-        height: 130px;
-      }
-
-      #subject > div {
-        font-size: 45px;
-        color: white;
-        font-weight: 700;
-      }
-
-      #subcategory {
-        margin-top: 10px;
-        height: 45px;
-        background: #fefefe;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
-        padding: 12px 0 11px 0;
-        display: flex;
-        justify-content: center;
-      }
-
-      #subcategory > ul {
-        display: flex;
-      }
-
-      #subcategory > ul > li {
-        padding: 0 60px;
-      }
-
-      #subcategory > ul > li > a {
-        font-size: 18px;
-        font-weight: 700;
-        color: black;
-      }
-
-      #subcategory > div {
-        position: absolute;
-        right: 0;
-        padding-right: 20px;
-        box-sizing: border-box;
-      }
-
-      #subcategory > div > select {
-        font-weight: 400;
-        font-size: 14px;
-        appearance: none;
-        border: none;
-      }
-
-      #subcategory > div > select:focus {
-        outline: none;
-      }
-
-      #content_body {
-        margin-top: 10px;
-      }
-
-      #content_body > ul {
-        /* padding-top: 10px; */
-        box-sizing: border-box;
-      }
-
-      #content_body > ul > li {
-        display: block;
-        height: 120px;
-        background: #fefefe;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
-        padding: 20px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-        font-weight: 700;
-      }
-
-      #content_body > ul > li > div > a {
-        color: #3d3d3d;
-        font-size: 12px;
-      }
-
-      #content_body > ul > li > div > div {
-        display: flex;
-        justify-content: right;
-      }
-
-      #content_body > ul > li > div > div > span {
-        color: #000000;
-        font-size: 12px;
-      }
-
-      #content_body > ul > li > .li_user {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 16px;
-      }
-
-      #content_body > ul > li > .li_user > div > span {
-        padding-left: 10px;
-        box-sizing: border-box;
-      }
-
-      #content_body > ul > li > .li_sub {
-        margin-bottom: 17px;
-      }
-
-      #content_body > ul > li > .li_sub > a {
-        font-size: 14px;
-        color: #000000;
-      }
-
-      #content_body > ul > li > .li_Cate {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      #content_body > ul > li > .li_Cate > a {
-        font-size: 12px;
-      }
-
-      #content_body > ul > li > .li_Cate > div {
-        font-size: 12px;
-      }
-
-      #content_body > ul > li > .li_Cate > div > div {
-        padding-left: 10px;
-        box-sizing: border-box;
-      }
-
-      #content_body > ul > li > .li_Cate > div > div > img {
-        padding-left: 2px;
-        box-sizing: border-box;
-        width: 12px;
-      }
-
-      #content_body > ul > li > .li_Cate > div > div > span {
-        padding-left: 10px;
-        box-sizing: border-box;
-      }
-
-      #content_footer {
-        margin-top: 60px;
-      }
-
-      #content_footer > #content_btn {
-        display: flex;
-        justify-content: center;
-      }
-
-      #content_footer > #content_btn > form > select {
-        width: 120px;
-        height: 40px;
-        text-align: center;
-        background-color: #fefefe;
-
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(0, 0, 0, 0.3);
-        outline: transparent;
-        appearance: none;
-      }
-
-      #content_footer > #content_btn > form > input {
-        width: 350px;
-        height: 40px;
-        background: #fefefe;
-        border: 1px solid rgba(0, 0, 0, 0.3);
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        margin: 0 40px;
-      }
-
-      #content_footer > #content_btn > a {
-        display: inline-block;
-        width: 120px;
-        height: 40px;
-        line-height: 40px;
-        color: #000;
-        font-family: "Inter";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        text-align: center;
-        background: #fefefe;
-        border: 1px solid rgba(0, 0, 0, 0.3);
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      #content_page {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        align-items: center;
-      }
-
-      #content_page > img {
-        width: 10.54px;
-        height: 14px;
-        transform: matrix(-1, 0, 0, 1, 0, 0);
-        padding-top: 4px;
-      }
-
-      #content_page > ul {
-        display: flex;
-        justify-content: space-between;
-
-        margin: 0 12px;
-        width: 110px;
-      }
-
-      #footer_wrap {
-        margin-top: 10px;
-        width: 100%;
-        height: 270px;
-        display: flex;
-        background: rgba(64, 40, 26, 0.9);
-      }
-
-      #footer {
-        width: 1000px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
-        margin: 0 auto;
-      }
-
-      #footer > ul {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        padding: 20px 0;
-        margin-left: 40px;
-        box-sizing: border-box;
-      }
-
-      #footer > ul > li > a {
-        font-weight: 400;
-        font-size: 8px;
-        line-height: 10px;
-        color: #fefefe;
-        text-decoration: none;
-      }
-
-      #footer > ul > li > .team_phl::after {
-        content: "|";
-        font-weight: 400;
-        font-size: 8px;
-        line-height: 10px;
-        color: #fefefe;
-        padding: 0 20px;
-        box-sizing: border-box;
-      }
-
-      #footer > #footer_info {
-        width: 100%;
-        display: flex;
-      }
-
-      #footer > #footer_info > h1 {
-        padding-left: 25px;
-        box-sizing: border-box;
-      }
-
-      #footer > #footer_info > h1 > img {
-        display: inline-block;
-        width: 200px;
-        height: 120px;
-        margin-right: 20px;
-      }
-
-      #team_info {
-        box-sizing: border-box;
-        padding-top: 20px;
-      }
-
-      #team_info > p {
-        font-weight: 400;
-        font-size: 8px;
-        line-height: 10px;
-        color: #fefefe;
-        padding-left: 20px;
-        padding-bottom: 10px;
-        box-sizing: border-box;
-      }
-
-      #team_info > .copyright {
-        padding: 20px 0 10px 0;
-        box-sizing: border-box;
-      }
-    </style>
-  </head>
-  <body>
+    <link rel="stylesheet" href="../../public/css/root.css" />
+    <link rel="stylesheet" href="../../public/css/board/board.css" />
+    
+</head>
+<body>
+    
     <div id="content_wrap">
       <div id="content">
         <div id="content_header">
@@ -544,34 +220,35 @@
           </ul>
         </div>
 
-        <div id="content_footer">
-          <div id="content_btn">
-            <form>
-              <select>
-                <option value="val_1">제목+내용</option>
-                <option value="val_2">제목</option>
-                <option value="val_3">내용</option>
-              </select>
-              <input />
-            </form>
-            <a id="writebtn" href="/boards/write">글쓰기</a>
-          </div>
-          <div id="content_page">
-            <img
-              src="https://i.postimg.cc/qMkrQQLc/Vector-1.png"
-              class="left"
-            />
-            <ul id="page">
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-            </ul>
-            <img src="https://i.postimg.cc/0Qw5RQMp/Vector.png" class="right" />
-          </div>
+            <div id="content_footer">
+                <div id="content_btn">
+                    <form>
+                        <select>
+                            <option value="val_1">제목+내용</option>
+                            <option value="val_2">제목</option>
+                            <option value="val_3">내용</option>
+                        </select>
+                        <input>
+                    </form>
+                    <a type='submit' id="writebtn">글쓰기</a>
+                </div>
+                <div id="content_page">
+                    
+                    <img src="https://i.postimg.cc/qMkrQQLc/Vector-1.png" class="left">
+                    <ul id="page">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                    </ul>
+                    <img src="https://i.postimg.cc/0Qw5RQMp/Vector.png" class="right">
+                </div>
+                
+            </div>
+
+
         </div>
-      </div>
     </div>
 
     <div id="footer_wrap">
