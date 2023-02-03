@@ -1,356 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
 
-        ul, li {
-            list-style: none;
-        }
+      ul,
+      li {
+        list-style: none;
+      }
 
-        a {
-            text-decoration: none;
-        }
+      a {
+        text-decoration: none;
+      }
 
-        #content_wrap {
-            height: 1100px;
-            width: 100%;
-            
-        }
+      #content_wrap {
+        height: 1100px;
+        width: 100%;
+      }
 
-        #content {
-            margin: 0 auto;
-            width: 1160px
-        }
+      #content {
+        margin: 0 auto;
+        width: 1160px;
+      }
 
-        #content_header {
-            margin-top: 40px;
-        }
+      #content_header {
+        margin-top: 40px;
+      }
 
-        #subject {
-            padding: 38px 20px;
-            box-sizing: border-box;
-            border-radius: 12px 12px 0px 0px;
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(https://i.postimg.cc/T3bX5df0/Rectangle-63.png);
-            height: 130px;
-        }
+      #subject {
+        padding: 38px 20px;
+        box-sizing: border-box;
+        border-radius: 12px 12px 0px 0px;
+        background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url(https://i.postimg.cc/T3bX5df0/Rectangle-63.png);
+        height: 130px;
+      }
 
-        #subject > div {
-            font-size: 45px;
-            color: white;
-            font-weight: 700;
-        }      
+      #subject > div {
+        font-size: 45px;
+        color: white;
+        font-weight: 700;
+      }
 
-        #subcategory {
-            margin-top: 10px;
-            height: 45px;
-            
-        }
+      #subcategory {
+        margin-top: 10px;
+        height: 45px;
+      }
 
-        #subcategory > ul {
-            display: flex;
-            justify-content: center;
-            height: 45px;
-            padding: 12px 0 11px 0;
-            box-sizing: border-box;
-            background: #FEFEFE;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
-        }
+      #subcategory > ul {
+        display: flex;
+        justify-content: center;
+        height: 45px;
+        padding: 12px 0 11px 0;
+        box-sizing: border-box;
+        background: #fefefe;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+      }
 
-        #subcategory > ul > li {
-            padding: 0 60px;
-            box-sizing: border-box;
-        }
+      #subcategory > ul > li {
+        padding: 0 60px;
+        box-sizing: border-box;
+      }
 
-        #subcategory > ul > li > a {
-            font-size: 18px;
-            font-weight: 700;
-            color: black;
-        }
+      #subcategory > ul > li > a {
+        font-size: 18px;
+        font-weight: 700;
+        color: black;
+      }
 
-        #content_body {
-            margin-top: 10px;
-        }
+      #content_body {
+        margin-top: 10px;
+      }
 
-        #content_body > #write_form > #write_subject {
-            width: 100%;
-            height: 60px;
-            padding: 19px 0 19px 20px;
-            box-sizing: border-box;
-            background: #FEFEFE;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
-            border: none;
-        }
+      #content_body > #write_form > #write_subject {
+        width: 100%;
+        height: 60px;
+        padding: 19px 0 19px 20px;
+        box-sizing: border-box;
+        background: #fefefe;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+        border: none;
+      }
 
-        #content_body > #write_form > #write_group {
-            margin-top: 10px;
-            width: 100%;
-            height: 600px;
-            background: #FEFEFE;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
-            border: none;
-        }
+      #content_body > #write_form > #write_group {
+        margin-top: 10px;
+        width: 100%;
+        height: 600px;
+        background: #fefefe;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+        border: none;
+      }
 
-        #content_body > #write_form > div > #write_info {
-            float: right;
-            padding-top: 20px;
-            padding-right: 20px;
-            box-sizing: border-box;
-        }
+      #content_body > #write_form > div > #write_info {
+        float: right;
+        padding-top: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+      }
 
-        #write_info > img {
-            padding-left: 10px;
-            box-sizing: border-box;
-        }
+      #write_info > img {
+        padding-left: 10px;
+        box-sizing: border-box;
+      }
 
-        #write_info > span {
-            padding-left: 10px;
-            box-sizing: border-box;
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 22px;
-        }
+      #write_info > span {
+        padding-left: 10px;
+        box-sizing: border-box;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+      }
 
-        #content_body > #write_form > #write_group > #write_content {
-            border: none;
-            width: 100%;
-            height: 520px;
-            padding-top: 18px;
-            padding-left: 20px;
-            box-sizing: border-box;
-            resize: none;
-        }
+      #content_body > #write_form > #write_group > #write_content {
+        border: none;
+        width: 100%;
+        height: 520px;
+        padding-top: 18px;
+        padding-left: 20px;
+        box-sizing: border-box;
+        resize: none;
+      }
 
-        textarea::placeholder {
-            font-size: 18px;
-            color: #AAAAAA;
-        }
+      textarea::placeholder {
+        font-size: 18px;
+        color: #aaaaaa;
+      }
 
-        #content_body > #write_form > #write_group > #write_content:focus {
-            outline: none;
-        }
+      #content_body > #write_form > #write_group > #write_content:focus {
+        outline: none;
+      }
 
-        #write_form > #write_btnbox {
-            display: flex;
-            justify-content: space-between;
-            
-        }
+      #write_form > #write_btnbox {
+        display: flex;
+        justify-content: space-between;
+      }
 
-        #write_btnbox > #write_hashbox {
-            margin-top: 20px;
-            max-width: 860px;
-            
-        }
+      #write_btnbox > #write_hashbox {
+        margin-top: 20px;
+        max-width: 860px;
+      }
 
-        #write_btnbox > #write_hashbox > span {
-            margin-right: 5px;
-            font-size: 24px;
-        }
+      #write_btnbox > #write_hashbox > span {
+        margin-right: 5px;
+        font-size: 24px;
+      }
 
-        #write_btnbox > #write_hashbox > input {
-            border: none;
-            font-size: 24px;
-        }
+      #write_btnbox > #write_hashbox > input {
+        border: none;
+        font-size: 24px;
+      }
 
-        #write_form > #write_btnbox > #write_btn {
-            margin-top: 10px;
-            float: right;
-        }
+      #write_form > #write_btnbox > #write_btn {
+        margin-top: 10px;
+        float: right;
+      }
 
-        #write_btn > button {
-            width: 120px;
-            height: 40px;
-            border: 1px solid rgba(0,0,0,0.1);
-            font-size: 14px;
-            
-        }
+      #write_btn > button {
+        width: 120px;
+        height: 40px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 14px;
+      }
 
-        #write_btn > button:nth-child(2) {
-            background-color: #a46843;
-            color: #fefefe;
-        }
+      #write_btn > button:nth-child(2) {
+        background-color: #a46843;
+        color: #fefefe;
+      }
 
-        #footer_wrap {
-            margin-top: 10px;
-            width: 100%;
-            height: 270px;
-            display: flex;
-            background: rgba(64, 40, 26, 0.9);
-            
-        }
+      #footer_wrap {
+        margin-top: 10px;
+        width: 100%;
+        height: 270px;
+        display: flex;
+        background: rgba(64, 40, 26, 0.9);
+      }
 
-        #footer {
-            width: 1000px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            margin: 0 auto;
-        }
+      #footer {
+        width: 1000px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        margin: 0 auto;
+      }
 
-        #footer > ul {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            padding: 20px 0;
-            margin-left: 40px;
-            box-sizing: border-box;
-        }
+      #footer > ul {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 20px 0;
+        margin-left: 40px;
+        box-sizing: border-box;
+      }
 
-        #footer > ul > li > a {
-            font-weight: 400;
-            font-size: 8px;
-            line-height: 10px;
-            color: #FEFEFE;
-            text-decoration: none;
-        }
+      #footer > ul > li > a {
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 10px;
+        color: #fefefe;
+        text-decoration: none;
+      }
 
-        #footer > ul > li > .team_phl::after {
-            content: "|";
-            font-weight: 400;
-            font-size: 8px;
-            line-height: 10px;
-            color: #FEFEFE;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
+      #footer > ul > li > .team_phl::after {
+        content: "|";
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 10px;
+        color: #fefefe;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
 
-        #footer > #footer_info {
-            width: 100%;
-            display: flex;
-        }
+      #footer > #footer_info {
+        width: 100%;
+        display: flex;
+      }
 
-        #footer > #footer_info > h1 {
-            padding-left: 25px;
-            box-sizing: border-box;
-        }
+      #footer > #footer_info > h1 {
+        padding-left: 25px;
+        box-sizing: border-box;
+      }
 
-        #footer > #footer_info > h1 > img {
-            display: inline-block;
-            width: 200px;
-            height: 120px;
-            margin-right: 20px;
-        }
+      #footer > #footer_info > h1 > img {
+        display: inline-block;
+        width: 200px;
+        height: 120px;
+        margin-right: 20px;
+      }
 
-        #team_info {
-            box-sizing: border-box;
-            padding-top: 20px;
-        }
+      #team_info {
+        box-sizing: border-box;
+        padding-top: 20px;
+      }
 
-        #team_info > p {
-            font-weight: 400;
-            font-size: 8px;
-            line-height: 10px;
-            color: #FEFEFE;
-            padding-left: 20px;
-            padding-bottom: 10px;
-            box-sizing: border-box;
-        }
+      #team_info > p {
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 10px;
+        color: #fefefe;
+        padding-left: 20px;
+        padding-bottom: 10px;
+        box-sizing: border-box;
+      }
 
-        #team_info > .copyright {
-            padding: 20px 0 10px 0;
-            box-sizing: border-box;
-        }
+      #team_info > .copyright {
+        padding: 20px 0 10px 0;
+        box-sizing: border-box;
+      }
     </style>
-    
-</head>
-<body>
+  </head>
+  <body>
     <div id="content_wrap">
-        <div id="content">
-            <div id="content_header">
-                <div id="subject">
-                    <div>커뮤니티</div>
-                </div>
-                <div id="subcategory">
-                    <ul>
-                        <li><a href='#'>전체</a></li>
-                        <li><a href='#'>일상이야기</a></li>
-                        <li><a href='#'>모임</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="content_body">
-                <form id="write_form">
-                    <input id="write_subject" placeholder="제목">
-                    <div id="write_group">
-                        <div id="write_info">
-                            <img src="https://i.postimg.cc/4xbnhk6D/Vector-1.png">
-                            <span>cloudcoke</span>
-                            <img src="https://i.postimg.cc/PxNqcCgH/Vector.png">
-                            <span>2023-02-01</span>
-                        </div>
-                        <textarea id="write_content" placeholder="내용을 입력해주세요"></textarea>
-                    </div>
-
-                    <div id="write_btnbox">
-                        <div id="write_hashbox">
-                            <span>#</span><input placeholder="tag를 입력해주세요">
-                        </div>
-
-                        <div id="write_btn">
-                            <button>취소</button>
-                            <button>글쓰기</button>
-                        </div>
-
-                    </div>
-                    
-                </form>
-            </div>
-
+      <div id="content">
+        <div id="content_header">
+          <div id="subject">
+            <div>커뮤니티</div>
+          </div>
+          <div id="subcategory">
+            <ul>
+              <li><a href="#">전체</a></li>
+              <li><a href="#">일상이야기</a></li>
+              <li><a href="#">모임</a></li>
+            </ul>
+          </div>
         </div>
+
+        <div id="content_body">
+          <form id="write_form">
+            <input id="write_subject" placeholder="제목" />
+            <div id="write_group">
+              <div id="write_info">
+                <img src="https://i.postimg.cc/4xbnhk6D/Vector-1.png" />
+                <span>cloudcoke</span>
+                <img src="https://i.postimg.cc/PxNqcCgH/Vector.png" />
+                <span>2023-02-01</span>
+              </div>
+              <textarea
+                id="write_content"
+                placeholder="내용을 입력해주세요"
+              ></textarea>
+            </div>
+
+            <div id="write_btnbox">
+              <div id="write_hashbox">
+                <span>#</span><input placeholder="tag를 입력해주세요" />
+              </div>
+
+              <div id="write_btn">
+                <button>취소</button>
+                <button>글쓰기</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
 
     <div id="footer_wrap">
-        <div id="footer">
-          <ul>
-            <li>
-              <a class="team_phl" href="#">TEAM : Node.phl</a>
-            </li>
-            <li>
-              <a class="team_phl" href="#">Jong Hwan Park</a>
-            </li>
-            <li>
-              <a class="team_phl" href="#">Min Soo Lee</a>
-            </li>
-            <li>
-              <a class="team_phl" href="#">Sang Beom Hwang</a>
-            </li>
-            <li>
-              <a class="personal" href="#">행복하자 우리</a>
-            </li>
-          </ul>
-          <div id="footer_info">
-            <h1 id="footer_logo">
-              <img
-                src="https://i.postimg.cc/PxvShGMG/Group-33.png"
-                alt="footer_logo"
-              />
-            </h1>
-            <div id="team_info">
-              
-              <p>박종환 : https://github.com/parkjonghwan22</p>
-              <p>이민수 : https://github.com/cloudcoke</p>
-              <p>황상범 : https://github.com/sangbeomhwang</p>
-              <p class="copyright">
-                Copyright © 2023. Node.phl Project Group. All rights reserved.
-              </p>
-            </div>
+      <div id="footer">
+        <ul>
+          <li>
+            <a class="team_phl" href="#">TEAM : Node.phl</a>
+          </li>
+          <li>
+            <a class="team_phl" href="#">Jong Hwan Park</a>
+          </li>
+          <li>
+            <a class="team_phl" href="#">Min Soo Lee</a>
+          </li>
+          <li>
+            <a class="team_phl" href="#">Sang Beom Hwang</a>
+          </li>
+          <li>
+            <a class="personal" href="#">행복하자 우리</a>
+          </li>
+        </ul>
+        <div id="footer_info">
+          <h1 id="footer_logo">
+            <img
+              src="https://i.postimg.cc/PxvShGMG/Group-33.png"
+              alt="footer_logo"
+            />
+          </h1>
+          <div id="team_info">
+            <p>박종환 : https://github.com/parkjonghwan22</p>
+            <p>이민수 : https://github.com/cloudcoke</p>
+            <p>황상범 : https://github.com/sangbeomhwang</p>
+            <p class="copyright">
+              Copyright © 2023. Node.phl Project Group. All rights reserved.
+            </p>
           </div>
         </div>
       </div>
-</body>
+    </div>
+  </body>
 </html>

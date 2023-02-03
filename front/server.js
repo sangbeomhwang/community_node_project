@@ -2,12 +2,7 @@ const express = require("express");
 const app = express();
 const nunjucks = require("nunjucks");
 const cookieParser = require("cookie-parser");
-const axios = require("axios");
-
-const request = axios.create({
-  baseURL: `http://127.0.0.1:3000`,
-  withCredentials: true,
-});
+const router = require("./routes/index");
 
 app.set("view engine", "html");
 nunjucks.configure("views", {
@@ -36,6 +31,8 @@ app.use((req, res, next) => {
   }
 });
 
+app.use(router);
+
 app.get("/", (req, res) => {
   // console.log(`req.user :`, req.user);
   if (req.user === undefined) return res.render("index.html");
@@ -46,62 +43,8 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/terms", (req, res) => {
-  res.render("user/terms.html");
-});
-
-app.post("/terms", (req, res) => {
-  res.redirect("/signup");
-});
-
-app.get("/signup", (req, res) => {
-  res.render("user/signup.html");
-});
-
-app.post("/signup", async (req, res) => {
-  const response = await request.post("/users", {
-    ...req.body,
-  });
-  // console.log(`response :`, response);
-  const { userid, username } = response.data;
-
-  res.redirect(`/welcome?userid=${userid}&username=${username}`);
-});
-
-app.get("/welcome", (req, res) => {
-  const { userid, username } = req.query;
-  res.render("user/welcome.html", {
-    userid,
-    username,
-  });
-});
-
-app.get("/signin", (req, res) => {
-  res.render("user/signin.html");
-});
-
-app.get("/profile", (req, res) => {
-  res.render("user/profile.html", { ...req.user });
-});
-
-app.post("/profile", async (req, res) => {
-  // console.log("modify :", req.body)
-  const response = await request.put("/users", { ...req.body });
-  console.log("response :", response.data.token);
-  res.cookie("token", response.data.token);
-  res.redirect("/");
-});
-
-const HOST = "https://kauth.kakao.com";
-const REST_API_KEY = "생략";
-const REDIRECT_URI = "http://localhost:3000/oauth/kakao";
-const CLIENT_SECRET = "생략";
-
-app.get("/kakao/login", (req, res) => {
-  // kauth.kakao.com
-  // /oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code
-  const redirectURI = `${HOST}/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  res.redirect(redirectURI);
+app.use((error, req, res, next) => {
+  res.status(500).json(error.message);
 });
 
 app.listen(3005, () => {
