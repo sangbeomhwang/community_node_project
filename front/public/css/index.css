@@ -15,7 +15,7 @@
   align-items: center;
   background-color: var(--header_background_color);
 }
-#logo > img {
+#logo > a > img {
   width: 180px;
   /* height: 67px; */
 }
@@ -36,10 +36,10 @@
   width: 100px;
   height: 100%;
   display: inline-block;
-  font-size: 25px;
   font-weight: bold;
   text-align: center;
-  color: #fefefe;
+  font-size: var(--header_font_size);
+  color: var(--default_font_color);
 }
 
 #qna > img {
@@ -59,10 +59,10 @@
   width: 100px;
   height: 100%;
   display: inline-block;
-  font-size: 25px;
   font-weight: bold;
   text-align: center;
-  color: #fefefe;
+  font-size: var(--header_font_size);
+  color: var(--default_font_color);
 }
 
 #community > img {
@@ -82,10 +82,10 @@
   width: 100px;
   height: 100%;
   display: inline-block;
-  font-size: 25px;
   font-weight: bold;
   text-align: center;
-  color: #fefefe;
+  font-size: var(--header_font_size);
+  color: var(--default_font_color);
 }
 
 #notice > img {
@@ -106,13 +106,13 @@
   width: 100px;
   height: 40px;
   border-radius: 80px;
-  border: 1px solid #fefefe;
-  background: #fefefe;
-  color: #d48a48;
+  border: 1px solid var(--login_btn_background_color);
+  background: var(--login_btn_background_color);
+  color: var(--login_btn_font_color);
   text-align: center;
   line-height: 40px;
   font-weight: bold;
-  font-size: 12px;
+  font-size: var(--default_font_size);
 }
 
 #signin_btn {
@@ -120,13 +120,13 @@
   width: 100px;
   height: 40px;
   border-radius: 80px;
-  background: #d48a48;
-  border: 1px solid #d48a48;
-  color: #fff;
+  background: var(--signin_btn_background_color);
+  border: 1px solid var(--signin_btn_background_color);
+  color: var(--signin_btn_font_color);
   text-align: center;
   line-height: 40px;
   font-weight: bold;
-  font-size: 12px;
+  font-size: var(--default_font_size);
 }
 /* content 영역 */
 #content_box {
@@ -162,10 +162,10 @@
   padding-left: 20px;
   overflow: hidden;
   border-radius: 12px 12px 0 0;
-  color: #fefefe;
-  font-size: 30px;
+  color: var(--default_font_color);
+  font-size: var(--main_boards_header_font_size);
   font-weight: bold;
-  line-height: 50px;
+  line-height: 60px;
 }
 
 #qna_header {
@@ -184,16 +184,16 @@
 .board_content > li {
   width: 100%;
   height: 65px;
-  background: #fff;
+  background: var(--default_box_background_color);
   padding: 10px 20px;
-  font-size: 12px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: var(--default_font_size);
+  border-bottom: 1px solid var(--main_boards_box_border_bottom_color);
 }
 .first_line {
   display: flex;
   justify-content: flex-start;
   justify-content: space-between;
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
+  border-bottom: 1px dashed var(--main_boards_content_dash_line_color);
   padding-bottom: 5px;
 }
 .nickname_time_box {
@@ -202,10 +202,10 @@
   width: 200px;
 }
 .nickname {
-  color: #472828;
+  color: var(--main_boards_content_nickname_color);
 }
 .time {
-  color: #626161;
+  color: var(--main_boards_content_time_color);
 }
 
 .information_box {
@@ -287,14 +287,94 @@
 #hwang {
   width: 360px;
   margin-right: 40px;
-  background: #d9d9d9;
 }
 #lee {
   width: 360px;
-  background: #d9d9d9;
 }
 #footer_wrap {
   width: 100%;
   height: 180px;
-  background: #423003;
+  background: var(--footer_background_color);
+  font-size: var(--footer_font_size);
+}
+
+#footer_wrap {
+  margin-top: 10px;
+  width: 100%;
+  height: 270px;
+  display: flex;
+  background: rgba(64, 40, 26, 0.9);
+}
+
+#footer {
+  width: 1000px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+#footer > ul {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 20px 0;
+  margin-left: 50px;
+  box-sizing: border-box;
+}
+
+#footer > ul > li > a {
+  font-weight: 400;
+  font-size: var(--footer_font_size);
+  line-height: 10px;
+  color: var(--default_font_color);
+  text-decoration: none;
+}
+
+#footer > ul > li > .team_phl::after {
+  content: "|";
+  font-weight: 400;
+  font-size: var(--footer_font_size);
+  line-height: 10px;
+  color: var(--default_font_color);
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+#footer > #footer_info {
+  width: 100%;
+  display: flex;
+}
+
+#footer > #footer_info > h1 {
+  padding-left: 25px;
+  box-sizing: border-box;
+}
+
+#footer > #footer_info > h1 > img {
+  display: inline-block;
+  width: 200px;
+  height: 120px;
+  margin-right: 20px;
+}
+
+#team_info {
+  box-sizing: border-box;
+  padding-top: 20px;
+}
+
+#team_info > p {
+  font-weight: 400;
+  font-size: var(--footer_font_size);
+  line-height: 10px;
+  color: var(--default_font_color);
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+
+#team_info > .copyright {
+  box-sizing: border-box;
 }
