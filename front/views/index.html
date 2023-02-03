@@ -1,528 +1,457 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Node.phl</title>
-    <link rel="stylesheet" href="css/root.css" />
-    <link rel="stylesheet" href="css/index.css" />
-  </head>
-  <body>
-    <div id="wrap">
-      <div id="header_wrap">
-        <div id="header">
-          <div id="logo">
-            <a href="#">
-              <img src="https://i.postimg.cc/qvz6NCWC/logo.png" alt="2023-01-30-3-40-39" />
-            </a>
-          </div>
-          <div id="category_box">
-            <ul id="category">
-              <li id="qna">
-                <a href="#">Q&A</a>
-                <img src="https://i.ibb.co/NrpQT9H/cooking.png" alt="cooking" width="15px" height="15px" />
-              </li>
-              <li id="community">
-                <a href="#">커뮤니티</a>
-                <img src="https://i.ibb.co/NrpQT9H/cooking.png" alt="cooking" width="15px" height="15px" />
-              </li>
-              <li id="notice">
-                <a href="#">공지사항</a>
-                <img src="https://i.ibb.co/NrpQT9H/cooking.png" alt="cooking" width="15px" height="15px" />
-              </li>
-            </ul>
-          </div>
+{% extends './layout/layout.html' %} {% block css %}
 
-          <div id="light_dark_btn">
-            <label for="light_dark">
-              <a href="#"><img src="https://i.postimg.cc/HxVBkxdY/light-btn.png" alt="light-btn" width="40" height="20" /></a>
-            </label>
-          </div>
-          <div id="login_signin_box">
-            <div id="login">
-              <a id="login_btn" href="/users/signin">로그인</a>
+<link rel="stylesheet" href="css/index.css" />
+
+{% endblock %} {% block content %} {% include "./layout/header.html" %}
+
+<div id="slide_wrap">
+  <div id="main_img_box">
+    <div class="main_img" id="main_img_1"></div>
+  </div>
+</div>
+
+<div id="content_box">
+  <!-- 첫번째 라인 -->
+  <div id="boards_box_first" class="boards_box_wrap">
+    <!-- q&a -->
+    <div class="boards_box">
+      <a href="#"><div class="boards_header" id="qna_header">Q&A</div></a>
+      <ul class="board_content">
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
             </div>
-            <div id="signin">
-              <a id="signin_btn" href="/users/terms">회원가입</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="content_box">
-        <div id="main_img_box">
-          <div class="main_img" id="main_img_1"></div>
-        </div>
-        <!-- 첫번째 라인 -->
-        <div id="boards_box_first" class="boards_box_wrap">
-          <!-- q&a -->
-          <div class="boards_box">
-            <a href="#"><div class="boards_header" id="qna_header">Q&A</div></a>
-            <ul class="board_content">
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <!-- 커뮤니티 -->
-          <div class="boards_box">
-            <a href="#"><div class="boards_header" id="community_header">커뮤니티</div></a>
-            <ul class="board_content">
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- 두번째 라인 -->
-        <div id="boards_box_second" class="boards_box_wrap">
-          <!-- 공지사항 -->
-          <div class="boards_box">
-            <a href="#"><div class="boards_header" id="notice_header">공지사항</div></a>
-            <ul class="board_content">
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-              <li>
-                <div class="first_line">
-                  <div class="nickname_time_box">
-                    <div class="nickname">MMMMMMM</div>
-                    <div class="time">9분 전</div>
-                  </div>
-                  <div class="information_box">
-                    <div class="hits_box">
-                      <span class="hits"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="reply_box">
-                      <span class="reply"></span>
-                      <span>0</span>
-                    </div>
-                    <div class="likes_box">
-                      <span class="likes"></span>
-                      <span>0</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="seconde_line">
-                  <a href="#">깃허브 레포지토리 private</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="boards_box" id="sub_img_box">
-            <div class="sub_img" id="sub_img_1"></div>
-          </div>
-        </div>
-        <div id="youtube_box">
-          <div id="baek" class="round">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/GvxTggiNB9Y"
-              title="[백종원 시장이 되다_0-1화] 궁금하셨을 이야기들! 다 말씀드리겠습니다."
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div id="hwang" class="round">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/1bU41zHDP6w"
-              title="직원들이 색다른 삼겹살을 먹고 싶다고 해서 만들어 줬습니다 (수육튀김과 딸기김치)"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div id="lee" class="round">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/svsTQk13LTQ"
-              title="드디어.....그가....왔습니다."
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-      </div>
-      <div id="footer_wrap">
-        <div id="footer">
-          <ul>
-            <li>
-              <a class="team_phl" href="#">TEAM : Node.phl</a>
-            </li>
-            <li>
-              <a class="team_phl" href="#">Jong Hwan Park</a>
-            </li>
-            <li>
-              <a class="team_phl" href="#">Min Soo Lee</a>
-            </li>
-            <li>
-              <a class="team_phl" href="#">Sang Beom Hwang</a>
-            </li>
-            <li>
-              <a class="personal" href="#">행복하자 우리</a>
-            </li>
-          </ul>
-          <div id="footer_info">
-            <h1 id="footer_logo">
-              <img src="https://i.postimg.cc/PxvShGMG/Group-33.png" alt="footer_logo" />
-            </h1>
-            <div id="team_info">
-              <p>박종환 : https://github.com/parkjonghwan22</p>
-              <p>이민수 : https://github.com/cloudcoke</p>
-              <p>황상범 : https://github.com/sangbeomhwang</p>
-              <p class="copyright">Copyright © 2023. Node.phl Project Group. All rights reserved.</p>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+      </ul>
     </div>
-  </body>
-</html>
+    <!-- 커뮤니티 -->
+    <div class="boards_box">
+      <a href="#"
+        ><div class="boards_header" id="community_header">커뮤니티</div></a
+      >
+      <ul class="board_content">
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- 두번째 라인 -->
+  <div id="boards_box_second" class="boards_box_wrap">
+    <!-- 공지사항 -->
+    <div class="boards_box">
+      <a href="#"
+        ><div class="boards_header" id="notice_header">공지사항</div></a
+      >
+      <ul class="board_content">
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+        <li>
+          <div class="first_line">
+            <div class="nickname_time_box">
+              <div class="nickname">MMMMMMM</div>
+              <div class="time">9분 전</div>
+            </div>
+            <div class="information_box">
+              <div class="hits_box">
+                <span class="hits"></span>
+                <span>0</span>
+              </div>
+              <div class="reply_box">
+                <span class="reply"></span>
+                <span>0</span>
+              </div>
+              <div class="likes_box">
+                <span class="likes"></span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
+          <div class="seconde_line">
+            <a href="#">깃허브 레포지토리 private</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="boards_box" id="sub_img_box">
+      <div class="sub_img" id="sub_img_1"></div>
+    </div>
+  </div>
+  <div id="youtube_box">
+    <div id="baek" class="round">
+      <iframe
+        width="100%"
+        height="100%"
+        src="https://www.youtube.com/embed/GvxTggiNB9Y"
+        title="[백종원 시장이 되다_0-1화] 궁금하셨을 이야기들! 다 말씀드리겠습니다."
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div id="hwang" class="round">
+      <iframe
+        width="100%"
+        height="100%"
+        src="https://www.youtube.com/embed/1bU41zHDP6w"
+        title="직원들이 색다른 삼겹살을 먹고 싶다고 해서 만들어 줬습니다 (수육튀김과 딸기김치)"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div id="lee" class="round">
+      <iframe
+        width="100%"
+        height="100%"
+        src="https://www.youtube.com/embed/svsTQk13LTQ"
+        title="드디어.....그가....왔습니다."
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+{% include "./layout/footer.html" %} {% endblock %}
