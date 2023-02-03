@@ -1,3 +1,76 @@
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --default_font: "GmarketSansMedium";
+  --default_font_size: 12px;
+  --default_font_color: #fefefe;
+  --default_background_color: #f7f7f5;
+  --default_box_background_color: #ffffff;
+  --default_placeholder_color: #aaa;
+
+  /* header */
+  --header_background_color: #a46843;
+  --header_font_size: 25px;
+
+  /* footer */
+  --footer_background_color: rgba(64, 40, 26, 0.9);
+  --footer_font_size: 10px;
+
+  /* main */
+  --main_boards_content_nickname_color: #472828;
+  --main_boards_content_time_color: #626161;
+  --main_boards_content_dash_line_color: rgba(0, 0, 0, 0.05);
+  --main_boards_box_border_bottom_color: rgba(0, 0, 0, 0.3);
+  --main_boards_header_font_size: 28px;
+
+  --login_btn_background_color: #fefefe;
+  --login_btn_font_color: #d48a48;
+  --signin_btn_background_color: #d48a48;
+  --signin_btn_font_color: #fefefe;
+
+  /* board */
+  --board_header_font_size: 45px;
+  --board_header_subcategory_font_size: 18px;
+  --board_content_title_font_size: 14px;
+  --board_content_nickname_title_font_color: #3d3d3d;
+  --board_content_date_title_font_color: #3d3d3d;
+  --board_hashtag_font_size: 24px;
+
+  /* comment */
+  --comment_font_size: 14px;
+
+  /* admin */
+  --admin_header_font_size: 50px;
+  --admin_header_font_color: #fff;
+  --admin_category_font_size: 25px;
+  --admin_category_font_color: #fefefe;
+  --admin_content_box_font_size: 28px;
+  --admin_content_box_font_color: #000;
+  --admin_content_box_second_font_color: #aaa;
+}
+
 * {
-    margin: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+body {
+  font-family: "GmarketSansMedium";
+  color: #000;
 }
