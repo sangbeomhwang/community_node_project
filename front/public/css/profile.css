@@ -198,15 +198,18 @@ li {
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
 }
 
-#contents > #submit_btn {
+#contents > #btn_area {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   text-align: center;
 }
 
-#contents > #submit_btn > .button {
+#contents > #btn_area > .button {
   margin-top: 80px;
-  width: 500px;
-  height: 50px;
-  line-height: 51px;
+  width: 250px;
+  height: 65px;
+  line-height: 65px;
   font-size: 18px;
   font-weight: bold;
   color: #fff;
@@ -221,7 +224,7 @@ li {
   cursor: pointer;
 }
 
-#contents > #submit_btn > .button:hover {
+#contents > #btn_area > .button:hover {
   background-color: #f4f3f3;
   color: #d48a48;
 }
