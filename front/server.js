@@ -84,16 +84,12 @@ app.get("/profile", (req, res) => {
   res.render("user/profile.html", { ...req.user });
 });
 
-app.get("/profileModify", (req, res) => {
-  res.render("user/profileModify.html", { ...req.user });
-});
-
-app.post("/profileModify", async (req, res) => {
+app.post("/profile", async (req, res) => {
   // console.log("modify :", req.body)
   const response = await request.put("/users", { ...req.body });
   console.log("response :", response.data.token);
   res.cookie("token", response.data.token);
-  res.redirect("/profile");
+  res.redirect("/");
 });
 
 const HOST = "https://kauth.kakao.com";

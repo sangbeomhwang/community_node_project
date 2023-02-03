@@ -79,6 +79,7 @@ li {
 #contents > #login > #terms_row > .terms > textarea {
   width: 900px;
   height: 350px;
+  resize: none;
   font-size: 15px;
   font-family: "Inter";
   letter-spacing: 1px;
@@ -130,7 +131,7 @@ li {
 }
 
 #contents > #login > #terms_row > span > #agree_area > #agree {
-  width: 105px;
+  width: 115px;
   height: 19px;
   line-height: 19px;
   font-family: "Inter";
