@@ -74,3 +74,24 @@ body {
   font-family: "GmarketSansMedium";
   color: #000;
 }
+
+select {
+    font-family: "GmarketSansMedium";
+    appearance:none;
+}
+
+select:focus {
+    outline: none;
+}
+
+button {
+    font-family: "GmarketSansMedium";    
+}
+
+input {
+    font-family: "GmarketSansMedium";
+}
+
+textarea {
+    font-family: "GmarketSansMedium";
+}
