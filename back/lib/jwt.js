@@ -1,38 +1,40 @@
 class JWT {
-  constructor({ crypto, salt }) {
+  constructor({ crypto }) {
     this.crypto = crypto;
-    this.salt = salt;
   }
 
-  sign(data, options = {}) {
+  createToken(payloadData) {
     const header = this.encode({ tpy: "JWT", alg: "HS256" });
-    const payload = this.encode({ ...data, ...options });
+    const payload = this.encode(payloadData);
     const signature = this.createSignature([header, payload]);
 
     return [header, payload, signature].join(".");
   }
 
-  verify(token) {
-    const [header, payload, signature] = token.split(".");
-    const newSignature = this.createSignature([header, payload], this.salt);
-    if (newSignature !== signature) throw new Error("토큰이 변조됨");
-    return this.decode(payload);
+  encode(value) {
+    return Buffer.from(JSON.stringify(value)).toString("base64Url");
   }
 
-  encode(obj) {
-    return Buffer.from(JSON.stringify(obj)).toString("base64url");
+  decode(encodedValue) {
+    return JSON.parse(Buffer.from(encodedValue, "base64Url").toString("utf-8"));
   }
 
-  decode(base64url) {
-    return JSON.parse(Buffer.from(base64url, "base64url").toString("utf-8"));
-  }
-
-  createSignature(base64urls) {
-    const data = base64urls.join(".");
+  createSignature(sourceArr, salt = "web7722") {
+    const splitArr = sourceArr.join(".");
     return this.crypto
-      .createHmac("sha256", this.salt)
-      .update(data)
-      .digest("base64url");
+      .createHmac("sha256", salt)
+      .update(splitArr)
+      .digest("base64Url");
+  }
+
+  verifyToken(token, salt) {
+    const [header, payload, signature] = token.split(".");
+    const newSignature = this.createSignature([header, payload], salt);
+    if (newSignature !== signature) {
+      throw new Error("토큰값이 다릅니다");
+    }
+
+    return this.decode(payload);
   }
 }
 
