@@ -1,9 +1,9 @@
 const axios = require("axios");
+const Regidate = require("../lib/regidate");
 const request = axios.create({
   baseURL: "http://127.0.0.1:3000",
   withCredentials: true,
 });
-// console.log(request)
 
 class BoardController {
   async getBoard(req, res, next) {
@@ -36,7 +36,18 @@ class BoardController {
 
   async getView(req, res, next) {
     try {
-      res.render("board/view.html");
+      const { boardidx } = req.params;
+      const {
+        data: { register, ...rest },
+      } = await request.get(`/boards/${boardidx}`);
+
+      let date = new Regidate(register);
+      date = date.dateformat();
+
+      const result = { ...rest, register: date };
+      console.log(result);
+
+      res.render("board/view.html", { ...result });
     } catch (e) {
       next(e);
     }

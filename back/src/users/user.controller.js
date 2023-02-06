@@ -34,6 +34,7 @@ class UserController {
       next(e);
     }
   }
+
   async putProfile(req, res, next) {
     try {
       const token = await this.userService.putProfile(req.body);
