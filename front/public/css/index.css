@@ -130,27 +130,6 @@
   font-size: var(--default_font_size);
 }
 
-#slide_wrap {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-#main_img_box {
-  width: 1160px;
-  height: 160px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-#main_img_1 {
-  width: 100%;
-  height: 100%;
-  background: url("https://i.postimg.cc/d0zFHRTK/image.png");
-}
-
 /* content 영역 */
 #content_box {
   width: 1160px;
@@ -269,17 +248,55 @@
   padding-bottom: 10px;
   font-weight: bold;
 }
-#sub_img_box {
-  border-radius: 12px;
-  overflow: hidden;
-}
-.sub_img {
-  width: 100%;
+
+#contentSlideBar {
+  width: 560px;
   height: 380px;
 }
-#sub_img_1 {
-  background-image: url("https://i.postimg.cc/RhNrfP0x/meat-ga6275c2cc-1920.jpg");
-  background-size: cover;
+
+#contentSlideBar > #slidePart {
+  width: 100%;
+  max-width: 560px;
+  height: 380px;
+  position: relative;
+}
+
+#contentSlideBar > #slidePart > #slideShow {
+  overflow: hidden;
+}
+
+#contentSlideBar > #slidePart > #slideShow > .slides {
+  display: flex;
+  position: relative;
+  transition: 0.5s;
+}
+
+#contentSlideBar > #slidePart > #slideShow > .slides > li > img {
+  width: 560px;
+  height: 380px;
+  border-radius: 12px;
+  vertical-align: top;
+}
+
+#contentSlideBar > #slidePart > #slideShow > .controller > span {
+  cursor: pointer;
+  color: #ececec;
+  font-size: 40px;
+  width: 25px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+}
+
+#contentSlideBar > #slidePart > #slideShow > .controller > .prev {
+  position: absolute;
+  top: 40%;
+}
+
+#contentSlideBar > #slidePart > #slideShow > .controller > .next {
+  position: absolute;
+  top: 40%;
+  left: 535px;
 }
 
 /* content 영역 끝 */
