@@ -12,10 +12,7 @@ const UserRepository = require("./user.repository");
 const UserService = require("./user.service");
 const UserController = require("./user.controller");
 
-const JWT = require("../../lib/jwt");
-const crypto = require("crypto");
-
-const jwt = new JWT({ crypto });
+const { jwt } = require("../../config");
 
 const userRepository = new UserRepository({ Users });
 const userService = new UserService({ userRepository, jwt });

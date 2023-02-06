@@ -28,6 +28,7 @@ class UserRepository {
       throw new Error(e);
     }
   }
+
   async getUserById(userid) {
     // console.log(`repo:`, userid);
     try {
