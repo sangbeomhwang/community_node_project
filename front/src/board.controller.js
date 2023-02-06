@@ -9,10 +9,10 @@ class BoardController {
   async getBoard(req, res, next) {
     
     try {
-      console.log(req.user)
-      const response = await request.get('/boards')
-      
-      res.render("board/board.html", { response });
+      const { mainidx, subidx } = req.params
+      const response = await request.get(`/boards?mainidx=${mainidx}&subidx=${subidx}`)
+      console.log(response.data)
+      res.render("board/board.html", {response : response.data});
     } catch (e) {
       next(e);
     }
