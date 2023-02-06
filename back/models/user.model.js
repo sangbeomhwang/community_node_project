@@ -1,0 +1,70 @@
+module.exports = (sequelize, Sequelize) => {
+  class Users extends Sequelize.Model {
+    static initialize() {
+      return this.init(config, settings);
+    }
+  }
+
+  const config = {
+    userid: {
+      type: Sequelize.STRING(60),
+      primaryKey: true,
+    },
+    password: {
+      type: Sequelize.STRING(64),
+      allowNull: false,
+    },
+    img: {
+      type: Sequelize.STRING(128),
+      allowNull: true,
+    },
+    name: {
+      type: Sequelize.STRING(30),
+      allowNull: true,
+    },
+    nickname: {
+      type: Sequelize.STRING(30),
+      allowNull: false,
+    },
+    gender: {
+      type: Sequelize.ENUM("male", "female", "none"),
+      allowNull: false,
+      defaultValue: "none",
+    },
+    phonenumber: {
+      type: Sequelize.STRING(13),
+      allowNull: true,
+    },
+    email: {
+      type: Sequelize.STRING(50),
+      allowNull: false,
+    },
+    address: {
+      type: Sequelize.STRING(128),
+      allowNull: false,
+    },
+    sub_address: {
+      type: Sequelize.STRING(64),
+      allowNull: false,
+    },
+    introduce: {
+      type: Sequelize.TEXT,
+      allowNull: true,
+    },
+    social: {
+      type: Sequelize.ENUM("local", "kakao"),
+      allowNull: false,
+    },
+    register: {
+      type: Sequelize.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.NOW,
+    },
+  };
+
+  const settings = {
+    sequelize,
+  };
+
+  Users.initialize();
+};
