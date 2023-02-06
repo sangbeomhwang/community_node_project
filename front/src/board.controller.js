@@ -7,8 +7,12 @@ const request = axios.create({
 
 class BoardController {
   async getBoard(req, res, next) {
+    
     try {
-      res.render("board/board.html");
+      const { mainidx, subidx } = req.params
+      const response = await request.get(`/boards?mainidx=${mainidx}&subidx=${subidx}`)
+      console.log(response.data)
+      res.render("board/board.html", {response : response.data});
     } catch (e) {
       next(e);
     }
