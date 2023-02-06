@@ -23,7 +23,7 @@ class BoardRepository {
 
   async findOne({ boardidx }) {
     try {
-      const boardOne = await this.board.findOne({ where: { boardidx } });
+      const boardOne = await this.board.findOne({ where: { boardidx }, raw: true });
       return boardOne;
     } catch (e) {
       throw new Error(e);
