@@ -29,8 +29,11 @@ class UserService {
         !social
       )
         throw "내용이 없습니다";
+
+      console.log("확인용", this.jwt.salt);
+
       const hash = this.crypto
-        .createHmac("sha256", "web7722")
+        .createHmac("sha256", this.jwt.salt)
         .update(password)
         .digest("hex");
       const user = await this.userRepository.addUser({
@@ -59,6 +62,7 @@ class UserService {
       throw new Error(e);
     }
   }
+
   async me(token) {
     try {
       const { userid } = this.jwt.verifyToken(token, this.jwt.salt);
@@ -69,6 +73,7 @@ class UserService {
       throw new Error(e);
     }
   }
+
   async putProfile(userData) {
     try {
       const { password, ...rest } = userData;

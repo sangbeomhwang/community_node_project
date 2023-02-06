@@ -1,6 +1,6 @@
 class AuthRepository {
-  constructor({ User }) {
-    this.User = User;
+  constructor({ Users }) {
+    this.User = Users;
   }
   async getUserByInfo({ userid, password }) {
     try {

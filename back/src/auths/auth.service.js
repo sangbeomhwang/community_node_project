@@ -1,9 +1,9 @@
 class AuthService {
-  constructor({ authRepository, jwt, config }) {
+  constructor({ authRepository, jwt }) {
     this.authRepository = authRepository;
     this.jwt = jwt;
     this.crypto = jwt.crypto;
-    this.exceptionHandling = config.exception.BadRequest;
+    // this.exceptionHandling = config.exception.BadRequest;
   }
 
   async token({ userid, password }) {
@@ -22,7 +22,8 @@ class AuthService {
       const token = this.jwt.createToken(user);
       return token;
     } catch (e) {
-      throw new this.BadRequest(e);
+      throw new Error(e);
+      // throw new this.BadRequest(e);
     }
   }
 }
