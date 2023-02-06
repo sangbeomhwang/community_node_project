@@ -1,21 +1,17 @@
 const {
   sequelize: {
-    models: { User },
+    models: { Users },
   },
 } = require("../../models");
 
 const AuthRepository = require("./auth.repository");
 const AuthService = require("./auth.service");
 const AuthController = require("./auth.controller");
-const config = require("../../config");
 
-const JWT = require("../../lib/jwt");
-const crypto = require("crypto");
+const { jwt } = require("../../config");
 
-const jwt = new JWT({ crypto });
-
-const authRepository = new AuthRepository({ User });
-const authService = new AuthService({ authRepository, jwt, config });
+const authRepository = new AuthRepository({ Users });
+const authService = new AuthService({ authRepository, jwt });
 const authController = new AuthController({ authService });
 
 module.exports = {
