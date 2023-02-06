@@ -1,0 +1,49 @@
+#topSlideBar {
+  width: 100%;
+  margin: 40px 0;
+}
+
+#topSlideBar > #slidePart {
+  width: 100%;
+  max-width: 1160px;
+  height: 160px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#topSlideBar > #slidePart > #slideShow {
+  overflow: hidden;
+}
+
+#topSlideBar > #slidePart > #slideShow > .slides {
+  display: flex;
+  position: relative;
+  transition: 0.5s;
+}
+
+#topSlideBar > #slidePart > #slideShow > .slides > li > img {
+  width: 1160px;
+  height: 160px;
+  vertical-align: top;
+}
+
+#topSlideBar > #slidePart > #slideShow > .controller > span {
+  cursor: pointer;
+  color: #ececec;
+  font-size: 40px;
+  width: 25px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+}
+
+#topSlideBar > #slidePart > #slideShow > .controller > .prev {
+  position: absolute;
+  top: 40%;
+}
+
+#topSlideBar > #slidePart > #slideShow > .controller > .next {
+  position: absolute;
+  top: 40%;
+  left: 1135px;
+}
