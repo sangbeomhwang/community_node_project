@@ -5,7 +5,8 @@ const env = process.env;
 const salt = env.SALT;
 
 const config = {
-  port: env.PORT,
+  env: env.NODE_ENV || "development",
+  port: env.PORT || "",
   jwt: new JWT({ crypto, salt }),
   db: {
     development: {
