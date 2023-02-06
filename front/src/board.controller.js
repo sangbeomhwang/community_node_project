@@ -1,13 +1,18 @@
-// const axios = require("axios");
-// const request = axios.create({
-//   baseURL: "http://127.0.0.1:3000",
-//   withCredentials: true,
-// });
+const axios = require("axios");
+const request = axios.create({
+  baseURL: "http://127.0.0.1:3000",
+  withCredentials: true,
+});
+// console.log(request)
 
 class BoardController {
   async getBoard(req, res, next) {
+    
     try {
-      res.render("board/board.html");
+      console.log(req.user)
+      const response = await request.get('/boards')
+      
+      res.render("board/board.html", { response });
     } catch (e) {
       next(e);
     }

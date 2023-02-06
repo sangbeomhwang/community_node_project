@@ -31,20 +31,21 @@
 
     <div id="content_body">
       <ul>
+        {% for item in list %}
         <li>
           <div class="li_user">
-            <a href="#">닉네임</a>
+            <a href="#">{{item.nickname}}</a>
             <div>
-              <span>등록시간</span>
+              <span>{{item.register}}</span>
               <span>몇분전</span>
             </div>
           </div>
-          <div class="li_sub"><a href="#">디자인이 너무 어려워요..</a></div>
+          <div class="li_sub"><a href="#">{{item.content}}</a></div>
           <div class="li_Cate">
             <a href="#">#Gitjub #Repository</a>
             <div>
               <div>
-                조회수<img
+                {{item.hit}}<img
                   src="https://i.postimg.cc/XYD9XSTJ/ph-eye.png"
                 /><span>0</span>
               </div>
@@ -61,6 +62,7 @@
             </div>
           </div>
         </li>
+        {% endfor %}
         <li>
           <div class="li_user">
             <a href="#">닉네임</a>
