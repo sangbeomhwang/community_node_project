@@ -8,7 +8,7 @@ class App {
   constructor() {
     this.app = express();
     this.setMiddleWare();
-    // this.setRouting();
+    this.setRouting();
     this.setStatic();
     this.errorHandler();
   }
