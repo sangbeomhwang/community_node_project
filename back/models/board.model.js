@@ -9,6 +9,7 @@ module.exports = (sequelize, Sequelize) => {
     boardidx: {
       type: Sequelize.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
     },
     nickname: {
       type: Sequelize.STRING(30),

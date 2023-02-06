@@ -8,7 +8,7 @@ class App {
   constructor() {
     this.app = express();
     this.setMiddleWare();
-    // this.setRouting();
+    this.setRouting();
     this.setStatic();
     this.errorHandler();
   }
@@ -22,6 +22,7 @@ class App {
   setRouting() {
     this.app.use(require("./routes"));
   }
+
   setStatic() {
     this.app.use("/uploads", express.static("uploads"));
   }
