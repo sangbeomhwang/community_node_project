@@ -22,17 +22,17 @@
 
     <div id="content_body">
       <form id="write_form">
-        <input id="write_subject" value="안녕하세요" readonly />
+        <input id="write_subject" value="{{title}}" readonly />
         <div id="write_group">
           <div id="write_info">
             <img src="https://i.postimg.cc/4xbnhk6D/Vector-1.png" />
-            <span>cloudcoke</span>
+            <span>{{nickname}}</span>
             <img src="https://i.postimg.cc/PxNqcCgH/Vector.png" />
-            <span>2023-02-01</span>
+            <span>{{register}}</span>
             <img src="https://i.postimg.cc/FHBRkgYk/Vector-6.png" />
-            <span>100</span>
+            <span>{{hit}}</span>
           </div>
-          <textarea id="write_content" readonly>안녕하세요</textarea>
+          <textarea id="write_content" readonly>{{content}}</textarea>
         </div>
 
         <div id="write_btnbox">
