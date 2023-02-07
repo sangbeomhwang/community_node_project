@@ -1,8 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const axios = require("axios");
-const qs = require("qs");
 
 class App {
   constructor() {
