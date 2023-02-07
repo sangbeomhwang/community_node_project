@@ -28,7 +28,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     gender: {
       type: Sequelize.ENUM("male", "female", "none"),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "none",
     },
     phonenumber: {
@@ -41,11 +41,11 @@ module.exports = (sequelize, Sequelize) => {
     },
     address: {
       type: Sequelize.STRING(128),
-      allowNull: false,
+      allowNull: true,
     },
     sub_address: {
       type: Sequelize.STRING(64),
-      allowNull: false,
+      allowNull: true,
     },
     introduce: {
       type: Sequelize.TEXT,
