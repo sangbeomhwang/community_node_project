@@ -1,5 +1,4 @@
 const axios = require("axios");
-const Regidate = require("../lib/regidate");
 const request = axios.create({
   baseURL: "http://127.0.0.1:3000",
   withCredentials: true,
@@ -8,11 +7,11 @@ const request = axios.create({
 class BoardController {
   async getBoard(req, res, next) {
     try {
-      const { mainidx, subidx } = req.query;
-      console.log(mainidx);
-      const response = await request.get(`/boards?mainidx=${mainidx}&subidx=${subidx}`);
-      // console.log(response.data);
-      res.render("board/board.html", { response: response.data });
+      // const { mainidx, subidx } = req.query;
+      // const page = req.query?.page || 1;
+      // const response = await request.get(`/boards?mainidx=${mainidx}&subidx=${subidx}&page=${page}`);
+      // res.render("board/board.html", { response: response.data });
+      res.render("board/board.html");
     } catch (e) {
       next(e);
     }
@@ -45,7 +44,6 @@ class BoardController {
       date = date.dateformat();
 
       const result = { ...rest, register: date };
-      // console.log(result);
 
       res.render("board/view.html", { ...result });
     } catch (e) {

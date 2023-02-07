@@ -1,12 +1,30 @@
 class BoardService {
-  constructor({ boardRepository }) {
+  constructor({ boardRepository, DateFormat }) {
     this.boardRepository = boardRepository;
+    this.DateFormat = DateFormat;
   }
 
-  async list({ mainidx, subidx }) {
+  dateFormatting(data) {
+    const { register, ...rest } = data;
+    const date = new this.DateFormat(register).dateformat();
+    return { ...rest, register: date };
+  }
+
+  async list({ mainidx, subidx, page, maxBoards }) {
     try {
       const result = await this.boardRepository.findAll({ mainidx, subidx });
-      return result;
+      const totalBoards = result.length;
+      const startNum = (page - 1) * maxBoards;
+      const endNum = page * maxBoards - 1;
+      let data = [];
+      if (startNum < totalBoards) {
+        for (let i = startNum; i <= endNum; i++) {
+          if (result[i]) {
+            data.push(this.dateFormatting(result[i]));
+          }
+        }
+      }
+      return data;
     } catch (e) {
       throw new Error(e);
     }
@@ -15,7 +33,8 @@ class BoardService {
   async view({ boardidx }) {
     try {
       const result = await this.boardRepository.findOne({ boardidx });
-      return result;
+      const data = this.dateFormatting(result);
+      return data;
     } catch (e) {
       throw new Error(e);
     }

@@ -5,10 +5,10 @@ class BoardController {
 
   async getList(req, res, next) {
     try {
-      //   const { token } = req.cookies;
       const { mainidx, subidx } = req.query;
-      const itemList = await this.boardService.list({ mainidx, subidx });
-      //   res.setHeader('Set-Cookie')
+      const page = Number(req.query?.page) || 1;
+      const maxBoards = Number(req.query?.maxBoards) || 7;
+      const itemList = await this.boardService.list({ mainidx, subidx, page, maxBoards });
       res.json(itemList);
     } catch (e) {
       next(e);

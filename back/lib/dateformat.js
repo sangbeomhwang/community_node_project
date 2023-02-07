@@ -1,4 +1,4 @@
-class Regidate {
+class DateFormat {
   constructor(date) {
     this.time = new Date(date);
   }
@@ -16,4 +16,4 @@ class Regidate {
   }
 }
 
-module.exports = Regidate;
+module.exports = DateFormat;
