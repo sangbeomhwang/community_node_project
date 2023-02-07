@@ -40,16 +40,24 @@ const config = {
     reg: /^[A-Za-z0-9]{6,16}$/,
     callback: duplicateCheck,
   },
-  usernick: {
+  nickname: {
     reg: /^[A-Za-z가-힣0-9]{2,16}$/,
     callback: duplicateCheck,
   },
-  userpw: {
+  name: {
+    reg: /^[가-힣]{2,5}$/,
+    callback: duplicateCheck,
+  },
+  password: {
     reg: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/,
     // callback: null,
   },
   email: {
     reg: /^[A-Za-z0-9]+@[A-Za-z0-9.-_]{1,10}.[A-Za-z]{2,4}$/,
+    callback: duplicateCheck,
+  },
+  phonenumber: {
+    reg: /^[0-9]{10,11}$/,
     callback: duplicateCheck,
   },
 };
@@ -61,7 +69,7 @@ for (const key in config) {
 // 패스워드 재확인
 document.querySelector("#pwcheck").addEventListener("keyup", () => {
   if (
-    document.querySelector("#userpw").value !==
+    document.querySelector("#password").value !==
     document.querySelector("#pwcheck").value
   )
     document.querySelector(".checkMessage").style.opacity = 1;
@@ -71,6 +79,7 @@ document.querySelector("#pwcheck").addEventListener("keyup", () => {
   }
 });
 
+/*
 // 아바타 등록
 document.querySelector("#imageFrm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -88,3 +97,4 @@ document.querySelector("#imageFrm").addEventListener("submit", async (e) => {
   console.log(document.querySelector("#userImg").value);
   console.log(document.querySelector("#image_row > img").src);
 });
+*/

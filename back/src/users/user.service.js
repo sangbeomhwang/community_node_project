@@ -7,28 +7,8 @@ class UserService {
 
   async signup(userData) {
     try {
-      const {
-        userid,
-        name,
-        password,
-        nickname,
-        email,
-        address,
-        sub_address,
-        social,
-        ...rest
-      } = userData;
-      if (
-        !userid ||
-        !password ||
-        !name ||
-        !nickname ||
-        !email ||
-        !address ||
-        !sub_address ||
-        !social
-      )
-        throw "내용이 없습니다";
+      const { userid, password, nickname, ...rest } = userData;
+      if (!userid || !password || !nickname) throw "내용이 없습니다";
 
       console.log("확인용", this.jwt.salt);
 
@@ -38,13 +18,8 @@ class UserService {
         .digest("hex");
       const user = await this.userRepository.addUser({
         userid,
-        name,
         password: hash,
         nickname,
-        email,
-        address,
-        sub_address,
-        social,
         ...rest,
       });
       return user;

@@ -102,6 +102,26 @@
   justify-content: space-between;
 }
 
+#login_signin_box > #profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 40px;
+  color: #fefefe;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+#login_signin_box > #profile > a {
+  display: inline-block;
+  margin-top: 3px;
+  color: #fefefe;
+  font-size: 15px;
+  font-weight: bold;
+}
+
 #login_btn {
   display: inline-block;
   width: 100px;
@@ -124,6 +144,20 @@
   background: var(--signin_btn_background_color);
   border: 1px solid var(--signin_btn_background_color);
   color: var(--signin_btn_font_color);
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
+  font-size: var(--default_font_size);
+}
+
+#logout_btn {
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  border-radius: 80px;
+  border: 1px solid var(--login_btn_background_color);
+  background: var(--login_btn_background_color);
+  color: var(--login_btn_font_color);
   text-align: center;
   line-height: 40px;
   font-weight: bold;

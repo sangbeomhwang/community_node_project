@@ -10,12 +10,12 @@ frm.addEventListener("submit", async (e) => {
   try {
     e.preventDefault();
 
-    const { userid, userpw } = e.target;
-    console.log(userid.value, userpw.value);
+    const { userid, password } = e.target;
+    console.log(userid.value, password.value);
 
     const response = await request.post("/auths", {
       userid: userid.value,
-      userpw: userpw.value,
+      password: password.value,
     });
 
     // console.log(response.data.status);
@@ -25,7 +25,7 @@ frm.addEventListener("submit", async (e) => {
     else if (response.status >= 200) {
       document.cookie = `token=${
         response.data.token
-      }; expires=${date.toUTCString()};path='/'`;
+      }; expires=${date.toUTCString()};path=/;`;
       location.href = "/";
     }
   } catch (e) {

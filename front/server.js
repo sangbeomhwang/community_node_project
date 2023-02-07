@@ -22,6 +22,8 @@ app.use((req, res, next) => {
 
     const decodedPl = JSON.parse(Buffer.from(payload, "base64").toString("utf-8"));
 
+    // console.log("req check용 : ", req.user);
+
     req.user = decodedPl;
   } catch (e) {
   } finally {
@@ -29,17 +31,18 @@ app.use((req, res, next) => {
   }
 });
 
-app.use(router);
-
 app.get("/", (req, res) => {
   // console.log(`req.user :`, req.user);
   if (req.user === undefined) return res.render("index.html");
-  const { userid, username } = req.user;
+  console.log(`req.user :`, req.user);
+  const { userid, nickname } = req.user;
   res.render("index.html", {
     userid,
-    username,
+    nickname,
   });
 });
+
+app.use(router);
 
 app.use((error, req, res, next) => {
   res.status(500).json(error.message);

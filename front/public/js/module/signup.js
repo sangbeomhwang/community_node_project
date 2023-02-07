@@ -40,11 +40,11 @@ const config = {
     reg: /^[A-Za-z0-9]{6,16}$/,
     callback: duplicateCheck,
   },
-  usernick: {
+  nickname: {
     reg: /^[A-Za-z가-힣0-9]{2,16}$/,
     callback: duplicateCheck,
   },
-  userpw: {
+  password: {
     reg: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/,
     // callback: null,
   },
@@ -61,7 +61,7 @@ for (const key in config) {
 // 패스워드 재확인
 document.querySelector("#pwcheck").addEventListener("keyup", () => {
   if (
-    document.querySelector("#userpw").value !==
+    document.querySelector("#password").value !==
     document.querySelector("#pwcheck").value
   )
     document.querySelector(".checkMessage").style.opacity = 1;
