@@ -79,6 +79,7 @@ document.querySelector("#pwcheck").addEventListener("keyup", () => {
   }
 });
 
+/*
 // 아바타 등록
 document.querySelector("#imageFrm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -96,3 +97,4 @@ document.querySelector("#imageFrm").addEventListener("submit", async (e) => {
   console.log(document.querySelector("#userImg").value);
   console.log(document.querySelector("#image_row > img").src);
 });
+*/
