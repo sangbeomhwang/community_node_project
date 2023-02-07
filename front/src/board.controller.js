@@ -7,10 +7,6 @@ const request = axios.create({
 class BoardController {
   async getBoard(req, res, next) {
     try {
-      // const { mainidx, subidx } = req.query;
-      // const page = req.query?.page || 1;
-      // const response = await request.get(`/boards?mainidx=${mainidx}&subidx=${subidx}&page=${page}`);
-      // res.render("board/board.html", { response: response.data });
       res.render("board/board.html");
     } catch (e) {
       next(e);
@@ -36,16 +32,8 @@ class BoardController {
   async getView(req, res, next) {
     try {
       const { boardidx } = req.params;
-      const {
-        data: { register, ...rest },
-      } = await request.get(`/boards/${boardidx}`);
-
-      let date = new Regidate(register);
-      date = date.dateformat();
-
-      const result = { ...rest, register: date };
-
-      res.render("board/view.html", { ...result });
+      const { data } = await request.get(`/boards/${boardidx}`);
+      res.render("board/view.html", data);
     } catch (e) {
       next(e);
     }
