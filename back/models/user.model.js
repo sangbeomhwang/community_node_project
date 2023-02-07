@@ -54,6 +54,7 @@ module.exports = (sequelize, Sequelize) => {
     social: {
       type: Sequelize.ENUM("local", "kakao"),
       allowNull: false,
+      defaultValue: "local",
     },
     register: {
       type: Sequelize.DATE,

@@ -49,15 +49,15 @@
             </p>
           </div>
 
-          <div id="userpw_row">
-            <h3 id="userpw">
-              <label for="userpw">비밀번호</label>
+          <div id="password_row">
+            <h3 id="password">
+              <label for="password">비밀번호</label>
             </h3>
             <span class="form">
               <input
                 type="password"
-                id="userpw"
-                name="userpw"
+                id="password"
+                name="password"
                 placeholder="비밀번호를 입력해주세요"
                 onfocus="this.placeholder=''"
                 onblur="this.placeholder='비밀번호를 입력해주세요'"
@@ -91,16 +91,16 @@
         </div>
 
         <div id="info">
-          <div id="nick_row">
-            <h3 id="usernick">
-              <label for="usernick">닉네임</label>
+          <div id="nickname_row">
+            <h3 id="nickname">
+              <label for="nickname">닉네임</label>
             </h3>
             <span class="form">
               <input
                 type="text"
-                id="usernick"
-                name="usernick"
-                value="{{usernick}}"
+                id="nickname"
+                name="nickname"
+                value="{{nickname}}"
               />
             </span>
             <p class="alertMessage" style="opacity: 0; color: red">
@@ -108,32 +108,70 @@
             </p>
           </div>
 
-          <div id="email_row">
-            <h3 id="useremail">
-              <label for="useremail">이메일</label>
+          <div id="name_row">
+            <h3 id="name">
+              <label for="name">닉네임</label>
             </h3>
             <span class="form">
-              <input
-                type="text"
-                id="useremail"
-                name="useremail"
-                value="{{useremail}}"
-              />
+              <input type="text" id="name" name="name" value="{{name}}" />
+            </span>
+            <p class="alertMessage" style="opacity: 0; color: red">
+              특수문자를 제외하여 두 글자 이상으로 입력해주세요
+            </p>
+          </div>
+
+          <div id="email_row">
+            <h3 id="email">
+              <label for="email">이메일</label>
+            </h3>
+            <span class="form">
+              <input type="text" id="email" name="email" value="{{email}}" />
             </span>
             <p class="alertMessage" style="opacity: 0; color: red">
               이메일 형식에 맞게 입력해주세요
             </p>
           </div>
 
+          <div id="phonenumber_row">
+            <h3 id="phonenumber">
+              <label for="phonenumber">휴대폰 번호</label>
+            </h3>
+            <span class="form">
+              <input
+                type="tel"
+                id="phonenumber"
+                name="phonenumber"
+                maxlength="11"
+              />
+            </span>
+            <p class="alertMessage" style="opacity: 0; color: red">
+              "-"를 제외한 11자리의 숫자로 입력해주세요
+            </p>
+          </div>
+
+          <div id="gender_row">
+            <h3 id="gender">
+              <label for="gender">성별</label>
+            </h3>
+            <select id="gender" class="inbox" name="gender">
+              <option value="none" checked>선택</option>
+              <option value="male">남성</option>
+              <option value="female">여성</option>
+            </select>
+            <p class="alertMessage" style="opacity: 0; color: red">
+              필수 선택 사항이 아닙니다.
+            </p>
+          </div>
+
           <div id="address_row">
-            <h3 id="address">
-              <label for="useraddress">주소</label>
+            <h3 id="user_address">
+              <label for="address">주소</label>
             </h3>
             <span class="form">
               <input
                 type="text"
-                id="useraddress"
-                name="useraddress"
+                id="address"
+                name="address"
                 placeholder="주소를 검색해주세요"
                 readonly
               />
@@ -141,12 +179,12 @@
             </span>
           </div>
 
-          <ul id="address_detail_row">
+          <ul id="sub_address_row">
             <li class="detail_form">
               <input
                 type="text"
-                id="useraddress_detail"
-                name="useraddress_detail"
+                id="sub_address"
+                name="sub_address"
                 placeholder="상세 주소를 입력해주세요"
                 onfocus="this.placeholder=''"
                 onblur="this.placeholder='상세 주소를 입력해주세요'"
@@ -155,11 +193,11 @@
           </ul>
 
           <div id="introduce_row">
-            <h3 id="userintroduce">간단 소개</h3>
+            <h3 id="introduce">간단 소개</h3>
             <span class="form">
               <textarea
-                name="userintroduce"
-                id="userintroduce"
+                name="introduce"
+                id="introduce"
                 cols="100"
                 rows="10"
                 placeholder="본인을 간단히 소개해주세요"
@@ -178,9 +216,9 @@
   </form>
 </div>
 
-<!-- <script type="module" src="/js/module/profile.js"></script> -->
-
 {% endblock %} {% block js %}
+
+<script type="module" src="/js/module/profile.js"></script>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
@@ -193,8 +231,8 @@
         new daum.Postcode({
           oncomplete: function (data) {
             //선택시 입력값 세팅
-            document.querySelector("#useraddress").value = data.address; // 주소 넣기
-            document.querySelector("input[name=useraddress_detail]").focus(); //상세 주소 입력폼 포커싱
+            document.querySelector("#address").value = data.address; // 주소 넣기
+            document.querySelector("input[name=sub_address]").focus(); //상세 주소 입력폼 포커싱
           },
         }).open();
       });
