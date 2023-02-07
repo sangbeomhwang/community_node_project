@@ -24,14 +24,14 @@ app.use((req, res, next) => {
       Buffer.from(payload, "base64").toString("utf-8")
     );
 
+    // console.log("req check용 : ", req.user);
+
     req.user = decodedPl;
   } catch (e) {
   } finally {
     next();
   }
 });
-
-app.use(router);
 
 app.get("/", (req, res) => {
   // console.log(`req.user :`, req.user);
@@ -43,6 +43,8 @@ app.get("/", (req, res) => {
     nickname,
   });
 });
+
+app.use(router);
 
 app.use((error, req, res, next) => {
   res.status(500).json(error.message);

@@ -58,9 +58,9 @@
                 type="password"
                 id="password"
                 name="password"
-                placeholder="비밀번호를 입력해주세요"
+                placeholder="영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요"
                 onfocus="this.placeholder=''"
-                onblur="this.placeholder='비밀번호를 입력해주세요'"
+                onblur="this.placeholder='영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요'"
                 maxlength="16"
               />
             </span>
@@ -110,13 +110,20 @@
 
           <div id="name_row">
             <h3 id="name">
-              <label for="name">닉네임</label>
+              <label for="name">이름</label>
             </h3>
             <span class="form">
-              <input type="text" id="name" name="name" value="{{name}}" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="2~5 길이의 한글로 입력해주세요"
+                onfocus="this.placeholder=''"
+                onblur="this.placeholder='2~5 길이의 한글로 입력해주세요'"
+              />
             </span>
             <p class="alertMessage" style="opacity: 0; color: red">
-              특수문자를 제외하여 두 글자 이상으로 입력해주세요
+              2~5 길이의 한글로 입력해주세요
             </p>
           </div>
 
@@ -141,11 +148,14 @@
                 type="tel"
                 id="phonenumber"
                 name="phonenumber"
+                placeholder="'-'를 제외한 11자리의 숫자로 입력해주세요"
+                onfocus="this.placeholder=''"
+                onblur="this.placeholder=`'-'를 제외한 11자리의 숫자로 입력해주세요`"
                 maxlength="11"
               />
             </span>
             <p class="alertMessage" style="opacity: 0; color: red">
-              "-"를 제외한 11자리의 숫자로 입력해주세요
+              '-'를 제외한 11자리의 숫자로 입력해주세요
             </p>
           </div>
 

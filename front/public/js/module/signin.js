@@ -25,7 +25,7 @@ frm.addEventListener("submit", async (e) => {
     else if (response.status >= 200) {
       document.cookie = `token=${
         response.data.token
-      }; expires=${date.toUTCString()};path='/'`;
+      }; expires=${date.toUTCString()};path=/;`;
       location.href = "/";
     }
   } catch (e) {
