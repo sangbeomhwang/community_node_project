@@ -20,9 +20,7 @@ app.use((req, res, next) => {
     const { token } = req.cookies;
     const [header, payload, signature] = token.split(".");
 
-    const decodedPl = JSON.parse(
-      Buffer.from(payload, "base64").toString("utf-8")
-    );
+    const decodedPl = JSON.parse(Buffer.from(payload, "base64").toString("utf-8"));
 
     req.user = decodedPl;
   } catch (e) {
