@@ -20,7 +20,7 @@ function topSlide() {
   // 주요 변수 초기화
   let currentIdx = 0;
   let translate = 0;
-  const speedTime = 100;
+  const speedTime = 2000;
 
   // 셋업
   const sliderCloneImgs = slider.querySelectorAll("li");
@@ -80,7 +80,7 @@ function topSlide() {
   }
 
   function showSliding() {
-    setInterval(sliding, 3000);
+    setInterval(sliding, 7000);
   }
 
   showSliding();
@@ -110,7 +110,7 @@ function subSlide() {
   // 주요 변수 초기화
   let currentIdx = 0;
   let translate = 0;
-  const speedTime = 100;
+  const speedTime = 3000;
 
   // 셋업
   const sliderCloneImgs = slider.querySelectorAll("li");
@@ -170,7 +170,7 @@ function subSlide() {
   }
 
   function showSliding() {
-    setInterval(sliding, 3000);
+    setInterval(sliding, 7000);
   }
 
   showSliding();
