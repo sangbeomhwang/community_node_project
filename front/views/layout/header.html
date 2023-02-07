@@ -52,12 +52,31 @@
       </label>
     </div>
     <div id="login_signin_box">
+      {% if userid %}
+      <div id="usernick">{{userid}}님</div>
+      <div id="profile">
+        <a id="userProfile" href="/users/profile">마이 페이지</a>
+      </div>
+      <div id="logout">
+        <a id="logout_btn" href="/">로그아웃</a>
+      </div>
+      <script>
+        const logout = document.querySelector("#logout");
+        logout.addEventListener("click", (e) => {
+          e.preventDefault();
+          document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+          location.href = "/";
+        });
+      </script>
+
+      {% else %}
       <div id="login">
         <a id="login_btn" href="/users/signin">로그인</a>
       </div>
       <div id="signin">
         <a id="signin_btn" href="/users/terms">회원가입</a>
       </div>
+      {% endif %}
     </div>
   </div>
 </div>

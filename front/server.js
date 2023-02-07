@@ -36,10 +36,11 @@ app.use(router);
 app.get("/", (req, res) => {
   // console.log(`req.user :`, req.user);
   if (req.user === undefined) return res.render("index.html");
-  const { userid, username } = req.user;
+  console.log(`req.user :`, req.user);
+  const { userid, nickname } = req.user;
   res.render("index.html", {
     userid,
-    username,
+    nickname,
   });
 });
 

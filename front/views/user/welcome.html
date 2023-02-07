@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="/css/user/welcome.css" />
 
 {% endblock %} {% block content %}
-
 <div id="welcome_wrap">
   <div id="header_wrap">
     <div id="header">
@@ -17,13 +16,13 @@
   </div>
 
   <div id="contents">
-    <h2>{{token}}님, 환영합니다</h2>
+    <h2>{{nickname}}님, 환영합니다</h2>
   </div>
   <div id="nav">
     <a href="/">홈페이지로 이동하기</a>
-    <a href="/board">게시판으로 이동하기</a>
+    <a href="/boards">게시판으로 이동하기</a>
     <a href="/users/profile">회원정보 조회하기</a>
   </div>
 </div>
 
-{% endblock%}
+{% endblock %}

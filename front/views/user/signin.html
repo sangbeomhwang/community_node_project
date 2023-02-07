@@ -4,7 +4,7 @@
 
 {% endblock %} {% block content %}
 
-<form name="login" id="loginFrm">
+<form action="" name="login" id="loginFrm">
   <div id="header">
     <h1 id="logo">
       <a href="/"><img src="https://i.postimg.cc/hjKZgQ6x/team-logo.png" /></a>
@@ -21,8 +21,8 @@
   />
   <input
     type="password"
-    name="userpw"
-    id="userpw"
+    name="password"
+    id="password"
     placeholder="비밀번호를 입력해주세요"
     onfocus="this.placeholder=''"
     onblur="this.placeholder='비밀번호를 입력해주세요'"
@@ -42,6 +42,8 @@
   </div>
 </form>
 
-<script type="module" src="/js/module/login.js"></script>
+{% endblock%} {% block js %}
 
-{% endblock%}
+<script type="module" src="/js/module/signin.js"></script>
+
+{% endblock %}
