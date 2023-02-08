@@ -90,11 +90,17 @@ document.querySelector("#photoFrm").addEventListener("submit", async (e) => {
       ["Content-Type"]: "multipart/form-data",
     },
   });
+
+  console.log("response check : ", response.data);
   document.querySelector("#userImg").value = response.data.filename;
   document.querySelector(
     "#previewImg"
   ).src = `http://127.0.0.1:3000/${response.data.filename}`;
-  console.log(document.querySelector("#userImg").value);
-  console.log(document.querySelector("#image_row > img").src);
+
+  console.log("userImg value : ", document.querySelector("#userImg").value);
+  console.log(
+    "previewImg src : ",
+    document.querySelector("#imageBox > img").src
+  );
 });
 */

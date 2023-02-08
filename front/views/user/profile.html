@@ -16,20 +16,19 @@
     </div>
   </div>
 
-  <!-- <form method="post" action="/users/single" id="photoFrm">
-    <label for="profile_img">
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png"
-        alt="profile_image"
-      />
-    </label>
-    <input type="file" name="profile_img" id="profile_img" />
+  <!-- <form method="post" action="/single" id="photoFrm">
+    <input type="file" name="filename" />
     <button type="submit">사진 등록</button>
   </form> -->
 
   <form method="post" action="/users/profile" id="profileFrm">
     <div id="contents_wrap">
       <div id="contents" class="container">
+        <!-- <div id="imageBox">
+          <img id="previewImg" src="" alt="" />
+          <input type="hidden" name="image" id="userImg" value="{{userImg}}" />
+        </div> -->
+
         <div id="login">
           <div id="userid_row">
             <h3 id="userid">
