@@ -97,7 +97,6 @@ const init = async () => {
       result = await render({ mainidx, subidx, page });
     }
     const nowPageList = document.querySelectorAll(`[data-page]`);
-    console.log(nowPageList);
     for (let i = 0; i < nowPageList.length; i++) {
       nowPageList[i].classList.remove("now");
     }
