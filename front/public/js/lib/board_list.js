@@ -48,9 +48,27 @@ const render = async ({ mainidx, subidx, page }) => {
 };
 
 const init = async () => {
+  const categoryTitle = async (mainidx) => {
+    const category = document.querySelector("#subject");
+    category.innerHTML = "";
+    const { data } = await request.get(`/categories?mainidx=${mainidx}`);
+    category.innerHTML = `<div data-mainidx="${data[0].mainidx}">${data[0].title}</div>`;
+  };
+
+  const subCategoryTitle = async (mainidx) => {
+    const subCategory = document.querySelector("#subcategories");
+    subCategory.innerHTML = "";
+    const { data } = await request.get(`/categories?mainidx=${mainidx}`);
+    const { SubCategories } = data[0];
+    subCategory.innerHTML = `<li>전체</li>`;
+    for (let i = 0; i < SubCategories.length; i++) {
+      subCategory.innerHTML += `<li data-subidx="${SubCategories[i].subidx}">${SubCategories[i].title}</li>`;
+    }
+  };
+
   const leftBtnHandler = async () => {
     if (result.page === 1) {
-      return console.log("끝");
+      return;
     } else {
       result = await render({ mainidx, subidx, page: result.startPageNum - 1 });
       drawPageList(result);
@@ -64,7 +82,7 @@ const init = async () => {
 
   const rightBtnHandler = async () => {
     if (result.page === result.lastPage) {
-      return console.log("끝");
+      return;
     }
     if (result.endPageNum + 1 < result.lastPage) {
       result = await render({ mainidx, subidx, page: result.endPageNum + 1 });
@@ -97,7 +115,6 @@ const init = async () => {
       result = await render({ mainidx, subidx, page });
     }
     const nowPageList = document.querySelectorAll(`[data-page]`);
-    console.log(nowPageList);
     for (let i = 0; i < nowPageList.length; i++) {
       nowPageList[i].classList.remove("now");
     }
@@ -111,10 +128,26 @@ const init = async () => {
   const subidx = queryString.get("subidx");
   const page = queryString.get("page");
 
+  categoryTitle(mainidx);
+  subCategoryTitle(mainidx);
   let result = await render({ mainidx, subidx, page });
   drawPageList(result);
   const nowPage = document.querySelector(`[data-page='${result.page}']`);
   nowPage.classList.add("now");
+
+  const subCategory = document.querySelector("#subcategories");
+  const subHandler = async (e) => {
+    const { subidx } = e.target.dataset;
+    if (!subidx) {
+      const result = await render({ mainidx });
+      drawPageList(result);
+      return;
+    }
+    const result = await render({ mainidx, subidx });
+    drawPageList(result);
+  };
+
+  subCategory.addEventListener("click", subHandler);
 };
 
 init();

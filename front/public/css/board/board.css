@@ -43,9 +43,6 @@
 
 #subcategory > ul > li {
   padding: 0 60px;
-}
-
-#subcategory > ul > li > a {
   font-size: var(--board_header_subcategory_font_size);
   font-weight: 700;
   color: black;
@@ -217,17 +214,29 @@
   width: 10.54px;
   height: 14px;
   transform: matrix(-1, 0, 0, 1, 0, 0);
+  cursor: pointer;
 }
 
 #content_page > ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin: 0 12px;
-  width: 110px;
+}
+
+#content_page > ul > li {
+  margin: 0 5px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  cursor: pointer;
 }
 
 .now {
-  background: #aaa;
+  color: #fefefe;
+  background: #3d3d3d;
+  border-radius: 5px;
 }
 
 #footer_wrap {

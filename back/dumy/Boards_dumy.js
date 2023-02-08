@@ -1,4 +1,6 @@
-const dumy = [
+
+const Boards = [
+
   {
     title: "Vicugna vicugna",
     content: "felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar",
@@ -149,7 +151,9 @@ const dumy = [
   {
     title: "Eubalaena australis",
     content: "amet justo morbi ut odio cras mi pede malesuada in",
+
     nickname: "Baleen Jerry",
+
     mainidx: 1,
     subidx: 0,
   },
@@ -161,7 +165,9 @@ const dumy = [
     subidx: 1,
   },
   {
+
     title: "Jerry ursinus",
+
     content: "habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque",
     nickname: "Common wombat",
     mainidx: 1,
@@ -701,4 +707,6 @@ const dumy = [
   },
 ];
 
-module.exports = dumy;
+
+module.exports = Boards;
+
