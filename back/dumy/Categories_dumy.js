@@ -1,4 +1,4 @@
-const Categorys = [
+const Categories = [
   {
     mainidx: 0,
     title: "Q&A",
@@ -13,4 +13,4 @@ const Categorys = [
   },
 ];
 
-module.exports = Categorys;
+module.exports = Categories;

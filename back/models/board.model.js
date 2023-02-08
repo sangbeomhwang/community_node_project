@@ -3,6 +3,27 @@ module.exports = (sequelize, Sequelize) => {
     static initialize() {
       return this.init(config, settings);
     }
+
+    static associate(models) {
+      // this.hasMany(models.Likes, {
+      //   foreignKey: "boardidx",
+      // });
+      // this.hasMany(models.Hashes, {
+      //   foreignKey: "boardidx",
+      // });
+      // this.hasMany(models.Comments, {
+      //   foreignKey: "boardidx",
+      // });
+      this.belongsTo(models.Users, {
+        foreignKey: "userid",
+      });
+      this.belongsTo(models.Categories, {
+        foreignKey: "mainidx",
+      });
+      this.belongsTo(models.SubCategories, {
+        foreignKey: "subidx",
+      });
+    }
   }
 
   const config = {

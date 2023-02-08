@@ -3,6 +3,25 @@ module.exports = (sequelize, Sequelize) => {
     static initialize() {
       return this.init(config, settings);
     }
+
+    static associate(models) {
+      this.hasMany(models.Boards, {
+        foreignKey: "userid",
+      });
+
+      // this.hasMany(models.Comments, {
+      //   foreignKey: "userid",
+      // });
+      // this.hasMany(models.Likes, {
+      //   foreignKey: "userid",
+      // });
+      // this.hasMany(models.Points, {
+      //   foreignKey: "userid",
+      // });
+      // this.hasMany(models.Chats, {
+      //   foreignKey: "userid",
+      // });
+    }
   }
 
   const config = {

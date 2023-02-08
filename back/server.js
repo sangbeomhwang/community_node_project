@@ -7,16 +7,19 @@ const path = require("path");
 app.listen(process.env.PORT, async () => {
   await sequelize.sync({ force: false });
 
-  const dumyDir = path.join(__dirname, "dumy");
-  fs.readdirSync(dumyDir)
-    .filter((file) => file.indexOf("dumy") !== -1)
-    .forEach(async (file) => {
-      const data = require(path.join(dumyDir, file));
-      const modelName = file.split("_")[0];
-      for (let i = 0; i < data.length; i++) {
-        await sequelize.models[modelName].create(data[i]);
-      }
-    });
+  // const category = require("./dumy/Categories_dumy");
+  // const subCategory = require("./dumy/SubCategories_dumy");
+  // const board = require("./dumy/Boards_dumy");
 
+  // for (let i = 0; i < category.length; i++) {
+  //   await sequelize.models.Categories.create(category[i]);
+  // }
+  // for (let i = 0; i < subCategory.length; i++) {
+  //   await sequelize.models.SubCategories.create(subCategory[i]);
+  // }
+
+  // for (let i = 0; i < board.length; i++) {
+  //   await sequelize.models.Boards.create(board[i]);
+  // }
   console.log(`Back Server Start ${process.env.PORT}`);
 });

@@ -12,7 +12,7 @@ class BoardService {
 
   async list({ mainidx, subidx, page = 1, maxBoards }) {
     try {
-      if (subidx === "null") subidx = undefined;
+      if (subidx === "null" || subidx === "undefined") subidx = undefined;
       const result = await this.boardRepository.findAll({ mainidx, subidx });
       const totalBoards = result.length;
       const startNum = (page - 1) * maxBoards;
@@ -84,6 +84,7 @@ class BoardService {
   async deleteBoard({ boardidx }) {
     try {
       const result = await this.boardRepository.delBoard({ boardidx });
+      return result;
     } catch (e) {
       throw new Error(e);
     }
