@@ -45,10 +45,10 @@ class UserRepository {
   }
 
   async updateProfile(userData) {
-    // console.log(`repo : `, userData);
+    console.log(`repo : `, userData);
     const user = await this.User.update(
       {
-        // img: userData.img,
+        // image: userData.image,
         name: userData.name,
         nickname: userData.nickname,
         password: userData.password,

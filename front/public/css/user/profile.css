@@ -65,14 +65,14 @@ li {
   margin-top: 20%;
 }
 
-#photoFrm > label > img {
+/* #photoFrm > label > img {
   width: 200px;
   height: 200px;
   cursor: pointer;
-}
+} */
 
 #photoFrm > input {
-  display: none;
+  cursor: pointer;
 }
 
 #photoFrm > button {
@@ -99,14 +99,28 @@ li {
   color: #d48a48;
 }
 
+#imgBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* #imageBox > img {
+  width: 200px;
+  height: 200px;
+} */
+
 /* contents(각 input box) 영역 */
 #contents_wrap {
   width: 100%;
-  margin-top: 80px;
 }
 
 #contents > #login > div {
   margin-top: 49px;
+}
+
+#contents > #login > #userid_row {
+  margin-top: 80px;
 }
 
 #contents > #login > div > h3 {
