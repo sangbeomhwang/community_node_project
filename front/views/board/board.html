@@ -56,12 +56,12 @@
       <div id="content_btn">
         <form>
           <select>
-            <option value="val_1">제목+내용</option>
+            <!-- <option value="val_1">제목+내용</option> -->
             <option value="val_2">제목</option>
             <option value="val_3">내용</option>
           </select>
-          <input />
         </form>
+        <input type="text" id="searchbox" placeholder="검색"/>
         <a type="submit" id="writebtn" href="/boards/write">글쓰기</a>
       </div>
       <div id="content_page">
@@ -74,4 +74,5 @@
 </div>
 {% include "../layout/footer.html" %} {% endblock %} {% block js %}
 <script src="/js/lib/board_list.js" type="module"></script>
+<script src="/js/module/board_search.js" type="module"></script>
 {% endblock %}

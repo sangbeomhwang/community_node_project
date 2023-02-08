@@ -14,6 +14,7 @@ class BoardService {
     try {
       if (subidx === "null" || subidx === "undefined") subidx = undefined;
       const result = await this.boardRepository.findAll({ mainidx, subidx });
+      // console.log(result)
       const totalBoards = result.length;
       const startNum = (page - 1) * maxBoards;
       const endNum = page * maxBoards - 1;
@@ -46,7 +47,7 @@ class BoardService {
         lastPage,
         page,
       };
-      console.log(pagination);
+      // console.log(pagination);
       return { data, pagination };
     } catch (e) {
       throw new Error(e);
@@ -87,6 +88,15 @@ class BoardService {
       return result;
     } catch (e) {
       throw new Error(e);
+    }
+  }
+
+  async search({ keyword }) {
+    try {
+      const result = await this.boardRepository.findList({ keyword})
+      return result
+    } catch (e) {
+      throw new Error(e)
     }
   }
 }
