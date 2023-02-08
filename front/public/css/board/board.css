@@ -175,7 +175,7 @@
   appearance: none;
 }
 
-#content_footer > #content_btn > form > input {
+#content_footer > #content_btn > input {
   width: 350px;
   height: 40px;
   background: #fefefe;
