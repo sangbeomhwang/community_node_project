@@ -149,7 +149,7 @@ const dumy = [
   {
     title: "Eubalaena australis",
     content: "amet justo morbi ut odio cras mi pede malesuada in",
-    nickname: "Baleen whale",
+    nickname: "Baleen Jerry",
     mainidx: 1,
     subidx: 0,
   },
@@ -161,7 +161,7 @@ const dumy = [
     subidx: 1,
   },
   {
-    title: "Vombatus ursinus",
+    title: "Jerry ursinus",
     content: "habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque",
     nickname: "Common wombat",
     mainidx: 1,

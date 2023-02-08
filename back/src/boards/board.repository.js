@@ -1,6 +1,7 @@
 class BoardRepository {
-  constructor({ Boards }) {
+  constructor({ Boards, Op }) {
     this.board = Boards;
+    this.Op = Op
   }
 
   async findAll({ mainidx, subidx }) {
@@ -57,6 +58,27 @@ class BoardRepository {
       throw new Error(e);
     }
   }
+
+  async findList({ keyword }) {
+    try {
+      const response = await this.board.findAll({
+        where: { 
+          [this.Op.or]: [
+            { title: { [this.Op.like]: `%${keyword}%` } },
+            { nickname: { [this.Op.like]: `%${keyword}%` } }
+          ]
+        }, raw: true})
+      // console.log('Repository=============',response)
+      return response
+    } catch (e) {
+      throw new Error(e)
+    }
+  }
 }
+
+// where: { 
+//   title: {[this.Op.like] : `%${keyword}%`}, 
+//   nickname: {[this.Op.like] : `%${keyword}%`}
+// }, raw: true  
 
 module.exports = BoardRepository;

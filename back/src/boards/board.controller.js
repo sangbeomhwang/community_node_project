@@ -54,6 +54,18 @@ class BoardController {
       next(e);
     }
   }
+
+  async getSearch(req, res, next) {
+    try {
+      const {keyword} = req.query
+      console.log('================',keyword)
+      const response = await this.boardService.search({ keyword })
+      console.log('response===', response)
+      res.json(response)
+    } catch (e) {
+      next(e)
+    }
+  }
 }
 
 module.exports = BoardController;
