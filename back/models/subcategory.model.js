@@ -1,18 +1,26 @@
 module.exports = (sequelize, Sequelize) => {
-  class SubCategorys extends Sequelize.Model {
+  class SubCategories extends Sequelize.Model {
     static initialize() {
       return this.init(config, settings);
+    }
+    static associate(models) {
+      this.belongsTo(models.Categories, {
+        foreignKey: "mainidx",
+      });
+      this.hasMany(models.Boards, {
+        foreignKey: "subidx",
+      });
     }
   }
 
   const config = {
     mainidx: {
       type: Sequelize.INTEGER,
-      allowNull: false,
+      primaryKey: true,
     },
     subidx: {
       type: Sequelize.INTEGER,
-      allowNull: false,
+      primaryKey: true,
     },
     title: {
       type: Sequelize.STRING(64),
@@ -24,5 +32,5 @@ module.exports = (sequelize, Sequelize) => {
     sequelize,
   };
 
-  SubCategorys.initialize();
+  SubCategories.initialize();
 };

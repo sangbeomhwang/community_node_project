@@ -1,4 +1,4 @@
-const SubCategorys = [
+const SubCategories = [
   {
     mainidx: 0,
     subidx: 0,
@@ -19,6 +19,16 @@ const SubCategorys = [
     subidx: 1,
     title: "모임",
   },
+  {
+    mainidx: 2,
+    subidx: 0,
+    title: "Q&A",
+  },
+  {
+    mainidx: 2,
+    subidx: 1,
+    title: "커뮤니티",
+  },
 ];
 
-module.exports = SubCategorys;
+module.exports = SubCategories;

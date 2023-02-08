@@ -14,7 +14,6 @@ class BoardRepository {
         });
         return boardList;
       }
-      console.log("bye");
       const boardList = await this.board.findAll({ where: { mainidx, subidx }, raw: true });
       return boardList;
     } catch (e) {

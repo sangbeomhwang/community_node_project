@@ -43,9 +43,6 @@
 
 #subcategory > ul > li {
   padding: 0 60px;
-}
-
-#subcategory > ul > li > a {
   font-size: var(--board_header_subcategory_font_size);
   font-weight: 700;
   color: black;
