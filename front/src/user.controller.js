@@ -84,7 +84,7 @@ class UserController {
       const response = await request.put("/users", { ...req.body });
       console.log("response :", response.data.token);
       res.cookie("token", response.data.token);
-      await res.redirect("/profile");
+      res.redirect("/users/profile");
     } catch (e) {
       next(e);
     }
