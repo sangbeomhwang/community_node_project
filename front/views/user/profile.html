@@ -16,18 +16,31 @@
     </div>
   </div>
 
-  <!-- <form method="post" action="/single" id="photoFrm">
-    <input type="file" name="filename" />
+  <form method="post" action="/single" id="photoFrm">
+    <input type="file" name="filename" id="profile_img" />
     <button type="submit">사진 등록</button>
-  </form> -->
+  </form>
 
   <form method="post" action="/users/profile" id="profileFrm">
     <div id="contents_wrap">
       <div id="contents" class="container">
-        <!-- <div id="imageBox">
+        <div id="imageBox">
           <img id="previewImg" src="" alt="" />
-          <input type="hidden" name="image" id="userImg" value="{{userImg}}" />
-        </div> -->
+
+          {% if image %}
+          <input type="image" name="image" id="userImg" value="{{image}}" />
+
+          {% else %}
+          <label for="profile_img">
+            <img
+              src="https://w7.pngwing.com/pngs/304/275/png-transparent-user-profile-computer-icons-profile-miscellaneous-logo-monochrome.png"
+              alt="default_img"
+            />
+          </label>
+          <input type="hidden" name="image" id="userImg" />
+
+          {% endif %}
+        </div>
 
         <div id="login">
           <div id="userid_row">
@@ -181,26 +194,18 @@
               <label for="gender">성별</label>
             </h3>
             {% if gender === 'male' %}
-            <span class="form">
-              <input
-                type="text"
-                id="gender"
-                name="gender"
-                value="남성"
-                maxlength="11"
-              />
-            </span>
+            <select id="gender" class="inbox" name="gender">
+              <option value="none">선택</option>
+              <option value="male" checked>남성</option>
+              <option value="female">여성</option>
+            </select>
 
             {% elif gender === 'female' %}
-            <span class="form">
-              <input
-                type="text"
-                id="gender"
-                name="gender"
-                value="여성"
-                maxlength="11"
-              />
-            </span>
+            <select id="gender" class="inbox" name="gender">
+              <option value="none">선택</option>
+              <option value="male">남성</option>
+              <option value="female" checked>여성</option>
+            </select>
 
             {% else %}
             <select id="gender" class="inbox" name="gender">
@@ -303,7 +308,7 @@
 
 <script type="module" src="/js/module/profile.js"></script>
 
-<!-- gender 영역 처리 -->
+<!-- gender 영역 처리
 <script type="text/javascript">
   const gender_box = document.querySelector("#gender_row");
   const gender_input = document.querySelector("#gender_row > span");
@@ -312,7 +317,7 @@
     gender_box.innerHTML =
       '<h3 id="gender"><label for="gender">성별</label></h3><select id="gender" class="inbox" name="gender"><option value="none" checked>선택</option><option value="male">남성</option><option value="female">여성</option></select><p class="alertMessage" style="opacity: 0; color: red">필수 선택 사항이 아닙니다.</p>';
   });
-</script>
+</script> -->
 
 <!-- kakao 주소 찾기 API -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

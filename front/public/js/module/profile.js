@@ -79,7 +79,6 @@ document.querySelector("#pwcheck").addEventListener("keyup", () => {
   }
 });
 
-/*
 // 프로필 사진 등록
 document.querySelector("#photoFrm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -103,4 +102,3 @@ document.querySelector("#photoFrm").addEventListener("submit", async (e) => {
     document.querySelector("#imageBox > img").src
   );
 });
-*/

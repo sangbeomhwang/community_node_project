@@ -48,7 +48,7 @@ class UserRepository {
     console.log(`repo : `, userData);
     const user = await this.User.update(
       {
-        // image: userData.image,
+        image: userData.image,
         name: userData.name,
         nickname: userData.nickname,
         password: userData.password,
@@ -64,6 +64,7 @@ class UserRepository {
         returning: true,
       }
     );
+    console.log(`user check : `, user);
     console.log(`repo2 : `, user[1]);
     return user[1];
   }
