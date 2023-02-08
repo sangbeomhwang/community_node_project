@@ -80,12 +80,12 @@ document.querySelector("#pwcheck").addEventListener("keyup", () => {
 });
 
 /*
-// 아바타 등록
-document.querySelector("#imageFrm").addEventListener("submit", async (e) => {
+// 프로필 사진 등록
+document.querySelector("#photoFrm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const body = new FormData(e.target);
-  const response = await request.post("/single", body, {
+  const response = await request.post("/users/single", body, {
     headers: {
       ["Content-Type"]: "multipart/form-data",
     },

@@ -49,7 +49,7 @@ class UserService {
     }
   }
 
-  async putProfile(userData) {
+  async modifyProfile(userData) {
     try {
       const { password, ...rest } = userData;
       const hash = this.crypto

@@ -70,23 +70,3 @@ document.querySelector("#pwcheck").addEventListener("keyup", () => {
     document.querySelector(".checkMessage").style.color = "green";
   }
 });
-
-/*
-// 아바타 등록
-document.querySelector("#photoFrm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const body = new FormData(e.target);
-  const response = await request.post("/users/single", body, {
-    headers: {
-      ["Content-Type"]: "multipart/form-data",
-    },
-  });
-  document.querySelector("#userImg").value = response.data.filename;
-  document.querySelector(
-    "#previewImg"
-  ).src = `http://54.180.163.189:80/${response.data.filename}`;
-  console.log(document.querySelector("#userImg").value);
-  console.log(document.querySelector("#imageBox > img").src);
-});
-*/

@@ -16,21 +16,21 @@
     </div>
   </div>
 
+  <!-- <form method="post" action="/users/single" id="photoFrm">
+    <label for="profile_img">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png"
+        alt="profile_image"
+      />
+    </label>
+    <input type="file" name="profile_img" id="profile_img" />
+    <button type="submit">사진 등록</button>
+  </form> -->
+
   <form method="post" action="/users/profile" id="profileFrm">
     <div id="contents_wrap">
       <div id="contents" class="container">
         <div id="login">
-          <div id="image_row">
-            <label for="profile_img">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png"
-                alt="profile_image"
-              />
-            </label>
-            <input type="file" id="profile_img" />
-            <h3 id="profile_img">프로필 이미지</h3>
-          </div>
-
           <div id="userid_row">
             <h3 id="userid">
               <label for="userid">아이디</label>
@@ -113,6 +113,10 @@
               <label for="name">이름</label>
             </h3>
             <span class="form">
+              {% if name %}
+              <input type="text" id="name" name="name" value="{{name}}" />
+
+              {% else %}
               <input
                 type="text"
                 id="name"
@@ -121,6 +125,8 @@
                 onfocus="this.placeholder=''"
                 onblur="this.placeholder='2~5 길이의 한글로 입력해주세요'"
               />
+
+              {% endif %}
             </span>
             <p class="alertMessage" style="opacity: 0; color: red">
               2~5 길이의 한글로 입력해주세요
@@ -144,6 +150,16 @@
               <label for="phonenumber">휴대폰 번호</label>
             </h3>
             <span class="form">
+              {% if phonenumber %}
+              <input
+                type="tel"
+                id="phonenumber"
+                name="phonenumber"
+                value="{{phonenumber}}"
+                maxlength="11"
+              />
+
+              {% else %}
               <input
                 type="tel"
                 id="phonenumber"
@@ -153,6 +169,8 @@
                 onblur="this.placeholder=`'-'를 제외한 11자리의 숫자로 입력해주세요`"
                 maxlength="11"
               />
+
+              {% endif %}
             </span>
             <p class="alertMessage" style="opacity: 0; color: red">
               '-'를 제외한 11자리의 숫자로 입력해주세요
@@ -163,11 +181,36 @@
             <h3 id="gender">
               <label for="gender">성별</label>
             </h3>
+            {% if gender === 'male' %}
+            <span class="form">
+              <input
+                type="text"
+                id="gender"
+                name="gender"
+                value="남성"
+                maxlength="11"
+              />
+            </span>
+
+            {% elif gender === 'female' %}
+            <span class="form">
+              <input
+                type="text"
+                id="gender"
+                name="gender"
+                value="여성"
+                maxlength="11"
+              />
+            </span>
+
+            {% else %}
             <select id="gender" class="inbox" name="gender">
               <option value="none" checked>선택</option>
               <option value="male">남성</option>
               <option value="female">여성</option>
             </select>
+
+            {% endif %}
             <p class="alertMessage" style="opacity: 0; color: red">
               필수 선택 사항이 아닙니다.
             </p>
@@ -178,6 +221,16 @@
               <label for="address">주소</label>
             </h3>
             <span class="form">
+              {% if address %}
+              <input
+                type="text"
+                id="address"
+                name="address"
+                value="{{address}}"
+                readonly
+              />
+
+              {% else %}
               <input
                 type="text"
                 id="address"
@@ -185,12 +238,23 @@
                 placeholder="주소를 검색해주세요"
                 readonly
               />
+
+              {% endif %}
               <a id="address_search">주소 찾기</a>
             </span>
           </div>
 
           <ul id="sub_address_row">
             <li class="detail_form">
+              {% if sub_address %}
+              <input
+                type="text"
+                id="sub_address"
+                name="sub_address"
+                value="{{sub_address}}"
+              />
+
+              {% else %}
               <input
                 type="text"
                 id="sub_address"
@@ -199,12 +263,20 @@
                 onfocus="this.placeholder=''"
                 onblur="this.placeholder='상세 주소를 입력해주세요'"
               />
+
+              {% endif %}
             </li>
           </ul>
 
           <div id="introduce_row">
             <h3 id="introduce">간단 소개</h3>
             <span class="form">
+              {% if introduce %}
+              <textarea name="introduce" id="introduce" cols="100" rows="10">
+{{introduce}}</textarea
+              >
+
+              {% else %}
               <textarea
                 name="introduce"
                 id="introduce"
@@ -214,6 +286,8 @@
                 onfocus="this.placeholder=''"
                 onblur="this.placeholder='본인을 간단히 소개해주세요'"
               ></textarea>
+
+              {% endif %}
             </span>
           </div>
         </div>
@@ -230,6 +304,18 @@
 
 <script type="module" src="/js/module/profile.js"></script>
 
+<!-- gender 영역 처리 -->
+<script type="text/javascript">
+  const gender_box = document.querySelector("#gender_row");
+  const gender_input = document.querySelector("#gender_row > span");
+
+  gender_input.addEventListener("click", function () {
+    gender_box.innerHTML =
+      '<h3 id="gender"><label for="gender">성별</label></h3><select id="gender" class="inbox" name="gender"><option value="none" checked>선택</option><option value="male">남성</option><option value="female">여성</option></select><p class="alertMessage" style="opacity: 0; color: red">필수 선택 사항이 아닙니다.</p>';
+  });
+</script>
+
+<!-- kakao 주소 찾기 API -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
   window.onload = function () {
