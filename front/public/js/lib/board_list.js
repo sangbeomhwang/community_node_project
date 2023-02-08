@@ -139,12 +139,59 @@ const init = async () => {
   const subHandler = async (e) => {
     const { subidx } = e.target.dataset;
     if (!subidx) {
-      const result = await render({ mainidx });
+      let result = await render({ mainidx });
       drawPageList(result);
-      return;
+      const nowPageList = document.querySelectorAll(`[data-page]`);
+      for (let i = 0; i < nowPageList.length; i++) {
+        nowPageList[i].classList.remove("now");
+      }
+      const nowPage = document.querySelector(`[data-page='${result.page}']`);
+      nowPage.classList.add("now");
     }
-    const result = await render({ mainidx, subidx });
+    let result = await render({ mainidx, subidx });
     drawPageList(result);
+    const nowPageList = document.querySelectorAll(`[data-page]`);
+    for (let i = 0; i < nowPageList.length; i++) {
+      nowPageList[i].classList.remove("now");
+    }
+    const nowPage = document.querySelector(`[data-page='${result.page}']`);
+    nowPage.classList.add("now");
+
+    // test
+
+    const leftBtnHandler = async () => {
+      if (result.page === 1) {
+        return;
+      } else {
+        result = await render({ mainidx, subidx, page: result.startPageNum - 1 });
+        drawPageList(result);
+        const nowPage = document.querySelector(`[data-page='${result.page}']`);
+        nowPage.classList.add("now");
+      }
+    };
+
+    const leftBtn = document.querySelector(".left");
+    leftBtn.addEventListener("click", leftBtnHandler);
+
+    const rightBtnHandler = async () => {
+      if (result.page === result.lastPage) {
+        return;
+      }
+      if (result.endPageNum + 1 < result.lastPage) {
+        result = await render({ mainidx, subidx, page: result.endPageNum + 1 });
+        drawPageList(result);
+        const nowPage = document.querySelector(`[data-page='${result.page}']`);
+        nowPage.classList.add("now");
+      } else {
+        result = await render({ mainidx, subidx, page: result.endPageNum });
+        drawPageList(result);
+        const nowPage = document.querySelector(`[data-page='${result.page}']`);
+        nowPage.classList.add("now");
+      }
+    };
+
+    const rightBtn = document.querySelector(".right");
+    rightBtn.addEventListener("click", rightBtnHandler);
   };
 
   subCategory.addEventListener("click", subHandler);
