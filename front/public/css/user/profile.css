@@ -65,13 +65,9 @@ li {
   margin-top: 20%;
 }
 
-/* #photoFrm > label > img {
-  width: 200px;
-  height: 200px;
-  cursor: pointer;
-} */
-
 #photoFrm > input {
+  background: #d48a48;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -99,16 +95,17 @@ li {
   color: #d48a48;
 }
 
-#imgBox {
+#imageBox {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* #imageBox > img {
+#imageBox > label > img {
   width: 200px;
   height: 200px;
-} */
+  cursor: pointer;
+}
 
 /* contents(각 input box) 영역 */
 #contents_wrap {
