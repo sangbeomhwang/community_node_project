@@ -45,22 +45,54 @@
 
 #login_signin_box > #profile {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 40px;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
   color: #fefefe;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 15px;
 }
 
-#login_signin_box > #profile > a {
+#login_signin_box > #profile > #profile_btn {
+  display: flex;
+  justify-content: center;
+  margin-left: 37px;
+  cursor: pointer;
+}
+
+#login_signin_box > #profile > #profile_btn > img {
   display: inline-block;
-  margin-top: 3px;
-  color: #fefefe;
-  font-size: 15px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+#profile_menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 100px;
+  z-index: 2;
+  background-color: #cb976b;
+  opacity: 0;
+}
+
+#profile_menu > li {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: 1px solid #fff;
+  box-sizing: border-box;
+}
+
+#profile_menu > li > a {
+  color: #fff;
   font-weight: bold;
+  padding: 20px;
 }
 
 #login_btn {
@@ -85,20 +117,6 @@
   background: var(--signin_btn_background_color);
   border: 1px solid var(--signin_btn_background_color);
   color: var(--signin_btn_font_color);
-  text-align: center;
-  line-height: 40px;
-  font-weight: bold;
-  font-size: var(--default_font_size);
-}
-
-#logout_btn {
-  display: inline-block;
-  width: 100px;
-  height: 40px;
-  border-radius: 80px;
-  border: 1px solid var(--login_btn_background_color);
-  background: var(--login_btn_background_color);
-  color: var(--login_btn_font_color);
   text-align: center;
   line-height: 40px;
   font-weight: bold;
@@ -134,15 +152,18 @@
 }
 
 #qna_header {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/img/qna_header.png");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/img/qna_header.png");
   background-size: cover;
 }
 #community_header {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/img/community_header.png");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/img/community_header.png");
   background-size: cover;
 }
 #notice_header {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/img/notice_header.png");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/img/notice_header.png");
   background-size: cover;
 }
 

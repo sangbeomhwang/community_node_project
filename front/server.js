@@ -36,11 +36,15 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
   if (req.user === undefined) return res.render("index.html");
   // console.log(`req.user :`, req.user);
-  const { userid, nickname } = req.user;
-  res.render("index.html", {
-    userid,
-    nickname,
-  });
+  else {
+    const { userid, nickname, image } = req.user;
+    // console.log("image 잘 뽑힘", image);
+    res.render("index.html", {
+      userid,
+      nickname,
+      image,
+    });
+  }
 });
 
 app.use(router);
