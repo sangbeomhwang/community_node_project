@@ -92,6 +92,10 @@ input {
     font-family: "GmarketSansMedium";
 }
 
+input:focus {
+  outline: none;
+}
+
 textarea {
     font-family: "GmarketSansMedium";
 }
