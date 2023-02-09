@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 app.listen(process.env.PORT, async () => {
-  await sequelize.sync({ force: false });
+  await sequelize.sync({ force: true });
 
   // const category = require("./dumy/Categories_dumy");
   // const subCategory = require("./dumy/SubCategories_dumy");

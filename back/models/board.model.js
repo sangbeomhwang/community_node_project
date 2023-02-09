@@ -23,6 +23,14 @@ module.exports = (sequelize, Sequelize) => {
       this.belongsTo(models.SubCategories, {
         foreignKey: "subidx",
       });
+      this.belongsToMany(models.Hashtags, {
+        through: 'Hashes',
+        foreignKey: 'boardidx',
+      });
+      this.belongsToMany(models.Users, {
+        through: 'Likes',
+        foreignKey: 'boardidx',
+      });
     }
   }
 
