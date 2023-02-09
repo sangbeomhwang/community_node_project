@@ -22,7 +22,7 @@ class App {
   }
 
   setStatic() {
-    this.app.use("/uploads", express.static("uploads"));
+    this.app.use(express.static("uploads"));
   }
 
   errorHandler() {
