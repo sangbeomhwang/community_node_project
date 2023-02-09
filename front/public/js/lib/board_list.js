@@ -1,200 +1,133 @@
 import request from "/js/lib/request.js";
-
-const template = ({ boardidx, nickname, register, title, hashtag, hit, like, comment }) => `
- <li data-boardidx="${boardidx}">
-   <div class="li_user">
-     닉네임 ${nickname}
-     <div>
-     <span>등록일시</span>
-       <span>${register}</span>
-     </div>
-   </div>
-   <div class="li_sub"><a href="#">${title}</a></div>
-   <div class="li_Cate">
-     <a href="#">#Gitjub #Repository</a>
-     <div>
-       <div>
-         조회수<img
-           src="https://i.postimg.cc/XYD9XSTJ/ph-eye.png"
-         /><span>${hit}</span>
-       </div>
-       <div>
-         좋아요<img
-           src="https://i.postimg.cc/JnXFPQbN/Vector.png"
-         /><span>0</span>
-       </div>
-       <div>
-         댓글<img
-           src="https://i.postimg.cc/5ynS3Hk5/Vector-1.png"
-         /><span>0</span>
-       </div>
-     </div>
-   </div>
- </li>
- `;
-
-const contentBox = document.querySelector("#content_body > ul");
+import { boardListTemplate } from "/js/lib/template.js";
 const queryString = new URLSearchParams(location.search);
 
-const render = async ({ mainidx, subidx, page }) => {
+const render = ({ data }) => {
+  const contentBox = document.querySelector("#content_body > ul");
+  contentBox.innerHTML = "";
+  for (let i = 0; i < data.length; i++) {
+    contentBox.innerHTML += boardListTemplate(data[i]);
+  }
+};
+
+const getData = async ({ mainidx, subidx, page }) => {
   const {
     data: { data, pagination },
   } = await request.get(`/boards?mainidx=${mainidx}&subidx=${subidx}&page=${page}`);
-  contentBox.innerHTML = "";
-  for (let i = 0; i < data.length; i++) {
-    contentBox.innerHTML += template(data[i]);
+  return { data, pagination };
+};
+
+const getCategory = async ({ mainidx }) => {
+  const { data } = await request.get(`/categories?mainidx=${mainidx}`);
+  return { data };
+};
+
+const categoryTitleRender = ({ categories }) => {
+  const mainTitle = document.querySelector("#subject");
+  const subTitles = document.querySelector("#subcategories");
+  const { SubCategories } = categories;
+
+  mainTitle.innerHTML = `<div data-mainidx="${categories.mainidx}">${categories.title}</div>`;
+  subTitles.innerHTML = `<li>전체</li>`;
+  for (let i = 0; i < SubCategories.length; i++) {
+    subTitles.innerHTML += `<li data-subidx="${SubCategories[i].subidx}">${SubCategories[i].title}</li>`;
   }
-  return pagination;
+};
+
+const pageListRender = ({ pagination }) => {
+  const pageList = document.querySelector("#page");
+  pageList.innerHTML = "";
+  for (let i = pagination.startPageNum; i <= pagination.endPageNum; i++) {
+    pageList.innerHTML += `<li data-page="${i}" data-startpage="${pagination.startPageNum}" data-endpage="${pagination.endPageNum}"  data-lastpage="${pagination.lastPage}" data-viewpagecount="${pagination.viewPageCount}">${i}</li>`;
+  }
+  nowPageNav({ page: pagination.page });
+  pageList.addEventListener("click", pageListHandler);
+};
+
+const pageListHandler = async (e) => {
+  const mainidx = queryString.get("mainidx");
+  const { page } = e.target.dataset;
+  if (page) {
+    const { data, pagination } = await getData({ mainidx, page });
+    render({ data, pagination });
+    nowPageNav({ page });
+  }
+};
+
+const nowPageNav = ({ page }) => {
+  const nowPageList = document.querySelectorAll(`[data-page]`);
+  const nowPage = document.querySelector(`[data-page='${page}']`);
+  for (let i = 0; i < nowPageList.length; i++) {
+    nowPageList[i].classList.remove("now");
+  }
+  nowPage.classList.add("now");
+};
+
+const moveBtnEvent = () => {
+  const leftBtn = document.querySelector(".left");
+  const rightBtn = document.querySelector(".right");
+  leftBtn.addEventListener("click", leftBtnHandler);
+  rightBtn.addEventListener("click", rightBtnHandler);
+};
+
+const leftBtnHandler = async () => {
+  const mainidx = queryString.get("mainidx");
+  const nowPage = document.querySelector(`.now[data-page]`);
+  const { page, startpage, endpage, lastpage, viewpagecount } = nowPage.dataset;
+
+  if (page === 1) {
+    console.log("끝");
+    return;
+  }
+  if (page !== startpage) {
+    const { data, pagination } = await getData({ mainidx, page: startpage });
+    render({ data });
+    pageListRender({ pagination });
+    nowPageNav({ page: pagination.page });
+  } else {
+    const { data, pagination } = await getData({ mainidx, page: Number(startpage) - 1 });
+    render({ data });
+    pageListRender({ pagination });
+    nowPageNav({ page: pagination.page });
+  }
+};
+
+const rightBtnHandler = async () => {
+  const mainidx = queryString.get("mainidx");
+  const nowPage = document.querySelector(`.now[data-page]`);
+  const { page, startpage, endpage, lastpage, viewpagecount } = nowPage.dataset;
+
+  if (page === lastpage) {
+    console.log("끝");
+    return;
+  }
+  if (endpage === lastpage) {
+    console.log("hh");
+    const { data, pagination } = await getData({ mainidx, page: endpage });
+    render({ data });
+    pageListRender({ pagination });
+    nowPageNav({ page: pagination.page });
+    return;
+  }
+
+  if (page <= endpage) {
+    const { data, pagination } = await getData({ mainidx, page: Number(endpage) + 1 });
+    render({ data });
+    pageListRender({ pagination });
+    nowPageNav({ page: pagination.page });
+  }
 };
 
 const init = async () => {
-  const categoryTitle = async (mainidx) => {
-    const category = document.querySelector("#subject");
-    category.innerHTML = "";
-    const { data } = await request.get(`/categories?mainidx=${mainidx}`);
-    category.innerHTML = `<div data-mainidx="${data[0].mainidx}">${data[0].title}</div>`;
-  };
-
-  const subCategoryTitle = async (mainidx) => {
-    const subCategory = document.querySelector("#subcategories");
-    subCategory.innerHTML = "";
-    const { data } = await request.get(`/categories?mainidx=${mainidx}`);
-    const { SubCategories } = data[0];
-    subCategory.innerHTML = `<li>전체</li>`;
-    for (let i = 0; i < SubCategories.length; i++) {
-      subCategory.innerHTML += `<li data-subidx="${SubCategories[i].subidx}">${SubCategories[i].title}</li>`;
-    }
-  };
-
-  const leftBtnHandler = async () => {
-    if (result.page === 1) {
-      return;
-    } else {
-      result = await render({ mainidx, subidx, page: result.startPageNum - 1 });
-      drawPageList(result);
-      const nowPage = document.querySelector(`[data-page='${result.page}']`);
-      nowPage.classList.add("now");
-    }
-  };
-
-  const leftBtn = document.querySelector(".left");
-  leftBtn.addEventListener("click", leftBtnHandler);
-
-  const rightBtnHandler = async () => {
-    if (result.page === result.lastPage) {
-      return;
-    }
-    if (result.endPageNum + 1 < result.lastPage) {
-      result = await render({ mainidx, subidx, page: result.endPageNum + 1 });
-      drawPageList(result);
-      const nowPage = document.querySelector(`[data-page='${result.page}']`);
-      nowPage.classList.add("now");
-    } else {
-      result = await render({ mainidx, subidx, page: result.endPageNum });
-      drawPageList(result);
-      const nowPage = document.querySelector(`[data-page='${result.page}']`);
-      nowPage.classList.add("now");
-    }
-  };
-
-  const rightBtn = document.querySelector(".right");
-  rightBtn.addEventListener("click", rightBtnHandler);
-
-  const pageList = document.querySelector("#page");
-  const drawPageList = (result) => {
-    pageList.innerHTML = "";
-
-    for (let i = result.startPageNum; i <= result.endPageNum; i++) {
-      pageList.innerHTML += `<li data-page='${i}'>${i}</li>`;
-    }
-  };
-
-  const pageListHandler = async (e) => {
-    const { page } = e.target.dataset;
-    if (page) {
-      result = await render({ mainidx, subidx, page });
-    }
-    const nowPageList = document.querySelectorAll(`[data-page]`);
-    for (let i = 0; i < nowPageList.length; i++) {
-      nowPageList[i].classList.remove("now");
-    }
-    const nowPage = document.querySelector(`[data-page='${result.page}']`);
-    nowPage.classList.add("now");
-  };
-
-  pageList.addEventListener("click", pageListHandler);
-
   const mainidx = queryString.get("mainidx");
-  const subidx = queryString.get("subidx");
-  const page = queryString.get("page");
 
-  categoryTitle(mainidx);
-  subCategoryTitle(mainidx);
-  let result = await render({ mainidx, subidx, page });
-  drawPageList(result);
-  const nowPage = document.querySelector(`[data-page='${result.page}']`);
-  nowPage.classList.add("now");
-
-  const subCategory = document.querySelector("#subcategories");
-  const subHandler = async (e) => {
-    const { subidx } = e.target.dataset;
-    if (!subidx) {
-      let result = await render({ mainidx });
-      drawPageList(result);
-      const nowPageList = document.querySelectorAll(`[data-page]`);
-      for (let i = 0; i < nowPageList.length; i++) {
-        nowPageList[i].classList.remove("now");
-      }
-      const nowPage = document.querySelector(`[data-page='${result.page}']`);
-      nowPage.classList.add("now");
-    }
-    let result = await render({ mainidx, subidx });
-    drawPageList(result);
-    const nowPageList = document.querySelectorAll(`[data-page]`);
-    for (let i = 0; i < nowPageList.length; i++) {
-      nowPageList[i].classList.remove("now");
-    }
-    const nowPage = document.querySelector(`[data-page='${result.page}']`);
-    nowPage.classList.add("now");
-
-    // test
-
-    const leftBtnHandler = async () => {
-      if (result.page === 1) {
-        return;
-      } else {
-        result = await render({ mainidx, subidx, page: result.startPageNum - 1 });
-        drawPageList(result);
-        const nowPage = document.querySelector(`[data-page='${result.page}']`);
-        nowPage.classList.add("now");
-      }
-    };
-
-    const leftBtn = document.querySelector(".left");
-    leftBtn.addEventListener("click", leftBtnHandler);
-
-    const rightBtnHandler = async () => {
-      if (result.page === result.lastPage) {
-        return;
-      }
-      if (result.endPageNum + 1 < result.lastPage) {
-        result = await render({ mainidx, subidx, page: result.endPageNum + 1 });
-        drawPageList(result);
-        const nowPage = document.querySelector(`[data-page='${result.page}']`);
-        nowPage.classList.add("now");
-      } else {
-        result = await render({ mainidx, subidx, page: result.endPageNum });
-        drawPageList(result);
-        const nowPage = document.querySelector(`[data-page='${result.page}']`);
-        nowPage.classList.add("now");
-      }
-    };
-
-    const rightBtn = document.querySelector(".right");
-    rightBtn.addEventListener("click", rightBtnHandler);
-  };
-
-  subCategory.addEventListener("click", subHandler);
+  const { data, pagination } = await getData({ mainidx });
+  render({ data });
+  const [categories] = (await getCategory({ mainidx })).data;
+  categoryTitleRender({ categories });
+  pageListRender({ pagination });
+  nowPageNav({ page: pagination.page });
+  moveBtnEvent();
 };
 
 init();
