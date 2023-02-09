@@ -33,7 +33,7 @@ module.exports = (sequelize, Sequelize) => {
             defaultValue: 0,
         },
 
-        group: {
+        party: {
             type: Sequelize.INTEGER,
             allowNull: true,
         }

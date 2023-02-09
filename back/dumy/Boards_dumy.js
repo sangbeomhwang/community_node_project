@@ -1,7 +1,7 @@
 
 const Boards = [
 
-  {
+  { 
     title: "Vicugna vicugna",
     content: "felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar",
     nickname: "Vicuna",
