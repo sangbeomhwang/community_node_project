@@ -9,18 +9,17 @@ module.exports = (sequelize, Sequelize) => {
         foreignKey: "userid",
       });
 
-      // this.hasMany(models.Comments, {
-      //   foreignKey: "userid",
-      // });
-      // this.hasMany(models.Likes, {
-      //   foreignKey: "userid",
-      // });
-      // this.hasMany(models.Points, {
-      //   foreignKey: "userid",
-      // });
-      // this.hasMany(models.Chats, {
-      //   foreignKey: "userid",
-      // });
+      this.hasMany(models.Points, {
+        foreignKey: "userid",
+      });
+
+      this.belongsToMany(models.Boards, {
+        through: 'Likes',
+        foreignKey: 'userid',
+      });
+      this.hasMany(models.Chats, {
+        foreignKey: "userid",
+      });
     }
   }
 
@@ -81,6 +80,16 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       defaultValue: Sequelize.NOW,
     },
+    level: {
+      type: Sequelize.ENUM('normal', 'top'),
+      allowNull: false,
+      defaultValue: 'normal',
+    },
+    access: {
+      type: Sequelize.ENUM('ok', 'deny'),
+      allowNull: false,
+      defaultValue: 'ok'
+    }
   };
 
   const settings = {
