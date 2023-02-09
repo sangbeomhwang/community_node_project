@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="/css/index.css" />
 <link rel="stylesheet" href="/css/board/view.css" />
+<link rel="stylesheet" href="/css/board/comment.css">
 
 {% endblock %} {% block content %} {% include "../layout/header.html" %}
 
@@ -52,5 +53,5 @@
     </div>
   </div>
 </div>
-
+{% include "../layout/comment.html" %}
 {% include "../layout/footer.html" %} {% endblock %}

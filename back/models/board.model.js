@@ -11,9 +11,6 @@ module.exports = (sequelize, Sequelize) => {
       // this.hasMany(models.Hashes, {
       //   foreignKey: "boardidx",
       // });
-      // this.hasMany(models.Comments, {
-      //   foreignKey: "boardidx",
-      // });
       this.belongsTo(models.Users, {
         foreignKey: "userid",
       });
@@ -30,6 +27,9 @@ module.exports = (sequelize, Sequelize) => {
       this.belongsToMany(models.Users, {
         through: 'Likes',
         foreignKey: 'boardidx',
+      });
+      this.hasMany(models.Comments, {
+        foreignKey: "boardidx",
       });
     }
   }

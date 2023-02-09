@@ -17,6 +17,9 @@ module.exports = (sequelize, Sequelize) => {
         through: 'Likes',
         foreignKey: 'userid',
       });
+      this.hasMany(models.Comments, {
+        foreignKey: 'userid',
+      })
       this.hasMany(models.Chats, {
         foreignKey: "userid",
       });

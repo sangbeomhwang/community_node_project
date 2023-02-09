@@ -1,397 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        * {
-           padding: 0;
-           margin: 0;
-           box-sizing: border-box;
-        }
-
-        ul, li {
-           list-style: none;
-        }
-
-        a {
-           text-decoration: none;
-        }
-
-        body {
-            background-color: #f7f7f5;
-        }
-
-        #comment_wrap {
-            margin: 0 auto;
-            width: 1920px;
-        }
-
-        #comment_body {
-            margin: 0 auto;
-            width: 1160px;
-        }
-
-        #comment_body > h1 {
-            margin-bottom: 11px;
-            font-size: 20px;
-        }
-
-        #comment_body > #depth_a {
-            width: 1160px;
-            height: 200px;
-            box-sizing: border-box;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-            margin-top: 20px;
-        }
-
-        #comment_body > #depth_a > img {
-            padding-top: 10px;
-            padding-left: 20px;
-            box-sizing: border-box;
-        }
-
-        #comment_body > #depth_a > textarea {
-            width: 1040px;
-            height: 100px;
-            background: #FEFEFE;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            border: none;
-            resize: none;
-            padding: 18px 29px;
-            box-sizing: border-box;
-            margin-left: 20px;
-            float: right;
-        }
-
-        textarea::placeholder {
-            color: #AAAAAA;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 17px;
-        }
-
-        #comment_body > #depth_a > div {
-            width: 100%;
-            display: flex;
-            justify-content: right;
-            
-        }
-
-        #comment_body > #depth_a > div > #depth_post {
-            width: 120px;
-            height: 40px;
-            background: #A46843;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            color: #fefefe;
-            font-weight: 700;
-            font-size: 14px;
-            padding-left: 28px;
-            margin-top: 20px;
-            line-height: 40px;
-        }
-
-        #depth_b {
-            width: 1160px;
-            height: 330px;
-            margin-top: 20px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-        }
-
-        #depth_b > #depth_info {
-            display: flex;
-            padding-top: 30px;
-            padding-left: 20px;
-            box-sizing: border-box;
-            
-        }
-
-        #depth_b > #depth_info > div {
-            margin-left: 20px;
-            margin-top: 15px;
-            
-        }
-
-        #depth_b > #depth_info > div > div > img {
-            margin-right: 7px;
-            width: 14px;
-            height: 14px;
-            font-weight: 400;
-            font-size: 14px;
-        }
-
-        #depth_b > textarea {
-            width: 1160px;
-            height: 100px;
-            margin-top: 20px;
-            background: #FEFEFE;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            border: none;
-            resize: none;
-            padding: 18px 29px;
-            box-sizing: border-box;
-        }
-
-        #depth_b > #btn {
-            display: flex;
-            justify-content: right;
-        }
-        
-        #depth_b > div > #depth_post {
-            width: 120px;
-            height: 40px;
-            background: #A46843;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            color: #fefefe;
-            font-weight: 700;
-            font-size: 14px;
-            padding-left: 28px;
-            margin-top: 20px;
-            line-height: 40px;
-        }
-
-        /* 로그인 댓글 */
-        #depth_c {
-            width: 1160px;
-            height: 330px;
-            margin-top: 20px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-        }
-
-        #depth_c > #depth_info {
-            display: flex;
-            padding-top: 30px;
-            padding-left: 20px;
-            box-sizing: border-box;
-            
-        }
-
-        #depth_c > #depth_info > div {
-            margin-left: 20px;
-            margin-top: 15px;
-            
-        }
-
-        #depth_c > #depth_info > div > div > img {
-            margin-right: 7px;
-            width: 14px;
-            height: 14px;
-            font-weight: 400;
-            font-size: 14px;
-        }
-
-        #depth_c > textarea {
-            width: 1160px;
-            height: 100px;
-            margin-top: 20px;
-            background: #FEFEFE;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            border: none;
-            resize: none;
-            padding: 18px 29px;
-            box-sizing: border-box;
-        }
-
-        #depth_c > #btn {
-            display: flex;
-            justify-content: right;
-        }
-        
-        #depth_c > div > #depth_delete {
-            width: 120px;
-            height: 40px;
-            margin-right: 20px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            color: #000000;
-            font-weight: 700;
-            font-size: 14px;
-            padding-left: 28px;
-            margin-top: 20px;
-            line-height: 40px;
-        }
-
-        #depth_c > div > #depth_put {
-            width: 120px;
-            height: 40px;
-            background: #A46843;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            color: #fefefe;
-            font-weight: 700;
-            font-size: 14px;
-            padding-left: 28px;
-            margin-top: 20px;
-            line-height: 40px;
-        }
-
-        /* 로그인전 대댓글 */
-        #depth_d {
-            width: 100%;
-            height: 330px;
-            margin-top: 20px;
-            margin-right: 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-            padding-left: 50px;
-        }
-
-        #depth_d > div {
-            border-left: 1px solid rgba(0, 0, 0, 0.3);
-            
-        }
-
-        #depth_d > div > #depth_info {
-            display: flex;
-            padding-top: 30px;
-            padding-left: 20px;
-            box-sizing: border-box;
-            
-        }
-
-        #depth_d > div > #depth_info > div {
-            margin-left: 20px;
-            margin-top: 15px;
-            
-        }
-
-        #depth_d > div > #depth_info > div > div > img {
-            margin-right: 7px;
-            width: 14px;
-            height: 14px;
-            font-weight: 400;
-            font-size: 14px;
-        }
-
-        #depth_d > div > textarea {
-            width: 1110px;
-            height: 100px;
-            margin-top: 20px;
-            background: #FEFEFE;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            border: none;
-            resize: none;
-            padding: 18px 29px;
-            box-sizing: border-box;
-        }
-
-        #depth_d > #btn {
-            display: flex;
-            justify-content: flex-end;
-            border: none;
-        }
-        
-        #depth_d > div > #depth_post {
-            width: 120px;
-            height: 40px;
-            background: #A46843;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            color: #fefefe;
-            font-weight: 700;
-            font-size: 14px;
-            padding-left: 28px;
-            margin-top: 20px;
-            line-height: 40px;
-            
-        }
-
-        /* 로그인 대댓글 */
-        #depth_e {
-            width: 100%;
-            height: 330px;
-            margin-top: 20px;
-            margin-right: 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-            padding-left: 50px;
-        }
-
-        #depth_e > div {
-            border-left: 1px solid rgba(0, 0, 0, 0.3);
-            
-        }
-
-        #depth_e > div > #depth_info {
-            display: flex;
-            padding-top: 30px;
-            padding-left: 20px;
-            box-sizing: border-box;
-            
-        }
-
-        #depth_e > div > #depth_info > div {
-            margin-left: 20px;
-            margin-top: 15px;
-            
-        }
-
-        #depth_e > div > #depth_info > div > div > img {
-            margin-right: 7px;
-            width: 14px;
-            height: 14px;
-            font-weight: 400;
-            font-size: 14px;
-        }
-
-        #depth_e > div > textarea {
-            width: 1110px;
-            height: 100px;
-            margin-top: 20px;
-            background: #FEFEFE;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            border: none;
-            resize: none;
-            padding: 18px 29px;
-            box-sizing: border-box;
-        }
-
-        #depth_e > #btn {
-            display: flex;
-            justify-content: right;
-            border: none;
-        }
-        
-        #depth_e > div > #depth_delete {
-            width: 120px;
-            height: 40px;
-            margin-right: 20px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            color: #000000;
-            font-weight: 700;
-            font-size: 14px;
-            padding-left: 28px;
-            margin-top: 20px;
-            line-height: 40px;
-        }
-
-        #depth_e > div > #depth_put {
-            width: 120px;
-            height: 40px;
-            background: #A46843;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            color: #fefefe;
-            font-weight: 700;
-            font-size: 14px;
-            padding-left: 28px;
-            margin-top: 20px;
-            line-height: 40px;
-        }
-    </style>
-</head>
-<body>
     <div id="comment_wrap">
         <div id="comment_body">
             <h1>1개의 댓글</h1>
 
             <!-- 로그인전 댓글 -->
+            {% if userid %}
             <div id="depth_a">
-                <img src="https://i.postimg.cc/PJxRTrJh/Group-82.png">
+                {% if image %}
+                <img src="http://localhost:3000/{{image}}" alt="modify_img">
+                {% else %}
+                <img src="https://i.postimg.cc/PJxRTrJh/Group-82.png" alt="modify_img">
+                {% endif %}
                 <textarea placeholder="댓글을 쓰려면 로그인이 필요합니다"></textarea>
                 <div>
                     <div id="depth_post">댓글쓰기</div>
                 </div>
             </div>
+            {% else %}
+            <div id="depth_a">
+                <img src="https://i.postimg.cc/PJxRTrJh/Group-82.png" alt="modify_img">
+                <textarea placeholder="댓글을 쓰려면 로그인이 필요합니다"></textarea>
+                <div>
+                    <div id="depth_post">댓글쓰기</div>
+                </div>
+            </div>
+            {% endif %}
 
             
-            <div id="depth_b">
+            <!-- <div id="depth_b">
                 <div id="depth_info">
                     <img src="https://i.postimg.cc/zXBGP9w1/Ellipse-4.png">
                     <div>
@@ -407,10 +42,10 @@
                 <div id="btn">
                     <div id="depth_post">댓글쓰기</div>
                 </div>
-            </div>
+            </div> -->
             
             <!-- 로그인 댓글 -->
-            <div id="depth_c">
+            <!-- <div id="depth_c">
                 <div id="depth_info">
                     <img src="https://i.postimg.cc/zXBGP9w1/Ellipse-4.png">
                     <div>
@@ -427,10 +62,10 @@
                     <div id="depth_delete">삭제하기</div>
                     <div id="depth_put">수정하기</div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 로그인전 대댓글 -->
-            <div id="depth_d">
+            <!-- <div id="depth_d">
                 <div>
                     <div id="depth_info">
                         <img src="https://i.postimg.cc/zXBGP9w1/Ellipse-4.png">
@@ -449,10 +84,10 @@
                 <div id="btn">
                     <div id="depth_post">댓글쓰기</div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- 로그인 대댓글 -->
-            <div id="depth_e">
+            <!-- <div id="depth_e">
                 <div>
                     <div id="depth_info">
                         <img src="https://i.postimg.cc/zXBGP9w1/Ellipse-4.png">
@@ -472,7 +107,7 @@
                     <div id="depth_delete">삭제하기</div>
                     <div id="depth_put">수정하기</div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>

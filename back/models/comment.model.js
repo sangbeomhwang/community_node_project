@@ -4,7 +4,16 @@ module.exports = (sequelize, Sequelize) => {
             return this.init(config, settings)
         }
 
+        static associate(models) {
+            this.belongsTo(models.Users, {
+                foreignKey: 'userid'
+            })
+            this.belongsTo(models.Boards, {
+                foreignKey: 'boardidx'
+            })
+        }
     }
+
 
     const config = {
         commentidx: {
