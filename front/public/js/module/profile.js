@@ -99,6 +99,6 @@ document.querySelector("#photoFrm").addEventListener("submit", async (e) => {
   console.log("userImg value : ", document.querySelector("#userImg").value);
   console.log(
     "previewImg src : ",
-    document.querySelector("#imageBox > img").src
+    document.querySelector("#imageBox > label > img").src
   );
 });
