@@ -15,19 +15,27 @@
       {% if userid %}
       <div id="profile">
         <div id="usernick">{{userid}}님</div>
-        <a id="my_page" href="/users/profile">마이 페이지</a>
+        <div id="profile_btn">
+          {% if image %}
+          <img src="http://127.0.0.1:3000/{{image}}" alt="modify_img" />
+
+          {% else %}
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
+            alt="modify_img"
+          />
+
+          {% endif %}
+          <ul id="profile_menu">
+            <li id="profile_info">
+              <a id="my_page" href="/users/profile">마이 페이지</a>
+            </li>
+            <li id="logout">
+              <a id="logout_btn" href="/">로그아웃</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div id="logout">
-        <a id="logout_btn" href="/">로그아웃</a>
-      </div>
-      <script>
-        const logout = document.querySelector("#logout");
-        logout.addEventListener("click", (e) => {
-          e.preventDefault();
-          document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-          location.href = "/";
-        });
-      </script>
 
       {% else %}
       <div id="login">
@@ -36,8 +44,28 @@
       <div id="signin">
         <a id="signin_btn" href="/users/terms">회원가입</a>
       </div>
+
       {% endif %}
     </div>
   </div>
 </div>
+
 <script src="/js/layout/header.js" type="module"></script>
+
+<script>
+  const logout = document.querySelector("#logout");
+  logout.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    location.href = "/";
+  });
+</script>
+
+<script>
+  const profile_btn = document.querySelector("#profile_btn");
+  const profile_menu = document.querySelector("#profile_menu");
+
+  profile_btn.addEventListener("click", () => {
+    profile_menu.style.opacity = "1";
+  });
+</script>
