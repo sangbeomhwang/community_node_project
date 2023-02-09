@@ -42,17 +42,22 @@ document.querySelector('#searchbox').addEventListener('keyup', async (e) => {
         const searchbox = e.target
         // console.log(searchbox.value)
         const response = await request.get(`/boards/search?keyword=${searchbox.value}`) 
-    console.log('=================', response)
     console.log('==============', response.data)
-    console.log('===========', response.data.length)
-    
+
     contentBox.innerHTML = ''
     for(let i = 0; i < response.data.length; i++) {
-        contentBox.innerHTML += template(response.data[i])
+      contentBox.innerHTML += template(response.data[i])
     }
+    return response
 
-    
 }})
+
+// // console.log(response.data[i].nickname)
+// if(response.data[i].nickname.includes(searchbox.value)) {
+//   //     contentBox.innerHTML += template(response.data[j])
+//   // }    
+//   }
+//   console.log('####',response.data[0].nickname.includes(searchbox.value))
 
 
 // document.querySelector('#searchbox').addEventListener('keyup', async (e) => {
