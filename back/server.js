@@ -11,12 +11,16 @@ app.listen(process.env.PORT, async () => {
   // const category = require("./dumy/Categories_dumy");
   // const subCategory = require("./dumy/SubCategories_dumy");
   // const board = require("./dumy/Boards_dumy");
+  // const user = require("./dumy/Users_dumy");
 
   // for (let i = 0; i < category.length; i++) {
   //   await sequelize.models.Categories.create(category[i]);
   // }
   // for (let i = 0; i < subCategory.length; i++) {
   //   await sequelize.models.SubCategories.create(subCategory[i]);
+  // }
+  // for (let i = 0; i < user.length; i++) {
+  //   await sequelize.models.Users.create(user[i]);
   // }
 
   // for (let i = 0; i < board.length; i++) {

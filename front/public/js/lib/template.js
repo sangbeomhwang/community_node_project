@@ -7,7 +7,7 @@ const boardListTemplate = ({ boardidx, nickname, register, title, hashtag, hit, 
        <span>${register}</span>
      </div>
    </div>
-   <div class="li_sub"><a href="#">${title}</a></div>
+   <div class="li_sub"><a href="/boards/${boardidx}">${title}</a></div>
    <div class="li_Cate">
      <a href="#">#Gitjub #Repository</a>
      <div>

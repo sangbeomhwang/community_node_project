@@ -7,7 +7,12 @@ const request = axios.create({
 class BoardController {
   async getBoard(req, res, next) {
     try {
-      res.render("board/board.html");
+      const { userid, nickname, image } = req.user;
+      res.render("board/board.html", {
+        userid,
+        nickname,
+        image,
+      });
     } catch (e) {
       next(e);
     }
@@ -15,7 +20,12 @@ class BoardController {
 
   async getWrite(req, res, next) {
     try {
-      res.render("board/write.html");
+      const { userid, nickname, image } = req.user;
+      res.render("board/write.html", {
+        userid,
+        nickname,
+        image,
+      });
     } catch (e) {
       next(e);
     }
@@ -23,7 +33,12 @@ class BoardController {
 
   async postWrite(req, res, next) {
     try {
-      res.redirect("/boards");
+      const { userid, nickname, image } = req.user;
+      res.redirect("/boards", {
+        userid,
+        nickname,
+        image,
+      });
     } catch (e) {
       next(e);
     }
@@ -31,9 +46,10 @@ class BoardController {
 
   async getView(req, res, next) {
     try {
+      const { userid, nickname, image } = req.user;
       const { boardidx } = req.params;
       const { data } = await request.get(`/boards/${boardidx}`);
-      res.render("board/view.html", data);
+      res.render("board/view.html", { data, userid, nickname, image });
     } catch (e) {
       next(e);
     }
@@ -41,7 +57,12 @@ class BoardController {
 
   async getModify(req, res, next) {
     try {
-      res.render("board/modify.html");
+      const { userid, nickname, image } = req.user;
+      res.render("board/modify.html", {
+        userid,
+        nickname,
+        image,
+      });
     } catch (e) {
       next(e);
     }
