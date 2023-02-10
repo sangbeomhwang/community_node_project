@@ -40,10 +40,10 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    nickname: {
-      type: Sequelize.STRING(30),
-      allowNull: false,
-    },
+    // nickname: {
+    //   type: Sequelize.STRING(30),
+    //   allowNull: false,
+    // },
     title: {
       type: Sequelize.STRING(128),
       allowNull: false,
