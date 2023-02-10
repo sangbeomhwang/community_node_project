@@ -1,0 +1,74 @@
+{% if level === 'top' %}
+
+<div id="admin_header">
+  <h1>Admin Dashboard</h1>
+  <div id="login_signin_box">
+    {% if userid %}
+    <div id="profile">
+      <div id="usernick">{{userid}}님</div>
+      <div id="profile_btn">
+        {% if image %}
+        <img src="http://127.0.0.1:3000/{{image}}" alt="modify_img" />
+
+        {% else %}
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
+          alt="modify_img"
+        />
+
+        {% endif %}
+        <div id="profile_area">
+          <ul id="profile_menu">
+            <li id="home_move">
+              <a id="home_page" href="/">홈페이지</a>
+            </li>
+            <li id="profile_info">
+              <a id="my_page" href="/users/profile">마이 페이지</a>
+            </li>
+            <li id="logout">
+              <a id="logout_btn" href="/">로그아웃</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    {% else %}
+
+    <script type="text/javascript">
+      location.href = "http://127.0.0.1:3005";
+    </script>
+
+    {% endif %}
+  </div>
+</div>
+
+{% else %}
+
+<script type="text/javascript">
+  location.href = "http://127.0.0.1:3005";
+</script>
+
+{% endif %}
+
+<script>
+  const logout = document.querySelector("#logout");
+  logout.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    location.href = "/";
+  });
+</script>
+
+<script>
+  const profile_btn = document.querySelector("#profile_btn");
+  const profile_menu = document.querySelector("#profile_area");
+
+  profile_btn.addEventListener("click", () => {
+    profile_menu.style.display = "block";
+  });
+
+  //   profile_btn.addEventListener("click", () => {
+  //     profile_menu.style.display = "none";
+  //   });
+</script>
