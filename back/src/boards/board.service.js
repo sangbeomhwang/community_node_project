@@ -101,6 +101,7 @@ class BoardService {
       throw new Error(e)
     }
   }
+
 }
 
 module.exports = BoardService;

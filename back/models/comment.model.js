@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
 
         static associate(models) {
             this.belongsTo(models.Users, {
-                foreignKey: 'userid'
+                foreignKey: 'nickname'
             })
             this.belongsTo(models.Boards, {
                 foreignKey: 'boardidx'

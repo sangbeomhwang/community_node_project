@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
       //   foreignKey: "boardidx",
       // });
       this.belongsTo(models.Users, {
-        foreignKey: "userid",
+        foreignKey: "nickname",
       });
       this.belongsTo(models.Categories, {
         foreignKey: "mainidx",

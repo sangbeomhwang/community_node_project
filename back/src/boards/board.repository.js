@@ -74,6 +74,7 @@ class BoardRepository {
       throw new Error(e)
     }
   }
+
 }
 
 module.exports = BoardRepository;
