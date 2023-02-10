@@ -55,7 +55,9 @@ class BoardService {
   async view({ boardidx }) {
     try {
       const result = await this.boardRepository.findOne({ boardidx });
+      console.log(result)
       const data = this.dateFormatting(result);
+      console.log(data)
       return data;
     } catch (e) {
       throw new Error(e);
@@ -97,6 +99,7 @@ class BoardService {
       throw new Error(e);
     }
   }
+
 }
 
 module.exports = BoardService;

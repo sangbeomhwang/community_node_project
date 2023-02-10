@@ -4,7 +4,16 @@ module.exports = (sequelize, Sequelize) => {
             return this.init(config, settings)
         }
 
+        static associate(models) {
+            this.belongsTo(models.Users, {
+                foreignKey: 'nickname'
+            })
+            this.belongsTo(models.Boards, {
+                foreignKey: 'boardidx'
+            })
+        }
     }
+
 
     const config = {
         commentidx: {
@@ -24,7 +33,7 @@ module.exports = (sequelize, Sequelize) => {
             defaultValue: 0,
         },
 
-        group: {
+        party: {
             type: Sequelize.INTEGER,
             allowNull: true,
         }

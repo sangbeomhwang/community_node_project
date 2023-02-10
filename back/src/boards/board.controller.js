@@ -65,6 +65,7 @@ class BoardController {
       next(e);
     }
   }
+
 }
 
 module.exports = BoardController;

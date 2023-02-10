@@ -11,11 +11,8 @@ module.exports = (sequelize, Sequelize) => {
       // this.hasMany(models.Hashes, {
       //   foreignKey: "boardidx",
       // });
-      // this.hasMany(models.Comments, {
-      //   foreignKey: "boardidx",
-      // });
       this.belongsTo(models.Users, {
-        foreignKey: "userid",
+        foreignKey: "nickname",
       });
       this.belongsTo(models.Categories, {
         foreignKey: "mainidx",
@@ -31,6 +28,9 @@ module.exports = (sequelize, Sequelize) => {
         through: "Likes",
         foreignKey: "boardidx",
       });
+      this.hasMany(models.Comments, {
+        foreignKey: "boardidx",
+      });
     }
   }
 
@@ -40,10 +40,10 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    nickname: {
-      type: Sequelize.STRING(30),
-      allowNull: false,
-    },
+    // nickname: {
+    //   type: Sequelize.STRING(30),
+    //   allowNull: false,
+    // },
     title: {
       type: Sequelize.STRING(128),
       allowNull: false,

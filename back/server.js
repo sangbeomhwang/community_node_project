@@ -23,9 +23,9 @@ app.listen(process.env.PORT, async () => {
   //   await sequelize.models.Users.create(user[i]);
   // }
 
-  // for (let i = 0; i < board.length; i++) {
-  //   await sequelize.models.Boards.create(board[i]);
-  // }
+  for (let i = 0; i < board.length; i++) {
+    await sequelize.models.Boards.create(board[i]);
+  }
 
   console.log(`Back Server Start ${process.env.PORT}`);
 });

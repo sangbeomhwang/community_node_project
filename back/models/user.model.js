@@ -6,19 +6,22 @@ module.exports = (sequelize, Sequelize) => {
 
     static associate(models) {
       this.hasMany(models.Boards, {
-        foreignKey: "userid",
+        foreignKey: "nickname",
       });
 
       this.hasMany(models.Points, {
-        foreignKey: "userid",
+        foreignKey: "nickname",
       });
 
       this.belongsToMany(models.Boards, {
         through: 'Likes',
-        foreignKey: 'userid',
+        foreignKey: 'nickname',
       });
+      this.hasMany(models.Comments, {
+        foreignKey: 'nickname',
+      })
       this.hasMany(models.Chats, {
-        foreignKey: "userid",
+        foreignKey: "nickname",
       });
     }
   }
@@ -26,7 +29,7 @@ module.exports = (sequelize, Sequelize) => {
   const config = {
     userid: {
       type: Sequelize.STRING(60),
-      primaryKey: true,
+      allowNull: false
     },
     password: {
       type: Sequelize.STRING(64),
@@ -43,7 +46,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     nickname: {
       type: Sequelize.STRING(30),
-      allowNull: false,
+      primaryKey: true,
     },
     gender: {
       type: Sequelize.ENUM("male", "female", "none"),
