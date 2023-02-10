@@ -17,23 +17,49 @@
         <div id="usernick">{{userid}}님</div>
         <div id="profile_btn">
           {% if image %}
-          <img src="http://localhost:3000/{{image}}" alt="modify_img" />
+
+          <img src="http://127.0.0.1:3000/{{image}}" alt="modify_img" />
+          <div id="profile_area">
+            <ul id="profile_menu">
+              {% if level === 'top' %}
+              <li id="admin_info">
+                <a id="admin_page" href="/admins">관리자 페이지</a>
+              </li>
+
+              {% else %} {% endif %}
+              <li id="profile_info">
+                <a id="my_page" href="/users/profile">마이 페이지</a>
+              </li>
+              <li id="logout">
+                <a id="logout_btn" href="/">로그아웃</a>
+              </li>
+            </ul>
+          </div>
+
 
           {% else %}
+
           <img
             src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
             alt="modify_img"
           />
+          <div id="profile_area">
+            <ul id="profile_menu">
+              {% if level === 'top' %}
+              <li id="admin_info">
+                <a id="admin_page" href="/admins">관리자 페이지</a>
+              </li>
 
+              {% else %} {% endif %}
+              <li id="profile_info">
+                <a id="my_page" href="/users/profile">마이 페이지</a>
+              </li>
+              <li id="logout">
+                <a id="logout_btn" href="/">로그아웃</a>
+              </li>
+            </ul>
+          </div>
           {% endif %}
-          <ul id="profile_menu">
-            <li id="profile_info">
-              <a id="my_page" href="/users/profile">마이 페이지</a>
-            </li>
-            <li id="logout">
-              <a id="logout_btn" href="/">로그아웃</a>
-            </li>
-          </ul>
         </div>
       </div>
 
@@ -52,7 +78,7 @@
 
 <script src="/js/layout/header.js" type="module"></script>
 
-<script>
+<!-- <script>
   const logout = document.querySelector("#logout");
   logout.addEventListener("click", (e) => {
     e.preventDefault();
@@ -63,9 +89,14 @@
 
 <script>
   const profile_btn = document.querySelector("#profile_btn");
-  const profile_menu = document.querySelector("#profile_menu");
+  const profile_menu = document.querySelector("#profile_area");
 
   profile_btn.addEventListener("click", () => {
-    profile_menu.style.opacity = "1";
+    profile_menu.style.display = "block";
   });
+
+
+  //   profile_btn.addEventListener("click", () => {
+  //     profile_menu.style.display = "none";
+  //   });
 </script>

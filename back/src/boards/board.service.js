@@ -14,7 +14,6 @@ class BoardService {
     try {
       if (subidx === "null" || subidx === "undefined") subidx = undefined;
       const result = await this.boardRepository.findAll({ mainidx, subidx });
-      // console.log(result)
       const totalBoards = result.length;
       const startNum = (page - 1) * maxBoards;
       const endNum = page * maxBoards - 1;
@@ -26,7 +25,7 @@ class BoardService {
           }
         }
       }
-      const lastPage = Math.floor(totalBoards / maxBoards) + (totalBoards % maxBoards === 0 ? 0 : 1);
+      const lastPage = Math.ceil(totalBoards / maxBoards);
       const viewPageCount = 5;
       let startPageNum = 1;
       let start = Math.floor(page / viewPageCount);
@@ -47,7 +46,6 @@ class BoardService {
         lastPage,
         page,
       };
-      // console.log(pagination);
       return { data, pagination };
     } catch (e) {
       throw new Error(e);
@@ -95,10 +93,10 @@ class BoardService {
 
   async search({ keyword }) {
     try {
-      const result = await this.boardRepository.findList({ keyword})
-      return result
+      const result = await this.boardRepository.findList({ keyword });
+      return result;
     } catch (e) {
-      throw new Error(e)
+      throw new Error(e);
     }
   }
 

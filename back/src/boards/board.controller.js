@@ -26,7 +26,6 @@ class BoardController {
 
   async postOne(req, res, next) {
     try {
-      // const userid = req.cookies.token
       console.log(req.body);
       const itemOne = await this.boardService.write({ ...req.body });
       res.json(itemOne);
@@ -57,13 +56,13 @@ class BoardController {
 
   async getSearch(req, res, next) {
     try {
-      const {keyword} = req.query
-      console.log('================',keyword)
-      const response = await this.boardService.search({ keyword })
-      console.log('response===', response)
-      res.json(response)
+      const { keyword } = req.query;
+      console.log("================", keyword);
+      const response = await this.boardService.search({ keyword });
+      console.log("response===", response);
+      res.json(response);
     } catch (e) {
-      next(e)
+      next(e);
     }
   }
 

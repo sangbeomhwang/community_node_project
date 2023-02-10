@@ -23,17 +23,18 @@
 
     <div id="content_body">
       <form id="write_form">
-        <input id="write_subject" value="{{title}}" readonly />
+        <input id="write_subject" value="{{data.title}}" readonly />
         <div id="write_group">
           <div id="write_info">
             <img src="https://i.postimg.cc/4xbnhk6D/Vector-1.png" />
-            <span>{{nickname}}</span>
+            <span>{{data.nickname}}</span>
             <img src="https://i.postimg.cc/PxNqcCgH/Vector.png" />
-            <span>{{register}}</span>
+            <span>{{data.register}}</span>
             <img src="https://i.postimg.cc/FHBRkgYk/Vector-6.png" />
-            <span>{{hit}}</span>
+            <span>{{data.hit}}</span>
           </div>
-          <textarea id="write_content" readonly>{{content}}</textarea>
+          <!-- <textarea id="write_content" readonly>{{data.content}}</textarea> -->
+          <div id="write_content">{{data.content}}</div>
         </div>
 
         <div id="write_btnbox">
