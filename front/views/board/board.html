@@ -62,17 +62,17 @@
           </select>
         </form>
         <input type="text" id="searchbox" placeholder="검색" />
-        <a type="submit" id="writebtn" href="/boards/write">글쓰기</a>
+        <div id="writebtn">글쓰기</div>
       </div>
       <div id="content_page">
-        <img src="https://i.postimg.cc/qMkrQQLc/Vector-1.png" class="left" />
+        <img src="/img/arrow.png" class="left" id="left" />
         <ul id="page"></ul>
-        <img src="https://i.postimg.cc/0Qw5RQMp/Vector.png" class="right" />
+        <img src="/img/arrow.png" class="right" id="right" />
       </div>
     </div>
   </div>
 </div>
 {% include "../layout/footer.html" %} {% endblock %} {% block js %}
-<script src="/js/lib/board_list.js" type="module"></script>
+<script src="/js/module/board_list.js" type="module"></script>
 <script src="/js/module/board_search.js" type="module"></script>
 {% endblock %}

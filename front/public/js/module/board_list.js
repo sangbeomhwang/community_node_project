@@ -1,5 +1,6 @@
 import request from "/js/lib/request.js";
 import { boardListTemplate } from "/js/lib/template.js";
+import { getCategory, categoryTitleRender } from "/js/lib/getCategory.js";
 const queryString = new URLSearchParams(location.search);
 
 const render = ({ data }) => {
@@ -15,23 +16,6 @@ const getData = async ({ mainidx, subidx, page }) => {
     data: { data, pagination },
   } = await request.get(`/boards?mainidx=${mainidx}&subidx=${subidx}&page=${page}`);
   return { data, pagination };
-};
-
-const getCategory = async ({ mainidx }) => {
-  const { data } = await request.get(`/categories?mainidx=${mainidx}`);
-  return { data };
-};
-
-const categoryTitleRender = ({ categories }) => {
-  const mainTitle = document.querySelector("#subject");
-  const subTitles = document.querySelector("#subcategories");
-  const { SubCategories } = categories;
-
-  mainTitle.innerHTML = `<div data-mainidx="${categories.mainidx}">${categories.title}</div>`;
-  subTitles.innerHTML = `<li>전체</li>`;
-  for (let i = 0; i < SubCategories.length; i++) {
-    subTitles.innerHTML += `<li data-subidx="${SubCategories[i].subidx}">${SubCategories[i].title}</li>`;
-  }
 };
 
 const pageListRender = ({ pagination }) => {
@@ -120,6 +104,7 @@ const rightBtnHandler = async () => {
 
 const init = async () => {
   const mainidx = queryString.get("mainidx");
+  const writeBtn = document.querySelector("#writebtn");
 
   const { data, pagination } = await getData({ mainidx });
   render({ data });
@@ -128,6 +113,24 @@ const init = async () => {
   pageListRender({ pagination });
   nowPageNav({ page: pagination.page });
   moveBtnEvent();
+
+  writeBtn.addEventListener("click", () => {
+    location.href = `/boards/write?mainidx=${mainidx}`;
+  });
+  subCategories.addEventListener("click", subCatHandler);
+};
+
+const subCategories = document.querySelector("#subcategories");
+
+const subCatHandler = (e) => {
+  const subCat = document.querySelectorAll("#subcategories > li");
+  const { tagName } = e.target;
+  if (tagName === "LI") {
+    for (let i = 0; i < subCat.length; i++) {
+      subCat[i].classList.remove("cat_active");
+    }
+    e.target.classList.add("cat_active");
+  }
 };
 
 init();
