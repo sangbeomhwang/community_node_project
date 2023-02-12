@@ -36,7 +36,8 @@
     {% else %}
 
     <script type="text/javascript">
-      location.href = "http://127.0.0.1:3005";
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      location.href = "/";
     </script>
 
     {% endif %}
@@ -46,7 +47,8 @@
 {% else %}
 
 <script type="text/javascript">
-  location.href = "http://127.0.0.1:3005";
+  document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+  location.href = "/";
 </script>
 
 {% endif %}
