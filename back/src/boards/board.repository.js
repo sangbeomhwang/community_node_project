@@ -69,6 +69,7 @@ class BoardRepository {
         },
         raw: true,
       });
+
       return response;
     } catch (e) {
       throw new Error(e);
@@ -110,6 +111,7 @@ class BoardRepository {
         attributes: { exclude: "boardidx" },
         raw: true,
       });
+
       return response;
     } catch (e) {
       throw new Error(e);

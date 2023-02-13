@@ -56,9 +56,9 @@ class BoardController {
   async getSearch(req, res, next) {
     try {
       const { keyword } = req.query;
-      console.log("================", keyword);
+      // console.log("================", keyword);
       const response = await this.boardService.search({ keyword });
-      console.log("response===", response);
+      // console.log("response===", response);
       res.json(response);
     } catch (e) {
       next(e);

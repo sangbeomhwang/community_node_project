@@ -1,6 +1,7 @@
 class CommentRepository {
-    constructor({ Comments }) {
+    constructor({ Comments, Users }) {
         this.comment = Comments
+        this.Users = Users
     }
 
     async commentList({ boardidx }) {
@@ -9,9 +10,11 @@ class CommentRepository {
                 where: {
                     boardidx,
                 },
+                include: [{model: this.Users, required:true, attributes:["image"]  }],
                 raw: true,
+                nest: true
             })
-            // console.log('^^^^^^^^^', response)
+            console.log('^^^^^^^^^', response)
             return response
         } catch (e) {
             throw new Error(e)
