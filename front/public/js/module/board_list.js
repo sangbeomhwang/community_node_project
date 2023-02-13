@@ -56,6 +56,10 @@ const moveBtnEvent = () => {
 
 const leftBtnHandler = async () => {
   const mainidx = queryString.get("mainidx");
+  let { subidx } = document.querySelector(".cat_active[data-subidx]").dataset;
+  if (subidx === "") {
+    subidx = undefined;
+  }
   const nowPage = document.querySelector(`.now[data-page]`);
   const { page, startpage, endpage, lastpage, viewpagecount } = nowPage.dataset;
 
@@ -64,12 +68,12 @@ const leftBtnHandler = async () => {
     return;
   }
   if (page !== startpage) {
-    const { data, pagination } = await getData({ mainidx, page: startpage });
+    const { data, pagination } = await getData({ mainidx, subidx, page: startpage });
     render({ data });
     pageListRender({ pagination });
     nowPageNav({ page: pagination.page });
   } else {
-    const { data, pagination } = await getData({ mainidx, page: Number(startpage) - 1 });
+    const { data, pagination } = await getData({ mainidx, subidx, page: Number(startpage) - 1 });
     render({ data });
     pageListRender({ pagination });
     nowPageNav({ page: pagination.page });
@@ -78,6 +82,10 @@ const leftBtnHandler = async () => {
 
 const rightBtnHandler = async () => {
   const mainidx = queryString.get("mainidx");
+  let { subidx } = document.querySelector(".cat_active[data-subidx]").dataset;
+  if (subidx === "") {
+    subidx = undefined;
+  }
   const nowPage = document.querySelector(`.now[data-page]`);
   const { page, startpage, endpage, lastpage, viewpagecount } = nowPage.dataset;
 
@@ -86,8 +94,8 @@ const rightBtnHandler = async () => {
     return;
   }
   if (endpage === lastpage) {
-    console.log("hh");
-    const { data, pagination } = await getData({ mainidx, page: endpage });
+    console.log(endpage);
+    const { data, pagination } = await getData({ mainidx, subidx, page: endpage });
     render({ data });
     pageListRender({ pagination });
     nowPageNav({ page: pagination.page });
@@ -95,7 +103,7 @@ const rightBtnHandler = async () => {
   }
 
   if (page <= endpage) {
-    const { data, pagination } = await getData({ mainidx, page: Number(endpage) + 1 });
+    const { data, pagination } = await getData({ mainidx, subidx, page: Number(endpage) + 1 });
     render({ data });
     pageListRender({ pagination });
     nowPageNav({ page: pagination.page });
@@ -122,7 +130,7 @@ const init = async () => {
 
 const subCategories = document.querySelector("#subcategories");
 
-const subCatHandler = (e) => {
+const subCatHandler = async (e) => {
   const subCat = document.querySelectorAll("#subcategories > li");
   const { tagName } = e.target;
   if (tagName === "LI") {
@@ -131,6 +139,17 @@ const subCatHandler = (e) => {
     }
     e.target.classList.add("cat_active");
   }
+  const mainidx = queryString.get("mainidx");
+  let { subidx } = document.querySelector(".cat_active[data-subidx]").dataset;
+  if (subidx === "") {
+    subidx = undefined;
+  }
+
+  const { data, pagination } = await getData({ mainidx, subidx });
+  render({ data });
+  pageListRender({ pagination });
+  nowPageNav({ page: pagination.page });
+  moveBtnEvent();
 };
 
 init();

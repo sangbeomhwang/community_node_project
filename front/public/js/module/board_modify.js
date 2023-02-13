@@ -1,6 +1,5 @@
 import request from "/js/lib/request.js";
 import { getCategory, categoryTitleRender } from "/js/lib/getCategory.js";
-const queryString = new URLSearchParams(location.search);
 
 const editor = document.querySelector("#editor");
 
@@ -29,6 +28,16 @@ const imgUploadHandler = async (e) => {
   document.execCommand("insertImage", false, `${uri}${src}`);
 };
 
+const subCat = (subCatIdx) => {
+  const subCategories = document.querySelectorAll("[data-subidx");
+  for (let i = 0; i < subCategories.length; i++) {
+    subCategories[i].classList.remove("cat_active");
+    if (subCategories[i].dataset.subidx === String(subCatIdx)) {
+      subCategories[i].classList.add("cat_active");
+    }
+  }
+};
+
 const subCatHandler = (e) => {
   const subCat = document.querySelectorAll("[data-subidx]");
   const { subidx } = e.target.dataset;
@@ -41,20 +50,12 @@ const subCatHandler = (e) => {
   subCat[subidx].classList.add("cat_active");
 };
 
-const addHashTag = (hashTagList) => {
-  const hash = [];
-  for (let i = 0; i < hashTagList.length - 1; i++) {
-    hash.push(hashTagList[i].innerText.split("#")[1]);
-  }
-  return hash;
-};
-
 const writeHandler = async (e) => {
   e.preventDefault();
-  const mainidx = queryString.get("mainidx");
+  const boardidx = document.querySelector("#boardidx").value;
+  const { mainidx } = document.querySelectorAll("[data-mainidx]")[0].dataset;
   const { subidx } = document.querySelector(".cat_active[data-subidx]").dataset;
-  const hashTags = document.querySelectorAll(".hash > span");
-
+  console.log(e.target);
   const {
     title: { value: title },
     nickname: { value: nickname },
@@ -70,70 +71,36 @@ const writeHandler = async (e) => {
     content,
   };
 
-  // 글 등록
-  const { boardidx } = (await request.post("/boards", data)).data;
-
-  const hashes = addHashTag(hashTags);
-  await request.post("/hashes", { hashes, boardidx });
-
+  //   글 등록
+  await request.put(`/boards/${boardidx}`, data);
   location.href = `/boards/${boardidx}`;
 };
 
-const hashTagEnterHandler = (e) => {
-  if (e.key === "#") {
-    e.preventDefault();
-  }
-  if (e.key === "Enter") {
-    const node = e.target.parentElement.parentElement;
-    createSpanTag(e.target);
-    createHashTag(node);
-  }
-};
-
-const tagRemove = (e) => {
-  e.target.parentElement.remove();
-};
-
-const createHashTag = (node) => {
-  const div = document.createElement("div");
-  const span = document.createElement("span");
-  const input = document.createElement("input");
-  div.className = "hash";
-  span.innerText = "#";
-  input.placeholder = "tag를 입력해주세요";
-  div.appendChild(span);
-  div.appendChild(input);
-  node.appendChild(div);
-};
-
-const createSpanTag = (inputBox) => {
-  const tag = inputBox.value;
-  const span = inputBox.previousSibling;
-  span.innerText += tag;
-  inputBox.remove();
-  span.addEventListener("click", tagRemove);
-};
-
-const cancleHandler = (mainidx) => () => (location.href = `/boards?mainidx=${mainidx}`);
-
 const init = async () => {
-  const mainidx = queryString.get("mainidx");
-  const subCategories = document.querySelector("#subcategories");
+  const boardidx = document.querySelector("#boardidx").value;
+  const title = document.querySelector("#write_subject");
+  const nickname = document.querySelector("#nickname");
+  const content = document.querySelector("#editor");
+  const { data } = await request.get(`/boards/${boardidx}`);
+
+  const mainidx = data.mainidx;
+  const subidx = data.subidx;
   const [categories] = (await getCategory({ mainidx })).data;
   categoryTitleRender({ categories, all: false });
+  subCat(subidx);
 
+  const subCategories = document.querySelector("#subcategories");
   subCategories.addEventListener("click", subCatHandler);
 
   const imgBtn = document.querySelector("#img");
   imgBtn.addEventListener("change", imgUploadHandler);
-  const hashbox = document.querySelector("#write_hashbox");
-  hashbox.addEventListener("keypress", hashTagEnterHandler);
+
+  title.value = data.title;
+  nickname.innerText = data.nickname;
+  content.innerHTML = data.content;
 
   const writeBtn = document.querySelector("#write_form");
   writeBtn.addEventListener("submit", writeHandler);
-
-  const cancleBtn = document.querySelector("#cancle");
-  cancleBtn.addEventListener("click", cancleHandler(mainidx));
 };
 
 init();

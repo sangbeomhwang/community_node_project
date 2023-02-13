@@ -12,7 +12,7 @@ const categoryTitleRender = ({ categories, all = true }) => {
 
   if (all) {
     mainTitle.innerHTML = `<div data-mainidx="${categories.mainidx}">${categories.title}</div>`;
-    subTitles.innerHTML = `<li class="cat_active">전체</li>`;
+    subTitles.innerHTML = `<li data-subidx="" class="cat_active">전체</li>`;
     for (let i = 0; i < SubCategories.length; i++) {
       subTitles.innerHTML += `<li data-subidx="${SubCategories[i].subidx}">${SubCategories[i].title}</li>`;
     }

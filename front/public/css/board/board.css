@@ -123,7 +123,7 @@
 }
 
 #content_body > ul > li > .li_sub {
-  margin-bottom: 17px;
+  margin-bottom: 10px;
 }
 
 #content_body > ul > li > .li_sub > a {
@@ -134,12 +134,12 @@
 #content_body > ul > li > .li_Cate {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-#content_body > ul > li > .li_Cate > a {
+.hash {
   font-size: 12px;
 }
-
 #content_body > ul > li > .li_Cate > div {
   font-size: 12px;
   color: var(--board_content_date_title_font_color);
@@ -154,6 +154,7 @@
   padding-left: 2px;
   box-sizing: border-box;
   width: 12px;
+  vertical-align: middle;
 }
 
 #content_body > ul > li > .li_Cate > div > div > span {
