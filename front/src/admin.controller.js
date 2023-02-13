@@ -1,8 +1,8 @@
-// const axios = require("axios");
-// const request = axios.create({
-//   baseURL: "http://127.0.0.1:3000",
-//   withCredentials: true,
-// });
+const axios = require("axios");
+const request = axios.create({
+  baseURL: "http://127.0.0.1:3000",
+  withCredentials: true,
+});
 
 class AdminController {
   async getIndex(req, res, next) {
@@ -22,13 +22,26 @@ class AdminController {
 
   async getUsers(req, res, next) {
     try {
-      const { userid, nickname, image, level } = req.user;
+      const { userid, nickname, name, image, email, level } = req.user;
       res.render("admin/admin_user.html", {
         userid,
         nickname,
+        name,
         image,
+        email,
         level,
       });
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async deleteUser(req, res, next) {
+    try {
+      // const { nickname } = req.user;
+      const { nickname } = req.params;
+      const { data } = await request.delete(`/admins/${nickname}`);
+      res.render("admin/admin_user.html", { data, nickname });
     } catch (e) {
       next(e);
     }

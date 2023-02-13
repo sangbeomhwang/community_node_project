@@ -19,6 +19,7 @@ app.listen(process.env.PORT, async () => {
   // for (let i = 0; i < subCategory.length; i++) {
   //   await sequelize.models.SubCategories.create(subCategory[i]);
   // }
+
   // for (let i = 0; i < user.length; i++) {
   //   await sequelize.models.Users.create(user[i]);
   // }
@@ -26,16 +27,6 @@ app.listen(process.env.PORT, async () => {
   // for (let i = 0; i < board.length; i++) {
   //   await sequelize.models.Boards.create(board[i]);
   // }
-
-  // await sequelize.models.Comments.create({ content: "hello2", nickname: "cloud", boardidx: 2 });
-  // await sequelize.models.Comments.create({ content: "hello1", nickname: "cloud", boardidx: 2 });
-  // await sequelize.models.Hashtags.create({ tag: "nodejs" });
-  // await sequelize.models.Hashtags.create({ tag: "javascript" });
-  // await sequelize.models.Hashtags.create({ tag: "python" });
-  // await sequelize.models.Hashes.create({ boardidx: 2, tag: "nodejs" });
-  // await sequelize.models.Hashes.create({ boardidx: 2, tag: "javascript" });
-  // await sequelize.models.Hashes.create({ boardidx: 9, tag: "javascript" });
-  // await sequelize.models.Hashes.create({ boardidx: 9, tag: "python" });
 
   console.log(`Back Server Start ${process.env.PORT}`);
 });

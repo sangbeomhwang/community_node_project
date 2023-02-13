@@ -14,12 +14,12 @@ module.exports = (sequelize, Sequelize) => {
       });
 
       this.belongsToMany(models.Boards, {
-        through: 'Likes',
-        foreignKey: 'nickname',
+        through: "Likes",
+        foreignKey: "nickname",
       });
       this.hasMany(models.Comments, {
-        foreignKey: 'nickname',
-      })
+        foreignKey: "nickname",
+      });
       this.hasMany(models.Chats, {
         foreignKey: "nickname",
       });
@@ -29,7 +29,7 @@ module.exports = (sequelize, Sequelize) => {
   const config = {
     userid: {
       type: Sequelize.STRING(60),
-      allowNull: false
+      allowNull: false,
     },
     password: {
       type: Sequelize.STRING(64),
@@ -84,15 +84,15 @@ module.exports = (sequelize, Sequelize) => {
       defaultValue: Sequelize.NOW,
     },
     level: {
-      type: Sequelize.ENUM('normal', 'top'),
+      type: Sequelize.ENUM("normal", "top"),
       allowNull: false,
-      defaultValue: 'normal',
+      defaultValue: "normal",
     },
     access: {
-      type: Sequelize.ENUM('ok', 'deny'),
+      type: Sequelize.ENUM("ok", "deny"),
       allowNull: false,
-      defaultValue: 'ok'
-    }
+      defaultValue: "ok",
+    },
   };
 
   const settings = {

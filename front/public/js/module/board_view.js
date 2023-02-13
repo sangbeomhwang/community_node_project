@@ -55,7 +55,9 @@ const init = async () => {
   register.innerText = data.register;
   hit.innerText = data.hit;
   content.innerHTML = data.content;
+  
   hashtag(data.hash);
+
 
   modify.addEventListener("click", modifyBtn(boardidx));
   back.addEventListener("click", backBtn(mainidx));
