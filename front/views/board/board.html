@@ -10,11 +10,7 @@
     <div id="content_header">
       <div id="subject"></div>
       <div id="subcategory">
-        <ul id="subcategories">
-          <!-- <li><a href="#">전체</a></li>
-          <li><a href="#">일상이야기</a></li>
-          <li><a href="#">모임</a></li> -->
-        </ul>
+        <ul id="subcategories"></ul>
         <div>
           <img src="https://i.postimg.cc/ncnvqsZh/Vector-5.png" />
           <select>
@@ -29,26 +25,7 @@
 
     <div id="content_body">
       <ul>
-        {% for item in response %}
-        <li>
-          <div class="li_user">
-            <a href="#">닉네임 {{item.nickname}}</a>
-            <div>
-              <span>{{item.register}}</span>
-              <span>몇분전</span>
-            </div>
-          </div>
-          <div class="li_sub"><a href="#">{{item.content}}</a></div>
-          <div class="li_Cate">
-            <a href="#">#Gitjub #Repository</a>
-            <div>
-              <div>{{item.hit}}<img src="https://i.postimg.cc/XYD9XSTJ/ph-eye.png" /><span>0</span></div>
-              <div>좋아요<img src="https://i.postimg.cc/JnXFPQbN/Vector.png" /><span>0</span></div>
-              <div>댓글<img src="https://i.postimg.cc/5ynS3Hk5/Vector-1.png" /><span>0</span></div>
-            </div>
-          </div>
-        </li>
-        {% endfor %}
+        
       </ul>
     </div>
 

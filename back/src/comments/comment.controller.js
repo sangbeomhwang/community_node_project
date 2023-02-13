@@ -8,7 +8,7 @@ class CommentController {
             const { boardidx } = req.query
             // console.log(req.query)
             const response = await this.commentService.list({ boardidx })
-            // console.log('@@@@@@@@@@@@@', response)
+            console.log('@@@@@@@@@@@@@', response)
             res.json(response)
         } catch (e) {
             next(e)
@@ -28,6 +28,16 @@ class CommentController {
         try {
             const { commentidx } = req.params
             const response = await this.commentService.modify({ commentidx, ...req.body })
+            res.json(response)
+        } catch (e) {
+            next(e)
+        }
+    }
+
+    async deleteComment(req, res, next) {
+        try {
+            const { commentidx } = req.params
+            const response = await this.commentService.delete({ commentidx })
             res.json(response)
         } catch (e) {
             next(e)

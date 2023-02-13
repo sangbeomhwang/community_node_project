@@ -5,6 +5,6 @@ const { commentController: controller } = require('./comment.module')
 router.get('/', (req, res, next) => controller.getComment(req, res, next))
 router.post('/', (req, res, next) => controller.postComment(req, res, next))
 router.put('/:commentidx', (req, res, next) => controller.putComment(req, res, next))
-router.delete('/:commentdix', (req, res, next) => controller.deleteComment(req, res, next))
+router.delete('/:commentidx', (req, res, next) => controller.deleteComment(req, res, next))
 
 module.exports = router

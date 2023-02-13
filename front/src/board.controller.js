@@ -48,8 +48,7 @@ class BoardController {
     try {
       const { userid, nickname, image } = req.user;
       const { boardidx } = req.params;
-      const { data } = await request.get(`/boards/${boardidx}`);
-      res.render("board/view.html", { data, userid, nickname, image });
+      res.render("board/view.html", { userid, nickname, image, boardidx });
     } catch (e) {
       next(e);
     }

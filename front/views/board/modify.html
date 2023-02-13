@@ -8,52 +8,49 @@
 <div id="content_wrap">
   <div id="content">
     <div id="content_header">
-      <div id="subject">
-        <div>커뮤니티</div>
-      </div>
+      <div id="subject"></div>
       <div id="subcategory">
-        <ul>
-          <li><a href="#">전체</a></li>
-          <li><a href="#">일상이야기</a></li>
-          <li><a href="#">모임</a></li>
-        </ul>
+        <ul id="subcategories"></ul>
       </div>
     </div>
 
+    <form id="write_form"></form>
+    <form id="img_form" enctype="multipart/form-data"></form>
     <div id="content_body">
-      <form id="write_form">
-        <input id="write_subject" placeholder="제목" />
-        <div id="write_group">
-          <div id="write_info">
-            <img src="https://i.postimg.cc/4xbnhk6D/Vector-1.png" />
-            <span>cloudcoke</span>
-            <img src="https://i.postimg.cc/PxNqcCgH/Vector.png" />
-            <span>2023-02-01</span>
+      <input id="write_subject" placeholder="제목" name="title" form="write_form" />
+      <div id="write_group">
+        <div id="write_info">
+          <img src="/img/users.png" />
+          <span>cloudcoke</span>
+          <input type="hidden" name="nickname" value="cloudcoke" form="write_form" />
+        </div>
+        <div id="controller">
+          <label for="img">
+            <div id="img_btn" class="control_btn">IMG</div>
+          </label>
+          <input type="file" name="img" id="img" form="img_form" />
+        </div>
+
+        <div id="editor_box">
+          <div id="editor" contenteditable="true" name="content"></div>
+        </div>
+      </div>
+
+      <div id="write_btnbox">
+        <div id="write_hashbox">
+          <div class="hash"><span>#</span><input placeholder="tag를 입력해주세요" /></div>
+        </div>
+
+        <div id="write_btn">
+          <button>
             <img src="https://i.postimg.cc/FHBRkgYk/Vector-6.png" />
-            <span>100</span>
-          </div>
-          <textarea
-            id="write_content"
-            placeholder="내용을 입력해주세요"
-          ></textarea>
+          </button>
+          <button>뒤로가기</button>
+          <button>수정하기</button>
         </div>
-
-        <div id="write_btnbox">
-          <div id="write_hashbox">
-            <span>#힘들다 #살려주세요</span>
-          </div>
-
-          <div id="write_btn">
-            <button>
-              <img src="https://i.postimg.cc/FHBRkgYk/Vector-6.png" />
-            </button>
-            <button>뒤로가기</button>
-            <button>수정하기</button>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
-</div>
 
-{% include "../layout/footer.html" %} {% endblock %}
+  {% include "../layout/footer.html" %} {% endblock %}
+</div>

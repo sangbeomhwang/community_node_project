@@ -18,9 +18,9 @@ class CommentRepository {
         }    
     }
 
-    async commentWrite({ boardidx, userid, content, depth, party }) {
+    async commentWrite({ boardidx, nickname, content, depth, party }) {
         try {
-            const response = await this.comment.create({ boardidx, userid, content, depth, party })
+            const response = await this.comment.create({ boardidx, nickname, content, depth, party })
             // console.log('^^^^^^^^^', response)
             return response
         } catch (e) {
@@ -28,10 +28,10 @@ class CommentRepository {
         }
     }
 
-    async commentUpdate({ commentidx, boardidx, userid, content }) {
+    async commentUpdate({ commentidx, boardidx, nickname, content }) {
         try {
             const response = await this.comment.update(
-                { content, userid, boardidx, },
+                { content, nickname, boardidx, },
                 { where: { commentidx }},
             )
             return response

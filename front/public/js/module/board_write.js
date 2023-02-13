@@ -8,7 +8,7 @@ const focusEditor = () => {
   editor.focus({ preventScroll: true });
 };
 
-const imgBtnHandler = async (e) => {
+const imgUploadHandler = async (e) => {
   const file = e.target.files[0];
   const formData = new FormData();
   formData.append("file", file);
@@ -61,8 +61,44 @@ const writeHandler = async (e) => {
     content,
   };
 
+  // 글 등록
   const response = await request.post("/boards", data);
-  location.href = `/boards/${response.data.boardidx}`;
+  location.href = `/boards/view?mainidx=${mainidx}&boardidx=${response.data.boardidx}`;
+};
+
+const hashTagEnterHandler = (e) => {
+  if (e.key === "#") {
+    e.preventDefault();
+  }
+  if (e.key === "Enter") {
+    const node = e.target.parentElement.parentElement;
+    createSpanTag(e.target);
+    createHashTag(node);
+  }
+};
+
+const tagRemove = (e) => {
+  e.target.parentElement.remove();
+};
+
+const createHashTag = (node) => {
+  const div = document.createElement("div");
+  const span = document.createElement("span");
+  const input = document.createElement("input");
+  div.className = "hash";
+  span.innerText = "#";
+  input.placeholder = "tag를 입력해주세요";
+  div.appendChild(span);
+  div.appendChild(input);
+  node.appendChild(div);
+};
+
+const createSpanTag = (inputBox) => {
+  const tag = inputBox.value;
+  const span = inputBox.previousSibling;
+  span.innerText += tag;
+  inputBox.remove();
+  span.addEventListener("click", tagRemove);
 };
 
 const init = async () => {
@@ -74,7 +110,10 @@ const init = async () => {
   subCategories.addEventListener("click", subCatHandler);
 
   const imgBtn = document.querySelector("#img");
-  imgBtn.addEventListener("change", imgBtnHandler);
+  imgBtn.addEventListener("change", imgUploadHandler);
+  const hashbox = document.querySelector("#write_hashbox");
+  hashbox.addEventListener("keypress", hashTagEnterHandler);
+
   const writeBtn = document.querySelector("#write_form");
   writeBtn.addEventListener("submit", writeHandler);
 };
