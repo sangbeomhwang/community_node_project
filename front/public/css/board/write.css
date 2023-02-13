@@ -85,6 +85,7 @@
 #content_body > div > #write_info {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   padding-top: 20px;
   padding-right: 20px;
   box-sizing: border-box;
@@ -93,6 +94,8 @@
 #write_info > img {
   margin-left: 10px;
   box-sizing: border-box;
+  width: 15px;
+  height: 15px;
 }
 
 #write_info > span {
@@ -158,14 +161,18 @@ textarea::placeholder {
 #write_btnbox > #write_hashbox {
   margin-top: 5px;
   max-width: 860px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-#write_btnbox > #write_hashbox > span {
+#write_btnbox > #write_hashbox > .hash > span {
   margin-right: 5px;
   font-size: 24px;
 }
 
-#write_btnbox > #write_hashbox > input {
+#write_btnbox > #write_hashbox > .hash > input {
   border: none;
   font-size: 24px;
 }
