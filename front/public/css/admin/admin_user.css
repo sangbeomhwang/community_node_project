@@ -181,6 +181,12 @@ body {
   line-height: 50%;
 }
 
+#allusers_body > ul > li > ul > li:nth-child(1) > img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
 #allusers_body > ul > li > ul > li:nth-child(1) {
   width: 80px;
 }
@@ -203,6 +209,12 @@ body {
 
 #allusers_body > ul > li > ul > li:nth-child(6) {
   width: 100px;
+}
+
+#allusers_body > ul > li > ul > li:nth-child(6) button {
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 .users_info {
