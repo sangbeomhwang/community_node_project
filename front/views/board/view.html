@@ -2,60 +2,53 @@
 
 <link rel="stylesheet" href="/css/index.css" />
 <link rel="stylesheet" href="/css/board/view.css" />
-<link rel="stylesheet" href="/css/board/comment.css">
+<link rel="stylesheet" href="/css/board/comment.css" />
 
 {% endblock %} {% block content %} {% include "../layout/header.html" %}
 
 <div id="content_wrap">
   <div id="content">
     <div id="content_header">
-      <div id="subject">
-        <div>커뮤니티</div>
-      </div>
+      <input id="boardidx" type="hidden" value="{{boardidx}}" />
+      <div id="subject"></div>
       <div id="subcategory">
-        <ul>
-          <li><a href="#">전체</a></li>
-          <li><a href="#">일상이야기</a></li>
-          <li><a href="#">모임</a></li>
-        </ul>
+        <ul id="subcategories"></ul>
       </div>
     </div>
 
     <div id="content_body">
-      <form id="write_form">
-        <input id="write_subject" value="{{data.title}}" readonly />
+      <div id="write_form">
+        <div id="write_subject"></div>
         <div id="write_group">
           <div id="write_info">
-            <img src="https://i.postimg.cc/4xbnhk6D/Vector-1.png" />
-            <span>{{data.nickname}}</span>
-            <img src="https://i.postimg.cc/PxNqcCgH/Vector.png" />
-            <span>{{data.register}}</span>
-            <img src="https://i.postimg.cc/FHBRkgYk/Vector-6.png" />
-            <span>{{data.hit}}</span>
+            <img src="/img/users.png" />
+            <span id="nickname"></span>
+            <img src="/img/date.png" />
+            <span id="register"></span>
+            <img src="/img/hits.png" />
+            <span id="hit"></span>
           </div>
-          <!-- <textarea id="write_content" readonly>{{data.content}}</textarea> -->
-          <div id="write_content">{{data.content}}</div>
+          <div id="write_content"></div>
         </div>
 
         <div id="write_btnbox">
           <div id="write_hashbox">
-            <span>#힘들다 #살려주세요</span>
+            <div class="hash"><span>#test</span></div>
           </div>
 
           <div id="write_btn">
-            <button>
-              <img src="https://i.postimg.cc/FHBRkgYk/Vector-6.png" />
+            <button id="like">
+              <img src="/img/likes.png" />
             </button>
-            <button>뒤로가기</button>
-            <button>수정하기</button>
+            <button id="back">뒤로가기</button>
+            <button id="modify">수정하기</button>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>
-{% include "../layout/comment.html" %}
-{% include "../layout/footer.html" %} {% endblock %}
-{% block js %}
+{% include "../layout/comment.html" %} {% include "../layout/footer.html" %} {% endblock %} {% block js %}
+<script src="/js/module/board_view.js" type="module"></script>
 <script src="/js/lib/comment.js" type="module"></script>
 {% endblock %}
