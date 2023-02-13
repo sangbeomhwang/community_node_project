@@ -8,7 +8,7 @@ class CommentController {
             const { boardidx } = req.query
             // console.log(req.query)
             const response = await this.commentService.list({ boardidx })
-            // console.log('@@@@@@@@@@@@@', response)
+            console.log('@@@@@@@@@@@@@', response)
             res.json(response)
         } catch (e) {
             next(e)
