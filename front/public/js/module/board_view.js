@@ -42,8 +42,8 @@ const init = async () => {
   hit.innerText = data.hit;
   content.innerHTML = data.content;
 
-  console.log(data);
-  console.log(usernick);
+  // console.log(data);
+  // console.log(usernick);
 
   modify.addEventListener("click", modifyBtn(boardidx));
   back.addEventListener("click", backBtn);
