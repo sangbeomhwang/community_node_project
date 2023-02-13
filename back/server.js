@@ -21,6 +21,7 @@ app.listen(process.env.PORT, async () => {
   // for (let i = 0; i < subCategory.length; i++) {
   //   await sequelize.models.SubCategories.create(subCategory[i]);
   // }
+
   // for (let i = 0; i < user.length; i++) {
   //   await sequelize.models.Users.create(user[i]);
   // }
