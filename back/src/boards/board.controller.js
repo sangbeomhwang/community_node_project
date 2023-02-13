@@ -26,7 +26,6 @@ class BoardController {
 
   async postOne(req, res, next) {
     try {
-      // console.log(req.body);
       const itemOne = await this.boardService.write({ ...req.body });
       res.json(itemOne);
     } catch (e) {
@@ -65,7 +64,6 @@ class BoardController {
       next(e);
     }
   }
-
 }
 
 module.exports = BoardController;

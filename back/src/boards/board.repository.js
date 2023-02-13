@@ -69,7 +69,49 @@ class BoardRepository {
         },
         raw: true,
       });
-      // console.log("Repository=============", response);
+
+      return response;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async findCommentsCount({ boardidx }) {
+    try {
+      const response = await this.Comments.count({
+        where: {
+          boardidx,
+        },
+      });
+      return response;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async findLikesCount({ boardidx }) {
+    try {
+      const response = await this.Likes.count({
+        where: {
+          boardidx,
+        },
+      });
+      return response;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async findHashtags({ boardidx }) {
+    try {
+      const response = await this.Hashes.findAll({
+        where: {
+          boardidx,
+        },
+        attributes: { exclude: "boardidx" },
+        raw: true,
+      });
+
       return response;
     } catch (e) {
       throw new Error(e);

@@ -1,4 +1,10 @@
-const boardListTemplate = ({ boardidx, nickname, register, title, hashtag, hit, like, comment }) => `
+const boardListTemplate = ({ boardidx, nickname, register, hash, title, hit, like, comment }) => {
+  let hashes;
+  if (hash.length > 0) {
+    hashes = hash.map((val) => "#" + val).join(" ");
+  } else hashes = "";
+
+  return `
  <li data-boardidx="${boardidx}">
    <div class="li_user">
      닉네임 ${nickname}
@@ -9,26 +15,27 @@ const boardListTemplate = ({ boardidx, nickname, register, title, hashtag, hit, 
    </div>
    <div class="li_sub"><a href="/boards/${boardidx}">${title}</a></div>
    <div class="li_Cate">
-     <a href="#">#Gitjub #Repository</a>
+     <div class="hash">${hashes}</div>
      <div>
        <div>
          조회수<img
-           src="https://i.postimg.cc/XYD9XSTJ/ph-eye.png"
+           src="/img/hits.png"
          /><span>${hit}</span>
        </div>
        <div>
          좋아요<img
-           src="https://i.postimg.cc/JnXFPQbN/Vector.png"
-         /><span>0</span>
+           src="/img/likes.png"
+         /><span>${like}</span>
        </div>
        <div>
-         댓글<img
-           src="https://i.postimg.cc/5ynS3Hk5/Vector-1.png"
-         /><span>0</span>
+         댓글<img  
+           src="/img/comments.png"
+         /><span>${comment}</span>
        </div>
      </div>
    </div>
  </li>
  `;
+};
 
 export { boardListTemplate };

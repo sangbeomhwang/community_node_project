@@ -2,7 +2,7 @@ import request from "/js/lib/request.js";
 import { getCategory, categoryTitleRender } from "/js/lib/getCategory.js";
 
 const modifyBtn = (boardidx) => () => {
-  location.href = `/boards/modify?boardidx=${boardidx}`;
+  location.href = `/boards/modify/${boardidx}`;
 };
 
 const subCat = (subCatIdx) => {
@@ -15,12 +15,26 @@ const subCat = (subCatIdx) => {
   }
 };
 
-const backBtn = () => {
-  window.history.back();
+const backBtn = (mainidx) => {
+  return () => {
+    location.href = `/boards?mainidx=${mainidx}`;
+  };
+};
+
+const hashtag = (hash) => {
+  const hashbox = document.querySelector("#write_hashbox");
+  hashbox.innerText = "";
+  for (let i = 0; i < hash.length; i++) {
+    const div = document.createElement("div");
+    div.className = "hash";
+    const span = document.createElement("span");
+    span.innerText = "#" + hash[i];
+    div.appendChild(span);
+    hashbox.appendChild(div);
+  }
 };
 
 const init = async () => {
-  const { usernick } = document.querySelector("#usernick").dataset;
   const title = document.querySelector("#write_subject");
   const nickname = document.querySelector("#nickname");
   const register = document.querySelector("#register");
@@ -41,12 +55,12 @@ const init = async () => {
   register.innerText = data.register;
   hit.innerText = data.hit;
   content.innerHTML = data.content;
+  
+  hashtag(data.hash);
 
-  // console.log(data);
-  // console.log(usernick);
 
   modify.addEventListener("click", modifyBtn(boardidx));
-  back.addEventListener("click", backBtn);
+  back.addEventListener("click", backBtn(mainidx));
 };
 
 init();

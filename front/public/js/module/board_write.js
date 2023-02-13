@@ -41,10 +41,19 @@ const subCatHandler = (e) => {
   subCat[subidx].classList.add("cat_active");
 };
 
+const addHashTag = (hashTagList) => {
+  const hash = [];
+  for (let i = 0; i < hashTagList.length - 1; i++) {
+    hash.push(hashTagList[i].innerText.split("#")[1]);
+  }
+  return hash;
+};
+
 const writeHandler = async (e) => {
   e.preventDefault();
   const mainidx = queryString.get("mainidx");
   const { subidx } = document.querySelector(".cat_active[data-subidx]").dataset;
+  const hashTags = document.querySelectorAll(".hash > span");
 
   const {
     title: { value: title },
@@ -62,8 +71,12 @@ const writeHandler = async (e) => {
   };
 
   // 글 등록
-  const response = await request.post("/boards", data);
-  location.href = `/boards/view?mainidx=${mainidx}&boardidx=${response.data.boardidx}`;
+  const { boardidx } = (await request.post("/boards", data)).data;
+
+  const hashes = addHashTag(hashTags);
+  await request.post("/hashes", { hashes, boardidx });
+
+  location.href = `/boards/${boardidx}`;
 };
 
 const hashTagEnterHandler = (e) => {
@@ -101,6 +114,8 @@ const createSpanTag = (inputBox) => {
   span.addEventListener("click", tagRemove);
 };
 
+const cancleHandler = (mainidx) => () => (location.href = `/boards?mainidx=${mainidx}`);
+
 const init = async () => {
   const mainidx = queryString.get("mainidx");
   const subCategories = document.querySelector("#subcategories");
@@ -116,6 +131,9 @@ const init = async () => {
 
   const writeBtn = document.querySelector("#write_form");
   writeBtn.addEventListener("submit", writeHandler);
+
+  const cancleBtn = document.querySelector("#cancle");
+  cancleBtn.addEventListener("click", cancleHandler(mainidx));
 };
 
 init();

@@ -1,13 +1,14 @@
 {% extends '../layout/layout.html' %} {% block css %}
 
 <link rel="stylesheet" href="/css/index.css" />
-<link rel="stylesheet" href="/css/board/view.css" />
+<link rel="stylesheet" href="/css/board/modify.css" />
 
 {% endblock %} {% block content %} {% include "../layout/header.html" %}
 
 <div id="content_wrap">
   <div id="content">
     <div id="content_header">
+      <input id="boardidx" type="hidden" value="{{boardidx}}" />
       <div id="subject"></div>
       <div id="subcategory">
         <ul id="subcategories"></ul>
@@ -21,8 +22,8 @@
       <div id="write_group">
         <div id="write_info">
           <img src="/img/users.png" />
-          <span>cloudcoke</span>
-          <input type="hidden" name="nickname" value="cloudcoke" form="write_form" />
+          <span id="nickname"></span>
+          <input type="hidden" name="nickname" value="{{nickname}}" form="write_form" />
         </div>
         <div id="controller">
           <label for="img">
@@ -42,15 +43,13 @@
         </div>
 
         <div id="write_btn">
-          <button>
-            <img src="https://i.postimg.cc/FHBRkgYk/Vector-6.png" />
-          </button>
-          <button>뒤로가기</button>
-          <button>수정하기</button>
+          <button id="back">뒤로가기</button>
+          <button type="submit" id="modify" form="write_form">수정하기</button>
         </div>
       </div>
     </div>
   </div>
-
-  {% include "../layout/footer.html" %} {% endblock %}
 </div>
+{% include "../layout/footer.html" %} {% endblock %} {% block js %}
+<script src="/js/module/board_modify.js" type="module"></script>
+{% endblock %}
