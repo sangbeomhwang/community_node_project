@@ -36,6 +36,17 @@ class AdminController {
     }
   }
 
+  async updateUser(req, res, next) {
+    try {
+      // const { nickname } = req.user;
+      const { nickname } = req.params;
+      const { data } = await request.put(`/admins/${nickname}`);
+      res.render("admin/admin_user.html", { data, nickname });
+    } catch (e) {
+      next(e);
+    }
+  }
+
   async deleteUser(req, res, next) {
     try {
       // const { nickname } = req.user;

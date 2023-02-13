@@ -6,9 +6,7 @@ const userListTemplate = ({ image, userid, name, nickname, email }) => `
         <li class="users_info">
             <img src="http://127.0.0.1:3000/${image}" />
         </li>
-        <li class="users_info">
-            <a href="/users/profile">${userid}</a>
-        </li>
+        <li class="users_info">${userid}</li>
         <li class="users_info">${name}</li>
         <li class="users_info">${nickname}</li>
         <li class="users_info">${email}</li>

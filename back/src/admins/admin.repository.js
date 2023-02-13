@@ -15,6 +15,18 @@ class AdminRepository {
     }
   }
 
+  async userUpdate({ nickname, name, email }) {
+    try {
+      const userPut = await this.User.update(
+        { nickname, name, email },
+        { where: { nickname } }
+      );
+      return userPut;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
   async userDestroy({ nickname }) {
     try {
       const user_remove = await this.User.destroy({

@@ -13,6 +13,19 @@ class AdminService {
     }
   }
 
+  async userModify({ nickname, name, email }) {
+    try {
+      const result = await this.adminRepository.userUpdate({
+        nickname,
+        name,
+        email,
+      });
+      return result;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
   async userDelete({ nickname }) {
     try {
       const response = await this.adminRepository.userDestroy({ nickname });

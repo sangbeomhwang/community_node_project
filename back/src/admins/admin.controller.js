@@ -13,6 +13,19 @@ class AdminController {
     }
   }
 
+  async putUser(req, res, next) {
+    try {
+      const { nickname } = req.params;
+      const itemPut = await this.adminService.userModify({
+        nickname,
+        ...req.body,
+      });
+      res.json(itemPut);
+    } catch (e) {
+      next(e);
+    }
+  }
+
   async deleteUser(req, res, next) {
     try {
       const { nickname } = req.params;
