@@ -69,7 +69,7 @@ class BoardRepository {
         },
         raw: true,
       });
-      console.log("Repository=============", response);
+      // console.log("Repository=============", response);
       return response;
     } catch (e) {
       throw new Error(e);

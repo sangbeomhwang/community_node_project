@@ -26,7 +26,7 @@ class BoardController {
 
   async postOne(req, res, next) {
     try {
-      console.log(req.body);
+      // console.log(req.body);
       const itemOne = await this.boardService.write({ ...req.body });
       res.json(itemOne);
     } catch (e) {
@@ -57,9 +57,9 @@ class BoardController {
   async getSearch(req, res, next) {
     try {
       const { keyword } = req.query;
-      console.log("================", keyword);
+      // console.log("================", keyword);
       const response = await this.boardService.search({ keyword });
-      console.log("response===", response);
+      // console.log("response===", response);
       res.json(response);
     } catch (e) {
       next(e);

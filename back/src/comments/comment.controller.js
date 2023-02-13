@@ -17,7 +17,9 @@ class CommentController {
 
     async postComment(req, res, next) {
         try {
+            console.log("+++++++++++++++",req.body)
             const response = await this.commentService.write({ ...req.body })
+            console.log("%%%%%%%%%%%%%",response)
             res.json(response)
         } catch (e) {
             next(e)
