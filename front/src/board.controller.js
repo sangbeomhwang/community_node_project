@@ -57,10 +57,12 @@ class BoardController {
   async getModify(req, res, next) {
     try {
       const { userid, nickname, image } = req.user;
+      const { boardidx } = req.params;
       res.render("board/modify.html", {
         userid,
         nickname,
         image,
+        boardidx,
       });
     } catch (e) {
       next(e);
@@ -69,7 +71,8 @@ class BoardController {
 
   async putModify(req, res, next) {
     try {
-      res.send("good");
+      const boardidx = req.params;
+      res.redirect(`/boards/${boardidx}`);
     } catch (e) {
       next(e);
     }

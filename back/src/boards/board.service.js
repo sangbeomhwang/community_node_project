@@ -4,10 +4,22 @@ class BoardService {
     this.DateFormat = DateFormat;
   }
 
-  dateFormatting(data) {
+  async extData({ boardidx }) {
+    const comment = await this.boardRepository.findCommentsCount({ boardidx });
+    const like = await this.boardRepository.findLikesCount({ boardidx });
+    // hashtag
+    const hashtag = await this.boardRepository.findHashtags({ boardidx });
+
+    const hash = hashtag.map((val) => val.tag);
+
+    return { comment, like, hash };
+  }
+
+  async dataControl(data) {
     const { register, ...rest } = data;
+    const { comment, like, hash } = await this.extData({ boardidx: data.boardidx });
     const date = new this.DateFormat(register).dateformat();
-    return { ...rest, register: date };
+    return { ...rest, register: date, comment, like, hash };
   }
 
   async list({ mainidx, subidx, page = 1, maxBoards }) {
@@ -21,7 +33,7 @@ class BoardService {
       if (startNum < totalBoards) {
         for (let i = startNum; i <= endNum; i++) {
           if (result[i]) {
-            data.push(this.dateFormatting(result[i]));
+            data.push(await this.dataControl(result[i]));
           }
         }
       }
@@ -46,6 +58,7 @@ class BoardService {
         lastPage,
         page,
       };
+
       return { data, pagination };
     } catch (e) {
       throw new Error(e);
@@ -55,9 +68,7 @@ class BoardService {
   async view({ boardidx }) {
     try {
       const result = await this.boardRepository.findOne({ boardidx });
-      console.log(result)
-      const data = this.dateFormatting(result);
-      console.log(data)
+      const data = this.dataControl(result);
       return data;
     } catch (e) {
       throw new Error(e);
@@ -99,7 +110,6 @@ class BoardService {
       throw new Error(e);
     }
   }
-
 }
 
 module.exports = BoardService;

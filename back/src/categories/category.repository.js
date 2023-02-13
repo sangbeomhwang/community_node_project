@@ -13,7 +13,7 @@ class CategoryRepository {
       }
 
       // get mainidx, subidx
-      const result = await this.Categories.findAll({ where: { mainidx }, include: [{ model: this.SubCategories, require: true, attributes: { exclude: "mainidx" } }] });
+      const result = await this.Categories.findAll({ where: { mainidx }, include: [{ model: this.SubCategories, required: true, attributes: { exclude: "mainidx" } }] });
       return result;
     } catch (e) {
       throw new Error(e);
