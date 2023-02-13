@@ -34,6 +34,16 @@ class CommentController {
         }
     }
 
+    async deleteComment(req, res, next) {
+        try {
+            const { commentidx } = req.params
+            const response = await this.commentService.delete({ commentidx })
+            res.json(response)
+        } catch (e) {
+            next(e)
+        }
+    }
+
     
 }
 

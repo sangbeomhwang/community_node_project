@@ -6,7 +6,9 @@ const fs = require("fs");
 const path = require("path");
 
 app.listen(process.env.PORT, async () => {
+
   await sequelize.sync({ force: true });
+
 
   const category = require("./dumy/Categories_dumy");
   const subCategory = require("./dumy/SubCategories_dumy");
@@ -23,9 +25,9 @@ app.listen(process.env.PORT, async () => {
     await sequelize.models.Users.create(user[i]);
   }
 
-  for (let i = 0; i < board.length; i++) {
-    await sequelize.models.Boards.create(board[i]);
-  }
+  // for (let i = 0; i < board.length; i++) {
+  //   await sequelize.models.Boards.create(board[i]);
+  // }
 
   console.log(`Back Server Start ${process.env.PORT}`);
 });

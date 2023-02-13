@@ -13,18 +13,18 @@ class CommentService {
         }
     }
 
-    async write({ boardidx, userid, content, depth, party }) {
+    async write({ boardidx, nickname, content, depth, party }) {
         try {
-            const response = await this.commentRepository.commentWrite({ boardidx, userid, content, depth, party })
+            const response = await this.commentRepository.commentWrite({ boardidx, nickname, content, depth, party })
             return response
         } catch (e) {
             throw new Error(e)
         }
     }
 
-    async modify({ commentidx, boardidx, userid, content }) {
+    async modify({ commentidx, boardidx, nickname, content }) {
         try {
-            const response = await this.commentRepository.commentUpdate({ commentidx, boardidx, userid, content })
+            const response = await this.commentRepository.commentUpdate({ commentidx, boardidx, nickname, content })
             return response
         } catch (e) {
             throw new Error(e)
