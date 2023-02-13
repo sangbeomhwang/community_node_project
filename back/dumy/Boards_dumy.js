@@ -2,17 +2,17 @@
 const Boards = [
 
   { 
-    userid: 'qkrwhdghks',
+    userid: 'cloudcoke',
     title: "Vicugna vicugna",
     content: "felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar",
-    nickname: "Vicuna",
+    nickname: "cloud",
     mainidx: 2,
     subidx: 1,
   },
   // {
   //   title: "Milvus migrans",
   //   content: "non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis",
-  //   nickname: "Kite, black",
+  //   nickname: "Jerry",
   //   mainidx: 2,
   //   subidx: 0,
   // },
