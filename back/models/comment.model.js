@@ -36,7 +36,13 @@ module.exports = (sequelize, Sequelize) => {
         party: {
             type: Sequelize.INTEGER,
             allowNull: true,
-        }
+        },
+
+        register: {
+            type: Sequelize.DATE,
+            allowNull: false,
+            defaultValue: Sequelize.NOW,
+        },
     }
 
     const settings = {

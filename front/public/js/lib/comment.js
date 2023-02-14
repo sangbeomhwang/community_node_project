@@ -1,15 +1,15 @@
 import request from '/js/lib/request.js'
 
-const template = ({ boardidx, content, nickname, register, commentidx, image }) => `
+const template = ({ content, nickname, register, commentidx, image }) => `
 <div id="depth_b" data-commentidx="${commentidx}">
 <div id="depth_info">
-    <img src="https://i.postimg.cc/qv5KM7Fv/Vector-1.png">
+    <img src="http://127.0.0.1:3000/${image}" />
     <div>
         <div>
             <img src="https://i.postimg.cc/qv5KM7Fv/Vector-1.png"><span id='depth_nic'>${nickname}</span>
         </div>
         <div>    
-            <img src="https://i.postimg.cc/P5gBGFcx/Vector-4.png"><span>2023-02-02</span>
+            <img src="https://i.postimg.cc/P5gBGFcx/Vector-4.png"><span>${register}</span>
         </div>
     </div>
 </div>

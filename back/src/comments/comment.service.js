@@ -1,12 +1,19 @@
 class CommentService {
-    constructor({ commentRepository }) {
+    constructor({ commentRepository, DateFormat }) {
         this.commentRepository = commentRepository
+        this.DateFormat = DateFormat
     }
 
     async list({ boardidx }) {
         try {
             const response = await this.commentRepository.commentList({ boardidx })
             // console.log('#################',response)
+
+            response.forEach(board=>{
+                board.register = new this.DateFormat(board.register).dateformat()
+            })
+            // console.log(">>>>>>>>>>>>>>>>>>>>>>",response)
+
             return response
         } catch (e) {
             throw new Error(e)
