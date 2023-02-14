@@ -71,6 +71,28 @@ class AdminController {
   //   }
   // }
 
+  // async getBoards(req, res, next) {
+  //   try {
+  //     const { userid, nickname, image } = req.user;
+  //     const { data } = await request.get(`/admins/boardlist`, {
+  //       ...req.body,
+  //     });
+  //     const response = data.response;
+  //     const boardCount = data.boardCount;
+  //     // console.log("check!!!! : ", response);
+  //     // console.log("check@@@@ : ", boardCount);
+  //     res.render("admin/admin_board.html", {
+  //       userid,
+  //       nickname,
+  //       image,
+  //       response,
+  //       boardCount,
+  //     });
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // }
+
   async getBoards(req, res, next) {
     try {
       const { userid, nickname, image, level } = req.user;

@@ -78,28 +78,10 @@
               </li>
             </ul>
           </li>
-          <li>
-            <ul>
-              <li class="users_info">
-                <img src="https://i.postimg.cc/YC2g7C6h/Ellipse-3.png" />
-              </li>
-              <li class="users_info">gch02933</li>
-              <li class="users_info">sphagetti looks so red</li>
-              <li class="users_info">2023-01-23</li>
-              <li class="users_info">6</li>
-              <li class="users_info">
-                <img src="https://i.postimg.cc/fTCt8QGZ/Vector-1.png" />
-              </li>
-            </ul>
-          </li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
           <li></li>
         </ul>
         <div id="admin_page">
-          <span>Total Users: 80</span>
+          <span>Total Boards: </span>
           <span>Page: 10</span>
           <img src="https://i.postimg.cc/7YkWrdKf/Vector-2.png" />
           <img src="https://i.postimg.cc/5tTs7RH9/Vector-3.png" />
@@ -108,5 +90,20 @@
     </div>
   </div>
 </div>
+
+{% endblock %} {% block js %}
+
+<!-- <script type="module" src="/js/module/admin_board_list.js"></script> -->
+
+<!-- <script type="text/javascript">
+  const default_img = document.querySelector(
+    "#allusers_body > ul > li > ul > li >img"
+  );
+  console.log(default_img);
+  // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
+  if (default_img.src === "http://127.0.0.1:3000/") {
+    default_img.src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+  }
+</script> -->
 
 {% endblock %}

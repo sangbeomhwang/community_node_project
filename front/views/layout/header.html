@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      {% else %}
+      {% elif access === 'deny' %}
       <div id="login">
         <a id="login_btn" href="/users/signin">로그인</a>
       </div>
@@ -74,6 +74,14 @@
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
         alert("당신은 본 커뮤니티 사이트에 대한 접근이 거부된 회원입니다.");
       </script>
+
+      {% else %}
+      <div id="login">
+        <a id="login_btn" href="/users/signin">로그인</a>
+      </div>
+      <div id="signin">
+        <a id="signin_btn" href="/users/terms">회원가입</a>
+      </div>
 
       {% endif %} {% else %}
       <div id="login">
