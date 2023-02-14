@@ -8,7 +8,7 @@ class AdminRepository {
       const userList = await this.User.findAll({
         raw: true,
       });
-      console.log("check #### : ", userList);
+      // console.log("check #### : ", userList);
       return userList;
     } catch (e) {
       throw new Error(e);

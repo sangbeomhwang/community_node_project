@@ -6,8 +6,10 @@ class AdminService {
   async userList() {
     try {
       const response = await this.adminRepository.list();
-      console.log("#################", response);
-      return response;
+      const userCount = response.length;
+      // console.log("#################", response);
+      // console.log("###~~~~~~", userCount);
+      return { response, userCount };
     } catch (e) {
       throw new Error(e);
     }

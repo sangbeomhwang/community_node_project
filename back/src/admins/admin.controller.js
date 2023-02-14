@@ -6,7 +6,7 @@ class AdminController {
   async getUserList(req, res, next) {
     try {
       const response = await this.adminService.userList();
-      console.log("@@@@@@@@@@@@@", response);
+      // console.log("@@@@@@@@@@@@@", response);
       res.json(response);
     } catch (e) {
       next(e);
@@ -16,7 +16,7 @@ class AdminController {
   async putUser(req, res, next) {
     try {
       const { nickname } = req.params;
-      console.log("admin user put check~~~~ : ", req.body);
+      // console.log("admin user put check~~~~ : ", req.body);
       const itemPut = await this.adminService.userModify({
         nickname,
         ...req.body,

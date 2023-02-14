@@ -30,19 +30,19 @@ const userListTemplate = ({
 `;
 
 const userListBox = document.querySelector("#allusers_body > ul");
-console.log(userListBox);
+// console.log(userListBox);
 const render = async () => {
   const response = await request.get(`/admins/userlist`);
-  console.log("response :::", response.data);
+  const userList = response.data.response;
+  // console.log("response :::", userList);
 
-  console.log(userListBox);
   userListBox.innerHTML = "";
-  for (let i = 0; i < response.data.length; i++) {
-    // console.log("################", response.data);
-    userListBox.innerHTML += userListTemplate(response.data[i]);
+  for (let i = 0; i < userList.length; i++) {
+    // console.log("################", userList);
+    userListBox.innerHTML += userListTemplate(userList[i]);
   }
 
-  console.log("check $$$$ : ", userListBox);
+  // console.log("check $$$$ : ", userListBox);
   return response;
 };
 
