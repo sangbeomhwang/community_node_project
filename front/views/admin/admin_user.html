@@ -55,7 +55,7 @@
       <div id="allusers_body">
         <ul></ul>
         <div id="admin_page">
-          <span></span>
+          <span>Total Users: {{userCount}}</span>
           <span>Page: 10</span>
           <img src="https://i.postimg.cc/7YkWrdKf/Vector-2.png" />
           <img src="https://i.postimg.cc/5tTs7RH9/Vector-3.png" />
@@ -68,31 +68,6 @@
 {% endblock %} {% block js %}
 
 <script type="module" src="/js/lib/userList.js"></script>
-
-<!-- <script type="text/javascript">
-  const targetParent = document.querySelector("#allusers_body > ul");
-  const total = document.querySelector("#allusers_body > #admin_page > #total");
-  console.log(targetParent);
-  const count = async () => {
-    const response = await request.get(`/admins/userlist`);
-    console.log("@@@@ response : ", response.data.length);
-
-    total.innerHTML = "Total Users: " + response.data.length;
-
-    return response;
-  };
-
-  count();
-</script> -->
-
-<script type="text/javascript">
-  const count_target = document.querySelector("#allusers_body > ul");
-  const total = document.querySelector("#allusers_body > #admin_page > span");
-
-  console.log("####", count_target.childElementCount);
-
-  total.innerHTML = "Total Users: " + count_target.childElementCount;
-</script>
 
 <!-- <script type="text/javascript">
   const level_box = document.querySelector("#levelBox");

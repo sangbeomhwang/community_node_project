@@ -23,6 +23,13 @@ class AdminController {
   async getUsers(req, res, next) {
     try {
       const { userid, nickname, name, image, email, level } = req.user;
+      const { data } = await request.get(`/admins/userlist`, {
+        ...req.body,
+      });
+      const response = data.response;
+      const userCount = data.userCount;
+      // console.log("check!!!! : ", response);
+      // console.log("check@@@@ : ", userCount);
       res.render("admin/admin_user.html", {
         userid,
         nickname,
@@ -30,6 +37,8 @@ class AdminController {
         image,
         email,
         level,
+        response,
+        userCount,
       });
     } catch (e) {
       next(e);
