@@ -36,8 +36,11 @@
     {% else %}
 
     <script type="text/javascript">
-      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      alert(
+        "로그인이 만료되었습니다. 본 커뮤니티 사이트를 더 사용하려는 경우, 재로그인 부탁드립니다."
+      );
       location.href = "/";
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
     </script>
 
     {% endif %}
@@ -47,22 +50,25 @@
 {% else %}
 
 <script type="text/javascript">
-  document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+  alert(
+    "로그인이 만료되었습니다. 본 커뮤니티 사이트를 더 사용하려는 경우, 재로그인 부탁드립니다."
+  );
   location.href = "/";
+  document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 </script>
 
 {% endif %}
 
-<script>
+<script type="text/javascript">
   const logout = document.querySelector("#logout");
   logout.addEventListener("click", (e) => {
     e.preventDefault();
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
     location.href = "/";
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
   });
 </script>
 
-<script>
+<script type="text/javascript">
   const profile_btn = document.querySelector("#profile_btn");
   const profile_menu = document.querySelector("#profile_area");
 
