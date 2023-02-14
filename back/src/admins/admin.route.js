@@ -6,8 +6,12 @@ router.get("/userlist", (req, res, next) =>
   controller.getUserList(req, res, next)
 );
 
-router.delete("/:nickname", (req, res, next) =>
-  controller.deleteUser(req, res, next)
+router.put("/:nickname", (req, res, next) =>
+  controller.putUser(req, res, next)
 );
+
+// router.delete("/:nickname", (req, res, next) =>
+//   controller.deleteUser(req, res, next)
+// );
 
 module.exports = router;

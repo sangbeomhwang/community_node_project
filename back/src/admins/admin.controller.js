@@ -13,15 +13,29 @@ class AdminController {
     }
   }
 
-  async deleteUser(req, res, next) {
+  async putUser(req, res, next) {
     try {
       const { nickname } = req.params;
-      const item_delete = await this.adminService.userDelete({ nickname });
-      res.json(item_delete);
+      console.log("admin user put check~~~~ : ", req.body);
+      const itemPut = await this.adminService.userModify({
+        nickname,
+        ...req.body,
+      });
+      res.json(itemPut);
     } catch (e) {
       next(e);
     }
   }
+
+  // async deleteUser(req, res, next) {
+  //   try {
+  //     const { nickname } = req.params;
+  //     const item_delete = await this.adminService.userDelete({ nickname });
+  //     res.json(item_delete);
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // }
 }
 
 module.exports = AdminController;

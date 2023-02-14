@@ -13,15 +13,30 @@ class AdminService {
     }
   }
 
-  async userDelete({ nickname }) {
+  async userModify({ nickname, name, email, level, access }) {
     try {
-      const response = await this.adminRepository.userDestroy({ nickname });
-      console.log("#################", response);
-      return response;
+      const result = await this.adminRepository.userUpdate({
+        nickname,
+        name,
+        email,
+        level,
+        access,
+      });
+      return result;
     } catch (e) {
-      next(e);
+      throw new Error(e);
     }
   }
+
+  // async userDelete({ nickname }) {
+  //   try {
+  //     const response = await this.adminRepository.userDestroy({ nickname });
+  //     console.log("#################", response);
+  //     return response;
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // }
 }
 
 module.exports = AdminService;

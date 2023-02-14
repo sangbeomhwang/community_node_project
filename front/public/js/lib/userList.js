@@ -1,22 +1,28 @@
 import request from "/js/lib/request.js";
 
-const userListTemplate = ({ image, userid, name, nickname, email }) => `
+const userListTemplate = ({
+  image,
+  userid,
+  name,
+  nickname,
+  email,
+  level,
+  access,
+}) => `
 <li>
     <ul>
         <li class="users_info">
             <img src="http://127.0.0.1:3000/${image}" />
         </li>
-        <li class="users_info">
-            <a href="/users/profile">${userid}</a>
-        </li>
+        <li class="users_info">${userid}</li>
         <li class="users_info">${name}</li>
         <li class="users_info">${nickname}</li>
         <li class="users_info">${email}</li>
         <li class="users_info">
-            <form action="/admins/users/${nickname}" method="post">
-                <button class="delete_item" type="submit">
-                    <img src="https://i.postimg.cc/fTCt8QGZ/Vector-1.png" />
-                </button>
+            <form action="/admins/userModify/${nickname}" method="post">
+                <input type="text" id="levelBox" name="level" value="${level}" />
+                <input type="text" id="accessBox" name="access" value="${access}" />
+                <button class="modify_item" type="submit">수정완료</button>
             </form>
         </li>
     </ul>

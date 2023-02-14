@@ -15,17 +15,29 @@ class AdminRepository {
     }
   }
 
-  async userDestroy({ nickname }) {
+  async userUpdate({ nickname, name, email, level, access }) {
     try {
-      const user_remove = await this.User.destroy({
-        where: { nickname },
-      });
-      console.log("check #### : ", user_remove);
-      return user_remove;
+      const userPut = await this.User.update(
+        { nickname, name, email, level, access },
+        { where: { nickname } }
+      );
+      return userPut;
     } catch (e) {
-      next(e);
+      throw new Error(e);
     }
   }
+
+  // async userDestroy({ nickname }) {
+  //   try {
+  //     const user_remove = await this.User.destroy({
+  //       where: { nickname },
+  //     });
+  //     console.log("check #### : ", user_remove);
+  //     return user_remove;
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // }
 }
 
 module.exports = AdminRepository;
