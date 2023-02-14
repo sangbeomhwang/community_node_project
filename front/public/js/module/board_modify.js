@@ -50,12 +50,21 @@ const subCatHandler = (e) => {
   subCat[subidx].classList.add("cat_active");
 };
 
+const addHashTag = (hashTagList) => {
+  const hash = [];
+  for (let i = 0; i < hashTagList.length - 1; i++) {
+    hash.push(hashTagList[i].innerText.split("#")[1]);
+  }
+  return hash;
+};
+
 const writeHandler = async (e) => {
   e.preventDefault();
   const boardidx = document.querySelector("#boardidx").value;
   const { mainidx } = document.querySelectorAll("[data-mainidx]")[0].dataset;
   const { subidx } = document.querySelector(".cat_active[data-subidx]").dataset;
-  console.log(e.target);
+  const hashTags = document.querySelectorAll(".hash > span");
+
   const {
     title: { value: title },
     nickname: { value: nickname },
@@ -73,7 +82,66 @@ const writeHandler = async (e) => {
 
   //   글 등록
   await request.put(`/boards/${boardidx}`, data);
+
+  const hashes = addHashTag(hashTags);
+
+  await request.put("/hashes", { hashes, boardidx });
+
   location.href = `/boards/${boardidx}`;
+};
+
+const hashTagEnterHandler = (e) => {
+  if (e.key === "#") {
+    e.preventDefault();
+  }
+  if (e.key === "Enter") {
+    const node = e.target.parentElement.parentElement;
+    createSpanTag(e.target);
+    createHashTag(node);
+  }
+};
+
+const tagRemove = (e) => {
+  e.target.parentElement.remove();
+};
+
+const createHashTag = (node) => {
+  const div = document.createElement("div");
+  const span = document.createElement("span");
+  const input = document.createElement("input");
+  div.className = "hash";
+  span.innerText = "#";
+  input.placeholder = "tag를 입력해주세요";
+  div.appendChild(span);
+  div.appendChild(input);
+  node.appendChild(div);
+};
+
+const createSpanTag = (inputBox) => {
+  const tag = inputBox.value;
+  const span = inputBox.previousSibling;
+  span.innerText += tag;
+  inputBox.remove();
+  span.addEventListener("click", tagRemove);
+};
+
+const backHandler = () => {
+  history.back();
+};
+
+const hashtag = (hash) => {
+  const hashbox = document.querySelector("#write_hashbox");
+  hashbox.innerText = "";
+  for (let i = 0; i < hash.length; i++) {
+    const div = document.createElement("div");
+    div.className = "hash";
+    const span = document.createElement("span");
+    span.innerText = "#" + hash[i];
+    div.appendChild(span);
+    hashbox.appendChild(div);
+    div.addEventListener("click", tagRemove);
+  }
+  createHashTag(hashbox);
 };
 
 const init = async () => {
@@ -95,12 +163,20 @@ const init = async () => {
   const imgBtn = document.querySelector("#img");
   imgBtn.addEventListener("change", imgUploadHandler);
 
+  const hashbox = document.querySelector("#write_hashbox");
+  hashbox.addEventListener("keypress", hashTagEnterHandler);
+
   title.value = data.title;
   nickname.innerText = data.nickname;
   content.innerHTML = data.content;
 
+  hashtag(data.hash);
+
   const writeBtn = document.querySelector("#write_form");
   writeBtn.addEventListener("submit", writeHandler);
+
+  const backBtn = document.querySelector("#back");
+  backBtn.addEventListener("click", backHandler);
 };
 
 init();

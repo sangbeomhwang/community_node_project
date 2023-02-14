@@ -160,7 +160,7 @@ textarea::placeholder {
 
 #write_btnbox > #write_hashbox {
   margin-top: 5px;
-  max-width: 860px;
+  max-width: 760px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
