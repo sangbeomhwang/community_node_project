@@ -72,6 +72,7 @@ class UserController {
 
   async getProfileModify(req, res, next) {
     try {
+      // console.log("profile modify check~~~~ : ", req.user);
       res.render("user/profile.html", { ...req.user });
     } catch (e) {
       next(e);

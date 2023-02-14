@@ -40,23 +40,27 @@ class AdminController {
     try {
       // const { nickname } = req.user;
       const { nickname } = req.params;
-      const { data } = await request.put(`/admins/${nickname}`);
-      res.render("admin/admin_user.html", { data, nickname });
+      // console.log("nickname check ~~~ : ", nickname);
+      const { data } = await request.put(`/admins/${nickname}`, {
+        ...req.body,
+      });
+      // console.log("update success~~~ : ", data);
+      res.redirect("/admins/users");
     } catch (e) {
       next(e);
     }
   }
 
-  async deleteUser(req, res, next) {
-    try {
-      // const { nickname } = req.user;
-      const { nickname } = req.params;
-      const { data } = await request.delete(`/admins/${nickname}`);
-      res.render("admin/admin_user.html", { data, nickname });
-    } catch (e) {
-      next(e);
-    }
-  }
+  // async deleteUser(req, res, next) {
+  //   try {
+  //     // const { nickname } = req.user;
+  //     const { nickname } = req.params;
+  //     const { data } = await request.delete(`/admins/${nickname}`);
+  //     res.render("admin/admin_user.html", { data, nickname });
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // }
 
   async getBoards(req, res, next) {
     try {

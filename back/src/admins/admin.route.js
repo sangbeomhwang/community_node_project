@@ -10,8 +10,8 @@ router.put("/:nickname", (req, res, next) =>
   controller.putUser(req, res, next)
 );
 
-router.delete("/:nickname", (req, res, next) =>
-  controller.deleteUser(req, res, next)
-);
+// router.delete("/:nickname", (req, res, next) =>
+//   controller.deleteUser(req, res, next)
+// );
 
 module.exports = router;

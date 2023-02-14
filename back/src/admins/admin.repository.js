@@ -15,10 +15,10 @@ class AdminRepository {
     }
   }
 
-  async userUpdate({ nickname, name, email }) {
+  async userUpdate({ nickname, name, email, level, access }) {
     try {
       const userPut = await this.User.update(
-        { nickname, name, email },
+        { nickname, name, email, level, access },
         { where: { nickname } }
       );
       return userPut;
@@ -27,17 +27,17 @@ class AdminRepository {
     }
   }
 
-  async userDestroy({ nickname }) {
-    try {
-      const user_remove = await this.User.destroy({
-        where: { nickname },
-      });
-      console.log("check #### : ", user_remove);
-      return user_remove;
-    } catch (e) {
-      next(e);
-    }
-  }
+  // async userDestroy({ nickname }) {
+  //   try {
+  //     const user_remove = await this.User.destroy({
+  //       where: { nickname },
+  //     });
+  //     console.log("check #### : ", user_remove);
+  //     return user_remove;
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // }
 }
 
 module.exports = AdminRepository;

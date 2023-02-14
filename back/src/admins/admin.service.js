@@ -13,12 +13,14 @@ class AdminService {
     }
   }
 
-  async userModify({ nickname, name, email }) {
+  async userModify({ nickname, name, email, level, access }) {
     try {
       const result = await this.adminRepository.userUpdate({
         nickname,
         name,
         email,
+        level,
+        access,
       });
       return result;
     } catch (e) {
@@ -26,15 +28,15 @@ class AdminService {
     }
   }
 
-  async userDelete({ nickname }) {
-    try {
-      const response = await this.adminRepository.userDestroy({ nickname });
-      console.log("#################", response);
-      return response;
-    } catch (e) {
-      next(e);
-    }
-  }
+  // async userDelete({ nickname }) {
+  //   try {
+  //     const response = await this.adminRepository.userDestroy({ nickname });
+  //     console.log("#################", response);
+  //     return response;
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // }
 }
 
 module.exports = AdminService;

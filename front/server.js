@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
   if (req.user === undefined) return res.render("index.html");
   // console.log(`req.user :`, req.user);
   else {
-    const { userid, nickname, image, level } = req.user;
+    const { userid, nickname, image, level, access } = req.user;
     // console.log("내용 확인용 : ", req.user);
     // console.log("image 잘 뽑힘", image);
     // console.log("level 잘 뽑힘", level);
@@ -46,6 +46,7 @@ app.get("/", (req, res) => {
       nickname,
       image,
       level,
+      access,
     });
   }
 });
