@@ -39,6 +39,18 @@ class AdminService {
   //     next(e);
   //   }
   // }
+
+  async boardsList() {
+    try {
+      const response = await this.adminRepository.boardList();
+      const boardCount = response.length;
+      // console.log("#################", response);
+      // console.log("###~~~~~~", boardCount);
+      return { response, boardCount };
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
 }
 
 module.exports = AdminService;

@@ -1,6 +1,6 @@
 const {
   sequelize: {
-    models: { Users },
+    models: { Users, Boards },
   },
 } = require("../../models");
 
@@ -8,12 +8,13 @@ const {
 // const User = models.User;
 // console.log("gfgfgf", models);
 
+const DateFormat = require("../../lib/dateformat");
 const AdminRepository = require("./admin.repository");
 const AdminService = require("./admin.service");
 const AdminController = require("./admin.controller");
 
-const adminRepository = new AdminRepository({ Users });
-const adminService = new AdminService({ adminRepository });
+const adminRepository = new AdminRepository({ Users, Boards });
+const adminService = new AdminService({ adminRepository, DateFormat });
 const adminController = new AdminController({ adminService });
 
 module.exports = {
