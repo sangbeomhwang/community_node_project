@@ -131,7 +131,7 @@
      justify-content: right;
  }
  
- #depth_b > div > #depth_post {
+ #depth_b > #btn > div {
      width: 120px;
      height: 40px;
      background: #A46843;
@@ -142,6 +142,7 @@
      padding-left: 28px;
      margin-top: 20px;
      line-height: 40px;
+     margin-left: 7px;
  }
 
  /* 로그인 댓글 */
