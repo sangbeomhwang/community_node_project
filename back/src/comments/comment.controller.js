@@ -29,7 +29,9 @@ class CommentController {
     async putComment(req, res, next) {
         try {
             const { commentidx } = req.query
-            const response = await this.commentService.modify({ commentidx, ...req.body })
+            // console.log('>>>>>>>>>>>>>', req.query)
+            const response = await this.commentService.modify({  commentidx,...req.body })
+            console.log(response)
             res.json(response)
         } catch (e) {
             next(e)

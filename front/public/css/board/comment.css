@@ -148,6 +148,14 @@
      text-align: center;
  }
 
+ #depth_b > #btn > #depth_put {
+    display: block;
+ }
+
+ #depth_b > #btn > #depth_clear {
+    display: none;
+ }
+
  /* 로그인 댓글 */
  #depth_c {
      width: 1160px;

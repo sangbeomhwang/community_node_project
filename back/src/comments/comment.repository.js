@@ -21,10 +21,10 @@ class CommentRepository {
         }    
     }
 
-    async commentWrite({ boardidx, nickname, content, depth, party}) {
+    async commentWrite({ boardidx, nickname, content, depth, party, commentidx}) {
         try {
-            const response = await this.comment.create({ boardidx, nickname, content, depth, party })
-            // console.log('^^^^^^^^^', response.dataValues)
+            const response = await this.comment.create({ boardidx, nickname, content, depth, party, commentidx })
+            console.log('^^^^^^^^^', response)
             return response.dataValues
         } catch (e) {
             throw new Error(e)

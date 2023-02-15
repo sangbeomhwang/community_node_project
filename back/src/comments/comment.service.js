@@ -20,17 +20,19 @@ class CommentService {
         }
     }
 
-    async write({ boardidx, nickname, content, depth, party, register }) {
+    async write({ boardidx, nickname, content, depth, party, register, commentidx }) {
         try {
-            const response = await this.commentRepository.commentWrite({ boardidx, nickname, content, depth, party, register})
-            // console.log("<<<<<<<<<<<<<<<", response)
-            console.log('regitser :::: ', response.register)
+            const response = await this.commentRepository.commentWrite({ boardidx, nickname, content, depth, party, register, commentidx})
+            console.log("<<<<<<<<<<<<<<<", response)
+            // console.log('regitser :::: ', response.register)
 
-            response.forEach(board=>{
-                board.register = new this.DateFormat(board.register).dateformat()
-            })
-            console.log('forEachData ::: ', response)
-            
+            const test = new this.DateFormat(response.register).dateformat()
+            console.log(':::::::::::: ::: ', test)
+
+
+            response.register = test
+            console.log("================",response)
+
             return response
         } catch (e) {
             throw new Error(e)
