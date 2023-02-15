@@ -33,8 +33,28 @@
             </div> -->
             
             <div id="comment_depth">
+                <div id="depth_b" data-commentidx="${commentidx}">
+                    <div id="depth_info">
+                        <img src="https://i.postimg.cc/zXBGP9w1/Ellipse-4.png">
+                        <div>
+                            <div>
+                                <img src="https://i.postimg.cc/qv5KM7Fv/Vector-1.png"><span id='depth_nic'>${nickname}</span>
+                            </div>
+                            <div>    
+                                <img src="https://i.postimg.cc/P5gBGFcx/Vector-4.png"><span id='depth_date'>${register}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <textarea readonly="readonly">${content}</textarea>
+                    <div id="btn" data-nic="${nickname}">
+                        <div id="depth_delete">삭제하기</div>
+                        <div id="depth_put">수정하기</div>
+                        <div id='depth_clear'>완료</div>
+                    </div>
             </div>
      
+
+            
             
             <!-- <div id="depth_b">
                 <div id="depth_info">
