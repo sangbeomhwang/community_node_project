@@ -8,7 +8,7 @@ class CommentController {
             const { boardidx } = req.query
             // console.log(req.query)
             const response = await this.commentService.list({ boardidx })
-            console.log('@@@@@@@@@@@@@', response)
+            // console.log('@@@@@@@@@@@@@', response)
             res.json(response)
         } catch (e) {
             next(e)
@@ -17,9 +17,9 @@ class CommentController {
 
     async postComment(req, res, next) {
         try {
-            console.log("+++++++++++++++",req.body)
+            // console.log("+++++++++++++++",req.body)
             const response = await this.commentService.write({ ...req.body })
-            console.log("%%%%%%%%%%%%%",response)
+            // console.log("%%%%%%%%%%%%%",response)
             res.json(response)
         } catch (e) {
             next(e)
@@ -28,8 +28,10 @@ class CommentController {
 
     async putComment(req, res, next) {
         try {
-            const { commentidx } = req.params
-            const response = await this.commentService.modify({ commentidx, ...req.body })
+            const { commentidx } = req.query
+            // console.log('>>>>>>>>>>>>>', req.query)
+            const response = await this.commentService.modify({  commentidx,...req.body })
+            console.log(response)
             res.json(response)
         } catch (e) {
             next(e)
@@ -38,8 +40,10 @@ class CommentController {
 
     async deleteComment(req, res, next) {
         try {
-            const { commentidx } = req.params
+            const { commentidx } = req.query
+            // console.log("Result :::: ",req.query)
             const response = await this.commentService.delete({ commentidx })
+            // console.log("DeleteReult ::::: ",response)
             res.json(response)
         } catch (e) {
             next(e)

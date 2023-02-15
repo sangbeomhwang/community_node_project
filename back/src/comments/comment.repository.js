@@ -14,18 +14,18 @@ class CommentRepository {
                 raw: true,
                 nest: true
             })
-            console.log('^^^^^^^^^', response)
+            // console.log('^^^^^^^^^', response)
             return response
         } catch (e) {
             throw new Error(e)
         }    
     }
 
-    async commentWrite({ boardidx, nickname, content, depth, party }) {
+    async commentWrite({ boardidx, nickname, content, depth, party, commentidx}) {
         try {
-            const response = await this.comment.create({ boardidx, nickname, content, depth, party })
-            // console.log('^^^^^^^^^', response)
-            return response
+            const response = await this.comment.create({ boardidx, nickname, content, depth, party, commentidx })
+            console.log('^^^^^^^^^', response)
+            return response.dataValues
         } catch (e) {
             throw new Error(e)
         }

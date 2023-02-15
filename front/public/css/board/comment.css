@@ -80,9 +80,15 @@
      color: #fefefe;
      font-weight: 700;
      font-size: 14px;
-     padding-left: 28px;
+     /* padding-left: 28px; */
      margin-top: 20px;
      line-height: 40px;
+     text-align: center;
+ }
+
+ #depth_post:hover {
+    opacity: 0.5;
+    cursor: pointer;
  }
 
  #depth_b {
@@ -126,12 +132,17 @@
      box-sizing: border-box;
  }
 
+ textarea:focus {
+    outline: none;
+}
+
  #depth_b > #btn {
      display: flex;
      justify-content: right;
+     
  }
  
- #depth_b > div > #depth_post {
+ #depth_b > #btn > div {
      width: 120px;
      height: 40px;
      background: #A46843;
@@ -139,9 +150,24 @@
      color: #fefefe;
      font-weight: 700;
      font-size: 14px;
-     padding-left: 28px;
+     /* padding-left: 28px; */
      margin-top: 20px;
      line-height: 40px;
+     margin-left: 7px;
+     text-align: center;
+ }
+
+ #btn > div:hover {
+    opacity: 0.5;
+    cursor: pointer;
+ }
+
+ #depth_b > #btn > #depth_put {
+    display: block;
+ }
+
+ #depth_b > #btn > #depth_clear {
+    display: none;
  }
 
  /* 로그인 댓글 */
@@ -270,6 +296,7 @@
      display: flex;
      justify-content: flex-end;
      border: none;
+     
  }
  
  #depth_d > div > #depth_post {
