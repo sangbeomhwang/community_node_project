@@ -1,6 +1,7 @@
 class AdminService {
-  constructor({ adminRepository }) {
+  constructor({ adminRepository, DateFormat }) {
     this.adminRepository = adminRepository;
+    this.DateFormat = DateFormat;
   }
 
   async userList() {
@@ -44,8 +45,15 @@ class AdminService {
     try {
       const response = await this.adminRepository.boardList();
       const boardCount = response.length;
-      // console.log("#################", response);
+      // console.log("1check response : ", response);
       // console.log("###~~~~~~", boardCount);
+
+      response.forEach((board) => {
+        board.register = new this.DateFormat(board.register).dateformat();
+      });
+
+      console.log("1check response : ", response);
+
       return { response, boardCount };
     } catch (e) {
       throw new Error(e);

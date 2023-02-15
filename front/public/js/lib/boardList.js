@@ -1,12 +1,18 @@
-import request from "/js/lib/request.js";
-
-const boardListTemplate = ({ image, userid, title, register, hit }) => {
+const adminBoardListTemplate = ({
+  image,
+  boardidx,
+  userid,
+  register,
+  title,
+  hit,
+}) => {
   return `
 <li>
   <ul>
     <li class="users_info">
       <img src="http://127.0.0.1:3000/${image}" />
     </li>
+    <li class="users_info">${boardidx}</li>
     <li class="users_info">${userid}</li>
     <li class="users_info">${title}</li>
     <li class="users_info">${register}</li>
@@ -19,37 +25,61 @@ const boardListTemplate = ({ image, userid, title, register, hit }) => {
 `;
 };
 
-const boardListBox = document.querySelector("#allusers_body > ul");
-// console.log(boardListBox);
+export { adminBoardListTemplate };
 
-const render = async () => {
-  const response = await request.get(`/admins/boardlist`);
-  const boardList = response.data.response;
-  // console.log("response :::", boardList);
+// import request from "/js/lib/request.js";
 
-  boardListBox.innerHTML = "";
+// const boardListTemplate = ({ image, userid, title, register, hit }) => {
+//   return `
+// <li>
+//   <ul>
+//     <li class="users_info">
+//       <img src="http://127.0.0.1:3000/${image}" />
+//     </li>
+//     <li class="users_info">boardIdx</li>
+//     <li class="users_info">${userid}</li>
+//     <li class="users_info">${title}</li>
+//     <li class="users_info">${register}</li>
+//     <li class="users_info">${hit}</li>
+//     <li class="users_info">
+//       <img src="https://i.postimg.cc/fTCt8QGZ/Vector-1.png" />
+//     </li>
+//   </ul>
+// </li>
+// `;
+// };
 
-  for (let i = 0; i < boardList.length; i++) {
-    // console.log("################", boardList);
-    boardListBox.innerHTML += boardListTemplate(boardList[i]);
-  }
+// const boardListBox = document.querySelector("#allusers_body > ul");
+// // console.log(boardListBox);
 
-  const default_img = document.querySelectorAll(
-    "#allusers_body > ul > li > ul > li > img"
-  );
+// const render = async () => {
+//   const response = await request.get(`/admins/boardlist`);
+//   const boardList = response.data.response;
+//   // console.log("response :::", boardList);
 
-  console.log(default_img);
+//   boardListBox.innerHTML = "";
 
-  for (let i = 0; i < default_img.length; i++) {
-    // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
-    if (default_img[i].src === "http://127.0.0.1:3000/undefined") {
-      default_img[i].src =
-        "https://cdn-icons-png.flaticon.com/512/64/64572.png";
-    }
-  }
+//   for (let i = 0; i < boardList.length; i++) {
+//     // console.log("################", boardList);
+//     boardListBox.innerHTML += boardListTemplate(boardList[i]);
+//   }
 
-  // console.log("check $$$$ : ", boardListBox);
-  return response;
-};
+//   const default_img = document.querySelectorAll(
+//     "#allusers_body > ul > li > ul > li > img"
+//   );
 
-render();
+//   console.log(default_img);
+
+//   for (let i = 0; i < default_img.length; i++) {
+//     // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
+//     if (default_img[i].src === "http://127.0.0.1:3000/undefined") {
+//       default_img[i].src =
+//         "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+//     }
+//   }
+
+//   // console.log("check $$$$ : ", boardListBox);
+//   return response;
+// };
+
+// render();

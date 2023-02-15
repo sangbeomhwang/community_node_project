@@ -17,16 +17,26 @@ class BoardService {
 
   async dataControl(data) {
     const { register, ...rest } = data;
-    const { comment, like, hash } = await this.extData({ boardidx: data.boardidx });
+    const { comment, like, hash } = await this.extData({
+      boardidx: data.boardidx,
+    });
     const date = new this.DateFormat(register).dateformat();
     return { ...rest, register: date, comment, like, hash };
   }
 
   async list({ mainidx, subidx, page, maxBoards, target, sort }) {
     try {
+      if (mainidx === "null" || mainidx === "undefined") mainidx = undefined;
       if (subidx === "null" || subidx === "undefined") subidx = undefined;
 
-      const result = await this.boardRepository.findAndCountAll({ mainidx, subidx, page, maxBoards, target, sort });
+      const result = await this.boardRepository.findAndCountAll({
+        mainidx,
+        subidx,
+        page,
+        maxBoards,
+        target,
+        sort,
+      });
       const totalBoards = result.count;
       const data = result.rows;
       for (let i = 0; i < data.length; i++) {
@@ -73,7 +83,13 @@ class BoardService {
 
   async write({ title, content, nickname, mainidx, subidx }) {
     try {
-      const result = await this.boardRepository.create({ title, content, nickname, mainidx, subidx });
+      const result = await this.boardRepository.create({
+        title,
+        content,
+        nickname,
+        mainidx,
+        subidx,
+      });
       return result;
     } catch (e) {
       throw new Error(e);
@@ -82,7 +98,14 @@ class BoardService {
 
   async modify({ boardidx, title, content, nickname, mainidx, subidx }) {
     try {
-      const result = await this.boardRepository.update({ boardidx, title, content, nickname, mainidx, subidx });
+      const result = await this.boardRepository.update({
+        boardidx,
+        title,
+        content,
+        nickname,
+        mainidx,
+        subidx,
+      });
       return result;
     } catch (e) {
       throw new Error(e);

@@ -9,6 +9,15 @@ class BoardRepository {
 
   async findAndCountAll({ mainidx, subidx, page, maxBoards, target, sort }) {
     try {
+      if (!mainidx) {
+        const boardList = await this.Boards.findAndCountAll({
+          limit: maxBoards,
+          offset: (page - 1) * maxBoards,
+          order: [[target, sort]],
+          raw: true,
+        });
+        return boardList;
+      }
       if (!subidx) {
         const boardList = await this.Boards.findAndCountAll({
           limit: maxBoards,
@@ -37,7 +46,10 @@ class BoardRepository {
 
   async findOne({ boardidx }) {
     try {
-      const boardOne = await this.Boards.findOne({ where: { boardidx }, raw: true });
+      const boardOne = await this.Boards.findOne({
+        where: { boardidx },
+        raw: true,
+      });
       return boardOne;
     } catch (e) {
       throw new Error(e);
@@ -46,7 +58,13 @@ class BoardRepository {
 
   async create({ title, content, nickname, mainidx, subidx }) {
     try {
-      const boardPost = await this.Boards.create({ title, content, nickname, mainidx, subidx });
+      const boardPost = await this.Boards.create({
+        title,
+        content,
+        nickname,
+        mainidx,
+        subidx,
+      });
       return boardPost;
     } catch (e) {
       throw new Error(e);
@@ -55,7 +73,10 @@ class BoardRepository {
 
   async update({ boardidx, title, content, nickname, mainidx, subidx }) {
     try {
-      const boardPut = await this.Boards.update({ title, content, nickname, mainidx, subidx }, { where: { boardidx } });
+      const boardPut = await this.Boards.update(
+        { title, content, nickname, mainidx, subidx },
+        { where: { boardidx } }
+      );
       return boardPut;
     } catch (e) {
       throw new Error(e);
@@ -75,7 +96,10 @@ class BoardRepository {
     try {
       const response = await this.Boards.findAll({
         where: {
-          [this.Op.or]: [{ title: { [this.Op.like]: `%${keyword}%` } }, { nickname: { [this.Op.like]: `%${keyword}%` } }],
+          [this.Op.or]: [
+            { title: { [this.Op.like]: `%${keyword}%` } },
+            { nickname: { [this.Op.like]: `%${keyword}%` } },
+          ],
         },
         raw: true,
       });
@@ -130,7 +154,10 @@ class BoardRepository {
 
   async incrementHit({ boardidx }) {
     try {
-      const response = await this.Boards.increment({ hit: 1 }, { where: { boardidx } });
+      const response = await this.Boards.increment(
+        { hit: 1 },
+        { where: { boardidx } }
+      );
       return response;
     } catch (e) {
       throw new Error(e);

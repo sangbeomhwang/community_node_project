@@ -1,28 +1,40 @@
 import request from "/js/lib/request.js";
-import { boardListTemplate } from "/js/lib/boardList.js";
+import { adminBoardListTemplate } from "/js/lib/boardList.js";
+import { getCategory, categoryTitleRender } from "/js/lib/getCategory.js";
 const queryString = new URLSearchParams(location.search);
+let sortNow = "ASC";
 
 const render = async ({ data }) => {
   const boardListBox = document.querySelector("#allusers_body > ul");
 
-  const response = await request.get(`/admins/boardlist`);
-  const boardList = response.data.response;
-  // console.log("response :::", userList);
-
   boardListBox.innerHTML = "";
-  for (let i = 0; i < boardList.length; i++) {
-    // console.log("################", userList);
-    boardListBox.innerHTML += boardListTemplate(boardList[i]);
+
+  for (let i = 0; i < data.length; i++) {
+    // console.log("################", boardList);
+    boardListBox.innerHTML += adminBoardListTemplate(data[i]);
   }
 
-  // console.log("check $$$$ : ", boardListBox);
-  return response;
+  // const default_img = document.querySelectorAll(
+  //   "#allusers_body > ul > li > ul > li > img"
+  // );
+
+  // console.log(default_img);
+
+  // for (let i = 0; i < default_img.length; i++) {
+  //   // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
+  //   if (default_img[i].src === "http://127.0.0.1:3000/undefined") {
+  //     default_img[i].src =
+  //       "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+  //   }
+  // }
 };
 
-const getData = async ({ mainidx, subidx, page }) => {
+const getData = async ({ mainidx, subidx, page, target = "boardidx" }) => {
   const {
     data: { data, pagination },
-  } = await request.get(`/admins/boardlist`);
+  } = await request.get(
+    `/boards?mainidx=${mainidx}&subidx=${subidx}&page=${page}&target=${target}&sort=${sortNow}`
+  );
   return { data, pagination };
 };
 
@@ -38,9 +50,13 @@ const pageListRender = ({ pagination }) => {
 
 const pageListHandler = async (e) => {
   const mainidx = queryString.get("mainidx");
+  let { subidx } = document.querySelector(".cat_active[data-subidx]").dataset;
+  if (subidx === "") {
+    subidx = undefined;
+  }
   const { page } = e.target.dataset;
   if (page) {
-    const { data, pagination } = await getData({ mainidx, page });
+    const { data, pagination } = await getData({ mainidx, subidx, page });
     render({ data, pagination });
     nowPageNav({ page });
   }
@@ -72,7 +88,6 @@ const leftBtnHandler = async () => {
   const { page, startpage, endpage, lastpage, viewpagecount } = nowPage.dataset;
 
   if (page === 1) {
-    console.log("끝");
     return;
   }
   if (page !== startpage) {
@@ -106,11 +121,9 @@ const rightBtnHandler = async () => {
   const { page, startpage, endpage, lastpage, viewpagecount } = nowPage.dataset;
 
   if (page === lastpage) {
-    console.log("끝");
     return;
   }
   if (endpage === lastpage) {
-    console.log(endpage);
     const { data, pagination } = await getData({
       mainidx,
       subidx,
@@ -134,9 +147,33 @@ const rightBtnHandler = async () => {
   }
 };
 
+const sortHandler = async (e) => {
+  const mainidx = queryString.get("mainidx");
+  let { subidx } = document.querySelector(".cat_active[data-subidx]").dataset;
+  if (subidx === "") {
+    subidx = undefined;
+  }
+  const sort = {
+    old: "ASC",
+    new: "DESC",
+  };
+  sortNow = sort[e.target.value];
+  const { page } = document.querySelector(`.now[data-page]`).dataset;
+  const { data, pagination } = await getData({
+    mainidx,
+    subidx,
+    page,
+    sortNow,
+  });
+  render({ data });
+  pageListRender({ pagination });
+  nowPageNav({ page: pagination.page });
+};
+
 const init = async () => {
   const mainidx = queryString.get("mainidx");
   const writeBtn = document.querySelector("#writebtn");
+  const sortBtn = document.querySelector("#sort");
 
   const { data, pagination } = await getData({ mainidx });
   render({ data });
@@ -147,9 +184,10 @@ const init = async () => {
   moveBtnEvent();
 
   writeBtn.addEventListener("click", () => {
-    location.href = `/admins/boardlist/write?mainidx=${mainidx}`;
+    location.href = `/boards/write?mainidx=${mainidx}`;
   });
   subCategories.addEventListener("click", subCatHandler);
+  sortBtn.addEventListener("change", sortHandler);
 };
 
 const subCategories = document.querySelector("#subcategories");
