@@ -14,7 +14,7 @@ const template = ({ content, nickname, register, commentidx, image }) => `
     </div>
 </div>
 <textarea readonly="readonly">${content}</textarea>
-<div id="btn">
+<div id="btn" data-nic="${nickname}">
     <div id="depth_delete">삭제하기</div>
     <div id="depth_put">수정하기</div>
     <div id='depth_clear'>완료</div>
@@ -32,15 +32,19 @@ const render = async ({ boardidx }) => {
     // 게시글의 전체댓글
     const response = await request.get(`/comments?boardidx=${boardidx}`)
     commentBox.innerHTML = ''
+    const {usernick} = document.querySelector('[data-usernick]').dataset
+    console.log(usernick)
     for (let i = 0; i < response.data.length; i++) {
-        // console.log("################",response.data)
         commentBox.innerHTML += template(response.data[i])
     }
-
-
+    const {btnnic} = document.querySelector('[data-nic]').dataset
+    console.log(btnnic)
+    
+    
     // 댓글삭제
     const deltbtn = document.querySelectorAll('#depth_delete')
     const comment = document.querySelectorAll('#comment_depth > #depth_b')
+
     // const deltbtn = document.querySelectorAll('#depth_delete')
     
     
@@ -170,6 +174,8 @@ document.querySelector("#depth_post").addEventListener('click', async (e) => {
     // console.log("Response ::: ",response)
     console.log('==================', response.data)
     commentBox.innerHTML += template(response.data)
+
+    
 })
 
 render({boardidx:boardidx[boardidx.length-1]})

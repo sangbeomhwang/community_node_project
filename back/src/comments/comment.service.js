@@ -23,15 +23,14 @@ class CommentService {
     async write({ boardidx, nickname, content, depth, party, register, commentidx }) {
         try {
             const response = await this.commentRepository.commentWrite({ boardidx, nickname, content, depth, party, register, commentidx})
-            console.log("<<<<<<<<<<<<<<<", response)
+            // console.log("<<<<<<<<<<<<<<<", response)
             // console.log('regitser :::: ', response.register)
 
             const test = new this.DateFormat(response.register).dateformat()
-            console.log(':::::::::::: ::: ', test)
-
+            // console.log(':::::::::::: ::: ', test)
 
             response.register = test
-            console.log("================",response)
+            // console.log("================",response)
 
             return response
         } catch (e) {
