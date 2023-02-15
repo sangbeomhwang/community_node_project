@@ -22,6 +22,12 @@ const config = {
       },
     },
   },
+  kakao: {
+    host: env.KAKAO_HOST || "",
+    rest_api_key: env.REST_API_KEY || "",
+    redirect_uri: env.REDIRECT_URI || "",
+    client_secret: env.CLIENT_SECRET || "",
+  },
 };
 
 module.exports = config;

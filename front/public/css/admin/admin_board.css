@@ -189,6 +189,12 @@ body {
   line-height: 50%;
 }
 
+#allusers_body > ul > li > ul > li:nth-child(1) > img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
 #allusers_body > ul > li > ul > li:nth-child(1) {
   width: 80px;
 }
