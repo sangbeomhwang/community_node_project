@@ -1,8 +1,10 @@
 class UserService {
-  constructor({ userRepository, jwt }) {
+  constructor({ userRepository, jwt, qs, axios }) {
     this.userRepository = userRepository;
     this.jwt = jwt;
     this.crypto = jwt.crypto;
+    this.qs = qs;
+    this.axios = axios;
   }
 
   async signup(userData) {
@@ -12,10 +14,7 @@ class UserService {
 
       console.log("확인용", this.jwt.salt);
 
-      const hash = this.crypto
-        .createHmac("sha256", this.jwt.salt)
-        .update(password)
-        .digest("hex");
+      const hash = this.crypto.createHmac("sha256", this.jwt.salt).update(password).digest("hex");
       const user = await this.userRepository.addUser({
         userid,
         password: hash,
@@ -52,10 +51,7 @@ class UserService {
   async modifyProfile(userData) {
     try {
       const { password, ...rest } = userData;
-      const hash = this.crypto
-        .createHmac("sha256", this.jwt.salt)
-        .update(password)
-        .digest("hex");
+      const hash = this.crypto.createHmac("sha256", this.jwt.salt).update(password).digest("hex");
 
       const user = await this.userRepository.updateProfile({
         password: hash,
@@ -75,29 +71,62 @@ class UserService {
     }
   }
 
-  // async signinWithKakao(kakaoToken) {
-  //   try {
-  //     const response = await axios.get("https://kapi.kakao.com/v2/user/me", {
-  //       headers: {
-  //         Authorization: `Bearer ${kakaoToken}`,
-  //       },
-  //     });
-  //     console.log("response check ~~~~ : ", response);
+  async getKakaoToken({ code }) {
+    try {
+      const {
+        kakao: { host: HOST, rest_api_key: REST_API_KEY, redirect_uri: REDIRECT_URI, client_secret: CLIENT_SECRET },
+      } = require("../../config");
 
-  //     const email = response.data.kakao_account.email;
-  //     const kakaoId = response.data.id;
+      const host = `${HOST}/oauth/token`;
+      const headers = {
+        "Content-Type": `application/x-www-form-urlencoded`,
+      };
+      const body = this.qs.stringify({
+        grant_type: "authorization_code",
+        client_id: REST_API_KEY,
+        redirect_uri: REDIRECT_URI,
+        code,
+        client_secret: CLIENT_SECRET,
+      });
 
-  //     const user = await this.userRepository.getUserByEmail(email);
+      const { data: token } = await this.axios.post(host, body, headers);
+      return token;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
 
-  //     if (!user) {
-  //       await this.userRepository.addKakao(email, kakaoId);
-  //     }
+  async getKakaoUserProfile({ token }) {
+    try {
+      const { access_token } = token;
+      const host = `https://kapi.kakao.com/v2/user/me`;
+      // body 정보는 필요없기에 "null"로 처리함!
+      const { data } = await this.axios.post(host, null, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
 
-  //     return jwt.sign({ userid: user }, process.env.CLIENT_SECRET);
-  //   } catch (e) {
-  //     throw new Error(e);
-  //   }
-  // }
+      const user = {
+        userid: data.id,
+        password: this.crypto.createHmac("sha256", this.jwt.salt).update(access_token).digest("hex"),
+        nickname: data.properties.nickname,
+        image: data.properties.profile_image,
+      };
+      console.log("user info ~~~ : ", user.data);
+
+      // front server에 redirect를 요청함
+      // res.redirect("http://localhost:3005");
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async signinWithKakao({ code }) {
+    const token = await this.getKakaoToken({ code });
+    this.getKakaoUserProfile({ token });
+  }
 }
 
 module.exports = UserService;

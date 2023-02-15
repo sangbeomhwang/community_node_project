@@ -28,7 +28,6 @@ class BoardRepository {
           },
           raw: true,
         });
-        console.log(boardList);
         return boardList;
       }
       const boardList = await this.Boards.findAndCountAll({

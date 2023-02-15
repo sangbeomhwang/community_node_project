@@ -9,7 +9,7 @@ class BoardController {
       const { mainidx, subidx } = req.query;
       const page = Number(req.query?.page) || 1;
       const maxBoards = Number(req.query?.maxBoards) || 7;
-      const target = req.query?.target || "register";
+      const target = req.query?.target || "boardidx";
       const sort = req.query?.sort || "DESC";
       console.log(target);
       console.log(sort);

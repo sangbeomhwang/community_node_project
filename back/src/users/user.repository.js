@@ -69,30 +69,30 @@ class UserRepository {
     return user[1];
   }
 
-  // async addKakao({ email, kakaoId }) {
-  //   console.log({ email, kakaoId });
-  //   try {
-  //     const user = await this.User.create({ email, kakaoId }, { raw: true });
-  //     return user;
-  //   } catch (e) {
-  //     throw new Error(e);
-  //   }
-  // }
+  async addKakao({ email, kakaoId }) {
+    console.log({ email, kakaoId });
+    try {
+      const user = await this.User.create({ email, kakaoId }, { raw: true });
+      return user;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
 
-  // async getUserByEmail(email) {
-  //   // console.log(`repo:`, email);
-  //   try {
-  //     const user = await this.User.findOne({
-  //       raw: true,
-  //       where: {
-  //         email,
-  //       },
-  //     });
-  //     return user;
-  //   } catch (e) {
-  //     throw new Error(e);
-  //   }
-  // }
+  async getUserByEmail(email) {
+    // console.log(`repo:`, email);
+    try {
+      const user = await this.User.findOne({
+        raw: true,
+        where: {
+          email,
+        },
+      });
+      return user;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
 }
 
 module.exports = UserRepository;
