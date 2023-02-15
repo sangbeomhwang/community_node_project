@@ -7,10 +7,13 @@ class BoardRepository {
     this.Hashes = Hashes;
   }
 
-  async findAll({ mainidx, subidx }) {
+  async findAndCountAll({ mainidx, subidx, page, maxBoards, target, sort }) {
     try {
       if (!subidx) {
-        const boardList = await this.Boards.findAll({
+        const boardList = await this.Boards.findAndCountAll({
+          limit: maxBoards,
+          offset: (page - 1) * maxBoards,
+          order: [[target, sort]],
           where: {
             mainidx,
           },
@@ -18,7 +21,13 @@ class BoardRepository {
         });
         return boardList;
       }
-      const boardList = await this.Boards.findAll({ where: { mainidx, subidx }, raw: true });
+      const boardList = await this.Boards.findAndCountAll({
+        limit: maxBoards,
+        offset: (page - 1) * maxBoards,
+        order: [[target, sort]],
+        where: { mainidx, subidx },
+        raw: true,
+      });
       return boardList;
     } catch (e) {
       throw new Error(e);
@@ -112,6 +121,15 @@ class BoardRepository {
         raw: true,
       });
 
+      return response;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async incrementHit({ boardidx }) {
+    try {
+      const response = await this.Boards.increment({ hit: 1 }, { where: { boardidx } });
       return response;
     } catch (e) {
       throw new Error(e);

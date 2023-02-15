@@ -6,6 +6,7 @@ const uploads = require("../../middlewares/uploads");
 router.get("/", (req, res, next) => controller.getList(req, res, next));
 router.post("/", (req, res, next) => controller.postOne(req, res, next));
 router.get("/search", (req, res, next) => controller.getSearch(req, res, next));
+router.get("/hits", (req, res, next) => controller.incrementHits(req, res, next));
 router.post("/img", uploads("board").single("file"), (req, res, next) => {
   console.log("req.file");
   console.log(req.file);

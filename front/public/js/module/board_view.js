@@ -15,8 +15,9 @@ const subCat = (subCatIdx) => {
   }
 };
 
-const backBtn = (mainidx) => {
-  return () => {
+const deleteBtnHandler = ({ mainidx, boardidx }) => {
+  return async () => {
+    await request.delete(`/boards/${boardidx}`);
     location.href = `/boards?mainidx=${mainidx}`;
   };
 };
@@ -67,7 +68,7 @@ const init = async () => {
   const content = document.querySelector("#write_content");
   const likeBtn = document.querySelector("#like");
   const modify = document.querySelector("#modify");
-  const back = document.querySelector("#back");
+  const deleteBtn = document.querySelector("#delete");
   const boardidx = document.querySelector("#boardidx").value;
   const { usernick } = document.querySelector("#usernick").dataset;
 
@@ -84,14 +85,22 @@ const init = async () => {
   like.innerText = data.like;
   content.innerHTML = data.content;
   likeInit({ boardidx, usernick });
-
   hashtag(data.hash);
 
-  modify.addEventListener("click", modifyBtn(boardidx));
-  back.addEventListener("click", backBtn(mainidx));
+  modify.style = "display: none";
+  deleteBtn.style = "display: none";
+
+  if (usernick === data.nickname) {
+    modify.style = "display: inline-block";
+    modify.addEventListener("click", modifyBtn(boardidx));
+    deleteBtn.style = "display: inline-block";
+    deleteBtn.addEventListener("click", deleteBtnHandler({ mainidx, boardidx }));
+  }
 
   if (usernick !== data.nickname) {
     likeBtn.addEventListener("click", likeBtnHandler);
+    await request.get(`/boards/hits?boardidx=${boardidx}`);
+    hit.innerText = Number(hit.innerText) + 1;
   }
 };
 
