@@ -12,7 +12,7 @@ class CommentService {
             response.forEach(board=>{
                 board.register = new this.DateFormat(board.register).dateformat()
             })
-            // console.log(">>>>>>>>>>>>>>>>>>>>>>",response)
+            // console.log("12345>>>>>>>>>>>>>>>>>>>>>>",response)
 
             return response
         } catch (e) {
@@ -20,9 +20,17 @@ class CommentService {
         }
     }
 
-    async write({ boardidx, nickname, content, depth, party }) {
+    async write({ boardidx, nickname, content, depth, party, register }) {
         try {
-            const response = await this.commentRepository.commentWrite({ boardidx, nickname, content, depth, party })
+            const response = await this.commentRepository.commentWrite({ boardidx, nickname, content, depth, party, register})
+            // console.log("<<<<<<<<<<<<<<<", response)
+            console.log('regitser :::: ', response.register)
+
+            response.forEach(board=>{
+                board.register = new this.DateFormat(board.register).dateformat()
+            })
+            console.log('forEachData ::: ', response)
+            
             return response
         } catch (e) {
             throw new Error(e)
