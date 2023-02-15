@@ -24,7 +24,7 @@ class BoardService {
     return { ...rest, register: date, comment, like, hash };
   }
 
-  async list({ mainidx, subidx, page, maxBoards, target, sort }) {
+  async list({ mainidx, subidx, page, maxBoards, target, sort, viewPageCount }) {
     try {
       if (mainidx === "null" || mainidx === "undefined") mainidx = undefined;
       if (subidx === "null" || subidx === "undefined") subidx = undefined;
@@ -44,7 +44,6 @@ class BoardService {
       }
 
       const lastPage = Math.ceil(totalBoards / maxBoards);
-      const viewPageCount = 5;
       let startPageNum = 1;
       let start = Math.floor(page / viewPageCount);
       if (start >= 1) {
