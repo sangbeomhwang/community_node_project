@@ -74,6 +74,30 @@ class UserService {
       throw new Error(e);
     }
   }
+
+  // async signinWithKakao(kakaoToken) {
+  //   try {
+  //     const response = await axios.get("https://kapi.kakao.com/v2/user/me", {
+  //       headers: {
+  //         Authorization: `Bearer ${kakaoToken}`,
+  //       },
+  //     });
+  //     console.log("response check ~~~~ : ", response);
+
+  //     const email = response.data.kakao_account.email;
+  //     const kakaoId = response.data.id;
+
+  //     const user = await this.userRepository.getUserByEmail(email);
+
+  //     if (!user) {
+  //       await this.userRepository.addKakao(email, kakaoId);
+  //     }
+
+  //     return jwt.sign({ userid: user }, process.env.CLIENT_SECRET);
+  //   } catch (e) {
+  //     throw new Error(e);
+  //   }
+  // }
 }
 
 module.exports = UserService;

@@ -1,3 +1,9 @@
+const config = require("../config");
+const KAKAO_HOST = config.kakao.host;
+const KAKAO_REST_API_KEY = config.kakao.rest_api_key;
+const KAKAO_REDIRECT_URI = config.kakao.redirect_uri;
+const KAKAO_CLIENT_SECRET = config.kakao.client_secret;
+
 const axios = require("axios");
 const request = axios.create({
   baseURL: "http://127.0.0.1:3000",
@@ -93,10 +99,12 @@ class UserController {
 
   async getKakaoLogin(req, res, next) {
     try {
-      const HOST = "https://kauth.kakao.com";
-      const REST_API_KEY = "생략";
-      const REDIRECT_URI = "http://localhost:3000/oauth/kakao";
-      const CLIENT_SECRET = "생략";
+      const HOST = KAKAO_HOST;
+      const REST_API_KEY = KAKAO_REST_API_KEY;
+      const REDIRECT_URI = KAKAO_REDIRECT_URI;
+      const CLIENT_SECRET = KAKAO_CLIENT_SECRET;
+
+      console.log(HOST);
 
       // kauth.kakao.com
       // /oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code
