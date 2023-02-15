@@ -162,18 +162,15 @@
 }
 
 #qna_header {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("/img/qna_header.png");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/img/qna_header.png");
   background-size: cover;
 }
 #community_header {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("/img/community_header.png");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/img/community_header.png");
   background-size: cover;
 }
 #notice_header {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("/img/notice_header.png");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/img/notice_header.png");
   background-size: cover;
 }
 
@@ -218,7 +215,8 @@
   width: 12px;
   height: 12px;
   background-image: url("/img/hits.png");
-  background-size: cover;
+  background-size: 100% 80%;
+  background-repeat: no-repeat;
   margin-right: 5px;
 }
 .reply_box {

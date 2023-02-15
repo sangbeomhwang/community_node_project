@@ -3,6 +3,8 @@ const {
     models: { Users },
   },
 } = require("../../models");
+const qs = require("qs");
+const axios = require("axios");
 
 // 확인용 코드
 // const User = models.User;
@@ -15,7 +17,7 @@ const UserController = require("./user.controller");
 const { jwt } = require("../../config");
 
 const userRepository = new UserRepository({ Users });
-const userService = new UserService({ userRepository, jwt });
+const userService = new UserService({ userRepository, jwt, qs, axios });
 const userController = new UserController({ userService });
 
 module.exports = {

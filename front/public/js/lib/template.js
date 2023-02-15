@@ -38,4 +38,32 @@ const boardListTemplate = ({ boardidx, nickname, register, hash, title, hit, lik
  `;
 };
 
-export { boardListTemplate };
+const mainPageTemplate = ({ boardidx, nickname, register, hit, comment, like, title }) => {
+  return ` <li>
+<div class="first_line">
+  <div class="nickname_time_box">
+    <div class="nickname">${nickname}</div>
+    <div class="time">${register}</div>
+  </div>
+  <div class="information_box">
+    <div class="hits_box">
+      <span class="hits"></span>
+      <span>${hit}</span>
+    </div>
+    <div class="reply_box">
+      <span class="reply"></span>
+      <span>${comment}</span>
+    </div>
+    <div class="likes_box">
+      <span class="likes"></span>
+      <span>${like}</span>
+    </div>
+  </div>
+</div>
+<div class="seconde_line">
+  <a href="/boards/${boardidx}">${title}</a>
+</div>
+</li>`;
+};
+
+export { boardListTemplate, mainPageTemplate };
