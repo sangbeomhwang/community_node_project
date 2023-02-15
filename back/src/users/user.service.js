@@ -96,11 +96,10 @@ class UserService {
     }
   }
 
-  async getKakaoUserProfile({ token }) {
+  async getKakaoUserProfile({ kakaoToken }) {
     try {
-      const { access_token } = token;
+      const { access_token } = kakaoToken;
       const host = `https://kapi.kakao.com/v2/user/me`;
-      // body 정보는 필요없기에 "null"로 처리함!
       const { data } = await this.axios.post(host, null, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -109,23 +108,30 @@ class UserService {
       });
 
       const user = {
-        userid: data.id,
-        password: this.crypto.createHmac("sha256", this.jwt.salt).update(access_token).digest("hex"),
+        userid: String(data.id),
+        password: this.crypto.createHmac("sha256", this.jwt.salt).update(String(data.id)).digest("hex"),
         nickname: data.properties.nickname,
         image: data.properties.profile_image,
+        email: data.kakao_account?.email,
+        social: "kakao",
       };
-      console.log("user info ~~~ : ", user.data);
 
-      // front server에 redirect를 요청함
-      // res.redirect("http://localhost:3005");
+      return user;
     } catch (e) {
       throw new Error(e);
     }
   }
 
   async signinWithKakao({ code }) {
-    const token = await this.getKakaoToken({ code });
-    this.getKakaoUserProfile({ token });
+    const kakaoToken = await this.getKakaoToken({ code });
+    const user = await this.getKakaoUserProfile({ kakaoToken });
+    const result = await this.userRepository.addOrLoginKakao(user);
+    console.log(result);
+    if (!result) {
+      await this.userRepository.updateKakao(user);
+    }
+    const { token } = (await this.axios.post("http://127.0.0.1:3000/auths", { userid: user.userid, password: user.userid })).data;
+    return token;
   }
 }
 
