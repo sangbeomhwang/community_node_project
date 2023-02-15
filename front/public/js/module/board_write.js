@@ -134,6 +134,29 @@ const init = async () => {
 
   const cancleBtn = document.querySelector("#cancle");
   cancleBtn.addEventListener("click", cancleHandler(mainidx));
+
+  const commandBtn = document.querySelectorAll("[data-command]");
+  commandBtn.forEach((el) =>
+    el.addEventListener("click", (e) => {
+      const element = document.querySelector("[contenteditable]");
+
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      range.collapse(false);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+
+      element.focus();
+      const command = el.dataset.command;
+
+      if (command === "p") {
+        document.execCommand("formatBlock", false, command);
+      } else {
+        document.execCommand(command);
+      }
+    })
+  );
 };
 
 init();

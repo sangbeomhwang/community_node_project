@@ -110,9 +110,14 @@ const rightBtnHandler = async () => {
   }
 };
 
+const sortHandler = (e) => {
+  console.log(e.target.value);
+};
+
 const init = async () => {
   const mainidx = queryString.get("mainidx");
   const writeBtn = document.querySelector("#writebtn");
+  const sortBtn = document.querySelector("#sort");
 
   const { data, pagination } = await getData({ mainidx });
   render({ data });
@@ -126,6 +131,7 @@ const init = async () => {
     location.href = `/boards/write?mainidx=${mainidx}`;
   });
   subCategories.addEventListener("click", subCatHandler);
+  sortBtn.addEventListener("change", sortHandler);
 };
 
 const subCategories = document.querySelector("#subcategories");

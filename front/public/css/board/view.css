@@ -136,7 +136,7 @@
 
 #write_btnbox > #write_hashbox {
   margin-top: 5px;
-  max-width: 860px;
+  max-width: 760px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -155,6 +155,11 @@
   font-size: 14px;
   background-color: #fefefe;
   cursor: pointer;
+}
+
+#like.like_active {
+  background-color: #a46843;
+  color: #fefefe;
 }
 
 #write_btn > button > img {

@@ -12,6 +12,16 @@ class HashController {
       next(e);
     }
   }
+
+  async putHashes(req, res, next) {
+    try {
+      const { hashes, boardidx } = req.body;
+      const response = await this.hashService.putHashList({ hashes, boardidx });
+      res.json(response);
+    } catch (e) {
+      next(e);
+    }
+  }
 }
 
 module.exports = HashController;

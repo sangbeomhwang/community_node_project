@@ -3,12 +3,15 @@ class BoardController {
     this.boardService = boardService;
   }
 
+  // DESC : 내림차순 ASC : 오름차순
   async getList(req, res, next) {
     try {
       const { mainidx, subidx } = req.query;
       const page = Number(req.query?.page) || 1;
       const maxBoards = Number(req.query?.maxBoards) || 7;
-      const itemList = await this.boardService.list({ mainidx, subidx, page, maxBoards });
+      const target = req.query?.target || "register";
+      const sort = req.query?.sort || "DESC";
+      const itemList = await this.boardService.list({ mainidx, subidx, page, maxBoards, target, sort });
       res.json(itemList);
     } catch (e) {
       next(e);
@@ -59,6 +62,16 @@ class BoardController {
       // console.log("================", keyword);
       const response = await this.boardService.search({ keyword });
       // console.log("response===", response);
+      res.json(response);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async incrementHits(req, res, next) {
+    try {
+      const { boardidx } = req.query;
+      const response = await this.boardService.increHits({ boardidx });
       res.json(response);
     } catch (e) {
       next(e);

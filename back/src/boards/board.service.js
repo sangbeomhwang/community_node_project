@@ -22,21 +22,17 @@ class BoardService {
     return { ...rest, register: date, comment, like, hash };
   }
 
-  async list({ mainidx, subidx, page = 1, maxBoards }) {
+  async list({ mainidx, subidx, page, maxBoards, target, sort }) {
     try {
       if (subidx === "null" || subidx === "undefined") subidx = undefined;
-      const result = await this.boardRepository.findAll({ mainidx, subidx });
-      const totalBoards = result.length;
-      const startNum = (page - 1) * maxBoards;
-      const endNum = page * maxBoards - 1;
-      let data = [];
-      if (startNum < totalBoards) {
-        for (let i = startNum; i <= endNum; i++) {
-          if (result[i]) {
-            data.push(await this.dataControl(result[i]));
-          }
-        }
+
+      const result = await this.boardRepository.findAndCountAll({ mainidx, subidx, page, maxBoards, target, sort });
+      const totalBoards = result.count;
+      const data = result.rows;
+      for (let i = 0; i < data.length; i++) {
+        data[i] = await this.dataControl(data[i]);
       }
+
       const lastPage = Math.ceil(totalBoards / maxBoards);
       const viewPageCount = 5;
       let startPageNum = 1;
@@ -105,6 +101,15 @@ class BoardService {
   async search({ keyword }) {
     try {
       const result = await this.boardRepository.findList({ keyword });
+      return result;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async increHits({ boardidx }) {
+    try {
+      const result = await this.boardRepository.incrementHit({ boardidx });
       return result;
     } catch (e) {
       throw new Error(e);

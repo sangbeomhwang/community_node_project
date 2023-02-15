@@ -15,8 +15,9 @@ const subCat = (subCatIdx) => {
   }
 };
 
-const backBtn = (mainidx) => {
-  return () => {
+const deleteBtnHandler = ({ mainidx, boardidx }) => {
+  return async () => {
+    await request.delete(`/boards/${boardidx}`);
     location.href = `/boards?mainidx=${mainidx}`;
   };
 };
@@ -33,16 +34,43 @@ const hashtag = (hash) => {
     hashbox.appendChild(div);
   }
 };
+const likeInit = async ({ boardidx, usernick }) => {
+  const like = document.querySelector("#like");
+  const { data } = await request.get(`/likes?boardidx=${boardidx}&nickname=${usernick}`);
+  if (data) like.classList.add("like_active");
+};
+
+const likeCount = (count) => {
+  const like = document.querySelector("#like > span");
+  like.innerText = count;
+};
+
+const likeClick = (clicked) => {
+  const like = document.querySelector("#like");
+  if (!clicked) return like.classList.remove("like_active");
+  like.classList.add("like_active");
+};
+
+const likeBtnHandler = async () => {
+  const boardidx = document.querySelector("#boardidx").value;
+  const { usernick } = document.querySelector("#usernick").dataset;
+  const { count, clicked } = (await request.put(`/likes?boardidx=${boardidx}&nickname=${usernick}`)).data;
+  likeCount(count);
+  likeClick(clicked);
+};
 
 const init = async () => {
   const title = document.querySelector("#write_subject");
   const nickname = document.querySelector("#nickname");
   const register = document.querySelector("#register");
   const hit = document.querySelector("#hit");
+  const like = document.querySelector("#like > span");
   const content = document.querySelector("#write_content");
+  const likeBtn = document.querySelector("#like");
   const modify = document.querySelector("#modify");
-  const back = document.querySelector("#back");
+  const deleteBtn = document.querySelector("#delete");
   const boardidx = document.querySelector("#boardidx").value;
+  const { usernick } = document.querySelector("#usernick").dataset;
 
   const { data } = await request.get(`/boards/${boardidx}`);
   const mainidx = data.mainidx;
@@ -54,13 +82,26 @@ const init = async () => {
   nickname.innerText = data.nickname;
   register.innerText = data.register;
   hit.innerText = data.hit;
+  like.innerText = data.like;
   content.innerHTML = data.content;
-  
+  likeInit({ boardidx, usernick });
   hashtag(data.hash);
 
+  modify.style = "display: none";
+  deleteBtn.style = "display: none";
 
-  modify.addEventListener("click", modifyBtn(boardidx));
-  back.addEventListener("click", backBtn(mainidx));
+  if (usernick === data.nickname) {
+    modify.style = "display: inline-block";
+    modify.addEventListener("click", modifyBtn(boardidx));
+    deleteBtn.style = "display: inline-block";
+    deleteBtn.addEventListener("click", deleteBtnHandler({ mainidx, boardidx }));
+  }
+
+  if (usernick !== data.nickname) {
+    likeBtn.addEventListener("click", likeBtnHandler);
+    await request.get(`/boards/hits?boardidx=${boardidx}`);
+    hit.innerText = Number(hit.innerText) + 1;
+  }
 };
 
 init();
