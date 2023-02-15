@@ -47,13 +47,17 @@ class AdminController {
 
   async updateUser(req, res, next) {
     try {
-      // const { nickname } = req.user;
       const { nickname } = req.params;
       // console.log("nickname check ~~~ : ", nickname);
-      const { data } = await request.put(`/admins/${nickname}`, {
+      // const { data } = await request.put(`/admins/${nickname}`, {
+      //   ...req.body,
+      // });
+      // console.log("update success~~~ : ", data); // 수정 성공 시 result => update success~~~ :  [ 1 ]
+
+      await request.put(`/admins/${nickname}`, {
         ...req.body,
       });
-      // console.log("update success~~~ : ", data);
+
       res.redirect("/admins/users");
     } catch (e) {
       next(e);
@@ -71,36 +75,24 @@ class AdminController {
   //   }
   // }
 
-  // async getBoards(req, res, next) {
-  //   try {
-  //     const { userid, nickname, image } = req.user;
-  //     const { data } = await request.get(`/admins/boardlist`, {
-  //       ...req.body,
-  //     });
-  //     const response = data.response;
-  //     const boardCount = data.boardCount;
-  //     // console.log("check!!!! : ", response);
-  //     // console.log("check@@@@ : ", boardCount);
-  //     res.render("admin/admin_board.html", {
-  //       userid,
-  //       nickname,
-  //       image,
-  //       response,
-  //       boardCount,
-  //     });
-  //   } catch (e) {
-  //     next(e);
-  //   }
-  // }
-
   async getBoards(req, res, next) {
     try {
-      const { userid, nickname, image, level } = req.user;
+      const { userid, nickname, image, level, access } = req.user;
+      const { data } = await request.get(`/admins/boardlist`, {
+        ...req.body,
+      });
+      const response = data.response;
+      const boardCount = data.boardCount;
+      // console.log("check!!!! : ", response);
+      // console.log("check@@@@ : ", boardCount);
       res.render("admin/admin_board.html", {
         userid,
         nickname,
         image,
         level,
+        access,
+        response,
+        boardCount,
       });
     } catch (e) {
       next(e);
