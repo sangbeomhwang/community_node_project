@@ -17,6 +17,7 @@ const template = ({ content, nickname, register, commentidx, image }) => `
 <div id="btn">
     <div id="depth_delete">삭제하기</div>
     <div id="depth_put">수정하기</div>
+    <div id='depth_clear'>완료</div>
 </div>
 </div>
  `;
@@ -71,8 +72,10 @@ const render = async ({ boardidx }) => {
             // console.log('commentidx ::: ', commentidx)
             // console.log('boardidx ::: ', boardidx)
 
-            const putcontent = document.querySelector('textarea').value
-            console.log(putcontent) 
+            const putcontent = document.querySelectorAll('textarea')
+            for(let i = 0; i < comment.length; i++){
+                putcontent[i].readOnly = false
+            } 
         }
     }
 
