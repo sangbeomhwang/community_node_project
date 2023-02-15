@@ -11,6 +11,8 @@ class BoardController {
       const maxBoards = Number(req.query?.maxBoards) || 7;
       const target = req.query?.target || "register";
       const sort = req.query?.sort || "DESC";
+      console.log(target);
+      console.log(sort);
       const itemList = await this.boardService.list({ mainidx, subidx, page, maxBoards, target, sort });
       res.json(itemList);
     } catch (e) {
