@@ -13,7 +13,14 @@ class BoardController {
       const sort = req.query?.sort || "DESC";
       console.log(target);
       console.log(sort);
-      const itemList = await this.boardService.list({ mainidx, subidx, page, maxBoards, target, sort });
+      const itemList = await this.boardService.list({
+        mainidx,
+        subidx,
+        page,
+        maxBoards,
+        target,
+        sort,
+      });
       res.json(itemList);
     } catch (e) {
       next(e);
