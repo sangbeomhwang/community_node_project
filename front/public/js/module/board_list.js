@@ -2,6 +2,7 @@ import request from "/js/lib/request.js";
 import { boardListTemplate } from "/js/lib/template.js";
 import { getCategory, categoryTitleRender } from "/js/lib/getCategory.js";
 const queryString = new URLSearchParams(location.search);
+let sortNow = "DESC";
 
 const render = ({ data }) => {
   const contentBox = document.querySelector("#content_body > ul");
@@ -11,10 +12,10 @@ const render = ({ data }) => {
   }
 };
 
-const getData = async ({ mainidx, subidx, page }) => {
+const getData = async ({ mainidx, subidx, page, target = "boardidx" }) => {
   const {
     data: { data, pagination },
-  } = await request.get(`/boards?mainidx=${mainidx}&subidx=${subidx}&page=${page}`);
+  } = await request.get(`/boards?mainidx=${mainidx}&subidx=${subidx}&page=${page}&target=${target}&sort=${sortNow}`);
   return { data, pagination };
 };
 
@@ -30,9 +31,13 @@ const pageListRender = ({ pagination }) => {
 
 const pageListHandler = async (e) => {
   const mainidx = queryString.get("mainidx");
+  let { subidx } = document.querySelector(".cat_active[data-subidx]").dataset;
+  if (subidx === "") {
+    subidx = undefined;
+  }
   const { page } = e.target.dataset;
   if (page) {
-    const { data, pagination } = await getData({ mainidx, page });
+    const { data, pagination } = await getData({ mainidx, subidx, page });
     render({ data, pagination });
     nowPageNav({ page });
   }
@@ -64,7 +69,6 @@ const leftBtnHandler = async () => {
   const { page, startpage, endpage, lastpage, viewpagecount } = nowPage.dataset;
 
   if (page === 1) {
-    console.log("끝");
     return;
   }
   if (page !== startpage) {
@@ -90,11 +94,9 @@ const rightBtnHandler = async () => {
   const { page, startpage, endpage, lastpage, viewpagecount } = nowPage.dataset;
 
   if (page === lastpage) {
-    console.log("끝");
     return;
   }
   if (endpage === lastpage) {
-    console.log(endpage);
     const { data, pagination } = await getData({ mainidx, subidx, page: endpage });
     render({ data });
     pageListRender({ pagination });
@@ -110,8 +112,22 @@ const rightBtnHandler = async () => {
   }
 };
 
-const sortHandler = (e) => {
-  console.log(e.target.value);
+const sortHandler = async (e) => {
+  const mainidx = queryString.get("mainidx");
+  let { subidx } = document.querySelector(".cat_active[data-subidx]").dataset;
+  if (subidx === "") {
+    subidx = undefined;
+  }
+  const sort = {
+    old: "ASC",
+    new: "DESC",
+  };
+  sortNow = sort[e.target.value];
+  const { page } = document.querySelector(`.now[data-page]`).dataset;
+  const { data, pagination } = await getData({ mainidx, subidx, page, sortNow });
+  render({ data });
+  pageListRender({ pagination });
+  nowPageNav({ page: pagination.page });
 };
 
 const init = async () => {
