@@ -1,10 +1,11 @@
 class BoardRepository {
-  constructor({ Boards, Op, Comments, Likes, Hashes }) {
+  constructor({ Boards, Op, Comments, Likes, Hashes, Users }) {
     this.Boards = Boards;
     this.Op = Op;
     this.Comments = Comments;
     this.Likes = Likes;
     this.Hashes = Hashes;
+    this.Users = Users
   }
 
   async findAndCountAll({ mainidx, subidx, page, maxBoards, target, sort }) {
@@ -135,6 +136,21 @@ class BoardRepository {
     }
   }
 
+  async findImage({ nickname }) {
+    try {
+      const response = await this.Users.findOne({
+        where: {
+          nickname,
+        },
+      attributes: ["image"],
+       raw: true
+      });
+      return response;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
   async findHashtags({ boardidx }) {
     try {
       const response = await this.Hashes.findAll({
@@ -163,5 +179,7 @@ class BoardRepository {
     }
   }
 }
+
+
 
 module.exports = BoardRepository;

@@ -6,6 +6,8 @@ const adminBoardListTemplate = ({
   title,
   hit,
 }) => {
+  console.log(image)
+  console.log(boardidx)
   return `
 <li>
   <ul>
