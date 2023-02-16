@@ -2,7 +2,7 @@ import request from "/js/lib/request.js";
 import { adminBoardListTemplate } from "/js/lib/boardList.js";
 import { getCategory, categoryTitleRender } from "/js/lib/getCategory.js";
 const queryString = new URLSearchParams(location.search);
-let sortNow = "ASC";
+let sortNow = "DESC";
 
 const render = async ({ data }) => {
   console.log(data)
@@ -44,6 +44,8 @@ const render = async ({ data }) => {
     }
   }
 
+
+
   // function textLengthOverCut(txt, len, lastTxt) {
   //   if (len == "" || len == null) {
   //     // 기본값
@@ -72,20 +74,14 @@ const getData = async ({ mainidx, subidx, page, target = "boardidx" }) => {
 
 
 const sortHandler = async (e) => {
-  const mainidx = queryString.get("mainidx");
-  let { subidx } = document.querySelector(".cat_active[data-subidx]").dataset;
-  if (subidx === "") {
-    subidx = undefined;
-  }
+
   const sort = {
+    latest: "DESC",
     old: "ASC",
-    new: "DESC",
   };
   sortNow = sort[e.target.value];
-  const { page } = document.querySelector(`.now[data-page]`).dataset;
+  const { page } = document.querySelector(`[data-page]`).dataset;
   const { data, pagination } = await getData({
-    mainidx,
-    subidx,
     page,
     sortNow,
   });

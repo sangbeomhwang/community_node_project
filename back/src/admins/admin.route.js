@@ -10,6 +10,10 @@ router.put("/:nickname", (req, res, next) =>
   controller.putUser(req, res, next)
 );
 
+router.post("/:boardidx", (req, res, next) =>
+  controller.putBoard(req, res, next)
+);
+
 // router.delete("/:nickname", (req, res, next) =>
 //   controller.deleteUser(req, res, next)
 // );

@@ -7,11 +7,12 @@ const request = axios.create({
 class BoardController {
   async getBoard(req, res, next) {
     try {
-      const { userid, nickname, image, access } = req.user;
+      const { userid, nickname, image, level, access } = req.user;
       res.render("board/board.html", {
         userid,
         nickname,
         image,
+        level,
         access,
       });
     } catch (e) {
@@ -21,12 +22,13 @@ class BoardController {
 
   async getWrite(req, res, next) {
     try {
-      const { userid, nickname, image, access } = req.user;
+      const { userid, nickname, image, level, access } = req.user;
       res.render("board/write.html", {
         userid,
         nickname,
         image,
         access,
+        level,
       });
     } catch (e) {
       next(e);
@@ -35,12 +37,13 @@ class BoardController {
 
   async postWrite(req, res, next) {
     try {
-      const { userid, nickname, image, access } = req.user;
+      const { userid, nickname, image, level, access } = req.user;
       res.redirect("/boards", {
         userid,
         nickname,
         image,
         access,
+        level,
       });
     } catch (e) {
       next(e);
@@ -49,7 +52,7 @@ class BoardController {
 
   async getView(req, res, next) {
     try {
-      const { userid, nickname, image, access } = req.user;
+      const { userid, nickname, image, level, access } = req.user;
       // console.log("=====================",req.user)
       const { boardidx } = req.params;
       res.render("board/view.html", {
@@ -58,6 +61,7 @@ class BoardController {
         image,
         access,
         boardidx,
+        level,
       });
     } catch (e) {
       next(e);
@@ -66,7 +70,7 @@ class BoardController {
 
   async getModify(req, res, next) {
     try {
-      const { userid, nickname, image, access } = req.user;
+      const { userid, nickname, image, level, access } = req.user;
       const { boardidx } = req.params;
       res.render("board/modify.html", {
         userid,
@@ -74,6 +78,7 @@ class BoardController {
         image,
         access,
         boardidx,
+        level,
       });
     } catch (e) {
       next(e);

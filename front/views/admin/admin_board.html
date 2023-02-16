@@ -35,7 +35,7 @@
         <div id="allusers">
           All Boards
           <div id="selectbox">
-            <select class="admin_category">
+            <!-- <select class="admin_category">
               <option>전체</option>
               <option>Q&A</option>
               <option>커뮤니티</option>
@@ -44,23 +44,22 @@
               <option>전체</option>
               <option>일상이야기</option>
               <option>모임</option>
-            </select>
+            </select> -->
             <img src="https://i.postimg.cc/mhxdqsxb/Vector.png" />
             <select id="category_sort">
-              <option>Sort</option>
-              <option>최신순</option>
-              <option>조회순</option>
+              <option value="latest" checked>최신순</option>
+              <option value="old">오래된순</option>
             </select>
           </div>
         </div>
         <ul>
           <li class="users_info">Profile</li>
           <li class="users_info">BoardIdx</li>
-          <li class="users_info">User Id</li>
+          <li class="users_info">Nickname</li>
           <li class="users_info">Title</li>
           <li class="users_info">Register Date</li>
           <li class="users_info">Hits</li>
-          <li class="users_info">Remove</li>
+          <li class="users_info">Right</li>
         </ul>
       </div>
       <div id="allusers_body">
@@ -83,7 +82,7 @@
         </ul>
         <div id="admin_page">
           <span>Total Boards: {{totalBoards}}</span>
-          <span>Page: 1</span>
+          <span>Page: <span data-page ='{{page}}'>{{page}}</span></span>
           <img src="https://i.postimg.cc/7YkWrdKf/Vector-2.png" />
           <img src="https://i.postimg.cc/5tTs7RH9/Vector-3.png" />
         </div>

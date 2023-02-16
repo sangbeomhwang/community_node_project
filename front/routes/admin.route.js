@@ -11,8 +11,12 @@ router.post("/userModify/:nickname", (req, res, next) =>
 //   controller.deleteUser(req, res, next)
 // );
 router.get("/boards", (req, res, next) => controller.getBoards(req, res, next));
+router.post("/boardModify/:boardidx", (req, res, next) =>
+  controller.updateBoard(req, res, next)
+);
 router.get("/comments", (req, res, next) =>
   controller.getComments(req, res, next)
 );
+
 
 module.exports = router;
