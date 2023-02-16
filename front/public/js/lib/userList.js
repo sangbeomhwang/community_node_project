@@ -12,7 +12,7 @@ const userListTemplate = ({
 <li>
     <ul>
         <li class="users_info">
-            <img src="http://127.0.0.1:3000/${image}" />
+            <img src="${image}" />
         </li>
         <li class="users_info">${userid}</li>
         <li class="users_info">${name}</li>
@@ -52,7 +52,7 @@ const render = async () => {
 
   for (let i = 0; i < default_img.length; i++) {
     // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
-    if (default_img[i].src === "http://127.0.0.1:3000/") {
+    if (default_img[i].src.indexOf("http://127.0.0.1:3000/") === -1) {
       default_img[i].src =
         "https://cdn-icons-png.flaticon.com/512/64/64572.png";
     }

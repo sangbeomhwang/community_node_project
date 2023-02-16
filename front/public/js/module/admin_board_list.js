@@ -14,18 +14,49 @@ const render = async ({ data }) => {
     boardListBox.innerHTML += adminBoardListTemplate(data[i]);
   }
 
-  // const default_img = document.querySelectorAll(
-  //   "#allusers_body > ul > li > ul > li > img"
-  // );
+  const default_img = document.querySelectorAll(
+    "#allusers_body > ul > li > ul > li > img"
+  );
 
-  // console.log(default_img);
+  console.log(default_img);
 
-  // for (let i = 0; i < default_img.length; i++) {
-  //   // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
-  //   if (default_img[i].src === "http://127.0.0.1:3000/undefined") {
-  //     default_img[i].src =
-  //       "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+  for (let i = 0; i < default_img.length; i++) {
+    // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
+    if (default_img[i].src.indexOf("http://127.0.0.1:3000/") === -1) {
+      default_img[i].src =
+        "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+    }
+  }
+
+  const title_content = document.querySelectorAll(
+    "#allusers_body > ul > li > ul > #title_length"
+  );
+
+  // console.log("check ~~~ :", title_content);
+
+  for (let i = 0; i < title_content.length; i++) {
+    const default_len = 28;
+    const last_text = "...";
+
+    if (title_content[i].textContent.length > default_len) {
+      title_content[i].textContent =
+        title_content[i].textContent.substring(0, default_len) + last_text;
+    }
+  }
+
+  // function textLengthOverCut(txt, len, lastTxt) {
+  //   if (len == "" || len == null) {
+  //     // 기본값
+  //     len = 20;
   //   }
+  //   if (lastTxt == "" || lastTxt == null) {
+  //     // 기본값
+  //     lastTxt = "...";
+  //   }
+  //   if (txt.length > len) {
+  //     txt = txt.substr(0, len) + lastTxt;
+  //   }
+  //   return txt;
   // }
 };
 

@@ -1,4 +1,4 @@
-import request from '/js/lib/request.js'
+import request from "/js/lib/request.js";
 
 const template = ({ content, nickname, register, commentidx, image }) => `
 <div id="depth_b" data-commentidx="${commentidx}">
@@ -22,160 +22,149 @@ const template = ({ content, nickname, register, commentidx, image }) => `
 </div>
  `;
 
-
-const commentBox = document.querySelector("#comment_depth")
+const commentBox = document.querySelector("#comment_depth");
 // console.log(commentBox)
 
-
 const render = async ({ boardidx }) => {
-    
-    // 게시글의 전체댓글
-    const response = await request.get(`/comments?boardidx=${boardidx}`)
-    commentBox.innerHTML = ''
-    const {usernick} = document.querySelector('[data-usernick]').dataset
-    console.log(usernick)
-    for (let i = 0; i < response.data.length; i++) {
-        commentBox.innerHTML += template(response.data[i])
-    }
-    const {btnnic} = document.querySelector('[data-nic]').dataset
-    console.log(btnnic)
-    
-    
-    // 댓글삭제
-    const deltbtn = document.querySelectorAll('#depth_delete')
-    const comment = document.querySelectorAll('#comment_depth > #depth_b')
+  // 게시글의 전체댓글
+  const response = await request.get(`/comments?boardidx=${boardidx}`);
+  commentBox.innerHTML = "";
+  const { usernick } = document.querySelector("[data-usernick]").dataset;
+  console.log(usernick);
+  for (let i = 0; i < response.data.length; i++) {
+    commentBox.innerHTML += template(response.data[i]);
+  }
+  const { btnnic } = document.querySelector("[data-nic]").dataset;
+  console.log(btnnic);
 
-    // const deltbtn = document.querySelectorAll('#depth_delete')
-    
-    
+  // 댓글삭제
+  const deltbtn = document.querySelectorAll("#depth_delete");
+  const comment = document.querySelectorAll("#comment_depth > #depth_b");
 
-    //////////////////////////////////////////////////////
-    // 댓글 수정
-    const putbtn = document.querySelectorAll('#depth_put')
-    const postbtn = document.querySelectorAll('#depth_clear')
-    const putbtnHandler = (i) => {
-        return async (e) => {
-            e.preventDefault()
-            
-            // console.dir(e.target)
-            e.target.style.display = 'none'
-            postbtn[i].style.display = 'block'
-            
-            const putcontent = document.querySelectorAll('textarea')
-            // console.log(putcontent[i+1])
-            putcontent[i + 1].readOnly = false
+  // const deltbtn = document.querySelectorAll('#depth_delete')
 
-        }
-    }
+  //////////////////////////////////////////////////////
+  // 댓글 수정
+  const putbtn = document.querySelectorAll("#depth_put");
+  const postbtn = document.querySelectorAll("#depth_clear");
+  const putbtnHandler = (i) => {
+    return async (e) => {
+      e.preventDefault();
 
-    for(let i = 0; i < comment.length; i++){
-        putbtn[i].addEventListener('click', putbtnHandler(i))
-    }
+      // console.dir(e.target)
+      e.target.style.display = "none";
+      postbtn[i].style.display = "block";
 
+      const putcontent = document.querySelectorAll("textarea");
+      // console.log(putcontent[i+1])
+      putcontent[i + 1].readOnly = false;
+    };
+  };
 
-    //////////////////////////////////////////////
-    // 댓글 수정완료 버튼
-    const clearbtnHandler = (i) => {
-        return async (e) => {
-            e.preventDefault()
+  for (let i = 0; i < comment.length; i++) {
+    putbtn[i].addEventListener("click", putbtnHandler(i));
+  }
 
-            const textarea = document.querySelectorAll('textarea')
-            // console.log(content[i + 1].value)
-            const content = textarea[i + 1].value
-            // console.log(boardidx)
-            // console.log(commentidx)
-            const {commentidx} = comment[i].dataset
-            console.log("commentidx ::: ",commentidx)
+  //////////////////////////////////////////////
+  // 댓글 수정완료 버튼
+  const clearbtnHandler = (i) => {
+    return async (e) => {
+      e.preventDefault();
 
-            const data = {
-                boardidx,
-                nickname: nickname.innerHTML,
-                content,
-                
-            }
-            console.log(data)
+      const textarea = document.querySelectorAll("textarea");
+      // console.log(content[i + 1].value)
+      const content = textarea[i + 1].value;
+      // console.log(boardidx)
+      // console.log(commentidx)
+      const { commentidx } = comment[i].dataset;
+      console.log("commentidx ::: ", commentidx);
 
-            const response = await request.put(`/comments?boardidx=${boardidx}&commentidx=${commentidx}`, data)
-            console.log(response)
-            textarea[i + 1].readOnly = true
-            e.target.style.display = 'none'
-            putbtn[i].style.display = 'block'
-        }
-    }
+      const data = {
+        boardidx,
+        nickname: nickname.innerHTML,
+        content,
+      };
+      console.log(data);
 
-    for(let i = 0; i < comment.length; i++){
-        postbtn[i].addEventListener('click', clearbtnHandler(i))
-    }
+      const response = await request.put(
+        `/comments?boardidx=${boardidx}&commentidx=${commentidx}`,
+        data
+      );
+      console.log(response);
+      textarea[i + 1].readOnly = true;
+      e.target.style.display = "none";
+      putbtn[i].style.display = "block";
+    };
+  };
 
+  for (let i = 0; i < comment.length; i++) {
+    postbtn[i].addEventListener("click", clearbtnHandler(i));
+  }
 
+  const deltbtnHandler = (i) => {
+    return async (e) => {
+      e.preventDefault();
 
-    const deltbtnHandler = (i) => {
-        return async (e) => {
-            e.preventDefault()
+      const { commentidx } = comment[i].dataset;
+      console.log("commentidx ::: ", commentidx);
+      console.log("boardidx ::: ", boardidx);
 
-            const {commentidx} = comment[i].dataset
-            console.log("commentidx ::: ",commentidx)
-            console.log('boardidx ::: ', boardidx)
-        
-            const response = await request.delete(`/comments?boardidx=${boardidx}&commentidx=${commentidx}`)
-            console.log("response :::::: ",response)
-            // commentBox.innerHTML -= template(response)
+      const response = await request.delete(
+        `/comments?boardidx=${boardidx}&commentidx=${commentidx}`
+      );
+      console.log("response :::::: ", response);
+      // commentBox.innerHTML -= template(response)
 
-            location.href = `http://localhost:3005/boards/${boardidx}`
-        }
-    }
+      location.href = `http://localhost:3005/boards/${boardidx}`;
+    };
+  };
 
-    for (let i =0; i < comment.length; i++){
-        deltbtn[i].addEventListener("click", deltbtnHandler(i))
-    }
+  for (let i = 0; i < comment.length; i++) {
+    deltbtn[i].addEventListener("click", deltbtnHandler(i));
+  }
 
+  return response;
+};
 
-    return response
-}
-
-const boardidx = location.href.split('/')
+const boardidx = location.href.split("/");
 // console.log(boardidx)
 
-
-
 // 댓글 작성
-document.querySelector("#depth_post").addEventListener('click', async (e) => {
-    e.preventDefault()
+document.querySelector("#depth_post").addEventListener("click", async (e) => {
+  e.preventDefault();
 
-    // console.log(boardidx)
-    // console.log(boardidx[4])
-    // console.log("nickname :::::::: ",nickname.innerHTML)
-    
-    const content = document.querySelector('textarea').value
-    // console.log("content ::: ", content)
-    // console.log(nickname)
-    // console.log(commentidx)
+  // console.log(boardidx)
+  // console.log(boardidx[4])
+  // console.log("nickname :::::::: ",nickname.innerHTML)
 
-    // console.log(document.querySelector('[data-usernick]').dataset)
-    const {usernick} = document.querySelector('[data-usernick]').dataset
-    // console.log(usernick)
+  const content = document.querySelector("textarea").value;
+  // console.log("content ::: ", content)
+  // console.log(nickname)
+  // console.log(commentidx)
 
-    // console.log(document.querySelector('#depth_date').textContent)
-    // const regit = document.querySelector('#depth_date').textContent
-    // console.log(">>>>>>>>>>>>>>>>>>>",regit)
+  // console.log(document.querySelector('[data-usernick]').dataset)
+  const { usernick } = document.querySelector("[data-usernick]").dataset;
+  // console.log(usernick)
 
-    const data = {
-        boardidx: boardidx[4],
-        nickname: usernick,
-        content,
-        register
-        
-    }
-    console.log(data)
+  // console.log(document.querySelector('#depth_date').textContent)
+  // const regit = document.querySelector('#depth_date').textContent
+  // console.log(">>>>>>>>>>>>>>>>>>>",regit)
 
-    
+  const data = {
+    boardidx: boardidx[4],
+    nickname: usernick,
+    content,
+    register,
+  };
+  console.log(data);
 
-    const response = await request.post(`/comments?boardidx=${boardidx.value}`, data)
-    // console.log("Response ::: ",response)
-    console.log('==================', response.data)
-    commentBox.innerHTML += template(response.data)
+  const response = await request.post(
+    `/comments?boardidx=${boardidx.value}`,
+    data
+  );
+  // console.log("Response ::: ",response)
+  console.log("==================", response.data);
+  commentBox.innerHTML += template(response.data);
+});
 
-    
-})
-
-render({boardidx:boardidx[boardidx.length-1]})
+render({ boardidx: boardidx[boardidx.length - 1] });

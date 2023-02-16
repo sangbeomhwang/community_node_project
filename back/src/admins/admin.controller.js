@@ -37,15 +37,15 @@ class AdminController {
   //   }
   // }
 
-  async getBoardList(req, res, next) {
-    try {
-      const response = await this.adminService.boardsList();
-      // console.log("@@@@@@@@@@@@@", response);
-      res.json(response);
-    } catch (e) {
-      next(e);
-    }
-  }
+  // async getBoardList(req, res, next) {
+  //   try {
+  //     const response = await this.adminService.boardsList();
+  //     // console.log("@@@@@@@@@@@@@", response);
+  //     res.json(response);
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // }
 }
 
 module.exports = AdminController;
