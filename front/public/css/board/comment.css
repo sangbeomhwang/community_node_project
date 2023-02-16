@@ -1,401 +1,388 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
- }
-
- ul, li {
-    list-style: none;
- }
-
- a {
-    text-decoration: none;
- }
-
- body {
-     background-color: #f7f7f5;
- }
-
- #comment_wrap {
-     margin: 0 auto;
-     width: 1920px;
- }
-
- #comment_body {
-     margin: 0 auto;
-     width: 1160px;
- }
-
- #comment_body > h1 {
-     margin-bottom: 11px;
-     font-size: 20px;
- }
-
- #comment_body > #depth_a {
-     width: 1160px;
-     height: 200px;
-     box-sizing: border-box;
-     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-     margin-top: 20px;
- }
-
- #comment_body > #depth_a > img {
-     padding-top: 10px;
-     padding-left: 20px;
-     box-sizing: border-box;
- }
-
- #comment_body > #depth_a > textarea {
-     width: 1040px;
-     height: 100px;
-     background: #FEFEFE;
-     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-     border: none;
-     resize: none;
-     padding: 18px 29px;
-     box-sizing: border-box;
-     margin-left: 20px;
-     float: right;
- }
-
- textarea::placeholder {
-     color: #AAAAAA;
-     font-weight: 400;
-     font-size: 14px;
-     line-height: 17px;
- }
-
- #comment_body > #depth_a > div {
-     width: 100%;
-     display: flex;
-     justify-content: right;
-     
- }
-
- #comment_body > #depth_a > div > #depth_post {
-     width: 120px;
-     height: 40px;
-     background: #A46843;
-     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-     color: #fefefe;
-     font-weight: 700;
-     font-size: 14px;
-     /* padding-left: 28px; */
-     margin-top: 20px;
-     line-height: 40px;
-     text-align: center;
- }
-
- #depth_post:hover {
-    opacity: 0.5;
-    cursor: pointer;
- }
-
- #depth_b {
-     width: 1160px;
-     height: 330px;
-     margin-top: 20px;
-     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
- }
-
- #depth_b > #depth_info {
-     display: flex;
-     padding-top: 30px;
-     padding-left: 20px;
-     box-sizing: border-box;
-     
- }
-
- #depth_b > #depth_info > img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
- }
-
- #depth_b > #depth_info > div {
-     margin-left: 20px;
-     margin-top: 15px;
-     
- }
-
- #depth_b > #depth_info > div > div > img {
-     margin-right: 7px;
-     width: 14px;
-     height: 14px;
-     font-weight: 400;
-     font-size: 14px;
- }
-
- #depth_b > textarea {
-     width: 1160px;
-     height: 100px;
-     margin-top: 20px;
-     background: #FEFEFE;
-     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-     border: none;
-     resize: none;
-     padding: 18px 29px;
-     box-sizing: border-box;
- }
-
- textarea:focus {
-    outline: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
- #depth_b > #btn {
-     display: flex;
-     justify-content: right;
-     
- }
- 
- #depth_b > #btn > div {
-     width: 120px;
-     height: 40px;
-     background: #A46843;
-     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-     color: #fefefe;
-     font-weight: 700;
-     font-size: 14px;
-     /* padding-left: 28px; */
-     margin-top: 20px;
-     line-height: 40px;
-     margin-left: 7px;
-     text-align: center;
- }
+ul,
+li {
+  list-style: none;
+}
 
- #btn > div:hover {
-    opacity: 0.5;
-    cursor: pointer;
- }
+a {
+  text-decoration: none;
+}
 
- #depth_b > #btn > #depth_put {
-    display: block;
- }
+body {
+  background-color: #f7f7f5;
+}
 
- #depth_b > #btn > #depth_clear {
-    display: none;
- }
+#comment_wrap {
+  margin: 0 auto;
+  width: 100%;
+}
 
- /* 로그인 댓글 */
- #depth_c {
-     width: 1160px;
-     height: 330px;
-     margin-top: 20px;
-     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
- }
+#comment_body {
+  margin: 0 auto;
+  width: 1160px;
+}
 
- #depth_c > #depth_info {
-     display: flex;
-     padding-top: 30px;
-     padding-left: 20px;
-     box-sizing: border-box;
-     
- }
+#comment_body > h1 {
+  margin-bottom: 11px;
+  font-size: 20px;
+}
 
- #depth_c > #depth_info > div {
-     margin-left: 20px;
-     margin-top: 15px;
-     
- }
+#comment_body > #depth_a {
+  width: 1160px;
+  height: 200px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+}
 
- #depth_c > #depth_info > div > div > img {
-     margin-right: 7px;
-     width: 14px;
-     height: 14px;
-     font-weight: 400;
-     font-size: 14px;
- }
+#comment_body > #depth_a > img {
+  padding-top: 10px;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
 
- #depth_c > textarea {
-     width: 1160px;
-     height: 100px;
-     margin-top: 20px;
-     background: #FEFEFE;
-     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-     border: none;
-     resize: none;
-     padding: 18px 29px;
-     box-sizing: border-box;
- }
+#comment_body > #depth_a > textarea {
+  width: 1040px;
+  height: 100px;
+  background: #fefefe;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  resize: none;
+  padding: 18px 29px;
+  box-sizing: border-box;
+  margin-left: 20px;
+  float: right;
+}
 
- #depth_c > #btn {
-     display: flex;
-     justify-content: right;
- }
- 
- #depth_c > div > #depth_delete {
-     width: 120px;
-     height: 40px;
-     margin-right: 20px;
-     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-     color: #000000;
-     font-weight: 700;
-     font-size: 14px;
-     padding-left: 28px;
-     margin-top: 20px;
-     line-height: 40px;
- }
+textarea::placeholder {
+  color: #aaaaaa;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
 
- #depth_c > div > #depth_put {
-     width: 120px;
-     height: 40px;
-     background: #A46843;
-     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-     color: #fefefe;
-     font-weight: 700;
-     font-size: 14px;
-     padding-left: 28px;
-     margin-top: 20px;
-     line-height: 40px;
- }
+#comment_body > #depth_a > div {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
 
- /* 로그인전 대댓글 */
- #depth_d {
-     width: 100%;
-     height: 330px;
-     margin-top: 20px;
-     margin-right: 0;
-     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-     padding-left: 50px;
- }
+#comment_body > #depth_a > div > #depth_post {
+  width: 120px;
+  height: 40px;
+  background: #a46843;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fefefe;
+  font-weight: 700;
+  font-size: 14px;
+  /* padding-left: 28px; */
+  margin-top: 20px;
+  line-height: 40px;
+  text-align: center;
+}
 
- #depth_d > div {
-     border-left: 1px solid rgba(0, 0, 0, 0.3);
-     
- }
+#depth_post:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
 
- #depth_d > div > #depth_info {
-     display: flex;
-     padding-top: 30px;
-     padding-left: 20px;
-     box-sizing: border-box;
-     
- }
+#depth_b {
+  width: 1160px;
+  height: 330px;
+  margin-top: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
 
- #depth_d > div > #depth_info > div {
-     margin-left: 20px;
-     margin-top: 15px;
-     
- }
+#depth_b > #depth_info {
+  display: flex;
+  padding-top: 30px;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
 
- #depth_d > div > #depth_info > div > div > img {
-     margin-right: 7px;
-     width: 14px;
-     height: 14px;
-     font-weight: 400;
-     font-size: 14px;
- }
+#depth_b > #depth_info > img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
 
- #depth_d > div > textarea {
-     width: 1110px;
-     height: 100px;
-     margin-top: 20px;
-     background: #FEFEFE;
-     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-     border: none;
-     resize: none;
-     padding: 18px 29px;
-     box-sizing: border-box;
- }
+#depth_b > #depth_info > div {
+  margin-left: 20px;
+  margin-top: 15px;
+}
 
- #depth_d > #btn {
-     display: flex;
-     justify-content: flex-end;
-     border: none;
-     
- }
- 
- #depth_d > div > #depth_post {
-     width: 120px;
-     height: 40px;
-     background: #A46843;
-     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-     color: #fefefe;
-     font-weight: 700;
-     font-size: 14px;
-     padding-left: 28px;
-     margin-top: 20px;
-     line-height: 40px;
-     
- }
+#depth_b > #depth_info > div > div > img {
+  margin-right: 7px;
+  width: 14px;
+  height: 14px;
+  font-weight: 400;
+  font-size: 14px;
+}
 
- /* 로그인 대댓글 */
- #depth_e {
-     width: 100%;
-     height: 330px;
-     margin-top: 20px;
-     margin-right: 0;
-     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-     padding-left: 50px;
- }
+#depth_b > textarea {
+  width: 1160px;
+  height: 100px;
+  margin-top: 20px;
+  background: #fefefe;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  resize: none;
+  padding: 18px 29px;
+  box-sizing: border-box;
+}
 
- #depth_e > div {
-     border-left: 1px solid rgba(0, 0, 0, 0.3);
-     
- }
+textarea:focus {
+  outline: none;
+}
 
- #depth_e > div > #depth_info {
-     display: flex;
-     padding-top: 30px;
-     padding-left: 20px;
-     box-sizing: border-box;
-     
- }
+#depth_b > #btn {
+  display: flex;
+  justify-content: right;
+}
 
- #depth_e > div > #depth_info > div {
-     margin-left: 20px;
-     margin-top: 15px;
-     
- }
+#depth_b > #btn > div {
+  width: 120px;
+  height: 40px;
+  background: #a46843;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fefefe;
+  font-weight: 700;
+  font-size: 14px;
+  /* padding-left: 28px; */
+  margin-top: 20px;
+  line-height: 40px;
+  margin-left: 7px;
+  text-align: center;
+}
 
- #depth_e > div > #depth_info > div > div > img {
-     margin-right: 7px;
-     width: 14px;
-     height: 14px;
-     font-weight: 400;
-     font-size: 14px;
- }
+#btn > div:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
 
- #depth_e > div > textarea {
-     width: 1110px;
-     height: 100px;
-     margin-top: 20px;
-     background: #FEFEFE;
-     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-     border: none;
-     resize: none;
-     padding: 18px 29px;
-     box-sizing: border-box;
- }
+#depth_b > #btn > #depth_put {
+  display: block;
+}
 
- #depth_e > #btn {
-     display: flex;
-     justify-content: right;
-     border: none;
- }
- 
- #depth_e > div > #depth_delete {
-     width: 120px;
-     height: 40px;
-     margin-right: 20px;
-     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-     color: #000000;
-     font-weight: 700;
-     font-size: 14px;
-     padding-left: 28px;
-     margin-top: 20px;
-     line-height: 40px;
- }
+#depth_b > #btn > #depth_clear {
+  display: none;
+}
 
- #depth_e > div > #depth_put {
-     width: 120px;
-     height: 40px;
-     background: #A46843;
-     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-     color: #fefefe;
-     font-weight: 700;
-     font-size: 14px;
-     padding-left: 28px;
-     margin-top: 20px;
-     line-height: 40px;
- }
+/* 로그인 댓글 */
+#depth_c {
+  width: 1160px;
+  height: 330px;
+  margin-top: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+#depth_c > #depth_info {
+  display: flex;
+  padding-top: 30px;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+#depth_c > #depth_info > div {
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+#depth_c > #depth_info > div > div > img {
+  margin-right: 7px;
+  width: 14px;
+  height: 14px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+#depth_c > textarea {
+  width: 1160px;
+  height: 100px;
+  margin-top: 20px;
+  background: #fefefe;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  resize: none;
+  padding: 18px 29px;
+  box-sizing: border-box;
+}
+
+#depth_c > #btn {
+  display: flex;
+  justify-content: right;
+}
+
+#depth_c > div > #depth_delete {
+  width: 120px;
+  height: 40px;
+  margin-right: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  color: #000000;
+  font-weight: 700;
+  font-size: 14px;
+  padding-left: 28px;
+  margin-top: 20px;
+  line-height: 40px;
+}
+
+#depth_c > div > #depth_put {
+  width: 120px;
+  height: 40px;
+  background: #a46843;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fefefe;
+  font-weight: 700;
+  font-size: 14px;
+  padding-left: 28px;
+  margin-top: 20px;
+  line-height: 40px;
+}
+
+/* 로그인전 대댓글 */
+#depth_d {
+  width: 100%;
+  height: 330px;
+  margin-top: 20px;
+  margin-right: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  padding-left: 50px;
+}
+
+#depth_d > div {
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+#depth_d > div > #depth_info {
+  display: flex;
+  padding-top: 30px;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+#depth_d > div > #depth_info > div {
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+#depth_d > div > #depth_info > div > div > img {
+  margin-right: 7px;
+  width: 14px;
+  height: 14px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+#depth_d > div > textarea {
+  width: 1110px;
+  height: 100px;
+  margin-top: 20px;
+  background: #fefefe;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  resize: none;
+  padding: 18px 29px;
+  box-sizing: border-box;
+}
+
+#depth_d > #btn {
+  display: flex;
+  justify-content: flex-end;
+  border: none;
+}
+
+#depth_d > div > #depth_post {
+  width: 120px;
+  height: 40px;
+  background: #a46843;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fefefe;
+  font-weight: 700;
+  font-size: 14px;
+  padding-left: 28px;
+  margin-top: 20px;
+  line-height: 40px;
+}
+
+/* 로그인 대댓글 */
+#depth_e {
+  width: 100%;
+  height: 330px;
+  margin-top: 20px;
+  margin-right: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  padding-left: 50px;
+}
+
+#depth_e > div {
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+#depth_e > div > #depth_info {
+  display: flex;
+  padding-top: 30px;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+#depth_e > div > #depth_info > div {
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+#depth_e > div > #depth_info > div > div > img {
+  margin-right: 7px;
+  width: 14px;
+  height: 14px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+#depth_e > div > textarea {
+  width: 1110px;
+  height: 100px;
+  margin-top: 20px;
+  background: #fefefe;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  resize: none;
+  padding: 18px 29px;
+  box-sizing: border-box;
+}
+
+#depth_e > #btn {
+  display: flex;
+  justify-content: right;
+  border: none;
+}
+
+#depth_e > div > #depth_delete {
+  width: 120px;
+  height: 40px;
+  margin-right: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  color: #000000;
+  font-weight: 700;
+  font-size: 14px;
+  padding-left: 28px;
+  margin-top: 20px;
+  line-height: 40px;
+}
+
+#depth_e > div > #depth_put {
+  width: 120px;
+  height: 40px;
+  background: #a46843;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fefefe;
+  font-weight: 700;
+  font-size: 14px;
+  padding-left: 28px;
+  margin-top: 20px;
+  line-height: 40px;
+}
