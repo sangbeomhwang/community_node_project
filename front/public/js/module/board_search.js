@@ -42,7 +42,7 @@ document.querySelector('#searchbox').addEventListener('keyup', async (e) => {
         const searchbox = e.target
         // console.log(searchbox.value)
         const response = await request.get(`/boards/search?keyword=${searchbox.value}`) 
-    console.log('==============', response.data)
+    // console.log('==============', response.data)
 
     contentBox.innerHTML = ''
     for(let i = 0; i < response.data.length; i++) {

@@ -6,7 +6,7 @@ const {
 
 // 확인용 코드
 // const User = models.User;
-// console.log("gfgfgf", models);
+
 
 const DateFormat = require("../../lib/dateformat");
 const AdminRepository = require("./admin.repository");

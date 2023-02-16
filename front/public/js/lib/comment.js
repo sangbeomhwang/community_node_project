@@ -1,38 +1,47 @@
-import request from "/js/lib/request.js";
+import request from '/js/lib/request.js'
 
-const template = ({ content, nickname, register, commentidx, image }) => `
-<div id="depth_b" data-commentidx="${commentidx}">
+// const template = ({ content, nickname, register, commentidx, image }) => `
+const template = (data) => { 
+if (data.User.image.length === 0) {
+    data.User.image = "https://cdn-icons-png.flaticon.com/512/64/64572.png"
+}
+return`
+<div id="depth_b" data-commentidx="${data.commentidx}">
 <div id="depth_info">
-<img src="https://i.postimg.cc/zXBGP9w1/Ellipse-4.png">
+<img src="${data.User.image}">
     <div>
         <div>
-            <img src="https://i.postimg.cc/qv5KM7Fv/Vector-1.png"><span id='depth_nic'>${nickname}</span>
+            <img src="https://i.postimg.cc/qv5KM7Fv/Vector-1.png"><span id='depth_nic'>${data.nickname}</span>
         </div>
         <div>
-            <img src="https://i.postimg.cc/P5gBGFcx/Vector-4.png"><span id='depth_date'>${register}</span>
+            <img src="https://i.postimg.cc/P5gBGFcx/Vector-4.png"><span id='depth_date'>${data.register}</span>
         </div>
     </div>
 </div>
-<textarea readonly="readonly">${content}</textarea>
+<textarea readonly="readonly">${data.content}</textarea>
  `;
+}
 
-const commentBox = document.querySelector("#comment_depth");
+const commentBox = document.querySelector("#comment_depth")
 // console.log(commentBox)
 
+
 const render = async ({ boardidx }) => {
+    
     // 게시글의 전체댓글
-    const response = await request.get(`/comments?boardidx=${boardidx}`)
+    const {data} = await request.get(`/comments?boardidx=${boardidx}`)
+    console.log("render__data ::::::",data)
     // console.log('===============', response.data[1].nickname)
     commentBox.innerHTML = ''
     const {usernick} = document.querySelector('[data-usernick]').dataset
     // console.log(usernick)
-    for (let i = 0; i < response.data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         
-        if(response.data[i].nickname !== usernick){
-            commentBox.innerHTML += template(response.data[i]) + '</div>'
+        if(data[i].nickname !== usernick){
+            commentBox.innerHTML += template(data[i]) + '</div>'
 
         } else {
-            commentBox.innerHTML += template(response.data[i]) + '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>'
+            commentBox.innerHTML += template(data[i]) + '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>'
 
         }
             
@@ -102,31 +111,16 @@ const render = async ({ boardidx }) => {
 
 
 
-
     // 댓글삭제
     const deltbtn = document.querySelectorAll('#depth_delete')
-    // console.log(deltbtn)
     const comment = document.querySelectorAll('#comment_depth > #depth_b')
-    // console.log(comment)
-
-    // const deltbtn = document.querySelectorAll('#depth_delete')
     
-    //////////////////////////////////////////////////////
+    
     const deltbtnHandler = (i) => {
         return async (e) => {
             e.preventDefault()
-            // console.log(e.target.parentNode.parentNode.dataset)
-            const {commentidx} = e.target.parentNode.parentNode.dataset
-            // const {commentidx} = comment[i].dataset
-            // console.log("commentidx ::: ",commentidx)
-            // console.log('boardidx ::: ', boardidx)
-        
+            const {commentidx} = e.target.parentNode.parentNode.dataset            
             const response = await request.delete(`/comments?boardidx=${boardidx}&commentidx=${commentidx}`)
-            // console.log("response :::::: ",response)
-            // commentBox.innerHTML -= template(response)
-
-
-            
             location.href = `http://localhost:3005/boards/${boardidx}`
         }
     }
@@ -136,7 +130,7 @@ const render = async ({ boardidx }) => {
     }
 
 
-    return response
+    return data
 }
 
 const boardidx = location.href.split('/')
@@ -162,29 +156,49 @@ const boardidx = location.href.split('/')
         // console.log(document.querySelector('#depth_date').textContent)
         // const regit = document.querySelector('#depth_date').textContent
         // console.log(">>>>>>>>>>>>>>>>>>>",regit)
+
+        const {userimage} = document.querySelector('[data-userimage]').dataset
+        console.log(userimage)
     
-        const data = {
+        const datacontent = {
             boardidx: boardidx[4],
             nickname: usernick,
             content,
-            register
             
         }
-        console.log(data)
+        // console.log(data)
     
         
     
-        const response = await request.post(`/comments?boardidx=${boardidx.value}`, data)
-        // console.log("Response ::: ",response)
-        // console.log('==================', response.data)
-        commentBox.innerHTML += template(response.data) + '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>'
+        const {data} = await request.post(`/comments?boardidx=${boardidx.value}`, datacontent)
+        data.User = {image: userimage}
+        console.log('post__data::::',data)
+
+        commentBox.innerHTML += template(data) + '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>'
         // deltbtn.addEventListener("click", deltbtnHandler)
 
+        const default_img = document.querySelectorAll(
+            "#depth_b > #depth_info > img"
+          );
         
-        console.log(data.boardidx)
+          console.log(default_img);
+        
+          for (let i = 0; i < default_img.length; i++) {
+            // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
+            if (
+              default_img[i].src.indexOf("http://127.0.0.1:3000/") === -1 &&
+              default_img[i].src.indexOf("http://k.kakaocdn.net") === -1
+            ) {
+              default_img[i].src =
+                "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+            }
+          }
+
         location.href = `/boards/${data.boardidx}`
-        // console.log(location.href)
+
         
     })
+
+
 
 render({boardidx:boardidx[boardidx.length-1]})

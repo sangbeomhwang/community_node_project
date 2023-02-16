@@ -43,6 +43,7 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false,
             defaultValue: Sequelize.NOW,
         },
+
     }
 
     const settings = {

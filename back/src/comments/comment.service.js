@@ -20,7 +20,7 @@ class CommentService {
         }
     }
 
-    async write({ boardidx, nickname, content, depth, party, register, commentidx }) {
+    async write({ boardidx, nickname, content, depth, party, register, commentidx}) {
         try {
             const response = await this.commentRepository.commentWrite({ boardidx, nickname, content, depth, party, register, commentidx})
             // console.log("<<<<<<<<<<<<<<<", response)
