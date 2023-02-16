@@ -41,24 +41,24 @@ class AdminService {
   //   }
   // }
 
-  async boardsList() {
-    try {
-      const response = await this.adminRepository.boardList();
-      const boardCount = response.length;
-      // console.log("1check response : ", response);
-      // console.log("###~~~~~~", boardCount);
+  // async boardsList() {
+  //   try {
+  //     const response = await this.adminRepository.boardList();
+  //     const boardCount = response.length;
+  //     // console.log("1check response : ", response);
+  //     // console.log("###~~~~~~", boardCount);
 
-      response.forEach((board) => {
-        board.register = new this.DateFormat(board.register).dateformat();
-      });
+  //     response.forEach((board) => {
+  //       board.register = new this.DateFormat(board.register).dateformat();
+  //     });
 
-      console.log("1check response : ", response);
+  //     console.log("1check response : ", response);
 
-      return { response, boardCount };
-    } catch (e) {
-      throw new Error(e);
-    }
-  }
+  //     return { response, boardCount };
+  //   } catch (e) {
+  //     throw new Error(e);
+  //   }
+  // }
 }
 
 module.exports = AdminService;

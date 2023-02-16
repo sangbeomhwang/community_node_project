@@ -78,15 +78,20 @@ class AdminController {
   async getBoards(req, res, next) {
     try {
       const { userid, nickname, image, level, access } = req.user;
-      const { data } = await request.get(`/boards?target=boardidx`);
-      console.log("check!!!! : ", data);
-      // console.log("check@@@@ : ", boardCount);
+      const { data } = await request.get(`/boards`);
+      // console.log("check1!!! : ", data);
+      // console.log("check2!!! : ", data.pagination);
+      // console.log("check3!!! : ", data.pagination.totalBoards);
+
+      const totalBoards = data.pagination.totalBoards;
+
       res.render("admin/admin_board.html", {
         userid,
         nickname,
         image,
         level,
         access,
+        totalBoards,
       });
     } catch (e) {
       next(e);

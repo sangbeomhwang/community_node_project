@@ -1,4 +1,4 @@
-import request from '/js/lib/request.js'
+import request from "/js/lib/request.js";
 
 const template = ({ content, nickname, register, commentidx, image }) => `
 <div id="depth_b" data-commentidx="${commentidx}">
@@ -16,13 +16,10 @@ const template = ({ content, nickname, register, commentidx, image }) => `
 <textarea readonly="readonly">${content}</textarea>
  `;
 
-
-const commentBox = document.querySelector("#comment_depth")
+const commentBox = document.querySelector("#comment_depth");
 // console.log(commentBox)
 
-
 const render = async ({ boardidx }) => {
-    
     // 게시글의 전체댓글
     const response = await request.get(`/comments?boardidx=${boardidx}`)
     // console.log('===============', response.data[1].nickname)
@@ -140,43 +137,41 @@ const boardidx = location.href.split('/')
 // console.log(boardidx)
 
 // 댓글 작성
-document.querySelector("#depth_post").addEventListener('click', async (e) => {
-    e.preventDefault()
+document.querySelector("#depth_post").addEventListener("click", async (e) => {
+  e.preventDefault();
 
-    // console.log(boardidx)
-    // console.log(boardidx[4])
-    // console.log("nickname :::::::: ",nickname.innerHTML)
-    
-    const content = document.querySelector('textarea').value
-    // console.log("content ::: ", content)
-    // console.log(nickname)
-    // console.log(commentidx)
+  // console.log(boardidx)
+  // console.log(boardidx[4])
+  // console.log("nickname :::::::: ",nickname.innerHTML)
 
-    // console.log(document.querySelector('[data-usernick]').dataset)
-    const {usernick} = document.querySelector('[data-usernick]').dataset
-    // console.log(usernick)
+  const content = document.querySelector("textarea").value;
+  // console.log("content ::: ", content)
+  // console.log(nickname)
+  // console.log(commentidx)
 
-    // console.log(document.querySelector('#depth_date').textContent)
-    // const regit = document.querySelector('#depth_date').textContent
-    // console.log(">>>>>>>>>>>>>>>>>>>",regit)
+  // console.log(document.querySelector('[data-usernick]').dataset)
+  const { usernick } = document.querySelector("[data-usernick]").dataset;
+  // console.log(usernick)
 
-    const data = {
-        boardidx: boardidx[4],
-        nickname: usernick,
-        content,
-        register
-        
-    }
-    console.log(data)
+  // console.log(document.querySelector('#depth_date').textContent)
+  // const regit = document.querySelector('#depth_date').textContent
+  // console.log(">>>>>>>>>>>>>>>>>>>",regit)
 
-    
+  const data = {
+    boardidx: boardidx[4],
+    nickname: usernick,
+    content,
+    register,
+  };
+  console.log(data);
 
-    const response = await request.post(`/comments?boardidx=${boardidx.value}`, data)
-    // console.log("Response ::: ",response)
-    console.log('==================', response.data)
-    commentBox.innerHTML += template(response.data)
+  const response = await request.post(
+    `/comments?boardidx=${boardidx.value}`,
+    data
+  );
+  // console.log("Response ::: ",response)
+  console.log("==================", response.data);
+  commentBox.innerHTML += template(response.data);
+});
 
-    
-})
-
-render({boardidx:boardidx[boardidx.length-1]})
+render({ boardidx: boardidx[boardidx.length - 1] });

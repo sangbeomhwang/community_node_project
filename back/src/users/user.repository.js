@@ -48,7 +48,7 @@ class UserRepository {
     console.log(`repo : `, userData);
     const user = await this.User.update(
       {
-        image: "http://localhost:3000/" + userData.image,
+        image: "http://127.0.0.1:3000/user/" + userData.image,
         name: userData.name,
         nickname: userData.nickname,
         password: userData.password,

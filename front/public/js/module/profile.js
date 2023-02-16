@@ -94,7 +94,7 @@ document.querySelector("#photoFrm").addEventListener("submit", async (e) => {
   document.querySelector("#userImg").value = response.data.filename;
   document.querySelector(
     "#previewImg"
-  ).src = `http://localhost:3000/${response.data.filename}`;
+  ).src = `http://127.0.0.1:3000/user/${response.data.filename}`;
 
   console.log("userImg value : ", document.querySelector("#userImg").value);
   console.log(

@@ -40,17 +40,17 @@ class AdminRepository {
   //   }
   // }
 
-  async boardList() {
-    try {
-      const boardList = await this.Board.findAll({
-        raw: true,
-      });
-      // console.log("check #### : ", boardList);
-      return boardList;
-    } catch (e) {
-      throw new Error(e);
-    }
-  }
+  // async boardList() {
+  //   try {
+  //     const boardList = await this.Board.findAll({
+  //       raw: true,
+  //     });
+  //     // console.log("check #### : ", boardList);
+  //     return boardList;
+  //   } catch (e) {
+  //     throw new Error(e);
+  //   }
+  // }
 }
 
 module.exports = AdminRepository;
