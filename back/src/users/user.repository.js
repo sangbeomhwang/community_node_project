@@ -48,7 +48,7 @@ class UserRepository {
     console.log(`repo : `, userData);
     const user = await this.User.update(
       {
-        image: userData.image,
+        image: "http://127.0.0.1:3000/user/" + userData.image,
         name: userData.name,
         nickname: userData.nickname,
         password: userData.password,
@@ -69,11 +69,19 @@ class UserRepository {
     return user[1];
   }
 
-  async addKakao({ email, kakaoId }) {
-    console.log({ email, kakaoId });
+  async addOrLoginKakao({ userid, password, nickname, image, email, social }) {
     try {
-      const user = await this.User.create({ email, kakaoId }, { raw: true });
-      return user;
+      const [result, exist] = await this.User.findOrCreate({ where: { userid }, defaults: { userid, password, nickname, image, email, social }, raw: true });
+      return exist;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async updateKakao({ userid, nickname, image, email }) {
+    try {
+      const result = await this.User.update({ nickname, image, email }, { where: { userid } });
+      return result;
     } catch (e) {
       throw new Error(e);
     }

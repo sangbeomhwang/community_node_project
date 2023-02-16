@@ -38,6 +38,8 @@ class BoardService {
         sort,
       });
       const totalBoards = result.count;
+      // console.log("totalboard check ~~~ : ", totalBoards);
+
       const data = result.rows;
       for (let i = 0; i < data.length; i++) {
         data[i] = await this.dataControl(data[i]);

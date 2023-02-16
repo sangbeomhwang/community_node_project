@@ -1,4 +1,4 @@
-import request from '/js/lib/request.js'
+import request from "/js/lib/request.js";
 
 const template = ({ content, nickname, register, commentidx, image }) => `
 <div id="depth_b" data-commentidx="${commentidx}">
@@ -16,13 +16,10 @@ const template = ({ content, nickname, register, commentidx, image }) => `
 <textarea readonly="readonly">${content}</textarea>
  `;
 
-
-const commentBox = document.querySelector("#comment_depth")
+const commentBox = document.querySelector("#comment_depth");
 // console.log(commentBox)
 
-
 const render = async ({ boardidx }) => {
-    
     // 게시글의 전체댓글
     const response = await request.get(`/comments?boardidx=${boardidx}`)
     // console.log('===============', response.data[1].nickname)
@@ -102,6 +99,7 @@ const render = async ({ boardidx }) => {
     for(let i = 0; i < postbtn.length; i++){
         postbtn[i].addEventListener('click', clearbtnHandler(i))
     }
+
 
 
 

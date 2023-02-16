@@ -6,10 +6,6 @@ const {
 const qs = require("qs");
 const axios = require("axios");
 
-// 확인용 코드
-// const User = models.User;
-// console.log("gfgfgf", models);
-
 const UserRepository = require("./user.repository");
 const UserService = require("./user.service");
 const UserController = require("./user.controller");
