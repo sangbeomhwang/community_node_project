@@ -2,7 +2,6 @@ const config = require("../config");
 const KAKAO_HOST = config.kakao.host;
 const KAKAO_REST_API_KEY = config.kakao.rest_api_key;
 const KAKAO_REDIRECT_URI = config.kakao.redirect_uri;
-const KAKAO_CLIENT_SECRET = config.kakao.client_secret;
 
 const axios = require("axios");
 const request = axios.create({
@@ -55,11 +54,9 @@ class UserController {
 
   async getWelcome(req, res, next) {
     try {
-      const { userid, nickname, password } = req.query;
+      const { nickname } = req.query;
       res.render("user/welcome.html", {
-        userid,
         nickname,
-        password,
       });
     } catch (e) {
       next(e);

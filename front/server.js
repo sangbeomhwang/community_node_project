@@ -20,9 +20,7 @@ app.use((req, res, next) => {
     const { token } = req.cookies;
     const [header, payload, signature] = token.split(".");
 
-    const decodedPl = JSON.parse(
-      Buffer.from(payload, "base64").toString("utf-8")
-    );
+    const decodedPl = JSON.parse(Buffer.from(payload, "base64").toString("utf-8"));
 
     // console.log("req check용 : ", req.user);
 
@@ -37,12 +35,11 @@ app.get("/", (req, res) => {
   if (req.user === undefined) return res.render("index.html");
   // console.log(`req.user :`, req.user);
   else {
-    const { userid, nickname, image, level, access } = req.user;
+    const { nickname, image, level, access } = req.user;
     // console.log("내용 확인용 : ", req.user);
     // console.log("image 잘 뽑힘", image);
     // console.log("level 잘 뽑힘", level);
     res.render("index.html", {
-      userid,
       nickname,
       image,
       level,
