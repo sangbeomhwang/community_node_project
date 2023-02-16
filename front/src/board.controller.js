@@ -1,8 +1,4 @@
-const axios = require("axios");
-const request = axios.create({
-  baseURL: "http://127.0.0.1:3000",
-  withCredentials: true,
-});
+require("dotenv").config();
 
 class BoardController {
   async getBoard(req, res, next) {

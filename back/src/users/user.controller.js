@@ -47,10 +47,27 @@ class UserController {
   }
 
   async kakaoSignin(req, res, next) {
-    const { code } = req.query;
-    const token = await this.userService.signinWithKakao({ code });
-    res.cookie("token", token);
-    res.redirect("http://localhost:3005");
+    try {
+      const config = require("../../config");
+      const { code } = req.query;
+      const token = await this.userService.signinWithKakao({ code });
+      res.cookie("token", token);
+      res.redirect(`http://${config.server.host}:${config.server.port}`);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async getDetail(req, res, next) {
+    try {
+      const nickname = req.query?.nickname;
+      if (!nickname) return;
+      const post = req.query?.post || "board";
+      const response = await this.userService.getDetails({ nickname, post });
+      res.json(response);
+    } catch (e) {
+      next(e);
+    }
   }
 }
 

@@ -123,15 +123,29 @@ class UserService {
   }
 
   async signinWithKakao({ code }) {
-    const kakaoToken = await this.getKakaoToken({ code });
-    const user = await this.getKakaoUserProfile({ kakaoToken });
-    const result = await this.userRepository.addOrLoginKakao(user);
-    console.log(result);
-    if (!result) {
-      await this.userRepository.updateKakao(user);
+    try {
+      const config = require("../../config");
+      const kakaoToken = await this.getKakaoToken({ code });
+      const user = await this.getKakaoUserProfile({ kakaoToken });
+      const result = await this.userRepository.addOrLoginKakao(user);
+      console.log(result);
+      if (!result) {
+        await this.userRepository.updateKakao(user);
+      }
+      const { token } = (await this.axios.post(`http://${config.db.development.host}:${config.port}/auths`, { userid: user.userid, password: user.userid })).data;
+      return token;
+    } catch (e) {
+      throw new Error(e);
     }
-    const { token } = (await this.axios.post("http://127.0.0.1:3000/auths", { userid: user.userid, password: user.userid })).data;
-    return token;
+  }
+
+  async getDetails({ nickname, post }) {
+    try {
+      const response = await this.userRepository.getDetail({ nickname, post });
+      return response;
+    } catch (e) {
+      throw new Error(e);
+    }
   }
 }
 
