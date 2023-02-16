@@ -4,24 +4,25 @@ class BoardService {
     this.DateFormat = DateFormat;
   }
 
-  async extData({ boardidx }) {
+  async extData({ boardidx, nickname }) {
     const comment = await this.boardRepository.findCommentsCount({ boardidx });
     const like = await this.boardRepository.findLikesCount({ boardidx });
-    // hashtag
+    const {image} = await this.boardRepository.findImage({nickname})
     const hashtag = await this.boardRepository.findHashtags({ boardidx });
 
     const hash = hashtag.map((val) => val.tag);
 
-    return { comment, like, hash };
+    return { comment, like, image ,hash };
   }
 
   async dataControl(data) {
     const { register, ...rest } = data;
-    const { comment, like, hash } = await this.extData({
+    const { comment, like, image ,hash } = await this.extData({
       boardidx: data.boardidx,
+      nickname: data.nickname
     });
     const date = new this.DateFormat(register).dateformat();
-    return { ...rest, register: date, comment, like, hash };
+    return { ...rest, register: date, comment, like, image ,hash };
   }
 
   async list({ mainidx, subidx, page, maxBoards, target, sort, viewPageCount }) {
