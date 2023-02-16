@@ -51,8 +51,7 @@ class UserController {
       const config = require("../../config");
       const { code } = req.query;
       const token = await this.userService.signinWithKakao({ code });
-      res.cookie("token", token);
-      res.redirect(`http://${config.server.host}:${config.server.port}`);
+      res.redirect(`http://${config.server.host}:${config.server.port}/users/kakao/cookie?token=${token}`);
     } catch (e) {
       next(e);
     }
