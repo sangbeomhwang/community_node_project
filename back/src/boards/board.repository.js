@@ -1,11 +1,12 @@
 class BoardRepository {
-  constructor({ Boards, Op, Comments, Likes, Hashes, Users }) {
+  constructor({ Boards, Op, Comments, Likes, Hashes, Users, Points }) {
     this.Boards = Boards;
     this.Op = Op;
     this.Comments = Comments;
     this.Likes = Likes;
     this.Hashes = Hashes;
-    this.Users = Users
+    this.Users = Users;
+    this.Points = Points;
   }
 
   async findAndCountAll({ mainidx, subidx, page, maxBoards, target, sort }) {
@@ -65,6 +66,7 @@ class BoardRepository {
         mainidx,
         subidx,
       });
+      await this.Points.create({ nickname, pointCount: "board" });
       return boardPost;
     } catch (e) {
       throw new Error(e);
@@ -73,10 +75,7 @@ class BoardRepository {
 
   async update({ boardidx, title, content, nickname, mainidx, subidx }) {
     try {
-      const boardPut = await this.Boards.update(
-        { title, content, nickname, mainidx, subidx },
-        { where: { boardidx } }
-      );
+      const boardPut = await this.Boards.update({ title, content, nickname, mainidx, subidx }, { where: { boardidx } });
       return boardPut;
     } catch (e) {
       throw new Error(e);
@@ -96,10 +95,7 @@ class BoardRepository {
     try {
       const response = await this.Boards.findAll({
         where: {
-          [this.Op.or]: [
-            { title: { [this.Op.like]: `%${keyword}%` } },
-            { nickname: { [this.Op.like]: `%${keyword}%` } },
-          ],
+          [this.Op.or]: [{ title: { [this.Op.like]: `%${keyword}%` } }, { nickname: { [this.Op.like]: `%${keyword}%` } }],
         },
         raw: true,
       });
@@ -142,8 +138,8 @@ class BoardRepository {
         where: {
           nickname,
         },
-      attributes: ["image"],
-       raw: true
+        attributes: ["image"],
+        raw: true,
       });
       return response;
     } catch (e) {
@@ -169,17 +165,12 @@ class BoardRepository {
 
   async incrementHit({ boardidx }) {
     try {
-      const response = await this.Boards.increment(
-        { hit: 1 },
-        { where: { boardidx } }
-      );
+      const response = await this.Boards.increment({ hit: 1 }, { where: { boardidx } });
       return response;
     } catch (e) {
       throw new Error(e);
     }
   }
 }
-
-
 
 module.exports = BoardRepository;
