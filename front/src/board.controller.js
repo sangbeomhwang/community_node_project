@@ -50,6 +50,7 @@ class BoardController {
   async getView(req, res, next) {
     try {
       const { userid, nickname, image, access } = req.user;
+      // console.log("=====================",req.user)
       const { boardidx } = req.params;
       res.render("board/view.html", {
         userid,
