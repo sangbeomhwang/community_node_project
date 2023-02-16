@@ -14,7 +14,7 @@ class CommentRepository {
                 raw: true,
                 nest: true
             })
-            // console.log('^^^^^^^^^', response)
+            console.log('^^^^^^^^^', response)
             return response
         } catch (e) {
             throw new Error(e)
