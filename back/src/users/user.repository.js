@@ -1,6 +1,9 @@
 class UserRepository {
-  constructor({ Users }) {
+  constructor({ Users, Boards, Comments, Likes }) {
     this.User = Users;
+    this.Boards = Boards;
+    this.Comments = Comments;
+    this.Likes = Likes;
   }
 
   async addUser(payload) {
@@ -45,10 +48,10 @@ class UserRepository {
   }
 
   async updateProfile(userData) {
-    console.log(`repo : `, userData);
+    const config = require("../../config");
     const user = await this.User.update(
       {
-        image: "http://localhost:3000/user/" + userData.image,
+        image: `http://${config.server.host}:${config.server.port}/user/` + userData.image,
         name: userData.name,
         nickname: userData.nickname,
         password: userData.password,
@@ -97,6 +100,18 @@ class UserRepository {
         },
       });
       return user;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async getDetail({ nickname, post }) {
+    try {
+      const response = await this.Boards.findAndCountAll({
+        include: [{ model: this.Users, where: { nickname: "cloud" } }],
+      });
+      console.log(response);
+      return response;
     } catch (e) {
       throw new Error(e);
     }

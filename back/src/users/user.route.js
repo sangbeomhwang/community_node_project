@@ -6,6 +6,7 @@ const uploads = require("../../middlewares/uploads");
 router.post("/", (req, res, next) => controller.postSignup(req, res, next));
 router.post("/usercheck", (req, res, next) => controller.postUserCheck(req, res, next));
 router.get("/me", (req, res, next) => controller.getMe(req, res, next));
+router.get("/details", (req, res, next) => controller.getDetail(req, res, next));
 router.put("/", (req, res, next) => controller.putProfile(req, res, next));
 
 router.post("/single", uploads("user").single("filename"), (req, res, next) => {

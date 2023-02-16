@@ -1,6 +1,7 @@
+const config = require("../config");
 const axios = require("axios");
 const request = axios.create({
-  baseURL: "http://127.0.0.1:3000",
+  baseURL: `http://${config.server.host}:${config.server.port}`,
   withCredentials: true,
 });
 
@@ -84,7 +85,7 @@ class AdminController {
       // console.log("check3!!! : ", data.pagination.totalBoards);
 
       const totalBoards = data.pagination.totalBoards;
-      const page = data.pagination.page
+      const page = data.pagination.page;
 
       res.render("admin/admin_board.html", {
         userid,

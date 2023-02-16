@@ -28,6 +28,10 @@ const config = {
     redirect_uri: env.REDIRECT_URI || "",
     client_secret: env.CLIENT_SECRET || "",
   },
+  server: {
+    host: env.SERVER_HOST || "localhost",
+    port: env.SERVER_PORT || "3005",
+  },
 };
 
 module.exports = config;

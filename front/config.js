@@ -6,6 +6,10 @@ const config = {
     rest_api_key: process.env.REST_API_KEY || "",
     redirect_uri: process.env.REDIRECT_URI || "",
   },
+  server: {
+    host: process.env.SERVER_HOST || "127.0.0.1",
+    port: process.env.SERVER_PORT || "3000",
+  },
 };
 
 module.exports = config;
