@@ -59,7 +59,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     email: {
       type: Sequelize.STRING(50),
-      allowNull: false,
+      allowNull: true,
     },
     address: {
       type: Sequelize.STRING(128),

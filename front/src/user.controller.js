@@ -47,9 +47,7 @@ class UserController {
 
       const { userid, nickname, password } = response.data;
 
-      res.redirect(
-        `/users/welcome?userid=${userid}&nickname=${nickname}&password=${password}`
-      );
+      res.redirect(`/users/welcome?userid=${userid}&nickname=${nickname}&password=${password}`);
     } catch (e) {
       next(e);
     }
@@ -102,12 +100,7 @@ class UserController {
       const HOST = KAKAO_HOST;
       const REST_API_KEY = KAKAO_REST_API_KEY;
       const REDIRECT_URI = KAKAO_REDIRECT_URI;
-      const CLIENT_SECRET = KAKAO_CLIENT_SECRET;
 
-      console.log(HOST);
-
-      // kauth.kakao.com
-      // /oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code
       const redirectURI = `${HOST}/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
       res.redirect(redirectURI);
     } catch (e) {

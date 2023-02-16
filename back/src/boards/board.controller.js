@@ -7,19 +7,14 @@ class BoardController {
   async getList(req, res, next) {
     try {
       const { mainidx, subidx } = req.query;
-      const page = Number(req.query?.page) || 1;
-      const maxBoards = Number(req.query?.maxBoards) || 7;
-      const target = req.query?.target || "boardidx";
-      const sort = req.query?.sort || "DESC";
-      console.log(target);
-      console.log(sort);
       const itemList = await this.boardService.list({
         mainidx,
         subidx,
-        page,
-        maxBoards,
-        target,
-        sort,
+        page: Number(req.query?.page) || 1,
+        maxBoards: Number(req.query?.maxBoards) || 7,
+        target: req.query?.target || "boardidx",
+        sort: req.query?.sort || "DESC",
+        viewPageCount: Number(req.query?.viewPageCount) || 5,
       });
       res.json(itemList);
     } catch (e) {

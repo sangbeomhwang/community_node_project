@@ -48,19 +48,10 @@ class UserController {
 
   async kakaoSignin(req, res, next) {
     const { code } = req.query;
-    const response = await this.userService.signinWithKakao({ code });
+    const token = await this.userService.signinWithKakao({ code });
+    res.cookie("token", token);
+    res.redirect("http://localhost:3005");
   }
-
-  // async kakaoSignin(req, res, next) {
-  //   try {
-  //     const kakaoToken = req.headers.authorization;
-  //     const accessToken = await this.userService.signinWithKakao(kakaoToken);
-
-  //     return res.status(200).json({ accessToken });
-  //   } catch (e) {
-  //     next(e);
-  //   }
-  // }
 }
 
 module.exports = UserController;
