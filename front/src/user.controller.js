@@ -104,6 +104,16 @@ class UserController {
       next(e);
     }
   }
+
+  async kakaoCookie(req, res, next) {
+    try {
+      const { token } = req.query;
+      res.cookie("token", token);
+      res.redirect("/");
+    } catch (e) {
+      next(e);
+    }
+  }
 }
 
 const userController = new UserController();
