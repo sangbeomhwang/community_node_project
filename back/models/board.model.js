@@ -70,6 +70,11 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       defaultValue: Sequelize.NOW,
     },
+    visible: {
+      type: Sequelize.ENUM("visible", "invisible"),
+      allowNull: false,
+      defaultValue: "visible",
+    }
   };
 
   const settings = {

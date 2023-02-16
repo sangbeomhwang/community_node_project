@@ -28,6 +28,20 @@ class AdminRepository {
     }
   }
 
+  async boardUpdate({ boardidx, visible }) {
+    try {
+      const boardPut = await this.Board.update(
+        { boardidx, visible },
+        { where: { boardidx } }
+      );
+      console.log("boardidx :::",boardPut)
+      console.log("visible :::",visible)
+      return boardPut;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
   // async userDestroy({ nickname }) {
   //   try {
   //     const user_remove = await this.User.destroy({

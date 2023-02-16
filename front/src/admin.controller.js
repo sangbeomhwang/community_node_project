@@ -84,6 +84,7 @@ class AdminController {
       // console.log("check3!!! : ", data.pagination.totalBoards);
 
       const totalBoards = data.pagination.totalBoards;
+      const page = data.pagination.page
 
       res.render("admin/admin_board.html", {
         userid,
@@ -92,7 +93,27 @@ class AdminController {
         level,
         access,
         totalBoards,
+        page,
       });
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async updateBoard(req, res, next) {
+    try {
+      const { boardidx } = req.params;
+      console.log("boardidx check ~~~ : ", boardidx);
+      // const { data } = await request.put(`/admins/${nickname}`, {
+      //   ...req.body,
+      // });
+      // console.log("update success~~~ : ", data); // 수정 성공 시 result => update success~~~ :  [ 1 ]
+
+      await request.post(`/admins/${boardidx}`, {
+        ...req.body,
+      });
+
+      res.redirect("/admins/boards");
     } catch (e) {
       next(e);
     }

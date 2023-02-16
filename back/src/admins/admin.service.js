@@ -31,6 +31,18 @@ class AdminService {
     }
   }
 
+  async boardModify({ boardidx, visible }) {
+    try {
+      const result = await this.adminRepository.boardUpdate({
+        boardidx, visible
+      });
+      console.log("admin test :::::",result)
+      return result;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
   // async userDelete({ nickname }) {
   //   try {
   //     const response = await this.adminRepository.userDestroy({ nickname });
