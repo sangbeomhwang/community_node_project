@@ -77,8 +77,16 @@ class UserController {
 
   async getProfileModify(req, res, next) {
     try {
-      // console.log("profile modify check~~~~ : ", req.user);
-      res.render("user/profile.html", { ...req.user, server: this.server });
+      console.log(req.cookies.token);
+      const response = await request.get("/users/id", {
+        headers: {
+          Authorization: `Bearer ${req.cookies.token}`,
+        },
+      });
+      console.log("profile modify check~~~~ : ", response.data);
+
+      const userInfo = response.data;
+      res.render("user/profile.html", { ...userInfo, server: this.server });
     } catch (e) {
       next(e);
     }

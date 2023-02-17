@@ -6,6 +6,7 @@ class AuthRepository {
     try {
       const user = await this.User.findOne({
         raw: true,
+        // attributes: { exclude: ["password"] },
         attributes: ["nickname", "image", "level", "access"],
         where: {
           userid,
