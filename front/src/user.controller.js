@@ -47,7 +47,9 @@ class UserController {
 
       const { userid, nickname, password } = response.data;
 
-      res.redirect(`/users/welcome?userid=${userid}&nickname=${nickname}&password=${password}`);
+      res.redirect(
+        `/users/welcome?userid=${userid}&nickname=${nickname}&password=${password}`
+      );
     } catch (e) {
       next(e);
     }
@@ -111,6 +113,16 @@ class UserController {
       const { token } = req.query;
       res.cookie("token", token);
       res.redirect("/");
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async getmypage(req, res, next) {
+    try {
+      res.render("user/mypage.html", {
+        server: this.server,
+      });
     } catch (e) {
       next(e);
     }

@@ -29,7 +29,10 @@
 
               {% else %} {% endif %}
               <li id="profile_info">
-                <a id="my_page" href="/users/profile">마이 페이지</a>
+                <a id="my_page" href="/users/profile">마이 프로필</a>
+              </li>
+              <li id="profile_info">
+                <a id="my_page" href="/users/mypage">마이 페이지</a>
               </li>
               <li id="logout">
                 <a id="logout_btn" href="/">로그아웃</a>
@@ -41,7 +44,8 @@
             logout.addEventListener("click", (e) => {
               e.preventDefault();
               location.href = "/";
-              document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+              document.cookie =
+                "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
             });
 
             const profile_btn = document.querySelector("#profile_btn");
@@ -57,7 +61,11 @@
           </script>
           {% else %}
 
-          <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt="modify_img" data-userimage="https://cdn-icons-png.flaticon.com/512/64/64572.png" />
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
+            alt="modify_img"
+            data-userimage="https://cdn-icons-png.flaticon.com/512/64/64572.png"
+          />
           <div id="profile_area">
             <ul id="profile_menu">
               {% if level === 'top' %}
@@ -67,7 +75,10 @@
 
               {% else %} {% endif %}
               <li id="profile_info">
-                <a id="my_page" href="/users/profile">마이 페이지</a>
+                <a id="my_page" href="/users/profile">마이 프로필</a>
+              </li>
+              <li id="profile_info">
+                <a id="my_page" href="/users/mypage">마이 페이지</a>
               </li>
               <li id="logout">
                 <a id="logout_btn" href="/">로그아웃</a>
@@ -79,7 +90,8 @@
             logout1.addEventListener("click", (e) => {
               e.preventDefault();
               location.href = "/";
-              document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+              document.cookie =
+                "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
             });
 
             const profile_btn1 = document.querySelector("#profile_btn");

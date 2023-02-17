@@ -26,15 +26,20 @@ const commentBox = document.querySelector("#comment_depth");
 const render = async ({ boardidx }) => {
   // 게시글의 전체댓글
   const { data } = await request.get(`/comments?boardidx=${boardidx}`);
-  console.log(data[0]);
+
+  const count = document.querySelector("#comment_body > h1 > span");
+  count.innerHTML = data.userCount;
+
   commentBox.innerHTML = "";
   const { usernick } = document.querySelector("[data-usernick]").dataset;
-  for (let i = 0; i < data.length; i++) {
-    if (data[i].nickname !== usernick) {
-      commentBox.innerHTML += template(data[i]) + "</div>";
+  console.log(usernick);
+  for (let i = 0; i < data.response.length; i++) {
+    console.log(i);
+    if (data.response[i].nickname !== usernick) {
+      commentBox.innerHTML += template(data.response[i]) + "</div>";
     } else {
       commentBox.innerHTML +=
-        template(data[i]) +
+        template(data.response[i]) +
         '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>';
     }
   }
