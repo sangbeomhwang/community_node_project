@@ -20,35 +20,36 @@
           {% if image %}
 
           <img src="{{image}}" alt="modify_img" data-userimage="{{image}}" />
-          <div id="profile_area">
-            <ul id="profile_menu">
-              {% if level === 'top' %}
-              <li id="admin_info">
-                <a id="admin_page" href="/admins">관리자 페이지</a>
-              </li>
 
-              {% else %} {% endif %}
-              <li id="profile_info">
-                <a id="my_page" href="/users/profile">마이 페이지</a>
-              </li>
-              <li id="logout">
-                <a id="logout_btn" href="/">로그아웃</a>
-              </li>
-            </ul>
-          </div>
+          <ul id="profile_menu">
+            {% if level === 'top' %}
+            <li id="admin_info">
+              <a id="admin_page" href="/admins">관리자 페이지</a>
+            </li>
+
+            {% else %} {% endif %}
+            <li id="profile_info">
+              <a id="my_page" href="/users/profile">마이 페이지</a>
+            </li>
+            <li id="logout">
+              <a id="logout_btn" href="/">로그아웃</a>
+            </li>
+          </ul>
+
           <script>
             const logout = document.querySelector("#logout");
             logout.addEventListener("click", (e) => {
               e.preventDefault();
               location.href = "/";
-              document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+              document.cookie =
+                "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
             });
 
             const profile_btn = document.querySelector("#profile_btn");
-            const profile_menu = document.querySelector("#profile_area");
+            const profile_menu = document.querySelector("#profile_menu");
 
             profile_btn.addEventListener("click", () => {
-              profile_menu.style.display = "block";
+              profile_menu.style.visibility = "visible";
             });
 
             //   profile_btn.addEventListener("click", () => {
@@ -57,36 +58,41 @@
           </script>
           {% else %}
 
-          <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt="modify_img" data-userimage="https://cdn-icons-png.flaticon.com/512/64/64572.png" />
-          <div id="profile_area">
-            <ul id="profile_menu">
-              {% if level === 'top' %}
-              <li id="admin_info">
-                <a id="admin_page" href="/admins">관리자 페이지</a>
-              </li>
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
+            alt="modify_img"
+            data-userimage="https://cdn-icons-png.flaticon.com/512/64/64572.png"
+          />
 
-              {% else %} {% endif %}
-              <li id="profile_info">
-                <a id="my_page" href="/users/profile">마이 페이지</a>
-              </li>
-              <li id="logout">
-                <a id="logout_btn" href="/">로그아웃</a>
-              </li>
-            </ul>
-          </div>
+          <ul id="profile_menu">
+            {% if level === 'top' %}
+            <li id="admin_info">
+              <a id="admin_page" href="/admins">관리자 페이지</a>
+            </li>
+
+            {% else %} {% endif %}
+            <li id="profile_info">
+              <a id="my_page" href="/users/profile">마이 페이지</a>
+            </li>
+            <li id="logout">
+              <a id="logout_btn" href="/">로그아웃</a>
+            </li>
+          </ul>
+
           <script type="text/javascript">
             const logout1 = document.querySelector("#logout");
             logout1.addEventListener("click", (e) => {
               e.preventDefault();
               location.href = "/";
-              document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+              document.cookie =
+                "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
             });
 
             const profile_btn1 = document.querySelector("#profile_btn");
-            const profile_menu1 = document.querySelector("#profile_area");
+            const profile_menu1 = document.querySelector("#profile_menu");
 
             profile_btn1.addEventListener("click", () => {
-              profile_menu1.style.display = "block";
+              profile_menu1.style.visibility = "visible";
             });
 
             //   profile_btn.addEventListener("click", () => {

@@ -26,14 +26,21 @@ const commentBox = document.querySelector("#comment_depth");
 const render = async ({ boardidx }) => {
   // 게시글의 전체댓글
   const { data } = await request.get(`/comments?boardidx=${boardidx}`);
-  console.log(data[0]);
+
+  const count = document.querySelector("#comment_body > h1 > span");
+  count.innerHTML = data.userCount;
+
   commentBox.innerHTML = "";
   const { usernick } = document.querySelector("[data-usernick]").dataset;
-  for (let i = 0; i < data.length; i++) {
-    if (data[i].nickname !== usernick) {
-      commentBox.innerHTML += template(data[i]) + "</div>";
+  console.log(usernick);
+  for (let i = 0; i < data.response.length; i++) {
+    console.log(i);
+    if (data.response[i].nickname !== usernick) {
+      commentBox.innerHTML += template(data.response[i]) + "</div>";
     } else {
-      commentBox.innerHTML += template(data[i]) + '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>';
+      commentBox.innerHTML +=
+        template(data.response[i]) +
+        '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>';
     }
   }
 
@@ -70,7 +77,10 @@ const render = async ({ boardidx }) => {
         content,
       };
 
-      await request.put(`/comments?boardidx=${boardidx}&commentidx=${commentidx}`, data);
+      await request.put(
+        `/comments?boardidx=${boardidx}&commentidx=${commentidx}`,
+        data
+      );
       e.target.parentNode.previousElementSibling.readOnly = true;
       e.target.style.display = "none";
       putbtn[i].style.display = "block";
@@ -89,7 +99,9 @@ const render = async ({ boardidx }) => {
     return async (e) => {
       e.preventDefault();
       const { commentidx } = e.target.parentNode.parentNode.dataset;
-      await request.delete(`/comments?boardidx=${boardidx}&commentidx=${commentidx}`);
+      await request.delete(
+        `/comments?boardidx=${boardidx}&commentidx=${commentidx}`
+      );
       location.href = `/boards/${boardidx}`;
     };
   };
@@ -120,18 +132,27 @@ document.querySelector("#depth_post").addEventListener("click", async (e) => {
     content,
   };
 
-  const { data } = await request.post(`/comments?boardidx=${boardidx.value}`, datacontent);
+  const { data } = await request.post(
+    `/comments?boardidx=${boardidx.value}`,
+    datacontent
+  );
   data.User = { image: userimage };
 
-  commentBox.innerHTML += template(data) + '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>';
+  commentBox.innerHTML +=
+    template(data) +
+    '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>';
 
   const default_img = document.querySelectorAll("#depth_b > #depth_info > img");
   const server = document.querySelector("#server").value;
 
   for (let i = 0; i < default_img.length; i++) {
     // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
-    if (default_img[i].src.indexOf(`${server}`) === -1 && default_img[i].src.indexOf("http://k.kakaocdn.net") === -1) {
-      default_img[i].src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+    if (
+      default_img[i].src.indexOf(`${server}`) === -1 &&
+      default_img[i].src.indexOf("http://k.kakaocdn.net") === -1
+    ) {
+      default_img[i].src =
+        "https://cdn-icons-png.flaticon.com/512/64/64572.png";
     }
   }
 

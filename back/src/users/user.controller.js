@@ -24,10 +24,29 @@ class UserController {
 
   async getMe(req, res, next) {
     try {
+      console.log("req check ~~ : ", req.headers.authorization);
       if (!req.headers.authorization) throw new Error("No Authorization");
       const [type, token] = req.headers.authorization.split(" ");
-      if (type.toLowerCase() !== "bearer") throw new Error("Authorization Type Error");
+      if (type.toLowerCase() !== "bearer")
+        throw new Error("Authorization Type Error");
       const user = await this.userService.me(token);
+      console.log("cont : ", user);
+      res.json(user);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async getId(req, res, next) {
+    try {
+      console.log("req check ~~ : ", req.headers);
+      if (!req.headers.authorization) throw new Error("No Authorization");
+      const [type, token] = req.headers.authorization.split(" ");
+      if (type.toLowerCase() !== "bearer")
+        throw new Error("Authorization Type Error");
+
+      const user = await this.userService.id(token);
+      console.log("cont : ", user);
       res.json(user);
     } catch (e) {
       next(e);
@@ -51,7 +70,9 @@ class UserController {
       const config = require("../../config");
       const { code } = req.query;
       const token = await this.userService.signinWithKakao({ code });
-      res.redirect(`http://${config.server.host}:${config.server.port}/users/kakao/cookie?token=${token}`);
+      res.redirect(
+        `http://${config.server.host}:${config.server.port}/users/kakao/cookie?token=${token}`
+      );
     } catch (e) {
       next(e);
     }

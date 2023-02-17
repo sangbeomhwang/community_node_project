@@ -1,4 +1,13 @@
-const boardListTemplate = ({ boardidx, nickname, register, hash, title, hit, like, comment }) => {
+const boardListTemplate = ({
+  boardidx,
+  nickname,
+  register,
+  hash,
+  title,
+  hit,
+  like,
+  comment,
+}) => {
   let hashes;
   if (hash.length > 0) {
     hashes = hash.map((val) => "#" + val).join(" ");
@@ -38,7 +47,15 @@ const boardListTemplate = ({ boardidx, nickname, register, hash, title, hit, lik
  `;
 };
 
-const mainPageTemplate = ({ boardidx, nickname, register, hit, comment, like, title }) => {
+const mainPageTemplate = ({
+  boardidx,
+  nickname,
+  register,
+  hit,
+  comment,
+  like,
+  title,
+}) => {
   return ` <li>
 <div class="first_line">
   <div class="nickname_time_box">
@@ -66,4 +83,11 @@ const mainPageTemplate = ({ boardidx, nickname, register, hit, comment, like, ti
 </li>`;
 };
 
-export { boardListTemplate, mainPageTemplate };
+const myPageTemplate = ({ boardidx, nickname, register, title }) => {
+  return `
+  <li>
+  </li>
+  `;
+};
+
+export { boardListTemplate, mainPageTemplate, myPageTemplate };

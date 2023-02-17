@@ -47,7 +47,9 @@ class UserController {
 
       const { userid, nickname, password } = response.data;
 
-      res.redirect(`/users/welcome?userid=${userid}&nickname=${nickname}&password=${password}`);
+      res.redirect(
+        `/users/welcome?userid=${userid}&nickname=${nickname}&password=${password}`
+      );
     } catch (e) {
       next(e);
     }
@@ -75,8 +77,16 @@ class UserController {
 
   async getProfileModify(req, res, next) {
     try {
-      // console.log("profile modify check~~~~ : ", req.user);
-      res.render("user/profile.html", { ...req.user, server: this.server });
+      console.log(req.cookies.token);
+      const response = await request.get("/users/id", {
+        headers: {
+          Authorization: `Bearer ${req.cookies.token}`,
+        },
+      });
+      console.log("profile modify check~~~~ : ", response.data);
+
+      const userInfo = response.data;
+      res.render("user/profile.html", { ...userInfo, server: this.server });
     } catch (e) {
       next(e);
     }
@@ -111,6 +121,16 @@ class UserController {
       const { token } = req.query;
       res.cookie("token", token);
       res.redirect("/");
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async getmypage(req, res, next) {
+    try {
+      res.render("user/mypage.html", {
+        server: this.server,
+      });
     } catch (e) {
       next(e);
     }

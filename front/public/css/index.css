@@ -74,10 +74,6 @@
   box-sizing: border-box;
 }
 
-#profile_area {
-  display: none;
-}
-
 #profile_menu {
   display: flex;
   flex-direction: column;
@@ -85,8 +81,9 @@
   align-items: center;
   position: absolute;
   top: 100px;
-  right: -35px;
   z-index: 3;
+  width: 140px;
+  visibility: hidden;
   background-color: #cb976b;
 }
 
@@ -162,15 +159,18 @@
 }
 
 #qna_header {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/img/qna_header.png");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/img/qna_header.png");
   background-size: cover;
 }
 #community_header {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/img/community_header.png");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/img/community_header.png");
   background-size: cover;
 }
 #notice_header {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/img/notice_header.png");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/img/notice_header.png");
   background-size: cover;
 }
 
