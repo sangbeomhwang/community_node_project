@@ -1,10 +1,11 @@
 class UserService {
-  constructor({ userRepository, jwt, qs, axios }) {
+  constructor({ userRepository, jwt, qs, axios, DateFormat }) {
     this.userRepository = userRepository;
     this.jwt = jwt;
     this.crypto = jwt.crypto;
     this.qs = qs;
     this.axios = axios;
+    this.DateFormat = DateFormat;
   }
 
   async signup(userData) {
@@ -167,6 +168,10 @@ class UserService {
   async getDetails({ nickname, post }) {
     try {
       const response = await this.userRepository.getDetail({ nickname, post });
+      response.forEach((data) => {
+        data.register = new this.DateFormat(data.register).dateformat();
+      });
+
       return response;
     } catch (e) {
       throw new Error(e);

@@ -1,10 +1,11 @@
 class UserRepository {
-  constructor({ Users, Boards, Comments, Likes, Points }) {
+  constructor({ Users, Boards, Comments, Likes, Points, sequelize }) {
     this.User = Users;
     this.Boards = Boards;
     this.Comments = Comments;
     this.Likes = Likes;
     this.Points = Points;
+    this.sequelize = sequelize;
   }
 
   async addUser(payload) {
@@ -147,10 +148,12 @@ class UserRepository {
         }
 
         case "likes": {
-          const response = await this.Likes.findAll({
-            where: { nickname },
-            raw: true,
-          });
+          const response = await this.sequelize.query(
+            `select A.boardidx, A.title, A.register, A.mainidx, A.subidx, B.nickname from Boards as A right join Likes as B on A.boardidx = B.boardidx where B.nickname='${nickname}'`,
+            {
+              type: this.sequelize.QueryTypes.SELECT,
+            }
+          );
           return response;
         }
 
