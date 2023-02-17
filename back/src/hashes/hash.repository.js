@@ -16,7 +16,7 @@ class HashRepository {
   async findOrCreate({ hashes, boardidx }) {
     try {
       const hashtags = hashes.map((tag) => this.Hashtags.findOrCreate({ where: { tag } }));
-      await Promise.all(hashtags).then((values) => console.log(values));
+      await Promise.all(hashtags);
       const hash = hashes.map((tag) => this.Hashes.create({ boardidx, tag }));
       await Promise.all(hash);
       return true;

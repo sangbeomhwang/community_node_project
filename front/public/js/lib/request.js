@@ -1,12 +1,5 @@
-const platform = {
-  Windows: "http://localhost:3000",
-  macOS: "http://127.0.0.1:3000",
-};
-
-const url = platform[navigator.userAgentData.platform];
-
 const request = axios.create({
-  baseURL: `${url}`,
+  baseURL: `http://localhost:3000`,
   withCredentials: true,
 });
 

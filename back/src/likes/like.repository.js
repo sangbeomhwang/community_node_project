@@ -32,20 +32,11 @@ class LikeRepository {
 
   async likesCount({ boardidx, nickname }) {
     try {
-      //   if (clicked) {
-      //     await this.Likes.destroy({ where: { boardidx, nickname } });
-      //     const response = await this.count({ boardidx });
-      //     return response;
-      //   }
-      //   await this.Likes.create({ boardidx, nickname });
-      //   const response = await this.count({ boardidx });
-      //   return response;
       const [data, clicked] = await this.Likes.findOrCreate({ where: { boardidx, nickname }, raw: true });
       if (!clicked) {
         await this.Likes.destroy({ where: { boardidx, nickname } });
       }
       const count = await this.count({ boardidx });
-      console.log(count);
       return { count, clicked };
     } catch (e) {
       throw new Error(e);

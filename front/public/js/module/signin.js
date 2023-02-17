@@ -4,28 +4,22 @@ const frm = document.querySelector("#loginFrm");
 
 let date = new Date();
 date.setTime(date.getTime() + 1 * 60 * 60 * 1000);
-// console.log(date)
 
 frm.addEventListener("submit", async (e) => {
   try {
     e.preventDefault();
 
     const { userid, password } = e.target;
-    console.log(userid.value, password.value);
 
     const response = await request.post("/auths", {
       userid: userid.value,
       password: password.value,
     });
 
-    // console.log(response.data.status);
-    // console.log(response.status)
     const status = response.data.status; // HttpException
     if (status >= 400) throw new Error(e);
     else if (response.status >= 200) {
-      document.cookie = `token=${
-        response.data.token
-      }; expires=${date.toUTCString()};path=/;`;
+      document.cookie = `token=${response.data.token}; expires=${date.toUTCString()};path=/;`;
       location.href = "/";
     }
   } catch (e) {

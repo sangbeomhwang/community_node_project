@@ -89,7 +89,7 @@ const render = async ({ boardidx }) => {
       e.preventDefault();
       const { commentidx } = e.target.parentNode.parentNode.dataset;
       await request.delete(`/comments?boardidx=${boardidx}&commentidx=${commentidx}`);
-      location.href = `http://localhost:3005/boards/${boardidx}`;
+      location.href = `/boards/${boardidx}`;
     };
   };
 
@@ -125,10 +125,11 @@ document.querySelector("#depth_post").addEventListener("click", async (e) => {
   commentBox.innerHTML += template(data) + '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>';
 
   const default_img = document.querySelectorAll("#depth_b > #depth_info > img");
+  const server = document.querySelector("#server").value;
 
   for (let i = 0; i < default_img.length; i++) {
     // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
-    if (default_img[i].src.indexOf(`http://127.0.0.1:3000/`) === -1 && default_img[i].src.indexOf("http://k.kakaocdn.net") === -1) {
+    if (default_img[i].src.indexOf(`${server}`) === -1 && default_img[i].src.indexOf("http://k.kakaocdn.net") === -1) {
       default_img[i].src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
     }
   }

@@ -1,20 +1,18 @@
 import request from "/js/lib/request.js";
 
 const checkInput = async (inputId, reg, callback) => {
-  document
-    .querySelector(`#${inputId}_row`)
-    .addEventListener("keyup", async () => {
-      let error = document.querySelector(`#${inputId}_row .alertMessage`);
-      let input = document.querySelector(`#${inputId}`);
-      if (!reg.test(input.value)) {
-        error.style.opacity = 1;
-        error.style.transition = "opacity 0.2s ease-in-out";
-      } else {
-        error.style.opacity = 0;
-        error.style.transition = "opacity 0.2s ease-in-out";
-        callback(inputId);
-      }
-    });
+  document.querySelector(`#${inputId}_row`).addEventListener("keyup", async () => {
+    let error = document.querySelector(`#${inputId}_row .alertMessage`);
+    let input = document.querySelector(`#${inputId}`);
+    if (!reg.test(input.value)) {
+      error.style.opacity = 1;
+      error.style.transition = "opacity 0.2s ease-in-out";
+    } else {
+      error.style.opacity = 0;
+      error.style.transition = "opacity 0.2s ease-in-out";
+      callback(inputId);
+    }
+  });
 };
 
 // 중복 체크
@@ -24,7 +22,6 @@ const duplicateCheck = async (inputId) => {
   const response = await request.post("/users/usercheck", {
     [inputId]: input.value,
   });
-  console.log(response.data);
   if (response.data !== null) {
     check.innerHTML = "이미 사용중입니다";
     check.style.color = "red";
@@ -60,11 +57,7 @@ for (const key in config) {
 
 // 패스워드 재확인
 document.querySelector("#pwcheck").addEventListener("keyup", () => {
-  if (
-    document.querySelector("#password").value !==
-    document.querySelector("#pwcheck").value
-  )
-    document.querySelector(".checkMessage").style.opacity = 1;
+  if (document.querySelector("#password").value !== document.querySelector("#pwcheck").value) document.querySelector(".checkMessage").style.opacity = 1;
   else {
     document.querySelector(".checkMessage").innerHTML = "비밀번호가 일치합니다";
     document.querySelector(".checkMessage").style.color = "green";

@@ -6,6 +6,10 @@ const request = axios.create({
 });
 
 class AdminController {
+  constructor() {
+    this.server = `http://${config.server.host}:${config.server.port}/`;
+  }
+
   async getIndex(req, res, next) {
     try {
       // console.log("admin 전달 확인용 : ", req.user);
@@ -15,6 +19,7 @@ class AdminController {
         nickname,
         image,
         level,
+        server: this.server,
       });
     } catch (e) {
       next(e);
@@ -40,6 +45,7 @@ class AdminController {
         level,
         response,
         userCount,
+        server: this.server,
       });
     } catch (e) {
       next(e);
@@ -95,6 +101,7 @@ class AdminController {
         access,
         totalBoards,
         page,
+        server: this.server,
       });
     } catch (e) {
       next(e);
@@ -104,7 +111,6 @@ class AdminController {
   async updateBoard(req, res, next) {
     try {
       const { boardidx } = req.params;
-      console.log("boardidx check ~~~ : ", boardidx);
       // const { data } = await request.put(`/admins/${nickname}`, {
       //   ...req.body,
       // });
@@ -128,6 +134,7 @@ class AdminController {
         nickname,
         image,
         level,
+        server: this.server,
       });
     } catch (e) {
       next(e);

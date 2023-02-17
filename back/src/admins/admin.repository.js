@@ -18,10 +18,7 @@ class AdminRepository {
 
   async userUpdate({ nickname, name, email, level, access }) {
     try {
-      const userPut = await this.User.update(
-        { nickname, name, email, level, access },
-        { where: { nickname } }
-      );
+      const userPut = await this.User.update({ nickname, name, email, level, access }, { where: { nickname } });
       return userPut;
     } catch (e) {
       throw new Error(e);
@@ -30,12 +27,7 @@ class AdminRepository {
 
   async boardUpdate({ boardidx, visible }) {
     try {
-      const boardPut = await this.Board.update(
-        { boardidx, visible },
-        { where: { boardidx } }
-      );
-      console.log("boardidx :::",boardPut)
-      console.log("visible :::",visible)
+      const boardPut = await this.Board.update({ boardidx, visible }, { where: { boardidx } });
       return boardPut;
     } catch (e) {
       throw new Error(e);

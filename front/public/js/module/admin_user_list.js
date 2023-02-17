@@ -59,7 +59,6 @@ const leftBtnHandler = async () => {
   const { page, startpage, endpage, lastpage, viewpagecount } = nowPage.dataset;
 
   if (page === 1) {
-    console.log("끝");
     return;
   }
   if (page !== startpage) {
@@ -84,11 +83,9 @@ const rightBtnHandler = async () => {
   const { page, startpage, endpage, lastpage, viewpagecount } = nowPage.dataset;
 
   if (page === lastpage) {
-    console.log("끝");
     return;
   }
   if (endpage === lastpage) {
-    console.log("hh");
     const { data, pagination } = await getData({ mainidx, page: endpage });
     render({ data });
     pageListRender({ pagination });

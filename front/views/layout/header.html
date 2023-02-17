@@ -1,5 +1,6 @@
 <div id="header_wrap">
   <div id="header">
+    <input type="hidden" value="{{server}}" id="server" />
     <div id="logo">
       <a href="/">
         <img src="/img/header_logo.png" alt="header_logo" />
@@ -18,7 +19,7 @@
         <div id="profile_btn">
           {% if image %}
 
-          <img src="{{image}}" alt="modify_img" data-userimage="{{image}}"/>
+          <img src="{{image}}" alt="modify_img" data-userimage="{{image}}" />
           <div id="profile_area">
             <ul id="profile_menu">
               {% if level === 'top' %}
@@ -42,21 +43,21 @@
               location.href = "/";
               document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
             });
-          
+
             const profile_btn = document.querySelector("#profile_btn");
             const profile_menu = document.querySelector("#profile_area");
-          
+
             profile_btn.addEventListener("click", () => {
               profile_menu.style.display = "block";
             });
-          
+
             //   profile_btn.addEventListener("click", () => {
             //     profile_menu.style.display = "none";
             //   });
           </script>
           {% else %}
 
-          <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt="modify_img" data-userimage="https://cdn-icons-png.flaticon.com/512/64/64572.png"/>
+          <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt="modify_img" data-userimage="https://cdn-icons-png.flaticon.com/512/64/64572.png" />
           <div id="profile_area">
             <ul id="profile_menu">
               {% if level === 'top' %}
@@ -80,14 +81,14 @@
               location.href = "/";
               document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
             });
-          
+
             const profile_btn1 = document.querySelector("#profile_btn");
             const profile_menu1 = document.querySelector("#profile_area");
-          
+
             profile_btn1.addEventListener("click", () => {
               profile_menu1.style.display = "block";
             });
-          
+
             //   profile_btn.addEventListener("click", () => {
             //     profile_menu.style.display = "none";
             //   });
@@ -131,7 +132,3 @@
 </div>
 
 <script src="/js/layout/header.js" type="module"></script>
-
-
-
-

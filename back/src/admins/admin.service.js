@@ -34,9 +34,9 @@ class AdminService {
   async boardModify({ boardidx, visible }) {
     try {
       const result = await this.adminRepository.boardUpdate({
-        boardidx, visible
+        boardidx,
+        visible,
       });
-      console.log("admin test :::::",result)
       return result;
     } catch (e) {
       throw new Error(e);

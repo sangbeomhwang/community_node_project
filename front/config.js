@@ -7,7 +7,7 @@ const config = {
     redirect_uri: process.env.REDIRECT_URI || "",
   },
   server: {
-    host: process.env.SERVER_HOST || "127.0.0.1",
+    host: process.env.SERVER_HOST || "localhost",
     port: process.env.SERVER_PORT || "3000",
   },
 };

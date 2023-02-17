@@ -12,8 +12,6 @@ class UserService {
       const { userid, password, nickname, ...rest } = userData;
       if (!userid || !password || !nickname) throw "내용이 없습니다";
 
-      console.log("확인용", this.jwt.salt);
-
       const hash = this.crypto.createHmac("sha256", this.jwt.salt).update(password).digest("hex");
       const user = await this.userRepository.addUser({
         userid,
@@ -28,7 +26,6 @@ class UserService {
   }
 
   async userCheck(user) {
-    // console.log(`serv :`, user)
     try {
       const userCheck = await this.userRepository.findUser(user);
       return userCheck;
@@ -41,7 +38,6 @@ class UserService {
     try {
       const { userid } = this.jwt.verifyToken(token, this.jwt.salt);
       const user = await this.userRepository.getUserById(userid);
-      console.log(user);
       return user;
     } catch (e) {
       throw new Error(e);
@@ -128,7 +124,6 @@ class UserService {
       const kakaoToken = await this.getKakaoToken({ code });
       const user = await this.getKakaoUserProfile({ kakaoToken });
       const result = await this.userRepository.addOrLoginKakao(user);
-      console.log(result);
       if (!result) {
         await this.userRepository.updateKakao(user);
       }

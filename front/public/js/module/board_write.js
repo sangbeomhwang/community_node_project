@@ -23,10 +23,9 @@ const imgUploadHandler = async (e) => {
   const temp = path.split("/");
   temp.shift();
   const src = temp.join("/");
-  const uri = "http://localhost:3000/";
-
+  const server = document.querySelector("#server").value;
   focusEditor();
-  document.execCommand("insertImage", false, `${uri}${src}`);
+  document.execCommand("insertImage", false, `${server}${src}`);
 };
 
 const subCatHandler = (e) => {
