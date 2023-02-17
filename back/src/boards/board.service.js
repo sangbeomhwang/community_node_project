@@ -7,28 +7,38 @@ class BoardService {
   async extData({ boardidx, nickname }) {
     const comment = await this.boardRepository.findCommentsCount({ boardidx });
     const like = await this.boardRepository.findLikesCount({ boardidx });
-    const {image} = await this.boardRepository.findImage({nickname})
+    const { image } = await this.boardRepository.findImage({ nickname });
     const hashtag = await this.boardRepository.findHashtags({ boardidx });
 
     const hash = hashtag.map((val) => val.tag);
 
-    return { comment, like, image ,hash };
+    return { comment, like, image, hash };
   }
 
   async dataControl(data) {
     const { register, ...rest } = data;
-    const { comment, like, image ,hash } = await this.extData({
+    const { comment, like, image, hash } = await this.extData({
       boardidx: data.boardidx,
-      nickname: data.nickname
+      nickname: data.nickname,
     });
     const date = new this.DateFormat(register).dateformat();
-    return { ...rest, register: date, comment, like, image ,hash };
+    return { ...rest, register: date, comment, like, image, hash };
   }
 
-  async list({ mainidx, subidx, page, maxBoards, target, sort, viewPageCount }) {
+  async list({
+    mainidx,
+    subidx,
+    page,
+    maxBoards,
+    target,
+    sort,
+    viewPageCount,
+    level,
+  }) {
     try {
       if (mainidx === "null" || mainidx === "undefined") mainidx = undefined;
       if (subidx === "null" || subidx === "undefined") subidx = undefined;
+      if (level === "null" || level === "undefined") level = undefined;
 
       const result = await this.boardRepository.findAndCountAll({
         mainidx,
@@ -37,11 +47,15 @@ class BoardService {
         maxBoards,
         target,
         sort,
+        level,
       });
+
       const totalBoards = result.count;
-      // console.log("totalboard check ~~~ : ", totalBoards);
 
       const data = result.rows;
+
+      // console.log("totalboard check ~~~ : ", totalBoards);
+
       for (let i = 0; i < data.length; i++) {
         data[i] = await this.dataControl(data[i]);
       }

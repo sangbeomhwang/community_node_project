@@ -18,5 +18,4 @@ router.get("/comments", (req, res, next) =>
   controller.getComments(req, res, next)
 );
 
-
 module.exports = router;

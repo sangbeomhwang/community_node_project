@@ -153,7 +153,17 @@ body {
 }
 
 #allusers_body > ul {
+  height: 880px;
   margin-top: 40px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+#allusers_body > ul::-webkit-scrollbar {
+  display: none;
 }
 
 #allusers_body > ul > li {

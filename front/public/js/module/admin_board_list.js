@@ -11,32 +11,49 @@ const render = async ({ data }) => {
     boardListBox.innerHTML += adminBoardListTemplate(data[i]);
   }
 
-  const default_img = document.querySelectorAll("#allusers_body > ul > li > ul > li > img");
+  const default_img = document.querySelectorAll(
+    "#allusers_body > ul > li > ul > li > img"
+  );
 
   const server = document.querySelector("#server").value;
   for (let i = 0; i < default_img.length; i++) {
     // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
     if (default_img[i].src.indexOf(`${server}`) === -1) {
-      default_img[i].src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+      default_img[i].src =
+        "https://cdn-icons-png.flaticon.com/512/64/64572.png";
     }
   }
 
-  const title_content = document.querySelectorAll("#allusers_body > ul > li > ul > #title_length");
+  const title_content = document.querySelectorAll(
+    "#allusers_body > ul > li > ul > #title_length"
+  );
 
   for (let i = 0; i < title_content.length; i++) {
     const default_len = 28;
     const last_text = "...";
 
     if (title_content[i].textContent.length > default_len) {
-      title_content[i].textContent = title_content[i].textContent.substring(0, default_len) + last_text;
+      title_content[i].textContent =
+        title_content[i].textContent.substring(0, default_len) + last_text;
     }
   }
 };
 
-const getData = async ({ mainidx, subidx, page, target = "boardidx" }) => {
+const getData = async ({ target = "boardidx" }) => {
+  const response = await request.get(`/boards?level=ok`);
+  const totalBoardsNum = response.data.pagination.totalBoards;
+
+  console.log("num check~~~ : ", totalBoardsNum);
+
+  const totalListBox = document.querySelector("#totalListNum");
+  totalListBox.textContent = `Total Boards: ${totalBoardsNum}`;
+
   const {
     data: { data, pagination },
-  } = await request.get(`/boards?mainidx=${mainidx}&subidx=${subidx}&page=${page}&target=${target}&sort=${sortNow}`);
+  } = await request.get(
+    `/boards?maxBoards=${totalBoardsNum}&level=ok&target=${target}&sort=${sortNow}`
+  );
+
   return { data, pagination };
 };
 
@@ -46,9 +63,9 @@ const sortHandler = async (e) => {
     old: "ASC",
   };
   sortNow = sort[e.target.value];
-  const { page } = document.querySelector(`[data-page]`).dataset;
+  // const { page } = document.querySelector(`[data-page]`).dataset;
   const { data, pagination } = await getData({
-    page,
+    // page,
     sortNow,
   });
   render({ data });
