@@ -22,4 +22,8 @@ router.post("/:boardidx", (req, res, next) =>
 //   controller.getBoardList(req, res, next)
 // );
 
+router.get("/boardlist", (req, res, next) =>
+  controller.getBoardList(req, res, next)
+);
+
 module.exports = router;

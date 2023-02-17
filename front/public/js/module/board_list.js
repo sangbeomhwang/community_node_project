@@ -15,7 +15,9 @@ const render = ({ data }) => {
 const getData = async ({ mainidx, subidx, page, target = "boardidx" }) => {
   const {
     data: { data, pagination },
-  } = await request.get(`/boards?mainidx=${mainidx}&subidx=${subidx}&page=${page}&target=${target}&sort=${sortNow}`);
+  } = await request.get(
+    `/boards?mainidx=${mainidx}&subidx=${subidx}&page=${page}&target=${target}&sort=${sortNow}`
+  );
   return { data, pagination };
 };
 
@@ -72,12 +74,20 @@ const leftBtnHandler = async () => {
     return;
   }
   if (page !== startpage) {
-    const { data, pagination } = await getData({ mainidx, subidx, page: startpage });
+    const { data, pagination } = await getData({
+      mainidx,
+      subidx,
+      page: startpage,
+    });
     render({ data });
     pageListRender({ pagination });
     nowPageNav({ page: pagination.page });
   } else {
-    const { data, pagination } = await getData({ mainidx, subidx, page: Number(startpage) - 1 });
+    const { data, pagination } = await getData({
+      mainidx,
+      subidx,
+      page: Number(startpage) - 1,
+    });
     render({ data });
     pageListRender({ pagination });
     nowPageNav({ page: pagination.page });
@@ -97,7 +107,11 @@ const rightBtnHandler = async () => {
     return;
   }
   if (endpage === lastpage) {
-    const { data, pagination } = await getData({ mainidx, subidx, page: endpage });
+    const { data, pagination } = await getData({
+      mainidx,
+      subidx,
+      page: endpage,
+    });
     render({ data });
     pageListRender({ pagination });
     nowPageNav({ page: pagination.page });
@@ -105,7 +119,11 @@ const rightBtnHandler = async () => {
   }
 
   if (page <= endpage) {
-    const { data, pagination } = await getData({ mainidx, subidx, page: Number(endpage) + 1 });
+    const { data, pagination } = await getData({
+      mainidx,
+      subidx,
+      page: Number(endpage) + 1,
+    });
     render({ data });
     pageListRender({ pagination });
     nowPageNav({ page: pagination.page });
@@ -124,7 +142,12 @@ const sortHandler = async (e) => {
   };
   sortNow = sort[e.target.value];
   const { page } = document.querySelector(`.now[data-page]`).dataset;
-  const { data, pagination } = await getData({ mainidx, subidx, page, sortNow });
+  const { data, pagination } = await getData({
+    mainidx,
+    subidx,
+    page,
+    sortNow,
+  });
   render({ data });
   pageListRender({ pagination });
   nowPageNav({ page: pagination.page });

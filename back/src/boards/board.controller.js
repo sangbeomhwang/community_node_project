@@ -15,6 +15,7 @@ class BoardController {
         target: req.query?.target || "boardidx",
         sort: req.query?.sort || "DESC",
         viewPageCount: Number(req.query?.viewPageCount) || 5,
+        level: req.query?.level,
       });
       res.json(itemList);
     } catch (e) {

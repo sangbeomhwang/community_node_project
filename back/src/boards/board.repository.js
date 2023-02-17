@@ -9,14 +9,30 @@ class BoardRepository {
     this.Points = Points;
   }
 
-  async findAndCountAll({ mainidx, subidx, page, maxBoards, target, sort }) {
+  async findAndCountAll({
+    mainidx,
+    subidx,
+    page,
+    maxBoards,
+    target,
+    sort,
+    level,
+  }) {
     try {
+      if (level) {
+        const boardList = await this.Boards.findAndCountAll({
+          order: [[target, sort]],
+          raw: true,
+        });
+        return boardList;
+      }
       if (!mainidx) {
         const boardList = await this.Boards.findAndCountAll({
           limit: maxBoards,
           offset: (page - 1) * maxBoards,
           order: [[target, sort]],
           raw: true,
+          where: { visible: "visible" },
         });
         return boardList;
       }
@@ -27,6 +43,7 @@ class BoardRepository {
           order: [[target, sort]],
           where: {
             mainidx,
+            visible: "visible",
           },
           raw: true,
         });
@@ -36,7 +53,7 @@ class BoardRepository {
         limit: maxBoards,
         offset: (page - 1) * maxBoards,
         order: [[target, sort]],
-        where: { mainidx, subidx },
+        where: { mainidx, subidx, visible: "visible" },
         raw: true,
       });
       return boardList;
@@ -75,7 +92,10 @@ class BoardRepository {
 
   async update({ boardidx, title, content, nickname, mainidx, subidx }) {
     try {
-      const boardPut = await this.Boards.update({ title, content, nickname, mainidx, subidx }, { where: { boardidx } });
+      const boardPut = await this.Boards.update(
+        { title, content, nickname, mainidx, subidx },
+        { where: { boardidx } }
+      );
       return boardPut;
     } catch (e) {
       throw new Error(e);
@@ -95,7 +115,10 @@ class BoardRepository {
     try {
       const response = await this.Boards.findAll({
         where: {
-          [this.Op.or]: [{ title: { [this.Op.like]: `%${keyword}%` } }, { nickname: { [this.Op.like]: `%${keyword}%` } }],
+          [this.Op.or]: [
+            { title: { [this.Op.like]: `%${keyword}%` } },
+            { nickname: { [this.Op.like]: `%${keyword}%` } },
+          ],
         },
         raw: true,
       });
@@ -165,7 +188,10 @@ class BoardRepository {
 
   async incrementHit({ boardidx }) {
     try {
-      const response = await this.Boards.increment({ hit: 1 }, { where: { boardidx } });
+      const response = await this.Boards.increment(
+        { hit: 1 },
+        { where: { boardidx } }
+      );
       return response;
     } catch (e) {
       throw new Error(e);
