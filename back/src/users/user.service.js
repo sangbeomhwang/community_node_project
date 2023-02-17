@@ -172,6 +172,16 @@ class UserService {
       throw new Error(e);
     }
   }
+
+  async getDetailCounts({ nickname }) {
+    try {
+      if (!nickname) return { message: "잘못된 형식입니다." };
+      const response = await this.userRepository.detailCount({ nickname });
+      return response;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
 }
 
 module.exports = UserService;

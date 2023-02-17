@@ -125,6 +125,16 @@ class UserController {
       next(e);
     }
   }
+
+  async getmypage(req, res, next) {
+    try {
+      res.render("user/mypage.html", {
+        server: this.server,
+      });
+    } catch (e) {
+      next(e);
+    }
+  }
 }
 
 const userController = new UserController();

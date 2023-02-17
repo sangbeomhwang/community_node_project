@@ -1,9 +1,10 @@
 class UserRepository {
-  constructor({ Users, Boards, Comments, Likes }) {
+  constructor({ Users, Boards, Comments, Likes, Points }) {
     this.User = Users;
     this.Boards = Boards;
     this.Comments = Comments;
     this.Likes = Likes;
+    this.Points = Points;
   }
 
   async addUser(payload) {
@@ -129,10 +130,50 @@ class UserRepository {
 
   async getDetail({ nickname, post }) {
     try {
-      const response = await this.Boards.findAndCountAll({
-        include: [{ model: this.Users, where: { nickname: "cloud" } }],
+      switch (post) {
+        case "boards": {
+          const response = await this.Boards.findAll({
+            where: { nickname },
+            raw: true,
+          });
+          return response;
+        }
+
+        case "comments": {
+          const response = await this.Comments.findAll({
+            where: { nickname },
+          });
+          return response;
+        }
+
+        case "likes": {
+          const response = await this.Likes.findAll({
+            where: { nickname },
+            raw: true,
+          });
+          return response;
+        }
+
+        default:
+          return { message: "지원되지 않는 형식입니다." };
+      }
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async detailCount({ nickname }) {
+    try {
+      const boards = await this.Boards.count({
+        where: { nickname },
       });
-      return response;
+      const comments = await this.Comments.count({
+        where: { nickname },
+      });
+      const likes = await this.Likes.count({
+        where: { nickname },
+      });
+      return { boards, comments, likes };
     } catch (e) {
       throw new Error(e);
     }

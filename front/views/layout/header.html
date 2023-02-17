@@ -20,6 +20,7 @@
           {% if image %}
 
           <img src="{{image}}" alt="modify_img" data-userimage="{{image}}" />
+
           <ul id="profile_menu">
             {% if level === 'top' %}
             <li id="admin_info">
@@ -34,6 +35,7 @@
               <a id="logout_btn" href="/">로그아웃</a>
             </li>
           </ul>
+
           <script>
             const logout = document.querySelector("#logout");
             logout.addEventListener("click", (e) => {
@@ -61,6 +63,7 @@
             alt="modify_img"
             data-userimage="https://cdn-icons-png.flaticon.com/512/64/64572.png"
           />
+
           <ul id="profile_menu">
             {% if level === 'top' %}
             <li id="admin_info">
@@ -75,6 +78,7 @@
               <a id="logout_btn" href="/">로그아웃</a>
             </li>
           </ul>
+
           <script type="text/javascript">
             const logout1 = document.querySelector("#logout");
             logout1.addEventListener("click", (e) => {

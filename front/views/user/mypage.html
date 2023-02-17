@@ -1,53 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="../../public/css/root.css" />
-    <link rel="stylesheet" href="../../public/css/user/mypage.css" />
-  </head>
-  <body>
-    <div id="wrap">
-      <div id="page_wrap">
-        <div id="header_wrap">
-          <div id="header">
-            <h1 id="logo">
-              <a href="/"
-                ><img src="https://i.postimg.cc/hjKZgQ6x/team-logo.png"
-              /></a>
-              <span>My Page</span>
-            </h1>
-          </div>
-        </div>
+{% extends '../layout/layout.html' %} {% block css %}
 
-        <div id="contents_wrap">
-          <div id="contents_header">
-            <button>My 게시글</button>
-            <button>My 댓글</button>
-            <button>My 좋아요</button>
-          </div>
+<link rel="stylesheet" href="/css/user/mypage.css" />
 
-          <div id="contents_body">
-            <ul>
-              <li>게시글1</li>
-              <li>게시글2</li>
-              <li>게시글3</li>
-              <li>게시글4</li>
-              <li>게시글5</li>
-              <li>게시글6</li>
-              <li>게시글7</li>
-              <li>게시글8</li>
-            </ul>
-          </div>
-
-          <div id="btn">
-            <button>뒤로가기</button>
-          </div>
-        </div>
+{% endblock %} {% block content %}
+<div id="page_wrap">
+  <div id="header_wrap">
+    <div id="header">
+      <h1 id="logo">
+        <a href="/"
+          ><img src="https://i.postimg.cc/hjKZgQ6x/team-logo.png"
+        /></a>
+        <span>My Page</span>
+      </h1>
+      <div id="pointbox">
+        <span>All Points :</span>
+        <span>480</span>
+        <span>pt</span>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+
+  <div id="contents_wrap">
+    <div id="contents_header">
+      <div id="button">
+        <button>My 게시글</button>
+        <button>My 댓글</button>
+        <button>My 좋아요</button>
+      </div>
+      <div id="imgbox">
+        <img src="/img/loap.png" />
+        <img src="/img/loap.png" />
+        <img src="/img/loap.png" />
+      </div>
+      <div id="total">
+        <div><span>Boards : 40개</span></div>
+        <div><span>Comments : 20개</span></div>
+        <div><span>Likes : 20개</span></div>
+      </div>
+      <div id="imgbox2">
+        <img src="/img/loap.png" />
+        <img src="/img/loap.png" />
+        <img src="/img/loap.png" />
+      </div>
+    </div>
+
+    <div id="contents_body">
+      <ul>
+        <li>
+          <span>공지사항</span>
+          <span>일상이야기</span>
+          <span>제목입니다</span>
+          <span>2023-02-17</span>
+        </li>
+        <li>
+          <span>커뮤니티</span>
+          <span>모임</span>
+          <span>제목입니다</span>
+          <span>2023-02-17</span>
+        </li>
+        <li>게시글3</li>
+        <li>게시글4</li>
+        <li>게시글5</li>
+        <li>게시글6</li>
+        <li>게시글7</li>
+        <li>게시글8</li>
+      </ul>
+    </div>
+
+    <div id="btn">
+      <button>뒤로가기</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block js %}
+
+<script type="module" src="/js/module/mypage.js"></script>
+
+{% endblock %}

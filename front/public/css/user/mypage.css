@@ -10,7 +10,7 @@ li {
 
 #wrap {
   width: 100%;
-  min-height: 1500px;
+  min-height: 1700px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(https://i.postimg.cc/prdZ6L1b/loaf-g11290abfc-1920-1.png);
   background-size: cover;
@@ -29,6 +29,10 @@ li {
 
 #header_wrap {
   width: 100%;
+}
+
+#header {
+  height: 50px;
 }
 
 #header > h1 {
@@ -56,19 +60,45 @@ li {
   margin-top: 50px;
 }
 
+#header > #pointbox {
+  margin: 230px auto 0;
+  width: 300px;
+  height: 50px;
+  border: 2px solid #a46843;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+  border-radius: 12px;
+  text-align: center;
+}
+
+#header > #pointbox:hover {
+  background-color: #d48a48;
+  color: black;
+  border: none;
+}
+
+#header > #pointbox > span {
+  color: #f4f3f3;
+  font-size: 20px;
+  line-height: 53px;
+}
+
 #contents_wrap {
   width: 100%;
-  margin-top: 250px;
 }
 
 #contents_wrap > #contents_header {
   width: 900px;
-  margin: 0 auto;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+#contents_wrap > #button {
   display: flex;
   justify-content: center;
 }
 
-#contents_header > button {
+#contents_header > #button > button {
   width: 250px;
   height: 65px;
   font-size: 20px;
@@ -84,18 +114,92 @@ li {
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
 }
 
-#contents_header > button:hover {
+#imgbox {
+  height: 40px;
+}
+
+#imgbox > img {
+  width: 40px;
+  height: 40px;
+}
+
+#imgbox > img:nth-child(2) {
+  margin: 0 218px 0;
+}
+
+#contents_header > #total {
+  display: flex;
+}
+
+#contents_header > #total > div:nth-child(1) {
+  margin-left: 80px;
+}
+
+#contents_header > #total > div:nth-child(2) {
+  margin-left: 55px;
+}
+
+#contents_header > #total > div:nth-child(3) {
+  margin-left: 55px;
+}
+
+#contents_header > #total > div:nth-child(1):hover {
   background-color: #d48a48;
   color: #f4f3f3;
 }
 
+#contents_header > #total > div:nth-child(2):hover {
+  background-color: #d48a48;
+  color: #f4f3f3;
+}
+
+#contents_header > #total > div:nth-child(3):hover {
+  background-color: #d48a48;
+  color: #f4f3f3;
+}
+
+#contents_header > #total > div {
+  line-height: 7px;
+  width: 210px;
+  height: 40px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 12px;
+  border: none;
+  padding-top: 20px;
+  box-sizing: border-box;
+  background: #f4f3f3;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+}
+
+#contents_header > #button > button:hover {
+  background-color: #d48a48;
+  color: #f4f3f3;
+}
+
+#contents_header > #imgbox2 {
+  display: flex;
+  justify-content: center;
+}
+
+#contents_header > #imgbox2 > img {
+  width: 40px;
+  height: 80px;
+}
+
+#contents_header > #imgbox2 > img:nth-child(2) {
+  margin: 0 220px 0;
+}
+
 #contents_body {
-  margin: 60px auto;
+  margin: 0 auto 40px;
   max-width: 800px;
   width: 100%;
   height: 550px;
   padding: 35px 40px;
-  border: 1px solid #f4f3f3;
+  border: 2px solid #a46843;
   border-radius: 30px;
 }
 
@@ -105,16 +209,65 @@ li {
 
 #contents_body > ul > li {
   height: 50px;
-  text-align: center;
+  display: flex;
+  align-items: center;
   border-radius: 12px;
+  padding-left: 20px;
   border: none;
   margin: 8px 5px 5px 5px;
-  padding: 20px;
   box-sizing: border-box;
   background: #f4f3f3;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+}
+
+/* #contents_body > ul > li:nth-child(1) {
+  transform: rotateX(-360deg);
+  transition: all 1s;
+}
+
+#contents_body > ul > li:nth-child(1):hover {
+  transform: rotateX(0);
+  transition: all 1s;
+} */
+
+#contents_body > ul > li:hover {
+  background-color: #d48a48;
+  color: #f4f3f3;
+}
+
+#contents_body > ul > li > span {
+  display: inline-block;
+  text-align: center;
+}
+
+#contents_body > ul > li > span:nth-child(1) {
+  float: left;
+  line-height: 20px;
+  width: 80px;
+  border-right: 2px solid rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+#contents_body > ul > li > span:nth-child(2) {
+  float: left;
+  line-height: 20px;
+  width: 100px;
+  border-right: 2px solid rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+#contents_body > ul > li > span:nth-child(3) {
+  width: 350px;
+  margin-left: 20px;
+  border-right: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+#contents_body > ul > li > span:nth-child(4) {
+  width: 100px;
+  margin-left: 20px;
+  float: right;
 }
 
 #contents_wrap > #btn {
