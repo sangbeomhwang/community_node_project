@@ -222,6 +222,16 @@ li {
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
 }
 
+/* #contents_body > ul > li:nth-child(1) {
+  transform: rotateX(-360deg);
+  transition: all 1s;
+}
+
+#contents_body > ul > li:nth-child(1):hover {
+  transform: rotateX(0);
+  transition: all 1s;
+} */
+
 #contents_body > ul > li:hover {
   background-color: #d48a48;
   color: #f4f3f3;
