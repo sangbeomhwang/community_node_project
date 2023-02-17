@@ -27,7 +27,8 @@ class UserController {
       console.log("req check ~~ : ", req.headers.authorization);
       if (!req.headers.authorization) throw new Error("No Authorization");
       const [type, token] = req.headers.authorization.split(" ");
-      if (type.toLowerCase() !== "bearer") throw new Error("Authorization Type Error");
+      if (type.toLowerCase() !== "bearer")
+        throw new Error("Authorization Type Error");
       const user = await this.userService.me(token);
       console.log("cont : ", user);
       res.json(user);
@@ -41,7 +42,8 @@ class UserController {
       console.log("req check ~~ : ", req.headers);
       if (!req.headers.authorization) throw new Error("No Authorization");
       const [type, token] = req.headers.authorization.split(" ");
-      if (type.toLowerCase() !== "bearer") throw new Error("Authorization Type Error");
+      if (type.toLowerCase() !== "bearer")
+        throw new Error("Authorization Type Error");
 
       const user = await this.userService.id(token);
       console.log("cont : ", user);
@@ -68,7 +70,9 @@ class UserController {
       const config = require("../../config");
       const { code } = req.query;
       const token = await this.userService.signinWithKakao({ code });
-      res.redirect(`http://${config.server.host}:${config.server.port}/users/kakao/cookie?token=${token}`);
+      res.redirect(
+        `http://${config.server.host}:${config.server.port}/users/kakao/cookie?token=${token}`
+      );
     } catch (e) {
       next(e);
     }
@@ -76,9 +80,11 @@ class UserController {
 
   async getDetail(req, res, next) {
     try {
+      console.log(req.headers.authorization);
       if (!req.headers.authorization) throw new Error("No Authorization");
       const [type, token] = req.headers.authorization.split(" ");
-      if (type.toLowerCase() !== "bearer") throw new Error("Authorization Type Error");
+      if (type.toLowerCase() !== "bearer")
+        throw new Error("Authorization Type Error");
       if (!token) throw new Error("Invalid Token");
       const post = req.query?.post || "board";
       const response = await this.userService.getDetails({ token, post });
@@ -92,7 +98,8 @@ class UserController {
     try {
       if (!req.headers.authorization) throw new Error("No Authorization");
       const [type, token] = req.headers.authorization.split(" ");
-      if (type.toLowerCase() !== "bearer") throw new Error("Authorization Type Error");
+      if (type.toLowerCase() !== "bearer")
+        throw new Error("Authorization Type Error");
       if (!token) throw new Error("Invalid Token");
       const response = await this.userService.getDetailCounts({ token });
       res.json(response);
