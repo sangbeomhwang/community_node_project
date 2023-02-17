@@ -29,7 +29,7 @@ const render = async ({ data }) => {
   );
 
   for (let i = 0; i < title_content.length; i++) {
-    const default_len = 28;
+    const default_len = 15;
     const last_text = "...";
 
     if (title_content[i].textContent.length > default_len) {

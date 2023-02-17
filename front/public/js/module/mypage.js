@@ -31,7 +31,7 @@ const myPageBoardTemplate = ({
     <li data-boardidx="${boardidx}">
         <span>${mainCat[mainidx]}</span>
         <span>${subCat[mainCat[mainidx]][subidx]}</span>
-        <span>${title}</span>
+        <span id='title_length'>${title}</span>
         <span>${register}</span>
     </li>
     `;
@@ -42,7 +42,7 @@ const myPageCommentTemplate = ({ commentidx, boardidx, register, content }) => {
       <li data-commentidx="${commentidx}">
           <span>${boardidx}번</span>
           <span>게시글</span>
-          <span>${content}</span>
+          <span id='comment_length'>${content}</span>
           <span>${register}</span>
       </li>
       `;
@@ -73,7 +73,7 @@ const myPageLikeTemplate = ({ boardidx, mainidx, subidx, register, title }) => {
       <li data-boardidx="${boardidx}">
           <span>${mainCat[mainidx]}</span>
           <span>${subCat[mainCat[mainidx]][subidx]}</span>
-          <span>${title}</span>
+          <span id='like_length'>${title}</span>
           <span>${register}</span>
       </li>
       `;
@@ -109,8 +109,19 @@ const boardHandler = async () => {
   for (let i = 0; i < response.data.length; i++) {
     boardbox.innerHTML += myPageBoardTemplate(response.data[i]);
   }
-};
 
+  const title_content = document.querySelectorAll("#title_length");
+
+  for (let i = 0; i < title_content.length; i++) {
+    const default_len = 18;
+    const last_text = "...";
+
+    if (title_content[i].textContent.length > default_len) {
+      title_content[i].textContent =
+        title_content[i].textContent.substring(0, default_len) + last_text;
+    }
+  }
+};
 const commentHandler = async () => {
   const response = await request.get("/users/details?post=comments", {
     headers: {
@@ -121,6 +132,18 @@ const commentHandler = async () => {
   boardbox.innerHTML = "";
   for (let i = 0; i < response.data.length; i++) {
     boardbox.innerHTML += myPageCommentTemplate(response.data[i]);
+  }
+
+  const comment_content = document.querySelectorAll("#comment_length");
+
+  for (let i = 0; i < comment_content.length; i++) {
+    const default_len = 18;
+    const last_text = "...";
+
+    if (comment_content[i].textContent.length > default_len) {
+      comment_content[i].textContent =
+        comment_content[i].textContent.substring(0, default_len) + last_text;
+    }
   }
 };
 
@@ -134,6 +157,18 @@ const likeHandler = async () => {
   boardbox.innerHTML = "";
   for (let i = 0; i < response.data.length; i++) {
     boardbox.innerHTML += myPageLikeTemplate(response.data[i]);
+  }
+
+  const like_content = document.querySelectorAll("#like_length");
+
+  for (let i = 0; i < like_content.length; i++) {
+    const default_len = 18;
+    const last_text = "...";
+
+    if (like_content[i].textContent.length > default_len) {
+      like_content[i].textContent =
+        like_content[i].textContent.substring(0, default_len) + last_text;
+    }
   }
 };
 
