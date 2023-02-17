@@ -30,7 +30,6 @@ class AdminController {
   async putBoard(req, res, next) {
     try {
       const { boardidx } = req.params;
-      console.log("req.params", req.params)
       // console.log("admin user put check~~~~ : ", req.body);
       const itemPut = await this.adminService.boardModify({
         boardidx,

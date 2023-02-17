@@ -33,124 +33,18 @@ const template = ({ boardidx, nickname, register, title, hashtag, hit, like, com
  </li>
  `;
 
-const contentBox = document.querySelector('#content_body > ul')
-const queryString = new URLSearchParams(location.search);
+const contentBox = document.querySelector("#content_body > ul");
 
-document.querySelector('#searchbox').addEventListener('keyup', async (e) => {
-    e.preventDefault()
-    if(e.keyCode === 13) {
-        const searchbox = e.target
-        // console.log(searchbox.value)
-        const response = await request.get(`/boards/search?keyword=${searchbox.value}`) 
-    // console.log('==============', response.data)
+document.querySelector("#searchbox").addEventListener("keyup", async (e) => {
+  e.preventDefault();
+  if (e.keyCode === 13) {
+    const searchbox = e.target;
+    const response = await request.get(`/boards/search?keyword=${searchbox.value}`);
 
-    contentBox.innerHTML = ''
-    for(let i = 0; i < response.data.length; i++) {
-      contentBox.innerHTML += template(response.data[i])
+    contentBox.innerHTML = "";
+    for (let i = 0; i < response.data.length; i++) {
+      contentBox.innerHTML += template(response.data[i]);
     }
-    return response
-
-}})
-
-// // console.log(response.data[i].nickname)
-// if(response.data[i].nickname.includes(searchbox.value)) {
-//   //     contentBox.innerHTML += template(response.data[j])
-//   // }    
-//   }
-//   console.log('####',response.data[0].nickname.includes(searchbox.value))
-
-
-// document.querySelector('#searchbox').addEventListener('keyup', async (e) => {
-//     e.preventDefault()
-//     if(e.keyCode === 13) {
-    
-//         const render = async ({ mainidx, subidx, page }) => {
-//             const searchbox = e.target
-//             // console.log(searchbox.value)
-//             const response = await request.get(`/boards/search?keyword=${searchbox.value}&mainidx=${mainidx}&subidx=${subidx}$page=${page}`) 
-//             console.log('=================', response)
-//             console.log('==============', response.data)
-//             console.log('===========', response.data.length)
-        
-//             contentBox.innerHTML = ''
-//             for(let i = 0; i < response.data.length; i++) {
-//                 contentBox.innerHTML += template(response.data[i])
-//             }
-//             return response
-//         }
-
-//         const init = async () => {
-//             const leftBtnHandler = async () => {
-//               if (result.page === 1) {
-//                 return console.log("끝");
-//               } else {
-//                 result = await render({ mainidx, subidx, page: result.startPageNum - 1 });
-//                 drawPageList(result);
-//                 const nowPage = document.querySelector(`[data-page='${result.page}']`);
-//                 nowPage.classList.add("now");
-//               }
-//             };
-          
-//             const leftBtn = document.querySelector(".left");
-//             leftBtn.addEventListener("click", leftBtnHandler);
-          
-//             const rightBtnHandler = async () => {
-//               if (result.page === result.lastPage) {
-//                 return console.log("끝");
-//               }
-//               if (result.endPageNum + 1 < result.lastPage) {
-//                 result = await render({ mainidx, subidx, page: result.endPageNum + 1 });
-//                 drawPageList(result);
-//                 const nowPage = document.querySelector(`[data-page='${result.page}']`);
-//                 nowPage.classList.add("now");
-//               } else {
-//                 result = await render({ mainidx, subidx, page: result.endPageNum });
-//                 drawPageList(result);
-//                 const nowPage = document.querySelector(`[data-page='${result.page}']`);
-//                 nowPage.classList.add("now");
-//               }
-//             };
-          
-//             const rightBtn = document.querySelector(".right");
-//             rightBtn.addEventListener("click", rightBtnHandler);
-          
-//             const pageList = document.querySelector("#page");
-//             const drawPageList = (result) => {
-//               pageList.innerHTML = "";
-          
-//               for (let i = result.startPageNum; i <= result.endPageNum; i++) {
-//                 pageList.innerHTML += `<li data-page='${i}'>${i}</li>`;
-//               }
-//             };
-          
-//             const pageListHandler = async (e) => {
-//               const { page } = e.target.dataset;
-//               if (page) {
-//                 result = await render({ mainidx, subidx, page });
-//               }
-//               const nowPageList = document.querySelectorAll(`[data-page]`);
-//               console.log(nowPageList);
-//               for (let i = 0; i < nowPageList.length; i++) {
-//                 nowPageList[i].classList.remove("now");
-//               }
-//               const nowPage = document.querySelector(`[data-page='${result.page}']`);
-//               nowPage.classList.add("now");
-//             };
-          
-//             pageList.addEventListener("click", pageListHandler);
-          
-//             const mainidx = queryString.get("mainidx");
-//             const subidx = queryString.get("subidx");
-//             const page = queryString.get("page");
-          
-//             let result = await render({ mainidx, subidx, page });
-//             drawPageList(result);
-//             const nowPage = document.querySelector(`[data-page='${result.page}']`);
-//             nowPage.classList.add("now");
-//           };
-          
-//           init();
-
-// }})
-    
-
+    return response;
+  }
+});

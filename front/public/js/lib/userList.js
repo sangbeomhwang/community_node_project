@@ -1,14 +1,6 @@
 import request from "/js/lib/request.js";
 
-const userListTemplate = ({
-  image,
-  userid,
-  name,
-  nickname,
-  email,
-  level,
-  access,
-}) => `
+const userListTemplate = ({ image, userid, name, nickname, email, level, access }) => `
 <li>
     <ul>
         <li class="users_info">
@@ -44,17 +36,14 @@ const render = async () => {
     userListBox.innerHTML += userListTemplate(userList[i]);
   }
 
-  const default_img = document.querySelectorAll(
-    "#allusers_body > ul > li > ul > li > img"
-  );
+  const default_img = document.querySelectorAll("#allusers_body > ul > li > ul > li > img");
 
-  console.log(default_img);
+  const server = document.querySelector("#server").value;
 
   for (let i = 0; i < default_img.length; i++) {
     // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
-    if (default_img[i].src.indexOf("http://127.0.0.1:3000/") === -1) {
-      default_img[i].src =
-        "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+    if (default_img[i].src.indexOf(`${server}`) === -1) {
+      default_img[i].src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
     }
   }
 

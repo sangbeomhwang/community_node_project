@@ -10,7 +10,6 @@ router.get("/details", (req, res, next) => controller.getDetail(req, res, next))
 router.put("/", (req, res, next) => controller.putProfile(req, res, next));
 
 router.post("/single", uploads("user").single("filename"), (req, res, next) => {
-  console.log("req.file : ", req.file);
   res.send(req.file);
 });
 

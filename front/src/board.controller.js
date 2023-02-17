@@ -1,6 +1,9 @@
-require("dotenv").config();
+const config = require("../config");
 
 class BoardController {
+  constructor() {
+    this.server = `http://${config.server.host}:${config.server.port}/`;
+  }
   async getBoard(req, res, next) {
     try {
       const { nickname, image, level, access } = req.user;
@@ -9,6 +12,7 @@ class BoardController {
         image,
         level,
         access,
+        server: this.server,
       });
     } catch (e) {
       next(e);
@@ -23,6 +27,7 @@ class BoardController {
         image,
         access,
         level,
+        server: this.server,
       });
     } catch (e) {
       next(e);
@@ -54,6 +59,7 @@ class BoardController {
         access,
         boardidx,
         level,
+        server: this.server,
       });
     } catch (e) {
       next(e);
@@ -70,6 +76,7 @@ class BoardController {
         access,
         boardidx,
         level,
+        server: this.server,
       });
     } catch (e) {
       next(e);

@@ -7,7 +7,6 @@ class UserRepository {
   }
 
   async addUser(payload) {
-    console.log(payload);
     try {
       const user = await this.User.create(payload, { raw: true });
       return user;
@@ -18,7 +17,6 @@ class UserRepository {
 
   async findUser(user) {
     const key = Object.keys(user);
-    // console.log(user[key]);
     try {
       const userCheck = await this.User.findOne({
         raw: true,
@@ -67,8 +65,6 @@ class UserRepository {
         returning: true,
       }
     );
-    console.log(`user check : `, user);
-    console.log(`repo2 : `, user[1]);
     return user[1];
   }
 
@@ -110,7 +106,6 @@ class UserRepository {
       const response = await this.Boards.findAndCountAll({
         include: [{ model: this.Users, where: { nickname: "cloud" } }],
       });
-      console.log(response);
       return response;
     } catch (e) {
       throw new Error(e);

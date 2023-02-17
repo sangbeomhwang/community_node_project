@@ -10,9 +10,12 @@ const request = axios.create({
 });
 
 class UserController {
+  constructor() {
+    this.server = `http://${config.server.host}:${config.server.port}/`;
+  }
   async getTerms(req, res, next) {
     try {
-      res.render("user/terms.html");
+      res.render("user/terms.html", { server: this.server });
     } catch (e) {
       next(e);
     }
@@ -28,7 +31,7 @@ class UserController {
 
   async getSignup(req, res, next) {
     try {
-      res.render("user/signup.html");
+      res.render("user/signup.html", { server: this.server });
     } catch (e) {
       next(e);
     }
@@ -36,13 +39,11 @@ class UserController {
 
   async postSignup(req, res, next) {
     try {
-      console.log("확인용", req.body);
       // POST 127.0.0.1:3000/users
 
       const response = await request.post("/users", {
         ...req.body,
       });
-      console.log(`response`, response);
 
       const { userid, nickname, password } = response.data;
 
@@ -57,6 +58,7 @@ class UserController {
       const { nickname } = req.query;
       res.render("user/welcome.html", {
         nickname,
+        server: this.server,
       });
     } catch (e) {
       next(e);
@@ -65,7 +67,7 @@ class UserController {
 
   async getSignin(req, res, next) {
     try {
-      res.render("user/signin.html");
+      res.render("user/signin.html", { server: this.server });
     } catch (e) {
       next(e);
     }
@@ -74,7 +76,7 @@ class UserController {
   async getProfileModify(req, res, next) {
     try {
       // console.log("profile modify check~~~~ : ", req.user);
-      res.render("user/profile.html", { ...req.user });
+      res.render("user/profile.html", { ...req.user, server: this.server });
     } catch (e) {
       next(e);
     }
@@ -84,7 +86,6 @@ class UserController {
     try {
       // console.log("modify :", req.body)
       const response = await request.put("/users", { ...req.body });
-      console.log("response :", response.data.token);
       res.cookie("token", response.data.token);
       res.redirect("/users/profile");
     } catch (e) {
