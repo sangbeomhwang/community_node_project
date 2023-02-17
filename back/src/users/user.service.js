@@ -151,6 +151,7 @@ class UserService {
       const { nickname } = this.jwt.verifyToken(token, this.jwt.salt);
       if (!nickname) return { message: "잘못된 형식입니다." };
       const response = await this.userRepository.getDetail({ nickname, post });
+      console.log(response);
       response.forEach((data) => {
         data.register = new this.DateFormat(data.register).dateformat();
       });

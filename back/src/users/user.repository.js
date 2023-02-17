@@ -68,9 +68,7 @@ class UserRepository {
     const config = require("../../config");
     const user = await this.User.update(
       {
-        image:
-          `http://${config.server.my}:${config.server.myPort}/user/` +
-          userData.image,
+        image: `http://${config.server.my}:${config.server.myPort}/user/` + userData.image,
         name: userData.name,
         nickname: userData.nickname,
         password: userData.password,
@@ -104,10 +102,7 @@ class UserRepository {
 
   async updateKakao({ userid, nickname, image, email }) {
     try {
-      const result = await this.User.update(
-        { nickname, image, email },
-        { where: { userid } }
-      );
+      const result = await this.User.update({ nickname, image, email }, { where: { userid } });
       return result;
     } catch (e) {
       throw new Error(e);
@@ -177,7 +172,18 @@ class UserRepository {
       const likes = await this.Likes.count({
         where: { nickname },
       });
-      return { boards, comments, likes };
+      const [commnetsPoint] = await this.sequelize.query(
+        `SELECT COUNT(*) FROM (
+        SELECT A.title, B.commentidx, B.nickname 
+        FROM Boards AS A 
+        RIGHT JOIN Comments AS B ON A.boardidx = B.boardidx 
+        WHERE A.nickname = '${nickname}' AND B.nickname != '${nickname}'
+    ) AS result`,
+        {
+          type: this.sequelize.QueryTypes.SELECT,
+        }
+      );
+      return { boards, comments, likes, commnetsPoint };
     } catch (e) {
       throw new Error(e);
     }
