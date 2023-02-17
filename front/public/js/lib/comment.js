@@ -26,6 +26,7 @@ const commentBox = document.querySelector("#comment_depth");
 const render = async ({ boardidx }) => {
   // 게시글의 전체댓글
   const { data } = await request.get(`/comments?boardidx=${boardidx}`);
+  console.log(data[0]);
   commentBox.innerHTML = "";
   const { usernick } = document.querySelector("[data-usernick]").dataset;
   for (let i = 0; i < data.length; i++) {

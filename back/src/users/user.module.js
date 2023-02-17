@@ -1,6 +1,6 @@
 const {
   sequelize: {
-    models: { Users, Boards, Comments, Likes },
+    models: { Users, Boards, Comments, Likes, Points },
   },
 } = require("../../models");
 const qs = require("qs");
@@ -12,7 +12,7 @@ const UserController = require("./user.controller");
 
 const { jwt } = require("../../config");
 
-const userRepository = new UserRepository({ Users, Boards, Comments, Likes });
+const userRepository = new UserRepository({ Users, Boards, Comments, Likes, Points });
 const userService = new UserService({ userRepository, jwt, qs, axios });
 const userController = new UserController({ userService });
 
