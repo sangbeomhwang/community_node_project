@@ -10,12 +10,12 @@ const Boards = [
   },
   {
     userid: "cloudcoke",
-    title: 2,
+    title: "[깜짝이벤트] 내가 만든 요리 자랑하기 이벤트",
     content:
-      "at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel",
+      "안녕하세요, NodePHL 을 이용해주는 여러분 <br> 여러분의 멋진 요리 실력을 자랑하기 위한 이벤트를 개최합니다 <br> 어떤 요리든 상관없으니 마음껏 실력을 뽐내시고 상품을 받아가세요! <br><br><br> !참가방법 <br> 이 게시글에 댓글을 달아주시면 참여가 인정됩니다!",
     nickname: "web",
-    mainidx: 0,
-    subidx: 1,
+    mainidx: 2,
+    subidx: 0,
   },
   {
     userid: "cloudcoke",
