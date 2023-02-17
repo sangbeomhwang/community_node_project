@@ -31,6 +31,8 @@ const config = {
   server: {
     host: env.SERVER_HOST || "localhost",
     port: env.SERVER_PORT || "3005",
+    my: env.MY_SERVER || "localhost",
+    myPort: env.MY_PORT || "3000",
   },
 };
 

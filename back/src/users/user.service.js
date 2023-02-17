@@ -12,7 +12,10 @@ class UserService {
       const { userid, password, nickname, ...rest } = userData;
       if (!userid || !password || !nickname) throw "내용이 없습니다";
 
-      const hash = this.crypto.createHmac("sha256", this.jwt.salt).update(password).digest("hex");
+      const hash = this.crypto
+        .createHmac("sha256", this.jwt.salt)
+        .update(password)
+        .digest("hex");
       const user = await this.userRepository.addUser({
         userid,
         password: hash,
@@ -44,10 +47,24 @@ class UserService {
     }
   }
 
+  async id(token) {
+    try {
+      const { nickname } = this.jwt.verifyToken(token, this.jwt.salt);
+      const user = await this.userRepository.getUserByNick(nickname);
+      console.log("serv check : ", user);
+      return user;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
   async modifyProfile(userData) {
     try {
       const { password, ...rest } = userData;
-      const hash = this.crypto.createHmac("sha256", this.jwt.salt).update(password).digest("hex");
+      const hash = this.crypto
+        .createHmac("sha256", this.jwt.salt)
+        .update(password)
+        .digest("hex");
 
       const user = await this.userRepository.updateProfile({
         password: hash,
@@ -70,7 +87,12 @@ class UserService {
   async getKakaoToken({ code }) {
     try {
       const {
-        kakao: { host: HOST, rest_api_key: REST_API_KEY, redirect_uri: REDIRECT_URI, client_secret: CLIENT_SECRET },
+        kakao: {
+          host: HOST,
+          rest_api_key: REST_API_KEY,
+          redirect_uri: REDIRECT_URI,
+          client_secret: CLIENT_SECRET,
+        },
       } = require("../../config");
 
       const host = `${HOST}/oauth/token`;
@@ -105,7 +127,10 @@ class UserService {
 
       const user = {
         userid: String(data.id),
-        password: this.crypto.createHmac("sha256", this.jwt.salt).update(String(data.id)).digest("hex"),
+        password: this.crypto
+          .createHmac("sha256", this.jwt.salt)
+          .update(String(data.id))
+          .digest("hex"),
         nickname: data.properties.nickname,
         image: data.properties.profile_image,
         email: data.kakao_account?.email,
@@ -127,7 +152,12 @@ class UserService {
       if (!result) {
         await this.userRepository.updateKakao(user);
       }
-      const { token } = (await this.axios.post(`http://${config.db.development.host}:${config.port}/auths`, { userid: user.userid, password: user.userid })).data;
+      const { token } = (
+        await this.axios.post(
+          `http://${config.db.development.host}:${config.port}/auths`,
+          { userid: user.userid, password: user.userid }
+        )
+      ).data;
       return token;
     } catch (e) {
       throw new Error(e);

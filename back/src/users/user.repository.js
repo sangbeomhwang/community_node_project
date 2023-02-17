@@ -39,6 +39,23 @@ class UserRepository {
           userid,
         },
       });
+      console.log("repo : ", user);
+      return user;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async getUserByNick(nickname) {
+    try {
+      const user = await this.User.findOne({
+        raw: true,
+        attributes: { exclude: ["password"] },
+        where: {
+          nickname,
+        },
+      });
+      console.log("repo : ", user);
       return user;
     } catch (e) {
       throw new Error(e);
@@ -49,7 +66,9 @@ class UserRepository {
     const config = require("../../config");
     const user = await this.User.update(
       {
-        image: `http://${config.server.host}:${config.server.port}/user/` + userData.image,
+        image:
+          `http://${config.server.my}:${config.server.myPort}/user/` +
+          userData.image,
         name: userData.name,
         nickname: userData.nickname,
         password: userData.password,
@@ -70,7 +89,11 @@ class UserRepository {
 
   async addOrLoginKakao({ userid, password, nickname, image, email, social }) {
     try {
-      const [result, exist] = await this.User.findOrCreate({ where: { userid }, defaults: { userid, password, nickname, image, email, social }, raw: true });
+      const [result, exist] = await this.User.findOrCreate({
+        where: { userid },
+        defaults: { userid, password, nickname, image, email, social },
+        raw: true,
+      });
       return exist;
     } catch (e) {
       throw new Error(e);
@@ -79,7 +102,10 @@ class UserRepository {
 
   async updateKakao({ userid, nickname, image, email }) {
     try {
-      const result = await this.User.update({ nickname, image, email }, { where: { userid } });
+      const result = await this.User.update(
+        { nickname, image, email },
+        { where: { userid } }
+      );
       return result;
     } catch (e) {
       throw new Error(e);
