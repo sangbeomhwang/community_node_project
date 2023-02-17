@@ -26,6 +26,7 @@ const commentBox = document.querySelector("#comment_depth");
 const render = async ({ boardidx }) => {
   // 게시글의 전체댓글
   const { data } = await request.get(`/comments?boardidx=${boardidx}`);
+
   const count = document.querySelector("#comment_body > h1 > span");
   count.innerHTML = data.userCount;
 

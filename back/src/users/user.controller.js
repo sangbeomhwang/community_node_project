@@ -68,6 +68,17 @@ class UserController {
       next(e);
     }
   }
+
+  async getDetailCount(req, res, next) {
+    try {
+      const nickname = req.query?.nickname;
+      if (!nickname) return;
+      const response = await this.userService.getDetailCounts({ nickname });
+      res.json(response);
+    } catch (e) {
+      next(e);
+    }
+  }
 }
 
 module.exports = UserController;
