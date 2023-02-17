@@ -143,6 +143,7 @@ class UserRepository {
         case "comments": {
           const response = await this.Comments.findAll({
             where: { nickname },
+            raw: true,
           });
           return response;
         }

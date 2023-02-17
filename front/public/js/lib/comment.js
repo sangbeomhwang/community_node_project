@@ -32,7 +32,6 @@ const render = async ({ boardidx }) => {
 
   commentBox.innerHTML = "";
   const { usernick } = document.querySelector("[data-usernick]").dataset;
-  console.log(usernick);
   for (let i = 0; i < data.response.length; i++) {
     console.log(i);
     if (data.response[i].nickname !== usernick) {

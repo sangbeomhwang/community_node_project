@@ -128,9 +128,7 @@ class UserController {
 
   async getmypage(req, res, next) {
     try {
-      const nickname = req.query;
       res.render("user/mypage.html", {
-        nickname,
         server: this.server,
       });
     } catch (e) {
