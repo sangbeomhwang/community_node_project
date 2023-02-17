@@ -11,6 +11,7 @@
           ><img src="https://i.postimg.cc/hjKZgQ6x/team-logo.png"
         /></a>
         <span>My Page</span>
+        <input type="hidden" name="nickname" value="{{nickname}}" />
       </h1>
       <div id="pointbox">
         <span>All Points :</span>
@@ -23,9 +24,9 @@
   <div id="contents_wrap">
     <div id="contents_header">
       <div id="button">
-        <button>My 게시글</button>
-        <button>My 댓글</button>
-        <button>My 좋아요</button>
+        <button id="btn_board">My 게시글</button>
+        <button id="btn_comment">My 댓글</button>
+        <button id="btn_like">My 좋아요</button>
       </div>
       <div id="imgbox">
         <img src="/img/loap.png" />
@@ -33,9 +34,18 @@
         <img src="/img/loap.png" />
       </div>
       <div id="total">
-        <div><span>Boards : 40개</span></div>
-        <div><span>Comments : 20개</span></div>
-        <div><span>Likes : 20개</span></div>
+        <div>
+          <span>Boards :</span>
+          <span id="total_board">40개</span>
+        </div>
+        <div>
+          <span>Comments :</span>
+          <span id="total_comment">20개</span>
+        </div>
+        <div>
+          <span>Likes :</span>
+          <span id="total_like">40개</span>
+        </div>
       </div>
       <div id="imgbox2">
         <img src="/img/loap.png" />
@@ -52,18 +62,6 @@
           <span>제목입니다</span>
           <span>2023-02-17</span>
         </li>
-        <li>
-          <span>커뮤니티</span>
-          <span>모임</span>
-          <span>제목입니다</span>
-          <span>2023-02-17</span>
-        </li>
-        <li>게시글3</li>
-        <li>게시글4</li>
-        <li>게시글5</li>
-        <li>게시글6</li>
-        <li>게시글7</li>
-        <li>게시글8</li>
       </ul>
     </div>
 

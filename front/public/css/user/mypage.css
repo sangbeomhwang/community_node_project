@@ -204,7 +204,16 @@ li {
 }
 
 #contents_body > ul {
-  max-height: 430px;
+  height: 460px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+#contents_body > ul::-webkit-scrollbar {
+  display: none;
 }
 
 #contents_body > ul > li {
