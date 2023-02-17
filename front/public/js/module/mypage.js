@@ -1,12 +1,6 @@
 import request from "/js/lib/request.js";
 
-const myPageBoardTemplate = ({
-  boardidx,
-  mainidx,
-  subidx,
-  register,
-  title,
-}) => {
+const myPageBoardTemplate = ({ boardidx, mainidx, subidx, register, title }) => {
   const mainCat = {
     0: "Q&A",
     1: "커뮤니티",
@@ -87,16 +81,23 @@ const token = document.cookie.split("=")[1];
 const total_board = document.querySelector("#total_board");
 const total_comment = document.querySelector("#total_comment");
 const total_like = document.querySelector("#total_like");
+const point = document.querySelector("#point");
 
-const count = await request.get("/users/count", {
+const { data } = await request.get("/users/count", {
   headers: {
     Authorization: `Bearer ${token}`,
   },
 });
 
-total_board.innerHTML = count.data.boards;
-total_comment.innerHTML = count.data.comments;
-total_like.innerHTML = count.data.likes;
+const commentsCount = data.commnetsPoint["COUNT(*)"];
+
+const count = (data.boards + commentsCount) * 10;
+
+point.innerHTML = count;
+
+total_board.innerHTML = data.boards;
+total_comment.innerHTML = data.comments;
+total_like.innerHTML = data.likes;
 
 const boardHandler = async () => {
   const response = await request.get("/users/details?post=boards", {
@@ -117,8 +118,7 @@ const boardHandler = async () => {
     const last_text = "...";
 
     if (title_content[i].textContent.length > default_len) {
-      title_content[i].textContent =
-        title_content[i].textContent.substring(0, default_len) + last_text;
+      title_content[i].textContent = title_content[i].textContent.substring(0, default_len) + last_text;
     }
   }
 };
@@ -141,8 +141,7 @@ const commentHandler = async () => {
     const last_text = "...";
 
     if (comment_content[i].textContent.length > default_len) {
-      comment_content[i].textContent =
-        comment_content[i].textContent.substring(0, default_len) + last_text;
+      comment_content[i].textContent = comment_content[i].textContent.substring(0, default_len) + last_text;
     }
   }
 };
@@ -166,8 +165,7 @@ const likeHandler = async () => {
     const last_text = "...";
 
     if (like_content[i].textContent.length > default_len) {
-      like_content[i].textContent =
-        like_content[i].textContent.substring(0, default_len) + last_text;
+      like_content[i].textContent = like_content[i].textContent.substring(0, default_len) + last_text;
     }
   }
 };
