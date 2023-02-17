@@ -83,11 +83,4 @@ const mainPageTemplate = ({
 </li>`;
 };
 
-const myPageTemplate = ({ boardidx, nickname, register, title }) => {
-  return `
-  <li>
-  </li>
-  `;
-};
-
-export { boardListTemplate, mainPageTemplate, myPageTemplate };
+export { boardListTemplate, mainPageTemplate };

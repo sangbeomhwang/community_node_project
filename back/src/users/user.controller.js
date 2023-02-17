@@ -84,6 +84,7 @@ class UserController {
       if (!nickname) return;
       const post = req.query?.post || "board";
       const response = await this.userService.getDetails({ nickname, post });
+      console.log("===============", response);
       res.json(response);
     } catch (e) {
       next(e);
