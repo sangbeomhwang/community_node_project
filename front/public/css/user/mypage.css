@@ -11,8 +11,7 @@ li {
 #wrap {
   width: 100%;
   min-height: 1700px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url(https://i.postimg.cc/prdZ6L1b/loaf-g11290abfc-1920-1.png);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/img/login_profile.png);
   background-size: cover;
   display: flex;
   justify-content: center;

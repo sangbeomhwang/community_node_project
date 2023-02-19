@@ -15,17 +15,17 @@ const template = ({ boardidx, nickname, register, title, hashtag, hit, like, com
      <div>
        <div>
          조회수<img
-           src="https://i.postimg.cc/XYD9XSTJ/ph-eye.png"
+         src="/img/hits.png"
          /><span>${hit}</span>
        </div>
        <div>
          좋아요<img
-           src="https://i.postimg.cc/JnXFPQbN/Vector.png"
+         src="/img/likes.png"
          /><span>0</span>
        </div>
        <div>
          댓글<img
-           src="https://i.postimg.cc/5ynS3Hk5/Vector-1.png"
+         src="/img/comments.png"
          /><span>0</span>
        </div>
      </div>
