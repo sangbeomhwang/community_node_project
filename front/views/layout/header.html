@@ -44,8 +44,7 @@
             logout.addEventListener("click", (e) => {
               e.preventDefault();
               location.href = "/";
-              document.cookie =
-                "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+              document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
             });
 
             const profile_btn = document.querySelector("#profile_btn");
@@ -61,11 +60,7 @@
           </script>
           {% else %}
 
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
-            alt="modify_img"
-            data-userimage="https://cdn-icons-png.flaticon.com/512/64/64572.png"
-          />
+          <img src="/img/profile_img.png" alt="modify_img" data-userimage="/img/profile_img.png" />
 
           <ul id="profile_menu">
             {% if level === 'top' %}
@@ -90,8 +85,7 @@
             logout1.addEventListener("click", (e) => {
               e.preventDefault();
               location.href = "/";
-              document.cookie =
-                "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+              document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
             });
 
             const profile_btn1 = document.querySelector("#profile_btn");

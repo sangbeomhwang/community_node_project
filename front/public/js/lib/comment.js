@@ -2,7 +2,7 @@ import request from "/js/lib/request.js";
 
 const template = (data) => {
   if (data.User.image.length === 0) {
-    data.User.image = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+    data.User.image = "/img/profile_img.png";
   }
   return `
 <div id="depth_b" data-commentidx="${data.commentidx}">
@@ -10,10 +10,10 @@ const template = (data) => {
 <img src="${data.User.image}">
     <div>
         <div>
-            <img src="https://i.postimg.cc/qv5KM7Fv/Vector-1.png"><span id='depth_nic'>${data.nickname}</span>
+            <img src="/img/users.png"><span id='depth_nic'>${data.nickname}</span>
         </div>
         <div>
-            <img src="https://i.postimg.cc/P5gBGFcx/Vector-4.png"><span id='depth_date'>${data.register}</span>
+            <img src="/img/date.png"><span id='depth_date'>${data.register}</span>
         </div>
     </div>
 </div>
@@ -37,9 +37,7 @@ const render = async ({ boardidx }) => {
     if (data.response[i].nickname !== usernick) {
       commentBox.innerHTML += template(data.response[i]) + "</div>";
     } else {
-      commentBox.innerHTML +=
-        template(data.response[i]) +
-        '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>';
+      commentBox.innerHTML += template(data.response[i]) + '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>';
     }
   }
 
@@ -76,10 +74,7 @@ const render = async ({ boardidx }) => {
         content,
       };
 
-      await request.put(
-        `/comments?boardidx=${boardidx}&commentidx=${commentidx}`,
-        data
-      );
+      await request.put(`/comments?boardidx=${boardidx}&commentidx=${commentidx}`, data);
       e.target.parentNode.previousElementSibling.readOnly = true;
       e.target.style.display = "none";
       putbtn[i].style.display = "block";
@@ -98,9 +93,7 @@ const render = async ({ boardidx }) => {
     return async (e) => {
       e.preventDefault();
       const { commentidx } = e.target.parentNode.parentNode.dataset;
-      await request.delete(
-        `/comments?boardidx=${boardidx}&commentidx=${commentidx}`
-      );
+      await request.delete(`/comments?boardidx=${boardidx}&commentidx=${commentidx}`);
       location.href = `/boards/${boardidx}`;
     };
   };
@@ -131,27 +124,18 @@ document.querySelector("#depth_post").addEventListener("click", async (e) => {
     content,
   };
 
-  const { data } = await request.post(
-    `/comments?boardidx=${boardidx.value}`,
-    datacontent
-  );
+  const { data } = await request.post(`/comments?boardidx=${boardidx.value}`, datacontent);
   data.User = { image: userimage };
 
-  commentBox.innerHTML +=
-    template(data) +
-    '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>';
+  commentBox.innerHTML += template(data) + '<div id="btn"><div id="depth_delete">삭제하기</div><div id="depth_put">수정하기</div><div id="depth_clear">완료</div></div></div>';
 
   const default_img = document.querySelectorAll("#depth_b > #depth_info > img");
   const server = document.querySelector("#server").value;
 
   for (let i = 0; i < default_img.length; i++) {
     // profile image에 아직 어떠한 이미지도 따로 지정하지 않은 경우에는 기본 profile image를 적용해주는 코드
-    if (
-      default_img[i].src.indexOf(`${server}`) === -1 &&
-      default_img[i].src.indexOf("http://k.kakaocdn.net") === -1
-    ) {
-      default_img[i].src =
-        "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+    if (default_img[i].src.indexOf(`${server}`) === -1 && default_img[i].src.indexOf("http://k.kakaocdn.net") === -1) {
+      default_img[i].src = "/img/profile_img.png";
     }
   }
 

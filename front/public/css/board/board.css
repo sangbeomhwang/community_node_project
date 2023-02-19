@@ -16,8 +16,22 @@
   padding: 38px 20px;
   box-sizing: border-box;
   border-radius: 12px 12px 0px 0px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://i.postimg.cc/ydZG472R/Kakao-Talk-20230201-120303835.jpg);
   height: 130px;
+}
+
+#subject.qna {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/img/boards_header_0.png);
+  background-size: cover;
+}
+
+#subject.community {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/img/boards_header_1.png);
+  background-size: cover;
+}
+
+#subject.notice {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/img/boards_header_2.png);
+  background-size: cover;
 }
 
 #subject > div {

@@ -9,9 +9,7 @@
   <div id="header_wrap">
     <div id="header">
       <h1 id="logo">
-        <a href="/"
-          ><img src="https://i.postimg.cc/hjKZgQ6x/team-logo.png"
-        /></a>
+        <a href="/"><img src="https://i.postimg.cc/hjKZgQ6x/team-logo.png" /></a>
         <span>Profile 수정</span>
       </h1>
     </div>
@@ -39,11 +37,7 @@
 
           {% else %}
           <label for="profile_img">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
-              alt="default_img"
-              id="previewImg"
-            />
+            <img src="/img/profile_img.png" alt="default_img" id="previewImg" />
           </label>
           <input type="hidden" name="image" id="userImg" />
 
@@ -56,17 +50,9 @@
               <label for="userid">아이디</label>
             </h3>
             <span class="form">
-              <input
-                type="text"
-                name="userid"
-                id="userid"
-                value="{{userid}}"
-                readonly
-              />
+              <input type="text" name="userid" id="userid" value="{{userid}}" readonly />
             </span>
-            <p class="alertMessage" style="opacity: 0; color: red">
-              영문과 숫자를 사용하여 6~16자 사이로 입력해주세요
-            </p>
+            <p class="alertMessage" style="opacity: 0; color: red">영문과 숫자를 사용하여 6~16자 사이로 입력해주세요</p>
           </div>
 
           <div id="password_row">
@@ -84,9 +70,7 @@
                 maxlength="16"
               />
             </span>
-            <p class="alertMessage" style="opacity: 0; color: red">
-              영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요
-            </p>
+            <p class="alertMessage" style="opacity: 0; color: red">영문, 숫자, 특수문자를 모두 혼합하여 8자 이상으로 써주세요</p>
           </div>
 
           <div id="pwcheckBox">
@@ -104,9 +88,7 @@
                 maxlength="16"
               />
             </span>
-            <p class="checkMessage" style="opacity: 0; color: red">
-              비밀번호가 일치하지 않습니다
-            </p>
+            <p class="checkMessage" style="opacity: 0; color: red">비밀번호가 일치하지 않습니다</p>
           </div>
         </div>
 
@@ -116,16 +98,9 @@
               <label for="nickname">닉네임</label>
             </h3>
             <span class="form">
-              <input
-                type="text"
-                id="nickname"
-                name="nickname"
-                value="{{nickname}}"
-              />
+              <input type="text" id="nickname" name="nickname" value="{{nickname}}" />
             </span>
-            <p class="alertMessage" style="opacity: 0; color: red">
-              특수문자를 제외하여 두 글자 이상으로 입력해주세요
-            </p>
+            <p class="alertMessage" style="opacity: 0; color: red">특수문자를 제외하여 두 글자 이상으로 입력해주세요</p>
           </div>
 
           <div id="name_row">
@@ -137,20 +112,11 @@
               <input type="text" id="name" name="name" value="{{name}}" />
 
               {% else %}
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="2~5 길이의 한글로 입력해주세요"
-                onfocus="this.placeholder=''"
-                onblur="this.placeholder='2~5 길이의 한글로 입력해주세요'"
-              />
+              <input type="text" id="name" name="name" placeholder="2~5 길이의 한글로 입력해주세요" onfocus="this.placeholder=''" onblur="this.placeholder='2~5 길이의 한글로 입력해주세요'" />
 
               {% endif %}
             </span>
-            <p class="alertMessage" style="opacity: 0; color: red">
-              2~5 길이의 한글로 입력해주세요
-            </p>
+            <p class="alertMessage" style="opacity: 0; color: red">2~5 길이의 한글로 입력해주세요</p>
           </div>
 
           <div id="email_row">
@@ -160,9 +126,7 @@
             <span class="form">
               <input type="text" id="email" name="email" value="{{email}}" />
             </span>
-            <p class="alertMessage" style="opacity: 0; color: red">
-              이메일 형식에 맞게 입력해주세요
-            </p>
+            <p class="alertMessage" style="opacity: 0; color: red">이메일 형식에 맞게 입력해주세요</p>
           </div>
 
           <div id="phonenumber_row">
@@ -171,13 +135,7 @@
             </h3>
             <span class="form">
               {% if phonenumber %}
-              <input
-                type="tel"
-                id="phonenumber"
-                name="phonenumber"
-                value="{{phonenumber}}"
-                maxlength="11"
-              />
+              <input type="tel" id="phonenumber" name="phonenumber" value="{{phonenumber}}" maxlength="11" />
 
               {% else %}
               <input
@@ -192,9 +150,7 @@
 
               {% endif %}
             </span>
-            <p class="alertMessage" style="opacity: 0; color: red">
-              '-'를 제외한 11자리의 숫자로 입력해주세요
-            </p>
+            <p class="alertMessage" style="opacity: 0; color: red">'-'를 제외한 11자리의 숫자로 입력해주세요</p>
           </div>
 
           <div id="gender_row">
@@ -223,9 +179,7 @@
             </select>
 
             {% endif %}
-            <p class="alertMessage" style="opacity: 0; color: red">
-              필수 선택 사항이 아닙니다.
-            </p>
+            <p class="alertMessage" style="opacity: 0; color: red">필수 선택 사항이 아닙니다.</p>
           </div>
 
           <div id="address_row">
@@ -234,22 +188,10 @@
             </h3>
             <span class="form">
               {% if address %}
-              <input
-                type="text"
-                id="address"
-                name="address"
-                value="{{address}}"
-                readonly
-              />
+              <input type="text" id="address" name="address" value="{{address}}" readonly />
 
               {% else %}
-              <input
-                type="text"
-                id="address"
-                name="address"
-                placeholder="주소를 검색해주세요"
-                readonly
-              />
+              <input type="text" id="address" name="address" placeholder="주소를 검색해주세요" readonly />
 
               {% endif %}
               <a id="address_search">주소 찾기</a>
@@ -259,22 +201,10 @@
           <ul id="sub_address_row">
             <li class="detail_form">
               {% if sub_address %}
-              <input
-                type="text"
-                id="sub_address"
-                name="sub_address"
-                value="{{sub_address}}"
-              />
+              <input type="text" id="sub_address" name="sub_address" value="{{sub_address}}" />
 
               {% else %}
-              <input
-                type="text"
-                id="sub_address"
-                name="sub_address"
-                placeholder="상세 주소를 입력해주세요"
-                onfocus="this.placeholder=''"
-                onblur="this.placeholder='상세 주소를 입력해주세요'"
-              />
+              <input type="text" id="sub_address" name="sub_address" placeholder="상세 주소를 입력해주세요" onfocus="this.placeholder=''" onblur="this.placeholder='상세 주소를 입력해주세요'" />
 
               {% endif %}
             </li>
@@ -284,9 +214,7 @@
             <h3 id="introduce">간단 소개</h3>
             <span class="form">
               {% if introduce %}
-              <textarea name="introduce" id="introduce" cols="100" rows="10">
-{{introduce}}</textarea
-              >
+              <textarea name="introduce" id="introduce" cols="100" rows="10">{{introduce}}</textarea>
 
               {% else %}
               <textarea
@@ -331,19 +259,17 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
   window.onload = function () {
-    document
-      .querySelector("#address_search")
-      .addEventListener("click", function () {
-        //주소입력칸을 클릭하면
-        //카카오 지도 발생
-        new daum.Postcode({
-          oncomplete: function (data) {
-            //선택시 입력값 세팅
-            document.querySelector("#address").value = data.address; // 주소 넣기
-            document.querySelector("input[name=sub_address]").focus(); //상세 주소 입력폼 포커싱
-          },
-        }).open();
-      });
+    document.querySelector("#address_search").addEventListener("click", function () {
+      //주소입력칸을 클릭하면
+      //카카오 지도 발생
+      new daum.Postcode({
+        oncomplete: function (data) {
+          //선택시 입력값 세팅
+          document.querySelector("#address").value = data.address; // 주소 넣기
+          document.querySelector("input[name=sub_address]").focus(); //상세 주소 입력폼 포커싱
+        },
+      }).open();
+    });
   };
 </script>
 
